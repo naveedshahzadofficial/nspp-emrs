@@ -9,4 +9,4 @@ Route::get('/', function () {
 
 Route::get('/about-us', function () {
     return Inertia::render('About', ['about_us' => 'working']);
-});
+})->name('about-us');

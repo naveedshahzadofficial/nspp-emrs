@@ -1,17 +1,21 @@
 <template>
-    <div>
-        <h1>inertiajs is {{ about_us }}</h1>
+    <GuestLayout>
+        <Head title="About Us" />
+            <div>
+                <h1>inertiajs is {{ about_us }}</h1>
 
-        <Link href="/">Go to Home</Link>
-    </div>
+                <Link href="/">Go to Home</Link>
+            </div>
+    </GuestLayout>
 </template>
 
-<script>
-import { Link } from "@inertiajs/vue3";
-export default {
-    components: {
-        Link,
-        props: ["about_us"],
+<script setup>
+import GuestLayout from '@Layouts/GuestLayout.vue';
+import { Link, Head } from "@inertiajs/vue3";
+
+defineProps({
+    about_us: {
+        type: String,
     },
-};
+});
 </script>
