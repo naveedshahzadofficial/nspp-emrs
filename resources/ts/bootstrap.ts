@@ -1,4 +1,13 @@
+import {AxiosStatic} from "axios";
+
 window._ = require('lodash');
+
+declare global {
+    interface Window {
+        _: any;
+        axios: AxiosStatic;
+    }
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

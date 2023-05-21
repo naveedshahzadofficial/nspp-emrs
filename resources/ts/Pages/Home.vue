@@ -7,8 +7,10 @@
     </div>
 </template>
 
-<script>
-export default {
-    props: ["test"],
-};
+<script lang="ts" setup>
+
+defineProps<{
+    test?: string;
+}>();
+
 </script>

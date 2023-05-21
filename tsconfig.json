@@ -1,43 +1,39 @@
 {
-  "compilerOptions": {
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "noImplicitAny": false,
-    "target": "esnext",
-    "module": "esnext",
-    "strict": false,
-    "jsx": "preserve",
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "useDefineForClassFields": true,
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "baseUrl": ".",
-    "types": [
-        "@types/node", "@types/ziggy-js"
-    ],
-    "paths": {
-      "@/*": [
-        "resources/js/*"
-      ]
+    "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "allowSyntheticDefaultImports": true,
+        "useDefineForClassFields": true,
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "noImplicitAny": false,
+        "isolatedModules": false,
+        "allowJs": true,
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "jsx": "preserve",
+        "strict": true,
+        "target": "ESNext",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "noEmit": false,
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "baseUrl": ".",
+        "types": [
+            "@types/node", "@types/ziggy-js"
+        ],
+        "paths": {
+            "@/*": ["resources/ts/*"]
+        },
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable",
+            "scripthost"
+        ]
     },
-      "outDir": "./public/build/assets",
-      "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
-  },
-  "typeRoots": ["./node_modules/@types", "resources/js/types"],
-  "include": [
-  "resources/js/**/*.ts",
-  "resources/js/**/*.d.ts",
-  "resources/js/**/*.vue"
-  ],
-  "exclude": ["node_modules", "public"]
+    "typeRoots": ["./node_modules/@types", "resources/ts/types"],
+    "include": ["resources/ts/**/*.ts", "resources/ts/**/*.d.ts", "resources/ts/**/*.vue"],
+    "exclude": ["node_modules", "public"]
+
 }
