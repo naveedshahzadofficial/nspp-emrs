@@ -5,13 +5,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useI18n } from "vue-i18n/index";
-import KTMenu from "@/layout/aside/Menu.vue";
+//import KTMenu from "@/Layout/aside/Menu.vue";
 import { asideTheme } from "@/core/helpers/config";
 
 export default defineComponent({
     name: "KTAside",
     components: {
-        KTMenu,
+        //KTMenu,
     },
     props: {
         lightLogo: String,
