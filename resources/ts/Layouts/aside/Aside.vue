@@ -75,9 +75,10 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useI18n } from "vue-i18n/index";
 //import KTMenu from "@/Layout/aside/Menu.vue";
 import { asideTheme } from "@/core/helpers/config";
+import { useI18n } from "vue-i18n";
+
 
 export default defineComponent({
     name: "KTAside",

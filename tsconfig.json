@@ -23,7 +23,9 @@
             "@types/node", "@types/ziggy-js"
         ],
         "paths": {
-            "@/*": ["resources/ts/*"]
+            "@/*": ["resources/ts/*"],
+            "@Layouts": ["resources/ts/Layouts"],
+            "@Components": ["resources/ts/Components"],
         },
         "lib": [
             "esnext",

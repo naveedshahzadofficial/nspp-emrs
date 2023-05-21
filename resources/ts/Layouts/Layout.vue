@@ -2,7 +2,11 @@
     <!-- begin:: Body -->
     <div class="page d-flex flex-row flex-column-fluid" id="kt_layout">
         <!-- begin:: Aside Left -->
-        {{ test }}
+        <KTAside
+            v-if="asideEnabled"
+            :lightLogo="themeLightLogo"
+            :darkLogo="themeDarkLogo"
+        />
         <!-- end:: Aside Left -->
 
         <!-- begin:: Content Body -->
@@ -26,6 +30,21 @@
 </template>
 
 <script lang="ts" setup>
+import { useStore } from "vuex";
+import KTAside from "@/Layouts/aside/Aside.vue";
+import {
+    toolbarDisplay,
+    loaderEnabled,
+    contentWidthFluid,
+    loaderLogo,
+    asideEnabled,
+    subheaderDisplay,
+    themeLightLogo,
+    themeDarkLogo,
+} from "@/core/helpers/config";
+
+const store = useStore();
+
 </script>
 
 <style scoped></style>
