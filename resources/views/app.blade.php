@@ -10,7 +10,10 @@
     <script src="{{ mix('/js/vendor.js') }}" defer></script>
     <script src="{{ mix('/js/app.js') }}" defer></script>
   </head>
-  <body>
+  <body style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
+  <noscript>
+      <strong>We're sorry but NSPP EMRS doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+  </noscript>
     @routes
     @inertia
   </body>

@@ -1,8 +1,8 @@
 require('./bootstrap');
 import { createApp, h } from 'vue'
-import { createInertiaApp } from '@inertiajs/vue3'
+import { createInertiaApp, Head, Link } from '@inertiajs/vue3'
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
-import GuestLayout from "@Layouts/GuestLayout.vue";
+import Layout from "@/Layouts/Layout.vue";
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'EMRS';
 
@@ -12,7 +12,7 @@ createInertiaApp({
     let page =  await import(`./Pages/${name}`);
     page = page.default;
     if(page.layout === undefined){
-        page.layout = GuestLayout;
+        page.layout = Layout;
     }
     return page;
   },
@@ -20,6 +20,8 @@ createInertiaApp({
     createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(ZiggyVue, Ziggy)
+        .component('Head', Head)
+        .component('Link', Link)
       .mount(el)
   },
 })

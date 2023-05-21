@@ -8,12 +8,7 @@
 </template>
 
 <script>
-import { Link, Head } from "@inertiajs/vue3";
 export default {
-    components: {
-        Link,
-        Head
-    },
     props: ["test"],
 };
 </script>
