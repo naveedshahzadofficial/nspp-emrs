@@ -6136,11 +6136,12 @@ var appName = ((_window$document$getE = window.document.getElementsByTagName('ti
           case 2:
             page = _context.sent;
             page = page["default"];
+            console.log(page.layout);
             if (page.layout === undefined) {
               page.layout = _Layouts_Layout_vue__WEBPACK_IMPORTED_MODULE_4__["default"];
             }
             return _context.abrupt("return", page);
-          case 6:
+          case 7:
           case "end":
             return _context.stop();
         }
