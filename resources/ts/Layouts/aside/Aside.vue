@@ -44,7 +44,9 @@
         <!--end::Brand-->
 
         <!--begin::Aside menu-->
-        <div class="aside-menu flex-column-fluid"></div>
+        <div class="aside-menu flex-column-fluid">
+            <KTMenu></KTMenu>
+        </div>
         <!--end::Aside menu-->
 
         <!--begin::Footer-->
@@ -75,7 +77,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-//import KTMenu from "@/Layout/aside/Menu.vue";
+import KTMenu from "@/Layouts/aside/Menu.vue";
 import { asideTheme } from "@/core/helpers/config";
 import { useI18n } from "vue-i18n";
 
@@ -83,7 +85,7 @@ import { useI18n } from "vue-i18n";
 export default defineComponent({
     name: "KTAside",
     components: {
-        //KTMenu,
+        KTMenu,
     },
     props: {
         lightLogo: String,

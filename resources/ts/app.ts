@@ -5,7 +5,7 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import Layout from "@/Layouts/Layout.vue";
 import store from "./store";
 import i18n from "@/core/plugins/i18n";
-
+import { initInlineSvg } from "@/core/plugins/inline-svg";
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'EMRS';
 
@@ -25,8 +25,9 @@ createInertiaApp({
       .use(store)
       .use(i18n)
       .use(ZiggyVue)
-        .component('Head', Head)
-        .component('Link', Link)
+      .use(initInlineSvg)
+      .component('Head', Head)
+      .component('Link', Link)
       .mount(el)
   },
 })
