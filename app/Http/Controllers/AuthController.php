@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
     function showLoginForm(){
         return Inertia::render('Auth/Login');
@@ -31,5 +30,13 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login');
+    }
+
+    function showResetForm(){
+
+    }
+
+    function submitResetForm(){
+
     }
 }

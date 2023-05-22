@@ -48,21 +48,12 @@
 
             <!--begin::Input group-->
             <div class="fv-row mb-10">
-                <!--begin::Wrapper-->
-                <div class="d-flex flex-stack mb-2">
-                    <!--begin::Label-->
-                    <label class="form-label fw-bolder text-dark fs-6 mb-0"
-                    >Password</label
-                    >
-                    <!--end::Label-->
 
-                    <!--begin::Link-->
-                    <Link href="password-reset" class="link-primary fs-6 fw-bolder">
-                        Forgot Password ?
-                    </Link>
-                    <!--end::Link-->
-                </div>
-                <!--end::Wrapper-->
+                <!--begin::Label-->
+                <label class="form-label fw-bolder text-dark fs-6 mb-0"
+                >Password</label
+                >
+                <!--end::Label-->
 
                 <!--begin::Input-->
                 <input
@@ -78,6 +69,17 @@
                         <span>{{ form.errors.password }}</span>
                     </div>
                 </div>
+
+                <!--begin::Wrapper-->
+                <div class="d-flex flex-stack  mt-2">
+                    <!--begin::Link-->
+                    <Link href="password-reset" class="link-primary fs-6 fw-bolder">
+                        Forgot Password ?
+                    </Link>
+                    <!--end::Link-->
+                </div>
+                <!--end::Wrapper-->
+
             </div>
             <!--end::Input group-->
 
@@ -90,6 +92,7 @@
                     id="kt_sign_in_submit"
                     class="btn btn-lg btn-primary w-100 mb-5"
                     :disabled="form.processing"
+                    :data-kt-indicator="form.processing?'on':'off'"
 
 
                 >
@@ -134,16 +137,8 @@ let form = useForm({
     password: ''
 });
 
-
 let submit = () => {
-    if (submitButton.value) {
-        submitButton.value.setAttribute("data-kt-indicator", "on");
-    }
-
     form.post(route('login.submit'));
-
-    submitButton.value?.removeAttribute("data-kt-indicator");
-
 }
 
 </script>
