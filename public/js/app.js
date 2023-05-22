@@ -16027,6 +16027,14 @@ var map = {
 		"./resources/ts/Pages/About.vue",
 		"resources_ts_Pages_About_vue"
 	],
+	"./Auth/Login": [
+		"./resources/ts/Pages/Auth/Login.vue",
+		"resources_ts_Pages_Auth_Login_vue"
+	],
+	"./Auth/Login.vue": [
+		"./resources/ts/Pages/Auth/Login.vue",
+		"resources_ts_Pages_Auth_Login_vue"
+	],
 	"./Home": [
 		"./resources/ts/Pages/Home.vue",
 		"resources_ts_Pages_Home_vue"
