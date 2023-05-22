@@ -291,7 +291,7 @@
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-      <a @click="signOut()" class="menu-link px-5"> Sign Out </a>
+      <Link :href="route('logout')" method="post"  class="menu-link px-5"> Sign Out </Link>
     </div>
     <!--end::Menu item-->
   </div>
@@ -338,11 +338,6 @@ export default defineComponent({
       },
     };
 
-    const signOut = () => {
-      store
-        .dispatch(Actions.LOGOUT)
-        .then(() => route("sign-in"));
-    };
 
     const setLang = (lang) => {
       localStorage.setItem("lang", lang);
@@ -358,7 +353,6 @@ export default defineComponent({
     });
 
     return {
-      signOut,
       setLang,
       currentLanguage,
       currentLangugeLocale,
