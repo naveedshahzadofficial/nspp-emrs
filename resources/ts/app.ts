@@ -2,7 +2,7 @@ import '@/bootstrap';
 import { createApp, h } from 'vue'
 import { createInertiaApp, Head, Link } from '@inertiajs/vue3'
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
-import Layout from "@/Layouts/Layout.vue";
+import DefaultLayout from "@/Layouts/DefaultLayout.vue";
 import store from "./store";
 import i18n from "@/core/plugins/i18n";
 import { initInlineSvg } from "@/core/plugins/inline-svg";
@@ -16,7 +16,7 @@ createInertiaApp({
     page = page.default;
     console.log(page.layout)
     if(page.layout === undefined){
-        page.layout = Layout;
+        page.layout = DefaultLayout;
     }
     return page;
   },

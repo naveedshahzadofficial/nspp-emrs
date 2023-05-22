@@ -26,6 +26,7 @@
             "@/*": ["resources/ts/*"],
             "@Layouts": ["resources/ts/Layouts"],
             "@Components": ["resources/ts/Components"],
+            "@Sass": ["resources/sass"],
         },
         "lib": [
             "esnext",

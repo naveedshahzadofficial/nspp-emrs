@@ -8,9 +8,9 @@
 </template>
 
 <script lang="ts">
-import GuestLayout from '@/Layouts/GuestLayout.vue';
+import BlankLayout from '@/Layouts/BlankLayout.vue';
 export default {
-    layout : GuestLayout,
+    layout : BlankLayout,
 }
 </script>
 

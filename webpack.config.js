@@ -15,6 +15,7 @@ module.exports = {
             '@': path.resolve('resources/ts'),
             '@Layouts': path.resolve('resources/ts/Layouts'),
             '@Components': path.resolve('resources/ts/Components'),
+            '@Sass': path.resolve('resources/sass'),
         },
         extensions: ["*",".wasm",".mjs",".js",".jsx",".json",".vue", ".ts", ".tsx", ".js", ".jsx",],
     },
