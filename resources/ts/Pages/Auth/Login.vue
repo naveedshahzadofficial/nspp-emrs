@@ -3,11 +3,10 @@
     <!--begin::Wrapper-->
     <div class="w-lg-500px bg-white rounded shadow-sm p-10 p-lg-15 mx-auto">
         <!--begin::Form-->
-        <Form
+        <form
             class="form w-100"
             id="kt_login_signin_form"
-            @submit="onSubmitLogin"
-            :validation-schema="login"
+            @submit.prevent="submit"
         >
             <!--begin::Heading-->
             <div class="text-center mb-10">
@@ -31,16 +30,17 @@
                 <!--end::Label-->
 
                 <!--begin::Input-->
-                <Field
+                <input
+                    v-model="form.email"
                     class="form-control form-control-lg form-control-solid"
                     type="text"
                     name="email"
                     autocomplete="off"
                 />
                 <!--end::Input-->
-                <div class="fv-plugins-message-container">
+                <div v-if="form.errors.email" class="fv-plugins-message-container">
                     <div class="fv-help-block">
-                        <ErrorMessage name="email" />
+                        <span>{{ form.errors.email }}</span>
                     </div>
                 </div>
             </div>
@@ -57,24 +57,25 @@
                     <!--end::Label-->
 
                     <!--begin::Link-->
-                    <router-link to="/password-reset" class="link-primary fs-6 fw-bolder">
+                    <Link href="password-reset" class="link-primary fs-6 fw-bolder">
                         Forgot Password ?
-                    </router-link>
+                    </Link>
                     <!--end::Link-->
                 </div>
                 <!--end::Wrapper-->
 
                 <!--begin::Input-->
-                <Field
+                <input
+                    v-model="form.password"
                     class="form-control form-control-lg form-control-solid"
                     type="password"
                     name="password"
                     autocomplete="off"
                 />
                 <!--end::Input-->
-                <div class="fv-plugins-message-container">
+                <div v-if="form.errors.email" class="fv-plugins-message-container">
                     <div class="fv-help-block">
-                        <ErrorMessage name="password" />
+                        <span>{{ form.errors.password }}</span>
                     </div>
                 </div>
             </div>
@@ -88,6 +89,9 @@
                     ref="submitButton"
                     id="kt_sign_in_submit"
                     class="btn btn-lg btn-primary w-100 mb-5"
+                    :disabled="form.processing"
+
+
                 >
                     <span class="indicator-label"> Continue </span>
 
@@ -102,7 +106,7 @@
 
             </div>
             <!--end::Actions-->
-        </Form>
+        </form>
         <!--end::Form-->
     </div>
     <!--end::Wrapper-->
@@ -114,88 +118,34 @@
 
 <script lang="ts">
 import AuthLayout from '@/Layouts/AuthLayout.vue';
-import { defineComponent, ref } from "vue";
-import { ErrorMessage, Field, Form } from "vee-validate";
-import { Actions } from "@/store/enums/StoreEnums";
-import { useStore } from "vuex";
-import Swal from "sweetalert2/dist/sweetalert2.min.js";
-import * as Yup from "yup";
-
-export default defineComponent({
-    name: "sign-in",
+export default {
     layout : AuthLayout,
-    components: {
-        Field,
-        Form,
-        ErrorMessage,
-    },
-    setup() {
-        const store = useStore();
-        //const router = useRouter();
+}
+</script>
 
-        const submitButton = ref<HTMLButtonElement | null>(null);
+<script lang="ts" setup >
+import { ref } from "vue";
 
-        //Create form validation object
-        const login = Yup.object().shape({
-            email: Yup.string().email().required().label("Email"),
-            password: Yup.string().min(4).required().label("Password"),
-        });
+import { useForm } from "@inertiajs/vue3";
+const submitButton = ref<HTMLButtonElement | null>(null);
 
-        //Form submit function
-        const onSubmitLogin = async (values) => {
-            // Clear existing errors
-            store.dispatch(Actions.LOGOUT);
-
-            if (submitButton.value) {
-                // eslint-disable-next-line
-                submitButton.value!.disabled = true;
-                // Activate indicator
-                submitButton.value.setAttribute("data-kt-indicator", "on");
-            }
-
-            // Send login request
-            await store.dispatch(Actions.LOGIN, values);
-            const [errorName] = Object.keys(store.getters.getErrors);
-            const error = store.getters.getErrors[errorName];
-
-            if (!error) {
-                Swal.fire({
-                    text: "You have successfully logged in!",
-                    icon: "success",
-                    buttonsStyling: false,
-                    confirmButtonText: "Ok, got it!",
-                    customClass: {
-                        confirmButton: "btn fw-bold btn-light-primary",
-                    },
-                }).then(function () {
-                    // Go to page after successfully login
-                    //router.push({ name: "dashboard" });
-                });
-            } else {
-                Swal.fire({
-                    text: error[0],
-                    icon: "error",
-                    buttonsStyling: false,
-                    confirmButtonText: "Try again!",
-                    customClass: {
-                        confirmButton: "btn fw-bold btn-light-danger",
-                    },
-                });
-            }
-
-            //Deactivate indicator
-            submitButton.value?.removeAttribute("data-kt-indicator");
-            // eslint-disable-next-line
-            submitButton.value!.disabled = false;
-        };
-
-        return {
-            onSubmitLogin,
-            login,
-            submitButton,
-        };
-    },
+let form = useForm({
+    email: '',
+    password: ''
 });
+
+
+let submit = () => {
+    if (submitButton.value) {
+        submitButton.value.setAttribute("data-kt-indicator", "on");
+    }
+
+    form.post(route('login.submit'));
+
+    submitButton.value?.removeAttribute("data-kt-indicator");
+
+}
+
 </script>
 
 

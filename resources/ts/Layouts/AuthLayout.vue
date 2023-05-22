@@ -38,7 +38,7 @@ import { Actions } from "@/store/enums/StoreEnums";
 import { getIllustrationsPath } from "@/core/helpers/assets";
 
 export default defineComponent({
-    name: "auth-layout",
+    name: "AuthLayout",
     components: {},
     setup() {
         const store = useStore();

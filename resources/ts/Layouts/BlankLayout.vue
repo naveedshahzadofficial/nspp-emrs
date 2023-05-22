@@ -49,7 +49,7 @@ import {
     themeDarkLogo,
 } from "@/core/helpers/config";
 export default defineComponent({
-    name: "guest-layout",
+    name: "BlankLayout",
     components: {
         KTFooter,
     },

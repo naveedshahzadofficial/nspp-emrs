@@ -90,7 +90,7 @@ import {
     themeDarkLogo,
 } from "@/core/helpers/config";
 export default defineComponent({
-    name: "theme-layout",
+    name: "DefaultLayout",
     components: {
         KTAside,
         KTHeader,

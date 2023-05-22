@@ -335,7 +335,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
-  name: "theme-layout",
+  name: "DefaultLayout",
   components: {
     KTAside: _Layouts_aside_Aside_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
     KTHeader: _Layouts_header_Header_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
@@ -6136,12 +6136,11 @@ var appName = ((_window$document$getE = window.document.getElementsByTagName('ti
           case 2:
             page = _context.sent;
             page = page["default"];
-            console.log(page.layout);
             if (page.layout === undefined) {
               page.layout = _Layouts_DefaultLayout_vue__WEBPACK_IMPORTED_MODULE_4__["default"];
             }
             return _context.abrupt("return", page);
-          case 7:
+          case 6:
           case "end":
             return _context.stop();
         }
@@ -16034,6 +16033,14 @@ var map = {
 	"./Auth/Login.vue": [
 		"./resources/ts/Pages/Auth/Login.vue",
 		"resources_ts_Pages_Auth_Login_vue"
+	],
+	"./Dashboard": [
+		"./resources/ts/Pages/Dashboard.vue",
+		"resources_ts_Pages_Dashboard_vue"
+	],
+	"./Dashboard.vue": [
+		"./resources/ts/Pages/Dashboard.vue",
+		"resources_ts_Pages_Dashboard_vue"
 	],
 	"./Home": [
 		"./resources/ts/Pages/Home.vue",
