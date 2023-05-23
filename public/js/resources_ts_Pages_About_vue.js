@@ -40,7 +40,7 @@ __webpack_require__.r(__webpack_exports__);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
       store.commit(_store_enums_StoreEnums__WEBPACK_IMPORTED_MODULE_1__.Mutations.OVERRIDE_LAYOUT_CONFIG);
       (0,vue__WEBPACK_IMPORTED_MODULE_0__.nextTick)(function () {
-        (0,_core_plugins_keenthemes__WEBPACK_IMPORTED_MODULE_3__.initializeComponents)();
+        (0,_core_plugins_keenthemes__WEBPACK_IMPORTED_MODULE_3__.reinitializeComponents)();
       });
       // Simulate the delay page loading
       setTimeout(function () {

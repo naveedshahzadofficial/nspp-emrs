@@ -23,9 +23,9 @@
       class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1"
     >
       <li class="breadcrumb-item pe-3">
-        <router-link to="/dashboard" class="text-muted text-hover-primary">
+        <Link :href="route('dashboard')" class="text-muted text-hover-primary">
           Home
-        </router-link>
+        </Link>
       </li>
       <li class="breadcrumb-item">
         <span class="bullet bg-gray-200 w-5px h-2px"></span>

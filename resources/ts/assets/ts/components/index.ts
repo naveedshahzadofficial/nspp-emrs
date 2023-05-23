@@ -1,3 +1,4 @@
+export * from './_AppClassesComponent'
 export * from './_CookieComponent'
 export * from './_DrawerComponent'
 export * from './_FeedbackComponent'

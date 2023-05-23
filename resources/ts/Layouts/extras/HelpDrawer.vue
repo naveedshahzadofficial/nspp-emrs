@@ -172,10 +172,10 @@
               <!--begin::Wrapper-->
               <div class="d-flex flex-column me-2 me-lg-5">
                 <!--begin::Title-->
-                <router-link
-                  to="/builder"
+                <Link
+                  href="/builder"
                   class="text-dark text-hover-primary fw-bolder fs-6 fs-lg-4 mb-1"
-                  >Layout Builder</router-link
+                  >Layout Builder</Link
                 >
                 <!--end::Title-->
                 <!--begin::Description-->

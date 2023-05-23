@@ -28,10 +28,10 @@
         <template v-for="(menuItem, j) in item.pages" :key="j">
           <template v-if="menuItem.heading">
             <div class="menu-item">
-              <router-link
+              <Link
                 class="menu-link"
-                active-class="active"
-                :to="menuItem.route"
+                :class="{ 'active': $page.component === menuItem.component??'' }"
+                :href="route(menuItem.route??null)"
               >
                 <span
                   v-if="menuItem.svgIcon || menuItem.fontIcon"
@@ -52,7 +52,7 @@
                 <span class="menu-title">{{
                   translate(menuItem.heading)
                 }}</span>
-              </router-link>
+              </Link>
             </div>
           </template>
           <div
@@ -90,18 +90,18 @@
             >
               <template v-for="(item2, k) in menuItem.sub" :key="k">
                 <div v-if="item2.heading" class="menu-item">
-                  <router-link
-                    class="menu-link"
-                    active-class="active"
-                    :to="item2.route"
-                  >
+                    <Link
+                        class="menu-link"
+                        :class="{ 'active': $page.component === item2.component??'' }"
+                        :href="route(item2.route??null)"
+                    >
                     <span class="menu-bullet">
                       <span class="bullet bullet-dot"></span>
                     </span>
                     <span class="menu-title">{{
                       translate(item2.heading)
                     }}</span>
-                  </router-link>
+                  </Link>
                 </div>
                 <div
                   v-if="item2.sectionTitle"
@@ -125,18 +125,18 @@
                   >
                     <template v-for="(item3, k) in item2.sub" :key="k">
                       <div v-if="item3.heading" class="menu-item">
-                        <router-link
-                          class="menu-link"
-                          active-class="active"
-                          :to="item3.route"
-                        >
+                          <Link
+                              class="menu-link"
+                              :class="{ 'active': $page.component === item3.component??'' }"
+                              :href="route(item3.route??null)"
+                          >
                           <span class="menu-bullet">
                             <span class="bullet bullet-dot"></span>
                           </span>
                           <span class="menu-title">{{
                             translate(item3.heading)
                           }}</span>
-                        </router-link>
+                        </Link>
                       </div>
                     </template>
                   </div>
@@ -146,33 +146,6 @@
           </div>
         </template>
       </template>
-      <div class="menu-item">
-        <div class="menu-content">
-          <div class="separator mx-1 my-4"></div>
-        </div>
-      </div>
-      <div class="menu-item">
-        <a
-          class="menu-link"
-          href="https://preview.keenthemes.com/metronic8/vue/docs/#/changelog"
-        >
-          <span class="menu-icon">
-            <i
-              v-if="asideMenuIcons === 'font'"
-              class="bi bi-card-text fs-3"
-            ></i>
-            <span
-              v-else-if="asideMenuIcons === 'svg'"
-              class="svg-icon svg-icon-2"
-            >
-              <inline-svg src="media/icons/duotune/general/gen005.svg" />
-            </span>
-          </span>
-          <span class="menu-title"
-            >{{ translate("changelog") }} v{{ version }}</span
-          >
-        </a>
-      </div>
     </div>
     <!--end::Menu-->
   </div>

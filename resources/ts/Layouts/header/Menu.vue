@@ -24,15 +24,15 @@
         <template v-if="!item.heading">
           <template v-for="(menuItem, j) in item.pages" :key="j">
             <div v-if="menuItem.heading" class="menu-item me-lg-1">
-              <router-link
-                class="menu-link"
-                :to="menuItem.route"
-                active-class="active"
-              >
+                <Link
+                    class="menu-link"
+                    :class="{ 'active': $page.component === menuItem.component??'' }"
+                    :href="route(menuItem.route??null)"
+                >
                 <span class="menu-title">{{
                   translate(menuItem.heading)
                 }}</span>
-              </router-link>
+              </Link>
             </div>
           </template>
         </template>
@@ -111,45 +111,45 @@
                           :key="l"
                         >
                           <div class="menu-item">
-                            <router-link
-                              class="menu-link py-3"
-                              active-class="active"
-                              :to="menuItem2.route"
-                            >
+                              <Link
+                                  class="menu-link py-3"
+                                  :class="{ 'active': $page.component === menuItem2.component??'' }"
+                                  :href="route(menuItem2.route??null)"
+                              >
                               <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                               </span>
                               <span class="menu-title">{{
                                 translate(menuItem2.heading)
                               }}</span>
-                            </router-link>
+                            </Link>
                           </div>
                         </template>
                       </div>
                     </div>
                     <div v-if="menuItem1.heading" class="menu-item">
-                      <router-link
-                        class="menu-link"
-                        active-class="active"
-                        :to="menuItem1.route"
-                      >
+                      <Link
+                              class="menu-link"
+                              :class="{ 'active': $page.component === menuItem1.component??'' }"
+                              :href="route(menuItem1.route??null)"
+                          >
                         <span class="menu-bullet">
                           <span class="bullet bullet-dot"></span>
                         </span>
                         <span class="menu-title">{{
                           translate(menuItem1.heading)
                         }}</span>
-                      </router-link>
+                      </Link>
                     </div>
                   </template>
                 </div>
               </div>
               <div v-if="menuItem.heading" class="menu-item">
-                <router-link
-                  class="menu-link"
-                  active-class="active"
-                  :to="menuItem.route"
-                >
+                  <Link
+                        class="menu-link"
+                        :class="{ 'active': $page.component === menuItem.component??'' }"
+                        :href="route(menuItem.route??null)"
+                    >
                   <span class="menu-icon">
                     <span class="svg-icon svg-icon-2">
                       <inline-svg
@@ -160,7 +160,7 @@
                   <span class="menu-title">{{
                     translate(menuItem.heading)
                   }}</span>
-                </router-link>
+                </Link>
               </div>
             </template>
           </div>

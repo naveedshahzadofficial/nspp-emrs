@@ -33,12 +33,12 @@
         <!--begin::Details-->
         <div class="d-flex align-items-center mb-1">
           <!--begin::Name-->
-          <router-link
-            to="/apps/subscriptions/view-subscription"
+          <Link
+            href="/apps/subscriptions/view-subscription"
             class="fw-bolder text-gray-800 text-hover-primary me-2"
           >
             Sean Bean
-          </router-link>
+          </Link>
           <!--end::Name-->
 
           <!--begin::Status-->

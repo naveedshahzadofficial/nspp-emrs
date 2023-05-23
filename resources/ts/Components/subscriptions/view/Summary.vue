@@ -176,13 +176,13 @@
 
       <!--begin::Actions-->
       <div class="mb-0">
-        <router-link
-          to="/subscriptions/add"
+        <Link
+          href="/subscriptions/add"
           class="btn btn-primary"
           id="kt_subscriptions_create_button"
         >
           Edit Subscription
-        </router-link>
+        </Link>
       </div>
       <!--end::Actions-->
     </div>

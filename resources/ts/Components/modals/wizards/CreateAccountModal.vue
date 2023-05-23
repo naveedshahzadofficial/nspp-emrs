@@ -961,8 +961,8 @@
                     <!--begin::Notice-->
                     <div class="text-gray-400 fw-bold fs-6">
                       If you need more info, please
-                      <router-link to="/sign-in" class="link-primary fw-bolder"
-                        >Sign In</router-link
+                      <Link href="/login" class="link-primary fw-bolder"
+                        >Sign In</Link
                       >.
                     </div>
                     <!--end::Notice-->

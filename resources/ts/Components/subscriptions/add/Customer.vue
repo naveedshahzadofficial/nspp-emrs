@@ -59,12 +59,12 @@
 
         <span class="fw-bolder text-gray-500 mx-2">or</span>
 
-        <router-link
-          to="/customers/list"
+        <Link
+          href="/customers/list"
           class="btn btn-light-primary"
           data-bs-toggle="modal"
           data-bs-target="#kt_modal_users_search"
-          >Add New Customer</router-link
+          >Add New Customer</Link
         >
       </div>
       <!--end::Customer add buttons-->

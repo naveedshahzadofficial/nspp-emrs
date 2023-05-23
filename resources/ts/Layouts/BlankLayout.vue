@@ -34,7 +34,7 @@ import { useStore } from "vuex";
 import { Actions } from "@/store/enums/StoreEnums";
 import HtmlClass from "@/core/services/LayoutService";
 import { Mutations } from "@/store/enums/StoreEnums";
-import { initializeComponents } from "@/core/plugins/keenthemes";
+import { reinitializeComponents } from "@/core/plugins/keenthemes";
 
 
 import KTFooter from "@/Layouts/footer/Footer.vue";
@@ -66,7 +66,7 @@ export default defineComponent({
             store.commit(Mutations.OVERRIDE_LAYOUT_CONFIG);
 
             nextTick(() => {
-                initializeComponents();
+                reinitializeComponents();
             });
 
             // Simulate the delay page loading

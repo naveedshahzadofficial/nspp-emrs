@@ -1,4 +1,5 @@
 <template>
+
     <KTLoader v-if="loaderEnabled" :logo="loaderLogo" />
 
     <!-- begin:: Body -->
@@ -49,9 +50,6 @@
     <KTCreateApp />
     <KTInviteFriendsModal />
 
-    <KTToolButtons />
-    <KTDemosDrawer />
-    <KTHelpDrawer />
 </template>
 
 <script lang="ts">
@@ -60,7 +58,7 @@ import { useStore } from "vuex";
 import { Actions } from "@/store/enums/StoreEnums";
 import HtmlClass from "@/core/services/LayoutService";
 import { Mutations } from "@/store/enums/StoreEnums";
-import { initializeComponents, reinitializeComponents } from "@/core/plugins/keenthemes";
+import { reinitializeComponents } from "@/core/plugins/keenthemes";
 import { removeModalBackdrop } from "@/core/helpers/dom";
 import { MenuComponent } from "@/assets/ts/components";
 
@@ -73,9 +71,6 @@ import KTUserMenu from "@/Layouts/header/partials/ActivityDrawer.vue";
 import KTLoader from "@/Components/Loader.vue";
 import KTCreateApp from "@/Components/modals/wizards/CreateAppModal.vue";
 import KTInviteFriendsModal from "@/Components/modals/general/InviteFriendsModal.vue";
-import KTDemosDrawer from "@/Layouts/extras/DemosDrawer.vue";
-import KTHelpDrawer from "@/Layouts/extras/HelpDrawer.vue";
-import KTToolButtons from "@/Layouts/extras/ToolButtons.vue";
 import KTDrawerMessenger from "@/Layouts/extras/MessengerDrawer.vue";
 
 
@@ -100,9 +95,6 @@ export default defineComponent({
         KTCreateApp,
         KTInviteFriendsModal,
         KTUserMenu,
-        KTDemosDrawer,
-        KTHelpDrawer,
-        KTToolButtons,
         KTDrawerMessenger,
         KTLoader,
     },
@@ -127,7 +119,7 @@ export default defineComponent({
             store.commit(Mutations.OVERRIDE_LAYOUT_CONFIG);
 
             nextTick(() => {
-                initializeComponents();
+                reinitializeComponents();
             });
 
             // Simulate the delay page loading

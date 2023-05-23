@@ -1,10 +1,11 @@
 import {
-  MenuComponent,
-  ScrollComponent,
-  StickyComponent,
-  ToggleComponent,
-  DrawerComponent,
-  SwapperComponent,
+    AppClassesComponent,
+    MenuComponent,
+    ScrollComponent,
+    StickyComponent,
+    ToggleComponent,
+    DrawerComponent,
+    SwapperComponent,
 } from "@/assets/ts/components";
 
 /**
@@ -12,6 +13,7 @@ import {
  */
 const initializeComponents = () => {
   setTimeout(() => {
+    AppClassesComponent.bootstrap();
     ToggleComponent.bootstrap();
     StickyComponent.bootstrap();
     MenuComponent.bootstrap();
@@ -26,6 +28,7 @@ const initializeComponents = () => {
  */
 const reinitializeComponents = () => {
   setTimeout(() => {
+    AppClassesComponent.reinitialization();
     ToggleComponent.reinitialization();
     StickyComponent.reInitialization();
     MenuComponent.reinitialization();

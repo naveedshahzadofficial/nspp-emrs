@@ -42,15 +42,15 @@ const config: LayoutConfigTypes = {
   },
   aside: {
     display: true,
-    theme: "dark",
+    theme: "light",
     fixed: true,
-    menuIcon: "svg",
+    menuIcon: "font",
     minimized: false,
     minimize: true,
     hoverable: true,
   },
   content: {
-    width: "fixed",
+    width: "fluid",
   },
   footer: {
     width: "fluid",

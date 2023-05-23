@@ -6,6 +6,9 @@ import DefaultLayout from "@/Layouts/DefaultLayout.vue";
 import store from "./store";
 import i18n from "@/core/plugins/i18n";
 import { initInlineSvg } from "@/core/plugins/inline-svg";
+import HtmlClass from "@/core/services/LayoutService";
+import { initializeComponents, reinitializeComponents } from "@/core/plugins/keenthemes";
+
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'EMRS';
 
@@ -21,9 +24,9 @@ createInertiaApp({
   },
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })
-      .use(plugin)
-      .use(store)
-      .use(i18n)
+      .use<any>(plugin)
+      .use<any>(store)
+      .use<any>(i18n)
       .use(ZiggyVue)
       .use(initInlineSvg)
       .component('Head', Head)
@@ -31,3 +34,9 @@ createInertiaApp({
       .mount(el)
   },
 })
+
+// initialize html element classes
+HtmlClass.init();
+initializeComponents();
+
+

@@ -37,22 +37,22 @@
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-      <router-link to="/pages/profile/overview" class="menu-link px-5">
+      <Link href="/pages/profile/overview" class="menu-link px-5">
         My Profile
-      </router-link>
+      </Link>
     </div>
     <!--end::Menu item-->
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-      <router-link to="/pages/profile/overview" class="menu-link px-5">
+      <Link href="/pages/profile/overview" class="menu-link px-5">
         <span class="menu-text">My Projects</span>
         <span class="menu-badge">
           <span class="badge badge-light-danger badge-circle fw-bolder fs-7"
             >3</span
           >
         </span>
-      </router-link>
+      </Link>
     </div>
     <!--end::Menu item-->
 
@@ -63,41 +63,41 @@
       data-kt-menu-placement="left-start"
       data-kt-menu-flip="center, top"
     >
-      <router-link to="/pages/profile/overview" class="menu-link px-5">
+      <Link href="/pages/profile/overview" class="menu-link px-5">
         <span class="menu-title">My Subscription</span>
         <span class="menu-arrow"></span>
-      </router-link>
+      </Link>
 
       <!--begin::Menu sub-->
       <div class="menu-sub menu-sub-dropdown w-175px py-4">
         <!--begin::Menu item-->
         <div class="menu-item px-3">
-          <router-link to="/pages/profile/overview" class="menu-link px-5">
+          <Link href="/pages/profile/overview" class="menu-link px-5">
             Referrals
-          </router-link>
+          </Link>
         </div>
         <!--end::Menu item-->
 
         <!--begin::Menu item-->
         <div class="menu-item px-3">
-          <router-link to="/pages/profile/overview" class="menu-link px-5">
+          <Link href="/pages/profile/overview" class="menu-link px-5">
             Billing
-          </router-link>
+          </Link>
         </div>
         <!--end::Menu item-->
 
         <!--begin::Menu item-->
         <div class="menu-item px-3">
-          <router-link to="/pages/profile/overview" class="menu-link px-5">
+          <Link href="/pages/profile/overview" class="menu-link px-5">
             Payments
-          </router-link>
+          </Link>
         </div>
         <!--end::Menu item-->
 
         <!--begin::Menu item-->
         <div class="menu-item px-3">
-          <router-link
-            to="/pages/profile/overview"
+          <Link
+            href="/pages/profile/overview"
             class="menu-link d-flex flex-stack px-5"
           >
             Statements
@@ -107,7 +107,7 @@
               data-bs-toggle="tooltip"
               title="View your statements"
             ></i>
-          </router-link>
+          </Link>
         </div>
         <!--end::Menu item-->
 
@@ -142,9 +142,9 @@
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-      <router-link to="/pages/profile/overview" class="menu-link px-5">
+      <Link href="/pages/profile/overview" class="menu-link px-5">
         My Statements
-      </router-link>
+      </Link>
     </div>
     <!--end::Menu item-->
 
@@ -159,7 +159,7 @@
       data-kt-menu-placement="left-start"
       data-kt-menu-flip="center, top"
     >
-      <router-link to="/pages/profile/overview" class="menu-link px-5">
+      <Link href="/pages/profile/overview" class="menu-link px-5">
         <span class="menu-title position-relative">
           Language
           <span
@@ -173,7 +173,7 @@
             />
           </span>
         </span>
-      </router-link>
+      </Link>
 
       <!--begin::Menu sub-->
       <div class="menu-sub menu-sub-dropdown w-175px py-4">
@@ -283,15 +283,15 @@
 
     <!--begin::Menu item-->
     <div class="menu-item px-5 my-1">
-      <router-link to="/pages/profile/overview" class="menu-link px-5">
+      <Link href="/pages/profile/overview" class="menu-link px-5">
         Account Settings
-      </router-link>
+      </Link>
     </div>
     <!--end::Menu item-->
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-      <Link :href="route('logout')" method="post"  class="menu-link px-5"> Sign Out </Link>
+      <Link :href="route('logout')" method="post" as="button"  class="menu-link px-5"> Sign Out </Link>
     </div>
     <!--end::Menu item-->
   </div>

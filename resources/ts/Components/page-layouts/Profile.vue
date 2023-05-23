@@ -241,68 +241,68 @@
         >
           <!--begin::Nav item-->
           <li class="nav-item">
-            <router-link
-              to="/crafted/pages/profile/overview"
+            <Link
+              href="/crafted/pages/profile/overview"
               class="nav-link text-active-primary me-6"
               active-class="active"
             >
               Overview
-            </router-link>
+            </Link>
           </li>
           <!--end::Nav item-->
           <!--begin::Nav item-->
           <li class="nav-item">
-            <router-link
+            <Link
               class="nav-link text-active-primary me-6"
-              to="/crafted/pages/profile/projects"
+              href="/crafted/pages/profile/projects"
               active-class="active"
             >
               Projects
-            </router-link>
+            </Link>
           </li>
           <!--end::Nav item-->
           <!--begin::Nav item-->
           <li class="nav-item">
-            <router-link
+            <Link
               class="nav-link text-active-primary me-6"
-              to="/crafted/pages/profile/campaigns"
+              href="/crafted/pages/profile/campaigns"
               active-class="active"
             >
               Campaigns
-            </router-link>
+            </Link>
           </li>
           <!--end::Nav item-->
           <!--begin::Nav item-->
           <li class="nav-item">
-            <router-link
+            <Link
               class="nav-link text-active-primary me-6"
-              to="/crafted/pages/profile/documents"
+              href="/crafted/pages/profile/documents"
               active-class="active"
             >
               Documents
-            </router-link>
+            </Link>
           </li>
           <!--end::Nav item-->
           <!--begin::Nav item-->
           <li class="nav-item">
-            <router-link
+            <Link
               class="nav-link text-active-primary me-6"
-              to="/crafted/pages/profile/connections"
+              href="/crafted/pages/profile/connections"
               active-class="active"
             >
               Connections
-            </router-link>
+            </Link>
           </li>
           <!--end::Nav item-->
           <!--begin::Nav item-->
           <li class="nav-item">
-            <router-link
+            <Link
               class="nav-link text-active-primary me-6"
-              to="/crafted/pages/profile/activity"
+              href="/crafted/pages/profile/activity"
               active-class="active"
             >
               Activity
-            </router-link>
+            </Link>
           </li>
           <!--end::Nav item-->
         </ul>

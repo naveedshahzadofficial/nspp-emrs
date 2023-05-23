@@ -70,10 +70,10 @@
           >
             <!--begin::Menu item-->
             <div class="menu-item px-3">
-              <router-link
-                to="/apps/customers/customer-details"
+              <Link
+                href="/apps/customers/customer-details"
                 class="menu-link px-3"
-                >View</router-link
+                >View</Link
               >
             </div>
             <!--end::Menu item-->
