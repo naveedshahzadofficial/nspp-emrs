@@ -20,7 +20,7 @@
         "skipLibCheck": true,
         "baseUrl": ".",
         "types": [
-            "@types/node", "@types/ziggy-js"
+            "@types/node", "@types/ziggy-js", "element-plus/global"
         ],
         "paths": {
             "@/*": ["resources/ts/*"],

@@ -1,4 +1,8 @@
 const path = require('path');
+const AutoImport = require('unplugin-auto-import/webpack')
+const Components = require('unplugin-vue-components/webpack')
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
+
 
 module.exports = {
     module: {
@@ -7,7 +11,7 @@ module.exports = {
                 test: /\.tsx?$/,
                 loader: "ts-loader",
                 exclude: /node_modules/
-            }
+            },
         ]
     },
     resolve: {
@@ -19,4 +23,12 @@ module.exports = {
         },
         extensions: ["*",".wasm",".mjs",".js",".jsx",".json",".vue", ".ts", ".tsx"],
     },
+    plugins: [
+        AutoImport({
+            resolvers: [ElementPlusResolver()],
+        }),
+        Components({
+            resolvers: [ElementPlusResolver()],
+        }),
+    ],
 };
