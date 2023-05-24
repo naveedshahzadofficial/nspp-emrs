@@ -21,7 +21,7 @@ module.exports = {
             '@Components': path.resolve('resources/ts/Components'),
             '@Sass': path.resolve('resources/sass'),
         },
-        extensions: ["*",".wasm",".mjs",".js",".jsx",".json",".vue", ".ts", ".tsx"],
+        extensions: ['.ts', '.js',".vue", '.mjs', '.json','.wasm','.jsx', '.tsx'],
     },
     plugins: [
         AutoImport({

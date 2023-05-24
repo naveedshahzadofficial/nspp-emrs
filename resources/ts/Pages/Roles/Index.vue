@@ -53,7 +53,7 @@
         </template>
         <template v-slot:cell-created_at="{ row: role }">
             <a href="#" class="text-gray-600 text-hover-primary mb-1">
-                {{ customer.created_at }}
+                {{ role.created_at }}
             </a>
         </template>
 
