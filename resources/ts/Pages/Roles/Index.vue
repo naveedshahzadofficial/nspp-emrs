@@ -2,22 +2,40 @@
     <Head title="Roles"/>
     <div class="card">
         <!--begin::Card header-->
-
         <div class="card-header border-0 pt-6">
             <!--begin::Card title-->
             <div class="card-title">
-                <!--begin::Search-->
-                <div class="d-flex align-items-center position-relative my-1">
-          <span class="svg-icon svg-icon-1 position-absolute ms-6">
-               <inline-svg src="media/icons/duotune/general/gen021.svg" />
-          </span>
-                    <input
-                        type="text"
-                        class="form-control form-control-solid w-250px ps-15"
-                        placeholder="Search"
-                    />
+                <!--begin::Page title-->
+                <div
+                    id="kt_page_title"
+                    data-kt-swapper="true"
+                    data-kt-swapper-mode="prepend"
+                    data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
+                    class="page-title d-flex flex-column justify-content-center flex-wrap me-3"
+                >
+                    <!--begin::Title-->
+                    <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3">
+                        Roles
+                    </h1>
+                    <!--end::Title-->
+
+                    <!--begin::Breadcrumb-->
+                    <ul
+                        class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1"
+                    >
+                            <li class="breadcrumb-item text-muted">
+                                System Settings
+                            </li>
+                            <li class="breadcrumb-item">
+                                <span class="bullet bg-gray-200 w-5px h-2px"></span>
+                            </li>
+                        <li class="breadcrumb-item pe-3 text-dark">
+                            Roles
+                        </li>
+                    </ul>
+                    <!--end::Breadcrumb-->
                 </div>
-                <!--end::Search-->
+                <!--end::Page title-->
             </div>
             <!--begin::Card title-->
 
@@ -42,22 +60,50 @@
         </div>
        <!--end::Card header-->
 
-    <div class="card-body pt-0">
-        <Datatable
-            :table-data="tableData"
-            :table-header="tableHeader"
-            :enable-items-per-page-dropdown="true"
-        >
-        <template v-slot:cell-name="{ row: role }">
-            {{ role.name }}
-        </template>
-        <template v-slot:cell-created_at="{ row: role }">
-            <a href="#" class="text-gray-600 text-hover-primary mb-1">
-                {{ role.created_at }}
-            </a>
-        </template>
+    <div class="card-body pt-0 position-relative">
 
-        </Datatable>
+        <!--begin::Search-->
+        <div class="d-flex align-items-center position-relative my-2">
+          <span class="svg-icon svg-icon-1 position-absolute ms-6">
+               <inline-svg src="media/icons/duotune/general/gen021.svg" />
+          </span>
+            <input
+                type="text"
+                class="form-control form-control-solid w-250px ps-15"
+                placeholder="Search"
+            />
+        </div>
+        <!--end::Search-->
+
+        <div class="table-responsive ">
+
+            <DataTable class="table table-striped table-row-bordered gy-5 gs-7" :data="roles" :columns="columns"
+
+            :options="{
+                responsive:true,
+                lengthChange: false,
+                language: {
+                infoFiltered: '',
+                },
+                processing: true,
+                pageLength: 30,
+                serverSide: false,
+                autoWidth:false,
+                lengthMenu: [
+                [10, 20, 30, 50, 100, -1],
+                ['10', '20', '30', '50', '100', 'All']
+                ],
+                dom:'Blrtip',
+                buttons: buttons
+                }">
+                <thead>
+                <tr>
+                    <th>Role Name</th>
+                    <th>Created Date</th>
+                </tr>
+                </thead>
+            </DataTable>
+        </div>
     </div>
     </div>
 
@@ -65,35 +111,113 @@
 </template>
 
 <script lang="ts" setup>
-import Datatable from "@/Components/kt-datatable/KTDatatable.vue";
+import { router } from '@inertiajs/vue3'
+import DataTable from 'datatables.net-vue3'
+import Select from 'datatables.net-select';
+import DataTablesCore from 'datatables.net-bs5';
+import Buttons from 'datatables.net-buttons-bs5';
+import ButtonsHtml5 from 'datatables.net-buttons/js/buttons.html5';
+import print from 'datatables.net-buttons/js/buttons.print';
+import pdfmake from 'pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+(pdfmake as any).vfs = pdfFonts.pdfMake.vfs;
+
+import 'datatables.net-buttons-bs5';
+DataTable.use(Select);
+DataTable.use(Buttons);
+DataTable.use(print);
+DataTable.use(DataTablesCore);
+DataTable.use(pdfmake);
+DataTable.use(ButtonsHtml5);
+
 import { setCurrentPageBreadcrumbs } from "@/core/helpers/breadcrumb";
 import {onMounted, ref} from "vue";
 const props = defineProps({
-    roles: { type: Object, required: true },
+    roles: { type: Array, required: true },
 });
 
-const tableHeader = ref([
-    {
-        name: "Role Name",
-        key: "name",
-        sortable: true,
-    },
-    {
-        name: "Created Date",
-        key: "created_at",
-        sortable: true,
-    },
-    {
-        name: "Actions",
-        key: "actions",
-    },
-]);
-const tableData = ref(props.roles??[]);
+const columns = [
+    { name:'Role Name', data: 'name' },
+    { name:'Created Date', data: 'created_at' },
+];
 
-onMounted(() => {
+const buttons= [
+        {
+            extend: 'print',
+            text: '<i class="fa fa-print"></i>',
+            titleAttr: 'Print',
+            charset: "utf-8",
+            bom: "true",
+            className: 'btn btn-xs',
+            exportOptions: {
+                columns: ':visible:not(.not-exported)',
+                modifier: {
+                    search: 'applied',
+                    order: 'applied',
+                    page: 'all'
+                }
+            }
+        },
+        {
+            extend: 'csvHtml5',
+            text: '<i class="fa fa-file-csv"></i>',
+            titleAttr: 'CSV',
+            charset: "utf-8",
+            "bom": "true",
+            className: 'btn btn-xs',
+            exportOptions: {
+                columns: ':visible:not(.not-exported)',
+                modifier: {
+                    search: 'applied',
+                    order: 'applied',
+                    page: 'all'
+                }
+            }
+
+        },
+        {
+            extend: 'excelHtml5',
+            text: '<i class="fa fa-file-excel"></i>',
+            titleAttr: 'Excel',
+            charset: "utf-8",
+            "bom": "true",
+            className: 'btn btn-xs',
+            exportOptions: {
+                columns: ':visible:not(.not-exported)',
+                modifier: {
+                    search: 'applied',
+                    order: 'applied',
+                    page: 'all'
+                }
+            }
+        },
+        {
+            extend: 'pdfHtml5',
+            text: '<i class="fa fa-file-pdf"></i>',
+            titleAttr: 'PDF',
+            charset: "utf-8",
+            "bom": "true",
+            className: 'btn btn-xs',
+            exportOptions: {
+                columns: ':visible:not(.not-exported)',
+                modifier: {
+                    search: 'applied',
+                    order: 'applied',
+                    page: 'all'
+                }
+            }
+        }
+    ];
+    onMounted(() => {
    //setCurrentPageTitle("Roles");
     setCurrentPageBreadcrumbs("Roles", ["System Settings"]);
 })
+
+const getRoles = () => {
+    router.get(route('roles.index'),{},{
+        preserveState: true
+    });
+}
 
 </script>
 

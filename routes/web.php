@@ -5,7 +5,8 @@ use Inertia\Inertia;
 use App\Http\Controllers\{
     AuthController,
     DashboardController,
-    RoleController
+    RoleController,
+    RegistrationController,
 };
 
 Route::get('/', function () {
@@ -19,6 +20,7 @@ Route::group(['middleware' => ['auth']],function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class,'logout'])->name('logout');
     Route::resource('/roles', RoleController::class);
+    Route::resource('/registrations', RegistrationController::class);
 
 });
 

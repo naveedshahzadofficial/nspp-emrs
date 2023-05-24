@@ -16,5 +16,19 @@ mix.ts('resources/ts/app.ts', 'public/js')
     .extract()
     .vue({ version: 3 })
     .sass('resources/sass/app.scss', 'public/css')
-    .webpackConfig(webpackConfig)
-    .version();
+    .browserSync('nspp-emrs.test')
+    .webpackConfig((webpack) => {
+        return {
+            plugins: [
+                new webpack.DefinePlugin({
+                    __VUE_OPTIONS_API__: true,
+                    __VUE_PROD_DEVTOOLS__: false,
+                }),
+            ],
+        };
+    })
+    .webpackConfig(webpackConfig);
+
+if (mix.inProduction()) {
+    mix.version();
+}

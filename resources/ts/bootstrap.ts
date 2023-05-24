@@ -2,10 +2,13 @@ import {AxiosStatic} from "axios";
 
 window._ = require('lodash');
 
+import JSZip from 'jszip';
+
 declare global {
     interface Window {
         _: any;
         axios: AxiosStatic;
+        JSZip: JSZip
     }
 }
 

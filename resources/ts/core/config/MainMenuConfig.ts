@@ -22,6 +22,11 @@ const DocMenuConfig = [
           },
         ],
       },
+        {
+            heading: "Registrations",
+            route: "registrations.index",
+            fontIcon: "bi bi-pencil-square",
+        },
     ],
   },
 ];

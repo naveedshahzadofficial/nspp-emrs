@@ -17,13 +17,6 @@
 
             <!-- begin:: Content -->
             <div id="kt_content" class="content d-flex flex-column flex-column-fluid">
-                <!-- begin:: Content Head -->
-                <KTToolbar
-                    v-if="subheaderDisplay"
-                    :breadcrumbs="breadcrumbs"
-                    :title="pageTitle"
-                />
-                <!-- end:: Content Head -->
 
                 <!-- begin:: Content Body -->
                 <div class="post d-flex flex-column-fluid">
@@ -65,7 +58,6 @@ import { MenuComponent } from "@/assets/ts/components";
 import KTAside from "@/Layouts/aside/Aside.vue";
 import KTHeader from "@/Layouts/header/Header.vue";
 import KTFooter from "@/Layouts/footer/Footer.vue";
-import KTToolbar from "@/Layouts/toolbar/Toolbar.vue";
 import KTScrollTop from "@/Layouts/extras/ScrollTop.vue";
 import KTUserMenu from "@/Layouts/header/partials/ActivityDrawer.vue";
 import KTLoader from "@/Components/Loader.vue";
@@ -90,7 +82,6 @@ export default defineComponent({
         KTAside,
         KTHeader,
         KTFooter,
-        KTToolbar,
         KTScrollTop,
         KTCreateApp,
         KTInviteFriendsModal,

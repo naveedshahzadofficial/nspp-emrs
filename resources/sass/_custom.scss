@@ -1,0 +1,48 @@
+.color-red-700 {
+    color: #d32f2f !important;
+}
+
+div.dt-buttons {
+    position: absolute;
+    top: 15px;
+    right: 2.25rem;
+}
+div.dt-buttons button{
+    background-image: none !important;
+    background-color: transparent !important;
+    border: transparent !important;
+    padding: 5px !important;
+}
+
+.fa-file-pdf{
+    color: #ff0801 !important;
+}
+
+.fa-file-excel,.fa-file-text, .fa-file-csv {
+    color: #0b9444 !important;
+}
+
+.main_section_heading{
+    background-color: #404040;
+    padding: 10px 10px;
+    color: white;
+    font-size: 18px;
+}
+.section_heading {
+    padding: 5px 0 4px 0px;
+    margin-bottom: 0px;
+    color: white;
+    background: white;
+    border-bottom: 4px solid #01603B;
+}
+.section_heading span {
+    text-align: center;
+    background: #01603B;
+    padding: 8px 20px 5px 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.section_box{
+    background-color: #D7FFEB;
+    padding: 30px;
+}
