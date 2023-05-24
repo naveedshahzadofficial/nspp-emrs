@@ -43,36 +43,21 @@
        <!--end::Card header-->
 
     <div class="card-body pt-0">
-        <table class="table table-row-dashed table-row-gray-300">
-            <thead>
-            <tr class="fw-bolder fs-5 text-gray-800">
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-            </tr>
-            </tbody>
-        </table>
+        <Datatable
+            :table-data="tableData"
+            :table-header="tableHeader"
+            :enable-items-per-page-dropdown="true"
+        >
+        <template v-slot:cell-name="{ row: role }">
+            {{ role.name }}
+        </template>
+        <template v-slot:cell-created_at="{ row: role }">
+            <a href="#" class="text-gray-600 text-hover-primary mb-1">
+                {{ customer.created_at }}
+            </a>
+        </template>
+
+        </Datatable>
     </div>
     </div>
 
@@ -80,12 +65,36 @@
 </template>
 
 <script lang="ts" setup>
+import Datatable from "@/Components/kt-datatable/KTDatatable.vue";
 import { setCurrentPageBreadcrumbs } from "@/core/helpers/breadcrumb";
-import {onMounted} from "vue";
+import {onMounted, ref} from "vue";
+const props = defineProps({
+    roles: { type: Object, required: true },
+});
+
+const tableHeader = ref([
+    {
+        name: "Role Name",
+        key: "name",
+        sortable: true,
+    },
+    {
+        name: "Created Date",
+        key: "created_at",
+        sortable: true,
+    },
+    {
+        name: "Actions",
+        key: "actions",
+    },
+]);
+const tableData = ref(props.roles??[]);
+
 onMounted(() => {
    //setCurrentPageTitle("Roles");
     setCurrentPageBreadcrumbs("Roles", ["System Settings"]);
 })
+
 </script>
 
 <style scoped>

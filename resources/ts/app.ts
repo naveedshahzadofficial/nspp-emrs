@@ -7,7 +7,10 @@ import store from "./store";
 import i18n from "@/core/plugins/i18n";
 import { initInlineSvg } from "@/core/plugins/inline-svg";
 import HtmlClass from "@/core/services/LayoutService";
-import { initializeComponents, reinitializeComponents } from "@/core/plugins/keenthemes";
+import { initializeComponents } from "@/core/plugins/keenthemes";
+import ElementPlus from "element-plus";
+import "@/core/plugins/prismjs";
+
 
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'EMRS';
@@ -27,6 +30,7 @@ createInertiaApp({
       .use<any>(plugin)
       .use<any>(store)
       .use<any>(i18n)
+      .use<any>(ElementPlus)
       .use(ZiggyVue)
       .use(initInlineSvg)
       .component('Head', Head)

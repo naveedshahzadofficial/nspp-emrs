@@ -291,7 +291,7 @@
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-      <Link :href="route('logout')" method="post" as="button"  class="menu-link px-5"> Sign Out </Link>
+      <Link :href="route('logout')" method="post" as="button"  class="menu-link px-5 btn btn-link-primary" style="width: 100% !important;"> Sign Out </Link>
     </div>
     <!--end::Menu item-->
   </div>

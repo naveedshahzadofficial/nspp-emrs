@@ -17,6 +17,6 @@ module.exports = {
             '@Components': path.resolve('resources/ts/Components'),
             '@Sass': path.resolve('resources/sass'),
         },
-        extensions: ["*",".wasm",".mjs",".js",".jsx",".json",".vue", ".ts", ".tsx", ".js", ".jsx",],
+        extensions: ["*",".wasm",".mjs",".js",".jsx",".json",".vue", ".ts", ".tsx"],
     },
 };

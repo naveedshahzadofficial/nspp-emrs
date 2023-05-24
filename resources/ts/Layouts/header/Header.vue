@@ -39,7 +39,7 @@
       >
         <!--begin::Navbar-->
         <div class="d-flex align-items-stretch" id="kt_header_nav">
-          <KTMenu></KTMenu>
+
         </div>
         <!--end::Navbar-->
 
@@ -59,7 +59,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import KTTopbar from "@/Layouts/header/Topbar.vue";
-import KTMenu from "@/Layouts/header/Menu.vue";
 
 import {
   headerWidthFluid,
@@ -74,7 +73,6 @@ export default defineComponent({
   },
   components: {
     KTTopbar,
-    KTMenu,
   },
   setup() {
     return {

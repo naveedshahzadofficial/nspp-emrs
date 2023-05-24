@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -14,7 +15,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Roles/Index');
+        $roles = Role::all();
+        return Inertia::render('Roles/Index', compact('roles'));
     }
 
     /**

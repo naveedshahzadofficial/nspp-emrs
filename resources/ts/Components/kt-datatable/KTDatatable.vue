@@ -160,7 +160,7 @@ export default defineComponent({
     currentPage: { type: Number, default: 1 },
     enableItemsPerPageDropdown: { type: Boolean, default: true },
     total: { type: Number, default: 0 },
-    rowsPerPage: { type: Number, default: 10 },
+    rowsPerPage: { type: Number, default: 2 },
     order: { type: String, default: "asc" },
     sortLabel: { type: String, default: "" },
   },
