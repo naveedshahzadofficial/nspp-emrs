@@ -95,7 +95,7 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
 import Quill from "quill/dist/quill.js";
-import Dropdown2 from "@/components/dropdown/Dropdown2.vue";
+import Dropdown2 from "@/Components/dropdown/Dropdown2.vue";
 
 export default defineComponent({
   name: "widget-1",

@@ -4,13 +4,10 @@ import { createInertiaApp, Head, Link } from '@inertiajs/vue3'
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import DefaultLayout from "@/Layouts/DefaultLayout.vue";
 import store from "./store";
-//import ElementPlus from "element-plus";
 import i18n from "@/core/plugins/i18n";
 import { initInlineSvg } from "@/core/plugins/inline-svg";
 import HtmlClass from "@/core/services/LayoutService";
 import { initializeComponents } from "@/core/plugins/keenthemes";
-import "@/core/plugins/prismjs";
-
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'EMRS';
 
@@ -29,7 +26,6 @@ createInertiaApp({
       .use<any>(plugin)
       .use<any>(store)
       .use<any>(i18n)
-      //.use<any>(ElementPlus)
       .use(ZiggyVue)
       .use(initInlineSvg)
       .component('Head', Head)

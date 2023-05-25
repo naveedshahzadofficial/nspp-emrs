@@ -41,7 +41,7 @@ import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
 import events from "@/core/data/events";
 import { TODAY } from "@/core/data/events";
-import NewEventModal from "@/components/modals/forms/NewEventModal.vue";
+import NewEventModal from "@/Components/modals/forms/NewEventModal.vue";
 import { Modal } from "bootstrap";
 
 export default defineComponent({

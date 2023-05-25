@@ -95,7 +95,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import Notice from "@/components/Notice.vue";
+import Notice from "@/Components/Notice.vue";
 
 export default defineComponent({
   name: "kt-customer",

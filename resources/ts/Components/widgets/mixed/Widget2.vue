@@ -79,7 +79,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import Dropdown3 from "@/components/dropdown/Dropdown3.vue";
+import Dropdown3 from "@/Components/dropdown/Dropdown3.vue";
 import { getCSSVariableValue } from "@/assets/ts/_utils";
 
 export default defineComponent({

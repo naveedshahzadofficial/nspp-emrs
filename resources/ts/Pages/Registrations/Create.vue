@@ -11,12 +11,28 @@
         <!--begin::Form-->
         <div class="card-body">
 
-            <div class="form-group">
-                <label>Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Name" />
-
-                <div class="error"></div>
+            <div class="mb-10">
+                <label for="exampleFormControlInput1" class="required form-label">Type of Patient</label>
+                <div class="d-flex">
+                <div v-for="patientType in patientTypes" :key="patientType.id" class="form-check form-check-custom form-check-solid me-10">
+                    <input v-model="searchForm.patient_type_id" class="form-check-input" name="type_of_patient" type="radio" :id="`type_of_patient_${patientType.id}`">
+                    <label class="form-check-label" :for="`type_of_patient_${patientType.id}`">{{ patientType.patient_type }}</label>
+                </div>
+                </div>
             </div>
+
+            <div class="mb-10 row">
+                <div class="col-lg-6">
+                    <label class="required form-label">Name of Patient</label>
+                    <input v-model="searchForm.patient_name"  type="text" class="form-control form-control-solid" placeholder="Patient Name"/>
+                </div>
+                <div class="col-lg-6">
+                    <label class="required form-label">Gender</label>
+                    <input v-model="searchForm.patient_gender"  type="text" class="form-control form-control-solid" placeholder="Patient Name"/>
+                </div>
+            </div>
+
+
 
             <div class="row form-group mt-5">
                 <div class="col-lg-6">
@@ -34,7 +50,7 @@
 
         </div>
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            <button type="submit" class="btn btn-primary me-2">Submit</button>
             <a href="" class="btn btn-secondary">Cancel</a>
         </div>
         <!--end::Form-->
@@ -43,6 +59,17 @@
 </template>
 
 <script lang="ts" setup>
+import {useForm} from "@inertiajs/vue3";
+
+defineProps({
+    patientTypes: { type: Array, required: true },
+});
+
+let searchForm = useForm({
+    patient_type_id: '',
+    patient_name: '',
+    patient_gender: '',
+});
 
 </script>
 

@@ -79,7 +79,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import Dropdown1 from "@/components/dropdown/Dropdown1.vue";
+import Dropdown1 from "@/Components/dropdown/Dropdown1.vue";
 
 export default defineComponent({
   name: "kt-widget-6",

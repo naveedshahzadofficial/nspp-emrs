@@ -85,7 +85,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { getCSSVariableValue } from "@/assets/ts/_utils";
-import Dropdown3 from "@/components/dropdown/Dropdown3.vue";
+import Dropdown3 from "@/Components/dropdown/Dropdown3.vue";
 
 export default defineComponent({
   name: "widget-12",

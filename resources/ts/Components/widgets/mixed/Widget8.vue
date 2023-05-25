@@ -117,7 +117,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Dropdown2 from "@/components/dropdown/Dropdown2.vue";
+import Dropdown2 from "@/Components/dropdown/Dropdown2.vue";
 
 export default defineComponent({
   name: "widget-1",

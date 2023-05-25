@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PatientTypeResource;
+use App\Models\PatientType;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -24,7 +26,8 @@ class RegistrationController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Registrations/Create');
+        $patientTypes = PatientTypeResource::collection(PatientType::all());
+        return Inertia::render('Registrations/Create', compact('patientTypes'));
     }
 
     /**
