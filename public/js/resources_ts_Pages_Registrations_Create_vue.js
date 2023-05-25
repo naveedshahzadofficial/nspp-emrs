@@ -13,9 +13,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* unplugin-vue-components disabled */
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card-custom gutter-b\"><div class=\"card-header\"><h3 class=\"card-title\">Registration Add</h3></div><!--begin::Form--><div class=\"card-body\"><div class=\"form-group\"><label>Name</label><input type=\"text\" name=\"name\" class=\"form-control\" placeholder=\"Name\"><div class=\"error\"></div></div></div><div class=\"card-footer\"><button type=\"submit\" class=\"btn btn-primary mr-2\">Submit</button><a href=\"\" class=\"btn btn-secondary\">Cancel</a></div><!--end::Form--></div>", 1);
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card-custom gutter-b\"><div class=\"card-header\"><h3 class=\"card-title\">Registration Add</h3></div><!--begin::Form--><div class=\"card-body\"><div class=\"form-group\"><label>Name</label><input type=\"text\" name=\"name\" class=\"form-control\" placeholder=\"Name\"><div class=\"error\"></div></div><div class=\"row form-group mt-5\"><div class=\"col-lg-6\"><label>CNIC No.<span class=\"color-red-700\"></span></label><input maxlength=\"254\" type=\"text\" name=\"website_url\" class=\"form-control\" placeholder=\"CNIC No.\"><div class=\"error\"></div></div><div class=\"col-lg-6\"><label>Email Address <span class=\"color-red-700\"></span></label><input maxlength=\"100\" type=\"email\" name=\"business_email_address\" class=\"form-control\" placeholder=\"Email Address\"><div class=\"error\"></div></div></div></div><div class=\"card-footer\"><button type=\"submit\" class=\"btn btn-primary mr-2\">Submit</button><a href=\"\" class=\"btn btn-secondary\">Cancel</a></div><!--end::Form--></div>", 1);
 function render(_ctx, _cache) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Card"), _hoisted_1], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
+  var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
+    title: "Add Registration"
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Card"), _hoisted_1], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

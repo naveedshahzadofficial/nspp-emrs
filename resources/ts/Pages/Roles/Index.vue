@@ -100,6 +100,7 @@
                 <tr>
                     <th>Role Name</th>
                     <th>Created Date</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
             </DataTable>
@@ -139,6 +140,15 @@ const props = defineProps({
 const columns = [
     { name:'Role Name', data: 'name' },
     { name:'Created Date', data: 'created_at' },
+    { name:'Actions', data: 'id', orderable: false, searchable: false, class: 'text-center not-exported', render: function(data,type,row,meta){
+           `'<a href="roles/3/edit" class="btn btn-icon btn-outline-success btn-circle btn-sm mr-2" title="Update">
+            <i class="flaticon2-edit"></i>
+                </a>'<a
+            href='roles'
+            class='btn btn-icon  btn-outline-danger btn-circle btn-sm mr-2' title='Delete'>
+            <i class=' icon-xl fas fa-toggle-off'></i>
+                </a>"`;
+    } },
 ];
 
 const buttons= [

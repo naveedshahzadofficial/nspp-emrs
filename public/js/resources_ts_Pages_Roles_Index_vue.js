@@ -99,6 +99,15 @@ __webpack_require__.r(__webpack_exports__);
     }, {
       name: 'Created Date',
       data: 'created_at'
+    }, {
+      name: 'Actions',
+      data: 'id',
+      orderable: false,
+      searchable: false,
+      "class": 'text-center not-exported',
+      render: function render(data, type, row, meta) {
+        "'<a href=\"roles/3/edit\" class=\"btn btn-icon btn-outline-success btn-circle btn-sm mr-2\" title=\"Update\">\n            <i class=\"flaticon2-edit\"></i>\n                </a>'<a\n            href='roles'\n            class='btn btn-icon  btn-outline-danger btn-circle btn-sm mr-2' title='Delete'>\n            <i class=' icon-xl fas fa-toggle-off'></i>\n                </a>\"";
+      }
     }];
     var buttons = [{
       extend: 'print',
@@ -235,7 +244,7 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_11 = {
   "class": "table-responsive"
 };
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Role Name"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Created Date")])], -1 /* HOISTED */);
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Role Name"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Created Date"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Actions")])], -1 /* HOISTED */);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
   var _component_inline_svg = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inline-svg");

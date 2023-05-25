@@ -18,10 +18,10 @@
                 <div class="error"></div>
             </div>
 
-            <div class="row form-group">
+            <div class="row form-group mt-5">
                 <div class="col-lg-6">
-                    <label>Website URL <span class="color-red-700"></span></label>
-                    <input maxlength="254" type="text" name="website_url" class="form-control" placeholder="Website URL"  />
+                    <label>CNIC No.<span class="color-red-700"></span></label>
+                    <input maxlength="254" type="text" name="website_url" class="form-control" placeholder="CNIC No."  />
                     <div class="error"></div>
                 </div>
                 <div class="col-lg-6">
