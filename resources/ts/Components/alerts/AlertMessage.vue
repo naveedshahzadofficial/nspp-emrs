@@ -1,8 +1,13 @@
 <template>
     <div
+        :class="{
+        'bg-success': title==='Success',
+        'bg-danger': title==='Error',
+        'bg-warning': title==='Warning',
+        'bg-info': title==='Info',
+         }"
         class="
       alert alert-dismissible
-      bg-success
       d-flex
       flex-column flex-sm-row
       w-100

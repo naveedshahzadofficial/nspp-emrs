@@ -21,12 +21,14 @@
                     <label class="form-check-label" :for="`patient_type_id_${patientType.id}`">{{ patientType.patient_type }}</label>
                 </div>
                 </div>
+                <ServerErrorMessage :error="registerForm.errors.patient_type_id"/>
             </div>
 
             <div class="mb-10 row">
                 <div class="col-lg-6">
                     <label class="required form-label">Name of Patient</label>
                     <input v-model="registerForm.patient_name"  type="text" class="form-control form-control-solid" placeholder="Patient Name"/>
+                    <ServerErrorMessage :error="registerForm.errors.patient_name"/>
                 </div>
                 <div class="col-lg-6">
                     <label class="required form-label">Gender</label>
@@ -36,6 +38,7 @@
                             <label class="form-check-label" :for="`gender_id_${gender.id}`">{{ gender.gender_name }}</label>
                         </div>
                     </div>
+                    <ServerErrorMessage :error="registerForm.errors.gender_id"/>
                 </div>
             </div>
 
@@ -43,14 +46,17 @@
                 <div class="col-lg-4">
                     <label class="required form-label">Age</label>
                     <input v-model="registerForm.patient_age"  type="text" class="form-control form-control-solid" placeholder="Patient Age"/>
+                    <ServerErrorMessage :error="registerForm.errors.patient_age"/>
                 </div>
                 <div class="col-lg-4">
                     <label class="required form-label">Relationship with Employee</label>
                     <input v-model="registerForm.relationship_with_employee"  type="text" class="form-control form-control-solid" placeholder="Relationship with Employee"/>
+                    <ServerErrorMessage :error="registerForm.errors.relationship_with_employee"/>
                 </div>
                 <div class="col-lg-4">
                     <label class="required form-label">Designation</label>
                     <input v-model="registerForm.designation"  type="text" class="form-control form-control-solid" placeholder="Designation"/>
+                    <ServerErrorMessage :error="registerForm.errors.designation"/>
                 </div>
             </div>
 
@@ -58,6 +64,7 @@
                 <div class="col-lg-4">
                     <label class="required form-label">CNIC No.</label>
                     <input v-model="registerForm.patient_cnic"  type="text" class="form-control form-control-solid" placeholder="Patient CNIC"/>
+                    <ServerErrorMessage :error="registerForm.errors.patient_cnic"/>
                 </div>
             </div>
 
@@ -73,6 +80,8 @@
                         <option>Please Select</option>
                         <option v-for="temperature in range(97.0, 106.0, .1).reverse()" :value="temperature" v-text="temperature"></option>
                     </select>
+                    <ServerErrorMessage :error="registerForm.errors.temperature"/>
+
                 </div>
 
                 <div class="col-lg-4">
@@ -81,6 +90,8 @@
                         <option>Please Select</option>
                         <option v-for="systolic in range(40, 300, 5, 0)" :value="systolic" v-text="systolic"></option>
                     </select>
+                    <ServerErrorMessage :error="registerForm.errors.bp_systolic"/>
+
                 </div>
 
                 <div class="col-lg-4">
@@ -89,6 +100,8 @@
                         <option>Please Select</option>
                         <option v-for="diastolic in range(40, 300, 5, 0)" :value="diastolic" v-text="diastolic"></option>
                     </select>
+                    <ServerErrorMessage :error="registerForm.errors.bp_diastolic"/>
+
                 </div>
 
 
@@ -101,11 +114,15 @@
                         <option>Please Select</option>
                         <option v-for="pulse in range(50, 120, 1, 0)" :value="pulse" v-text="pulse"></option>
                     </select>
+                    <ServerErrorMessage :error="registerForm.errors.pulse"/>
+
                 </div>
 
                 <div class="col-lg-4">
                     <label class="form-label">Sugar (mg/dL)</label>
                     <input v-model="registerForm.sugar"  type="text" class="form-control form-control-solid" placeholder="Sugar (mg/dL)"/>
+                    <ServerErrorMessage :error="registerForm.errors.sugar"/>
+
                 </div>
                 <div class="col-lg-4">
                     <label class="form-label">Weight (kg)</label>
@@ -113,6 +130,8 @@
                         <option>Please Select</option>
                         <option v-for="weight in range(1.0, 200.0, .1)" :value="weight" v-text="weight"></option>
                     </select>
+                    <ServerErrorMessage :error="registerForm.errors.weight"/>
+
                 </div>
             </div>
 
@@ -120,6 +139,8 @@
                 <div class="col-lg-4">
                     <label class="form-label">Height (cm)</label>
                     <input v-model="registerForm.height"  type="text" class="form-control form-control-solid" placeholder="Height (cm)"/>
+                    <ServerErrorMessage :error="registerForm.errors.height"/>
+
                 </div>
             </div>
 
@@ -127,6 +148,7 @@
                 <div class="col-lg-12">
                     <label class="form-label">Notes</label>
                     <textarea v-model="registerForm.notes"  class="form-control form-control-solid" rows="4"></textarea>
+                    <ServerErrorMessage :error="registerForm.errors.notes"/>
                 </div>
             </div>
 
@@ -160,6 +182,7 @@
 
 <script lang="ts" setup>
 import {useForm} from "@inertiajs/vue3";
+import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 
 defineProps({
     patientTypes: { type: Array, required: true },

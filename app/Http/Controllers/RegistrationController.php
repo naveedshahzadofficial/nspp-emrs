@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRegistrationRequest;
+use App\Http\Requests\UpdateRegistrationRequest;
 use App\Http\Resources\GenderResource;
 use App\Http\Resources\PatientTypeResource;
 use App\Models\Gender;
 use App\Models\PatientType;
+use App\Models\Registration;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Inertia\Inertia;
 
 class RegistrationController extends Controller
@@ -36,12 +41,13 @@ class RegistrationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreRegistrationRequest $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreRegistrationRequest $request): \Illuminate\Http\RedirectResponse
     {
-        session()->flash('success', 'Your Registration has been saved successfully.');
+        Registration::create($request->validated());
+        session()->flash('success', 'Your Registration has been added successfully.');
         return redirect()->route('registrations.index');
     }
 
@@ -70,11 +76,11 @@ class RegistrationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param UpdateRegistrationRequest $request
+     * @param int $id
+     * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRegistrationRequest $request, $id)
     {
         //
     }
