@@ -2,7 +2,7 @@
     <Head title="Roles"/>
     <div class="card">
         <!--begin::Card header-->
-        <div class="card-header border-0 pt-6">
+        <div class="card-header">
             <!--begin::Card title-->
             <div class="card-title">
                 <!--begin::Page title-->

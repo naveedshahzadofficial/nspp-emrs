@@ -1,9 +1,12 @@
 <template>
     <Head title="Registrations"/>
 
+    <AlertMessage v-if="$page.props.flash.title" :title="$page.props.flash.title" :message="$page.props.flash.message"/>
+
+
     <div class="card">
         <!--begin::Card header-->
-        <div class="card-header border-0 pt-6">
+        <div class="card-header">
             <!--begin::Card title-->
             <div class="card-title">
                 <!--begin::Page title-->
@@ -69,7 +72,7 @@
 </template>
 
 <script lang="ts" setup>
-
+import AlertMessage from "@/Components/alerts/AlertMessage.vue";
 
 </script>
 

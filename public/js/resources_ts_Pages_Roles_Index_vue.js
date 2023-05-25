@@ -176,7 +176,7 @@ var _hoisted_1 = {
   "class": "card"
 };
 var _hoisted_2 = {
-  "class": "card-header border-0 pt-6"
+  "class": "card-header"
 };
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card-title\"><!--begin::Page title--><div id=\"kt_page_title\" data-kt-swapper=\"true\" data-kt-swapper-mode=\"prepend\" data-kt-swapper-parent=\"{default: &#39;#kt_content_container&#39;, &#39;lg&#39;: &#39;#kt_toolbar_container&#39;}\" class=\"page-title d-flex flex-column justify-content-center flex-wrap me-3\"><!--begin::Title--><h1 class=\"d-flex align-items-center text-dark fw-bolder my-1 fs-3\"> Roles </h1><!--end::Title--><!--begin::Breadcrumb--><ul class=\"breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1\"><li class=\"breadcrumb-item text-muted\"> System Settings </li><li class=\"breadcrumb-item\"><span class=\"bullet bg-gray-200 w-5px h-2px\"></span></li><li class=\"breadcrumb-item pe-3 text-dark\"> Roles </li></ul><!--end::Breadcrumb--></div><!--end::Page title--></div>", 1);
 var _hoisted_4 = {

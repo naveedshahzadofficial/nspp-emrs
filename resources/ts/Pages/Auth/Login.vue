@@ -96,7 +96,7 @@
 
 
                 >
-                    <span class="indicator-label"> Continue </span>
+                    <span class="indicator-label"> Login </span>
 
                     <span class="indicator-progress">
             Please wait...

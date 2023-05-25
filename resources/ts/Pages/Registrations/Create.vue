@@ -4,19 +4,21 @@
     <!--begin::Card-->
     <div class="card card-custom gutter-b">
         <div class="card-header">
-            <h3 class="card-title">Registration Add</h3>
-
+            <h3 class="card-title">Registration</h3>
         </div>
 
         <!--begin::Form-->
+        <form @submit.prevent="submit" >
         <div class="card-body">
-
+            <div class="pb-5 pb-lg-5">
+                <h2 class="fw-bold text-dark">Patient Details</h2>
+            </div>
             <div class="mb-10">
-                <label for="exampleFormControlInput1" class="required form-label">Type of Patient</label>
+                <label class="required form-label">Type of Patient</label>
                 <div class="d-flex">
                 <div v-for="patientType in patientTypes" :key="patientType.id" class="form-check form-check-custom form-check-solid me-10">
-                    <input v-model="searchForm.patient_type_id" class="form-check-input" name="type_of_patient" type="radio" :id="`type_of_patient_${patientType.id}`">
-                    <label class="form-check-label" :for="`type_of_patient_${patientType.id}`">{{ patientType.patient_type }}</label>
+                    <input v-model="registerForm.patient_type_id" class="form-check-input" name="patient_type_id" type="radio" :id="`patient_type_id_${patientType.id}`">
+                    <label class="form-check-label" :for="`patient_type_id_${patientType.id}`">{{ patientType.patient_type }}</label>
                 </div>
                 </div>
             </div>
@@ -24,35 +26,133 @@
             <div class="mb-10 row">
                 <div class="col-lg-6">
                     <label class="required form-label">Name of Patient</label>
-                    <input v-model="searchForm.patient_name"  type="text" class="form-control form-control-solid" placeholder="Patient Name"/>
+                    <input v-model="registerForm.patient_name"  type="text" class="form-control form-control-solid" placeholder="Patient Name"/>
                 </div>
                 <div class="col-lg-6">
                     <label class="required form-label">Gender</label>
-                    <input v-model="searchForm.patient_gender"  type="text" class="form-control form-control-solid" placeholder="Patient Name"/>
+                    <div class="d-flex">
+                        <div v-for="gender in genders" :key="gender.id" class="form-check form-check-custom form-check-solid me-10">
+                            <input v-model="registerForm.gender_id" class="form-check-input" name="gender_id" type="radio" :id="`gender_id_${gender.id}`">
+                            <label class="form-check-label" :for="`gender_id_${gender.id}`">{{ gender.gender_name }}</label>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-
-
-            <div class="row form-group mt-5">
-                <div class="col-lg-6">
-                    <label>CNIC No.<span class="color-red-700"></span></label>
-                    <input maxlength="254" type="text" name="website_url" class="form-control" placeholder="CNIC No."  />
-                    <div class="error"></div>
+            <div class="mb-10 row">
+                <div class="col-lg-4">
+                    <label class="required form-label">Age</label>
+                    <input v-model="registerForm.patient_age"  type="text" class="form-control form-control-solid" placeholder="Patient Age"/>
                 </div>
-                <div class="col-lg-6">
-                    <label>Email Address <span class="color-red-700"></span></label>
-                    <input maxlength="100" type="email" name="business_email_address" class="form-control" placeholder="Email Address"  />
-                    <div class="error"></div>
+                <div class="col-lg-4">
+                    <label class="required form-label">Relationship with Employee</label>
+                    <input v-model="registerForm.relationship_with_employee"  type="text" class="form-control form-control-solid" placeholder="Relationship with Employee"/>
+                </div>
+                <div class="col-lg-4">
+                    <label class="required form-label">Designation</label>
+                    <input v-model="registerForm.designation"  type="text" class="form-control form-control-solid" placeholder="Designation"/>
                 </div>
             </div>
+
+            <div class="mb-10 row">
+                <div class="col-lg-4">
+                    <label class="required form-label">CNIC No.</label>
+                    <input v-model="registerForm.patient_cnic"  type="text" class="form-control form-control-solid" placeholder="Patient CNIC"/>
+                </div>
+            </div>
+
+            <div class="separator my-10"></div>
+            <div class="pb-5 pb-lg-5">
+                <h2 class="fw-bold text-dark">Vitals</h2>
+            </div>
+
+            <div class="mb-10 row">
+                <div class="col-lg-4">
+                    <label class="form-label">Temperature (°F)</label>
+                    <select v-model="registerForm.temperature" class="form-select form-select-solid" aria-label="Please Select">
+                        <option>Please Select</option>
+                        <option v-for="temperature in range(97.0, 106.0, .1).reverse()" :value="temperature" v-text="temperature"></option>
+                    </select>
+                </div>
+
+                <div class="col-lg-4">
+                    <label class="form-label">B.P. Systolic (mmHg)</label>
+                    <select v-model="registerForm.bp_systolic" class="form-select form-select-solid" aria-label="Please Select">
+                        <option>Please Select</option>
+                        <option v-for="systolic in range(40, 300, 5, 0)" :value="systolic" v-text="systolic"></option>
+                    </select>
+                </div>
+
+                <div class="col-lg-4">
+                    <label class="form-label">B.P. Diastolic (mmHg)</label>
+                    <select v-model="registerForm.bp_diastolic" class="form-select form-select-solid" aria-label="Please Select">
+                        <option>Please Select</option>
+                        <option v-for="diastolic in range(40, 300, 5, 0)" :value="diastolic" v-text="diastolic"></option>
+                    </select>
+                </div>
+
+
+            </div>
+
+            <div class="mb-10 row">
+                <div class="col-lg-4">
+                    <label class="form-label">Pulse (bpm)</label>
+                    <select v-model="registerForm.pulse" class="form-select form-select-solid" aria-label="Please Select">
+                        <option>Please Select</option>
+                        <option v-for="pulse in range(50, 120, 1, 0)" :value="pulse" v-text="pulse"></option>
+                    </select>
+                </div>
+
+                <div class="col-lg-4">
+                    <label class="form-label">Sugar (mg/dL)</label>
+                    <input v-model="registerForm.sugar"  type="text" class="form-control form-control-solid" placeholder="Sugar (mg/dL)"/>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Weight (kg)</label>
+                    <select v-model="registerForm.weight" class="form-select form-select-solid" aria-label="Please Select">
+                        <option>Please Select</option>
+                        <option v-for="weight in range(1.0, 200.0, .1)" :value="weight" v-text="weight"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-10 row">
+                <div class="col-lg-4">
+                    <label class="form-label">Height (cm)</label>
+                    <input v-model="registerForm.height"  type="text" class="form-control form-control-solid" placeholder="Height (cm)"/>
+                </div>
+            </div>
+
+            <div class="mb-10 row">
+                <div class="col-lg-12">
+                    <label class="form-label">Notes</label>
+                    <textarea v-model="registerForm.notes"  class="form-control form-control-solid" rows="4"></textarea>
+                </div>
+            </div>
+
 
 
         </div>
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary me-2">Submit</button>
-            <a href="" class="btn btn-secondary">Cancel</a>
+            <button
+                type="submit"
+                ref="submitButton"
+                class="btn btn-primary me-2"
+                :disabled="registerForm.processing"
+                :data-kt-indicator="registerForm.processing?'on':'off'"
+            >
+                <span class="indicator-label"> Submit </span>
+
+                <span class="indicator-progress">
+            Please wait...
+            <span
+                class="spinner-border spinner-border-sm align-middle ms-2"
+            ></span>
+          </span>
+            </button>
+            <Link :href="route('registrations.index')" class="btn btn-secondary">Cancel</Link>
         </div>
+        </form>
         <!--end::Form-->
     </div>
 
@@ -63,13 +163,36 @@ import {useForm} from "@inertiajs/vue3";
 
 defineProps({
     patientTypes: { type: Array, required: true },
+    genders: { type: Array, required: true },
+    temperatures: { type: Array, required: true },
 });
 
-let searchForm = useForm({
+let registerForm = useForm({
     patient_type_id: '',
     patient_name: '',
-    patient_gender: '',
+    gender_id: '',
+    patient_age: '',
+    relationship_with_employee: '',
+    designation: '',
+    patient_cnic: '',
+    temperature: '',
+    bp_systolic: '',
+    bp_diastolic: '',
+    pulse: '',
+    sugar: '',
+    weight: '',
+    height: '',
+    notes: ''
 });
+
+const range = (start: number, end: number, step: number = 1, fixed=1): string[] => {
+    const length = Math.floor((end - start) / step) + 1;
+    return Array.from({ length }, (_, index) => (start + index * step).toFixed(fixed));
+}
+
+let submit = () => {
+    registerForm.post(route('registrations.store'));
+}
 
 </script>
 

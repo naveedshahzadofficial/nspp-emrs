@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GenderResource;
 use App\Http\Resources\PatientTypeResource;
+use App\Models\Gender;
 use App\Models\PatientType;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -12,7 +14,7 @@ class RegistrationController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function index()
     {
@@ -22,12 +24,13 @@ class RegistrationController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function create()
     {
         $patientTypes = PatientTypeResource::collection(PatientType::all());
-        return Inertia::render('Registrations/Create', compact('patientTypes'));
+        $genders = GenderResource::collection(Gender::all());
+        return Inertia::render('Registrations/Create', compact('patientTypes', 'genders'));
     }
 
     /**
@@ -38,7 +41,8 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        session()->flash('success', 'Your Registration has been saved successfully.');
+        return redirect()->route('registrations.index');
     }
 
     /**

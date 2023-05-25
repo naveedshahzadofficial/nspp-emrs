@@ -36,8 +36,33 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $flash = $this->getFlashMessage();
         return array_merge(parent::share($request), [
-            //
+            'flash' => [
+                'title' => $flash->title??'',
+                'message' =>$flash->messsage??'',
+            ]
         ]);
+    }
+
+
+    protected function getFlashMessage(){
+        $flash = new \stdClass;
+        if(session('success')){
+            $flash->title = 'Success';
+            $flash->messsage = session('success');
+        }else if(session('error')){
+            $flash->title = 'Error';
+            $flash->messsage = session('error');
+        }
+        else if(session('warning')){
+            $flash->title = 'Warning';
+            $flash->messsage = session('warning');
+        }
+        else if(session('info')){
+            $flash->title = 'Info';
+            $flash->messsage = session('info');
+        }
+        return $flash;
     }
 }
