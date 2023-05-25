@@ -46,7 +46,8 @@ class HandleInertiaRequests extends Middleware
     }
 
 
-    protected function getFlashMessage(){
+    protected function getFlashMessage(): \stdClass
+    {
         $flash = new \stdClass;
         if(session('success')){
             $flash->title = 'Success';
