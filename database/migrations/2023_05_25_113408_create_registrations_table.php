@@ -23,6 +23,7 @@ class CreateRegistrationsTable extends Migration
             $table->string('patient_name');
             $table->unsignedInteger('patient_age')->nullable();
             $table->string('relationship_with_employee')->nullable();
+            $table->string('designation')->nullable();
             $table->string('patient_cnic')->nullable();
             $table->unsignedInteger('temperature')->nullable();
             $table->unsignedInteger('bp_systolic')->nullable();

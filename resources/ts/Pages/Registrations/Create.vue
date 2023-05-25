@@ -17,7 +17,7 @@
                 <label class="required form-label">Type of Patient</label>
                 <div class="d-flex">
                 <div v-for="patientType in patientTypes" :key="patientType.id" class="form-check form-check-custom form-check-solid me-10">
-                    <input v-model="registerForm.patient_type_id" class="form-check-input" name="patient_type_id" type="radio" :id="`patient_type_id_${patientType.id}`">
+                    <input v-model="registerForm.patient_type_id" :value="patientType.id" class="form-check-input" name="patient_type_id" type="radio" :id="`patient_type_id_${patientType.id}`">
                     <label class="form-check-label" :for="`patient_type_id_${patientType.id}`">{{ patientType.patient_type }}</label>
                 </div>
                 </div>
@@ -34,7 +34,7 @@
                     <label class="required form-label">Gender</label>
                     <div class="d-flex">
                         <div v-for="gender in genders" :key="gender.id" class="form-check form-check-custom form-check-solid me-10">
-                            <input v-model="registerForm.gender_id" class="form-check-input" name="gender_id" type="radio" :id="`gender_id_${gender.id}`">
+                            <input v-model="registerForm.gender_id" :value="gender.id" class="form-check-input" name="gender_id" type="radio" :id="`gender_id_${gender.id}`">
                             <label class="form-check-label" :for="`gender_id_${gender.id}`">{{ gender.gender_name }}</label>
                         </div>
                     </div>

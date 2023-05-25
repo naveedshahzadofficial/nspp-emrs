@@ -185,7 +185,7 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_7 = {
   "class": "d-flex"
 };
-var _hoisted_8 = ["id"];
+var _hoisted_8 = ["value", "id"];
 var _hoisted_9 = ["for"];
 var _hoisted_10 = {
   "class": "mb-10 row"
@@ -205,7 +205,7 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_15 = {
   "class": "d-flex"
 };
-var _hoisted_16 = ["id"];
+var _hoisted_16 = ["value", "id"];
 var _hoisted_17 = ["for"];
 var _hoisted_18 = {
   "class": "mb-10 row"
@@ -347,6 +347,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
         return $setup.registerForm.patient_type_id = $event;
       }),
+      value: patientType.id,
       "class": "form-check-input",
       name: "patient_type_id",
       type: "radio",
@@ -374,6 +375,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
         return $setup.registerForm.gender_id = $event;
       }),
+      value: gender.id,
       "class": "form-check-input",
       name: "gender_id",
       type: "radio",
