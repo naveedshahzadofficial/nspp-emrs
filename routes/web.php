@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     DashboardController,
     RoleController,
     RegistrationController,
+    PatientController,
 };
 
 Route::get('/', function () {
@@ -21,6 +22,7 @@ Route::group(['middleware' => ['auth']],function() {
     Route::post('/logout', [AuthController::class,'logout'])->name('logout');
     Route::resource('/roles', RoleController::class);
     Route::resource('/registrations', RegistrationController::class);
+    Route::resource('/patients', PatientController::class);
 
 });
 
