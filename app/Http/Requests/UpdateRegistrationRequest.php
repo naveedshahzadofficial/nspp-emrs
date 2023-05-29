@@ -31,6 +31,7 @@ class UpdateRegistrationRequest extends FormRequest
             'relationship_with_employee' => 'required',
             'designation' => 'required',
             'patient_cnic' => 'required',
+            'patient_mobile' => 'nullable|sometimes',
             'temperature' => 'nullable|sometimes',
             'bp_systolic' => 'nullable|sometimes',
             'bp_diastolic' => 'nullable|sometimes',

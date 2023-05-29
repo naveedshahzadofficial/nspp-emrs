@@ -4,28 +4,35 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Carbon;
 
 class Patient extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['user_id', 'registration_no', 'token_no',
+    protected $fillable = ['patient_no',
         'patient_type_id', 'patient_name', 'gender_id', 'patient_age',
-        'relationship_with_employee', 'designation', 'patient_cnic',
-        'temperature', 'bp_systolic', 'bp_diastolic', 'pulse', 'sugar',
-        'weight', 'height', 'notes',
+        'relationship_with_employee', 'designation', 'patient_cnic', 'patient_phone'
     ];
+
+    public function patientVisits(): HasMany
+    {
+        return $this->hasMany(PatientVisit::class)->latest();
+    }
+
+    public function patientVisit(): HasOne
+    {
+        return $this->hasOne(PatientVisit::class)->latest();
+    }
 
     public static function boot()
     {
         parent::boot();
         static::creating(function ($model){
-            $model->user_id = auth()->id();
-            $max_number = Registration::max('id')+1;
-            $model->registration_no = str_pad($max_number, 7,'0',STR_PAD_LEFT).Carbon::today()->year;
-            $model->token_no = (Registration::whereDate('created_at', '=', today()->toDateString())->max('token_no'))+1;
+            $max_number = Patient::max('id')+1;
+            $model->patient_no = str_pad($max_number.today()->year, 7,'0',STR_PAD_LEFT);
         });
     }
 }

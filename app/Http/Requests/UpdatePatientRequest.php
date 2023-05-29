@@ -31,14 +31,7 @@ class UpdatePatientRequest extends FormRequest
             'relationship_with_employee' => 'required',
             'designation' => 'required',
             'patient_cnic' => 'required',
-            'temperature' => 'nullable|sometimes',
-            'bp_systolic' => 'nullable|sometimes',
-            'bp_diastolic' => 'nullable|sometimes',
-            'pulse' => 'nullable|sometimes',
-            'sugar' => 'nullable|sometimes',
-            'weight' => 'nullable|sometimes',
-            'height' => 'nullable|sometimes',
-            'notes' => 'nullable|sometimes',
+            'patient_mobile' => 'nullable|sometimes'
         ];
     }
 }

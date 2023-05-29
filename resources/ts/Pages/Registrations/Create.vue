@@ -185,9 +185,8 @@ import {useForm} from "@inertiajs/vue3";
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 
 defineProps({
-    patientTypes: { type: Array, required: true },
-    genders: { type: Array, required: true },
-    temperatures: { type: Array, required: true },
+    patientTypes: { type: Object, required: true },
+    genders: { type: Object, required: true },
 });
 
 let registerForm = useForm({

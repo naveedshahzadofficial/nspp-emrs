@@ -54,7 +54,7 @@
         <div class="card-body pt-0 position-relative">
 
             <!--begin::Search-->
-            <div class="d-flex align-items-center position-relative my-2">
+            <div class="d-flex align-items-center position-relative my-3">
           <span class="svg-icon svg-icon-1 position-absolute ms-6">
                <inline-svg src="media/icons/duotune/general/gen021.svg" />
           </span>
@@ -66,6 +66,117 @@
             </div>
             <!--end::Search-->
 
+                <!--begin::Table container-->
+                <div class="table-responsive">
+                    <!--begin::Table-->
+                    <table
+                        class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4"
+                    >
+                        <!--begin::Table head-->
+                        <thead>
+                        <tr class="fw-bold">
+                            <th class="p-0 min-w-150px">Patient</th>
+                            <th class="p-0 min-w-200px text-center">Token No.</th>
+                            <th class="p-0 min-w-100px text-end">Action</th>
+                        </tr>
+                        </thead>
+                        <!--end::Table head-->
+
+                        <!--begin::Table body-->
+                        <tbody>
+                        <template v-for="patientVisit in patientVisits" :key="patientVisit.id">
+                        <tr>
+
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <!--begin::Avatar-->
+                                    <div class="symbol symbol-45px me-5">
+                                        <img
+                                            v-if="patientVisit.patient_image"
+                                            alt="Pic"
+                                            :src="patientVisit.patient_image"
+                                        />
+                                        <span
+                                            v-else-if="patientVisit.patient"
+                                            :class="`bg-light-primary text-primary`"
+                                            class="symbol-label fw-bolder"
+                                        >
+                                        {{ patientVisit.patient.patient_name.charAt(0) }}
+                                        </span>
+                                    </div>
+                                    <!--end::Avatar-->
+
+                                    <!--begin::Name-->
+                                    <div class="d-flex justify-content-start flex-column">
+                                        <a
+                                            href="#"
+                                            class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
+                                        >{{ patientVisit.patient.patient_name }}</a
+                                        >
+                                        <a
+                                            href="#"
+                                            class="text-muted text-hover-primary fw-bold text-muted d-block fs-7"
+                                        >
+                                            <span class="text-dark">Age</span>:
+                                            {{ patientVisit.patient.patient_age }}
+                                        </a>
+                                        <a
+                                            href="#"
+                                            class="text-muted text-hover-primary fw-bold text-muted d-block fs-7"
+                                        >
+                                            <span class="text-dark">Designation</span>:
+                                            {{ patientVisit.patient.designation }}
+                                        </a>
+                                    </div>
+                                    <!--end::Name-->
+                                </div>
+                            </td>
+
+                            <td class="fw-semobold text-center">{{ patientVisit.token_no }}</td>
+
+                            <td class="text-end">
+                                <a
+                                    href="#"
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                >
+                    <span class="svg-icon svg-icon-3">
+                      <inline-svg
+                          src="media/icons/duotune/general/gen019.svg"
+                      />
+                    </span>
+                                </a>
+
+                                <Link
+                                    :href="route('registrations.edit', patientVisit.id)"
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                >
+                    <span class="svg-icon svg-icon-3">
+                      <inline-svg src="media/icons/duotune/art/art005.svg" />
+                    </span>
+                                </Link>
+
+                                <Link
+                                    :href="route('registrations.destroy', patientVisit.id)"
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+                                >
+                    <span class="svg-icon svg-icon-3">
+                      <inline-svg
+                          src="media/icons/duotune/general/gen027.svg"
+                      />
+                    </span>
+                                </Link>
+                            </td>
+
+                        </tr>
+                        </template>
+                        </tbody>
+                        <!--end::Table body-->
+
+
+
+
+                    </table>
+               </div>
         </div>
     </div>
 
@@ -73,7 +184,9 @@
 
 <script lang="ts" setup>
 import AlertMessage from "@/Components/alerts/AlertMessage.vue";
-
+defineProps({
+   patientVisits: { type:Object, required: true}
+});
 </script>
 
 <style scoped>

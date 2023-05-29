@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_ts_Pages_Registrations_Create_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_ts_Pages_Registrations_Edit_vue"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/Components/alerts/ServerErrorMessage.vue?vue&type=script&setup=true&lang=ts":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -32,10 +32,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/Pages/Registrations/Create.vue?vue&type=script&lang=ts&setup=true":
-/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/Pages/Registrations/Create.vue?vue&type=script&lang=ts&setup=true ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/Pages/Registrations/Edit.vue?vue&type=script&lang=ts&setup=true":
+/*!*********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/Pages/Registrations/Edit.vue?vue&type=script&lang=ts&setup=true ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -49,7 +49,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
-  __name: 'Create',
+  __name: 'Edit',
   props: {
     patientTypes: {
       type: Object,
@@ -58,27 +58,34 @@ __webpack_require__.r(__webpack_exports__);
     genders: {
       type: Object,
       required: true
+    },
+    patientVisit: {
+      type: Object,
+      required: true
     }
   },
   setup: function setup(__props, _ref) {
+    var _props$patientVisit, _props$patientVisit$p, _props$patientVisit2, _props$patientVisit2$, _props$patientVisit3, _props$patientVisit3$, _props$patientVisit4, _props$patientVisit4$, _props$patientVisit5, _props$patientVisit5$, _props$patientVisit6, _props$patientVisit6$, _props$patientVisit7, _props$patientVisit7$, _props$patientVisit8, _props$patientVisit9, _props$patientVisit10, _props$patientVisit11, _props$patientVisit12, _props$patientVisit13, _props$patientVisit14, _props$patientVisit15;
     var __expose = _ref.expose;
     __expose();
+    var props = __props;
     var registerForm = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
-      patient_type_id: '',
-      patient_name: '',
-      gender_id: '',
-      patient_age: '',
-      relationship_with_employee: '',
-      designation: '',
-      patient_cnic: '',
-      temperature: '',
-      bp_systolic: '',
-      bp_diastolic: '',
-      pulse: '',
-      sugar: '',
-      weight: '',
-      height: '',
-      notes: ''
+      _method: 'put',
+      patient_type_id: (_props$patientVisit = props.patientVisit) === null || _props$patientVisit === void 0 ? void 0 : (_props$patientVisit$p = _props$patientVisit.patient) === null || _props$patientVisit$p === void 0 ? void 0 : _props$patientVisit$p.patient_type_id,
+      patient_name: (_props$patientVisit2 = props.patientVisit) === null || _props$patientVisit2 === void 0 ? void 0 : (_props$patientVisit2$ = _props$patientVisit2.patient) === null || _props$patientVisit2$ === void 0 ? void 0 : _props$patientVisit2$.patient_name,
+      gender_id: (_props$patientVisit3 = props.patientVisit) === null || _props$patientVisit3 === void 0 ? void 0 : (_props$patientVisit3$ = _props$patientVisit3.patient) === null || _props$patientVisit3$ === void 0 ? void 0 : _props$patientVisit3$.gender_id,
+      patient_age: (_props$patientVisit4 = props.patientVisit) === null || _props$patientVisit4 === void 0 ? void 0 : (_props$patientVisit4$ = _props$patientVisit4.patient) === null || _props$patientVisit4$ === void 0 ? void 0 : _props$patientVisit4$.patient_age,
+      relationship_with_employee: (_props$patientVisit5 = props.patientVisit) === null || _props$patientVisit5 === void 0 ? void 0 : (_props$patientVisit5$ = _props$patientVisit5.patient) === null || _props$patientVisit5$ === void 0 ? void 0 : _props$patientVisit5$.relationship_with_employee,
+      designation: (_props$patientVisit6 = props.patientVisit) === null || _props$patientVisit6 === void 0 ? void 0 : (_props$patientVisit6$ = _props$patientVisit6.patient) === null || _props$patientVisit6$ === void 0 ? void 0 : _props$patientVisit6$.designation,
+      patient_cnic: (_props$patientVisit7 = props.patientVisit) === null || _props$patientVisit7 === void 0 ? void 0 : (_props$patientVisit7$ = _props$patientVisit7.patient) === null || _props$patientVisit7$ === void 0 ? void 0 : _props$patientVisit7$.patient_cnic,
+      temperature: (_props$patientVisit8 = props.patientVisit) === null || _props$patientVisit8 === void 0 ? void 0 : _props$patientVisit8.temperature,
+      bp_systolic: (_props$patientVisit9 = props.patientVisit) === null || _props$patientVisit9 === void 0 ? void 0 : _props$patientVisit9.bp_systolic,
+      bp_diastolic: (_props$patientVisit10 = props.patientVisit) === null || _props$patientVisit10 === void 0 ? void 0 : _props$patientVisit10.bp_diastolic,
+      pulse: (_props$patientVisit11 = props.patientVisit) === null || _props$patientVisit11 === void 0 ? void 0 : _props$patientVisit11.pulse,
+      sugar: (_props$patientVisit12 = props.patientVisit) === null || _props$patientVisit12 === void 0 ? void 0 : _props$patientVisit12.sugar,
+      weight: (_props$patientVisit13 = props.patientVisit) === null || _props$patientVisit13 === void 0 ? void 0 : _props$patientVisit13.weight,
+      height: (_props$patientVisit14 = props.patientVisit) === null || _props$patientVisit14 === void 0 ? void 0 : _props$patientVisit14.height,
+      notes: (_props$patientVisit15 = props.patientVisit) === null || _props$patientVisit15 === void 0 ? void 0 : _props$patientVisit15.notes
     });
     var range = function range(start, end) {
       var step = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
@@ -91,9 +98,11 @@ __webpack_require__.r(__webpack_exports__);
       });
     };
     var submit = function submit() {
-      registerForm.post(route('registrations.store'));
+      var _props$patientVisit16;
+      registerForm.post(route('registrations.update', (_props$patientVisit16 = props.patientVisit) === null || _props$patientVisit16 === void 0 ? void 0 : _props$patientVisit16.id));
     };
     var __returned__ = {
+      props: props,
       get registerForm() {
         return registerForm;
       },
@@ -144,10 +153,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/Pages/Registrations/Create.vue?vue&type=template&id=ba6a3ab8&ts=true":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/Pages/Registrations/Create.vue?vue&type=template&id=ba6a3ab8&ts=true ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/Pages/Registrations/Edit.vue?vue&type=template&id=ae79069c&ts=true":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/Pages/Registrations/Edit.vue?vue&type=template&id=ae79069c&ts=true ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -328,7 +337,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
-    title: "Add Registration"
+    title: "Update Registration"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Card"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Form"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[15] || (_cache[15] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(
     //@ts-ignore
@@ -555,25 +564,25 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/ts/Pages/Registrations/Create.vue":
-/*!*****************************************************!*\
-  !*** ./resources/ts/Pages/Registrations/Create.vue ***!
-  \*****************************************************/
+/***/ "./resources/ts/Pages/Registrations/Edit.vue":
+/*!***************************************************!*\
+  !*** ./resources/ts/Pages/Registrations/Edit.vue ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Create_vue_vue_type_template_id_ba6a3ab8_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=ba6a3ab8&ts=true */ "./resources/ts/Pages/Registrations/Create.vue?vue&type=template&id=ba6a3ab8&ts=true");
-/* harmony import */ var _Create_vue_vue_type_script_lang_ts_setup_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Create.vue?vue&type=script&lang=ts&setup=true */ "./resources/ts/Pages/Registrations/Create.vue?vue&type=script&lang=ts&setup=true");
+/* harmony import */ var _Edit_vue_vue_type_template_id_ae79069c_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=ae79069c&ts=true */ "./resources/ts/Pages/Registrations/Edit.vue?vue&type=template&id=ae79069c&ts=true");
+/* harmony import */ var _Edit_vue_vue_type_script_lang_ts_setup_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=ts&setup=true */ "./resources/ts/Pages/Registrations/Edit.vue?vue&type=script&lang=ts&setup=true");
 /* harmony import */ var _Users_naveed_Documents_nspp_emrs_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_Users_naveed_Documents_nspp_emrs_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Create_vue_vue_type_script_lang_ts_setup_true__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Create_vue_vue_type_template_id_ba6a3ab8_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/ts/Pages/Registrations/Create.vue"]])
+const __exports__ = /*#__PURE__*/(0,_Users_naveed_Documents_nspp_emrs_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Edit_vue_vue_type_script_lang_ts_setup_true__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Edit_vue_vue_type_template_id_ae79069c_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/ts/Pages/Registrations/Edit.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -597,17 +606,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/ts/Pages/Registrations/Create.vue?vue&type=script&lang=ts&setup=true":
-/*!****************************************************************************************!*\
-  !*** ./resources/ts/Pages/Registrations/Create.vue?vue&type=script&lang=ts&setup=true ***!
-  \****************************************************************************************/
+/***/ "./resources/ts/Pages/Registrations/Edit.vue?vue&type=script&lang=ts&setup=true":
+/*!**************************************************************************************!*\
+  !*** ./resources/ts/Pages/Registrations/Edit.vue?vue&type=script&lang=ts&setup=true ***!
+  \**************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Create_vue_vue_type_script_lang_ts_setup_true__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Edit_vue_vue_type_script_lang_ts_setup_true__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Create_vue_vue_type_script_lang_ts_setup_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Create.vue?vue&type=script&lang=ts&setup=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/Pages/Registrations/Create.vue?vue&type=script&lang=ts&setup=true");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Edit_vue_vue_type_script_lang_ts_setup_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Edit.vue?vue&type=script&lang=ts&setup=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/Pages/Registrations/Edit.vue?vue&type=script&lang=ts&setup=true");
  
 
 /***/ }),
@@ -627,17 +636,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/ts/Pages/Registrations/Create.vue?vue&type=template&id=ba6a3ab8&ts=true":
-/*!*******************************************************************************************!*\
-  !*** ./resources/ts/Pages/Registrations/Create.vue?vue&type=template&id=ba6a3ab8&ts=true ***!
-  \*******************************************************************************************/
+/***/ "./resources/ts/Pages/Registrations/Edit.vue?vue&type=template&id=ae79069c&ts=true":
+/*!*****************************************************************************************!*\
+  !*** ./resources/ts/Pages/Registrations/Edit.vue?vue&type=template&id=ae79069c&ts=true ***!
+  \*****************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Create_vue_vue_type_template_id_ba6a3ab8_ts_true__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Edit_vue_vue_type_template_id_ae79069c_ts_true__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Create_vue_vue_type_template_id_ba6a3ab8_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Create.vue?vue&type=template&id=ba6a3ab8&ts=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/Pages/Registrations/Create.vue?vue&type=template&id=ba6a3ab8&ts=true");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_ts_loader_index_js_clonedRuleSet_6_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_3_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Edit_vue_vue_type_template_id_ae79069c_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/ts-loader/index.js??clonedRuleSet-6!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Edit.vue?vue&type=template&id=ae79069c&ts=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/ts-loader/index.js??clonedRuleSet-6!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/ts/Pages/Registrations/Edit.vue?vue&type=template&id=ae79069c&ts=true");
 
 
 /***/ })

@@ -8,10 +8,11 @@ use App\Http\Resources\GenderResource;
 use App\Http\Resources\PatientTypeResource;
 use App\Models\Gender;
 use App\Models\PatientType;
-use App\Models\Registration;
+use App\Models\PatientVisit;
+use App\Services\RegistrationService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class RegistrationController extends Controller
@@ -23,7 +24,8 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Registrations/Index');
+        $patientVisits = PatientVisit::with('patient')->get();
+        return Inertia::render('Registrations/Index', compact('patientVisits'));
     }
 
     /**
@@ -44,9 +46,12 @@ class RegistrationController extends Controller
      * @param StoreRegistrationRequest $request
      * @return RedirectResponse
      */
-    public function store(StoreRegistrationRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(StoreRegistrationRequest $request, RegistrationService $service): \Illuminate\Http\RedirectResponse
     {
-        Registration::create($request->validated());
+        DB::transaction(function() use ($request, $service) {
+        $patient = $service->addPatient($request->validated());
+        $service->addPatientVisit($request->validated(), $patient);
+        });
         session()->flash('success', 'Your Registration has been added successfully.');
         return redirect()->route('registrations.index');
     }
@@ -65,12 +70,15 @@ class RegistrationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Inertia\Response
      */
     public function edit($id)
     {
-        //
+        $patientVisit = PatientVisit::with('patient')->find($id);
+        $patientTypes = PatientTypeResource::collection(PatientType::all());
+        $genders = GenderResource::collection(Gender::all());
+        return Inertia::render('Registrations/Edit', compact('patientTypes', 'genders', 'patientVisit'));
     }
 
     /**
@@ -82,7 +90,7 @@ class RegistrationController extends Controller
      */
     public function update(UpdateRegistrationRequest $request, $id)
     {
-        //
+        dd($request->all());
     }
 
     /**
