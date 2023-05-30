@@ -16,7 +16,7 @@
         data-kt-menu-placement="bottom-end"
         data-kt-menu-flip="bottom"
       >
-        <img src="media/avatars/300-1.jpg" alt="metronic" />
+        <img src="/media/avatars/300-1.jpg" alt="metronic" />
       </div>
       <KTUserMenu></KTUserMenu>
       <!--end::Menu-->
@@ -33,7 +33,7 @@
         id="kt_header_menu_mobile_toggle"
       >
         <span class="svg-icon svg-icon-1">
-          <inline-svg src="media/icons/duotune/text/txt001.svg" />
+          <inline-svg src="/media/icons/duotune/text/txt001.svg" />
         </span>
       </div>
     </div>

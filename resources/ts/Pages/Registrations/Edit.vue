@@ -16,7 +16,7 @@
                 <div class="mb-10">
                     <label class="required form-label">Type of Patient</label>
                     <div class="d-flex">
-                        <div v-for="patientType in patientTypes" :key="patientType.id" class="form-check form-check-custom form-check-solid me-10">
+                        <div v-for="patientType in patientTypes" :key="patientType.id" class="form-check form-check-custom form-check-sm me-10">
                             <input v-model="registerForm.patient_type_id" :value="patientType.id" class="form-check-input" name="patient_type_id" type="radio" :id="`patient_type_id_${patientType.id}`">
                             <label class="form-check-label" :for="`patient_type_id_${patientType.id}`">{{ patientType.patient_type }}</label>
                         </div>
@@ -25,15 +25,15 @@
                 </div>
 
                 <div class="mb-10 row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <label class="required form-label">Name of Patient</label>
-                        <input v-model="registerForm.patient_name"  type="text" class="form-control form-control-solid" placeholder="Patient Name"/>
+                        <input v-model="registerForm.patient_name"  type="text" class="form-control form-control-sm" placeholder="Patient Name"/>
                         <ServerErrorMessage :error="registerForm.errors.patient_name"/>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-8">
                         <label class="required form-label">Gender</label>
                         <div class="d-flex">
-                            <div v-for="gender in genders" :key="gender.id" class="form-check form-check-custom form-check-solid me-10">
+                            <div v-for="gender in genders" :key="gender.id" class="form-check form-check-custom form-check-sm me-10">
                                 <input v-model="registerForm.gender_id" :value="gender.id" class="form-check-input" name="gender_id" type="radio" :id="`gender_id_${gender.id}`">
                                 <label class="form-check-label" :for="`gender_id_${gender.id}`">{{ gender.gender_name }}</label>
                             </div>
@@ -45,17 +45,17 @@
                 <div class="mb-10 row">
                     <div class="col-lg-4">
                         <label class="required form-label">Age</label>
-                        <input v-model="registerForm.patient_age"  type="text" class="form-control form-control-solid" placeholder="Patient Age"/>
+                        <input v-model="registerForm.patient_age"  type="text" class="form-control form-control-sm" placeholder="Patient Age"/>
                         <ServerErrorMessage :error="registerForm.errors.patient_age"/>
                     </div>
                     <div class="col-lg-4">
                         <label class="required form-label">Relationship with Employee</label>
-                        <input v-model="registerForm.relationship_with_employee"  type="text" class="form-control form-control-solid" placeholder="Relationship with Employee"/>
+                        <input v-model="registerForm.relationship_with_employee"  type="text" class="form-control form-control-sm" placeholder="Relationship with Employee"/>
                         <ServerErrorMessage :error="registerForm.errors.relationship_with_employee"/>
                     </div>
                     <div class="col-lg-4">
                         <label class="required form-label">Designation</label>
-                        <input v-model="registerForm.designation"  type="text" class="form-control form-control-solid" placeholder="Designation"/>
+                        <input v-model="registerForm.designation"  type="text" class="form-control form-control-sm" placeholder="Designation"/>
                         <ServerErrorMessage :error="registerForm.errors.designation"/>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                 <div class="mb-10 row">
                     <div class="col-lg-4">
                         <label class="required form-label">CNIC No.</label>
-                        <input v-model="registerForm.patient_cnic"  type="text" class="form-control form-control-solid" placeholder="Patient CNIC"/>
+                        <input v-model="registerForm.patient_cnic"  type="text" class="form-control form-control-sm" placeholder="Patient CNIC"/>
                         <ServerErrorMessage :error="registerForm.errors.patient_cnic"/>
                     </div>
                 </div>
@@ -76,30 +76,21 @@
                 <div class="mb-10 row">
                     <div class="col-lg-4">
                         <label class="form-label">Temperature (°F)</label>
-                        <select v-model="registerForm.temperature" class="form-select form-select-solid" aria-label="Please Select">
-                            <option>Please Select</option>
-                            <option v-for="temperature in range(97.0, 106.0, .1).reverse()" :value="temperature" v-text="temperature"></option>
-                        </select>
+                        <v-select v-model="registerForm.temperature" :options="range(97.0, 106.0, .1).reverse()" class="v-select-custom form-select-sm" placeholder="Please Select" />
                         <ServerErrorMessage :error="registerForm.errors.temperature"/>
 
                     </div>
 
                     <div class="col-lg-4">
                         <label class="form-label">B.P. Systolic (mmHg)</label>
-                        <select v-model="registerForm.bp_systolic" class="form-select form-select-solid" aria-label="Please Select">
-                            <option>Please Select</option>
-                            <option v-for="systolic in range(40, 300, 5, 0)" :value="systolic" v-text="systolic"></option>
-                        </select>
+                        <v-select v-model="registerForm.bp_systolic" :options="range(40, 300, 5, 0)" class="v-select-custom form-select-sm" placeholder="Please Select" />
                         <ServerErrorMessage :error="registerForm.errors.bp_systolic"/>
 
                     </div>
 
                     <div class="col-lg-4">
                         <label class="form-label">B.P. Diastolic (mmHg)</label>
-                        <select v-model="registerForm.bp_diastolic" class="form-select form-select-solid" aria-label="Please Select">
-                            <option>Please Select</option>
-                            <option v-for="diastolic in range(40, 300, 5, 0)" :value="diastolic" v-text="diastolic"></option>
-                        </select>
+                        <v-select v-model="registerForm.bp_diastolic" :options="range(40, 300, 5, 0)" class="v-select-custom form-select-sm" placeholder="Please Select" />
                         <ServerErrorMessage :error="registerForm.errors.bp_diastolic"/>
 
                     </div>
@@ -110,26 +101,20 @@
                 <div class="mb-10 row">
                     <div class="col-lg-4">
                         <label class="form-label">Pulse (bpm)</label>
-                        <select v-model="registerForm.pulse" class="form-select form-select-solid" aria-label="Please Select">
-                            <option>Please Select</option>
-                            <option v-for="pulse in range(50, 120, 1, 0)" :value="pulse" v-text="pulse"></option>
-                        </select>
+                        <v-select v-model="registerForm.pulse" :options="range(50, 120, 1, 0)" class="v-select-custom form-select-sm" placeholder="Please Select" />
                         <ServerErrorMessage :error="registerForm.errors.pulse"/>
 
                     </div>
 
                     <div class="col-lg-4">
                         <label class="form-label">Sugar (mg/dL)</label>
-                        <input v-model="registerForm.sugar"  type="text" class="form-control form-control-solid" placeholder="Sugar (mg/dL)"/>
+                        <input v-model="registerForm.sugar"  type="text" class="form-control form-control-sm" placeholder="Sugar (mg/dL)"/>
                         <ServerErrorMessage :error="registerForm.errors.sugar"/>
 
                     </div>
                     <div class="col-lg-4">
                         <label class="form-label">Weight (kg)</label>
-                        <select v-model="registerForm.weight" class="form-select form-select-solid" aria-label="Please Select">
-                            <option>Please Select</option>
-                            <option v-for="weight in range(1.0, 200.0, .1)" :value="weight" v-text="weight"></option>
-                        </select>
+                        <v-select v-model="registerForm.weight" :options="range(1.0, 200.0, .1)" class="v-select-custom form-select-sm" placeholder="Please Select" />
                         <ServerErrorMessage :error="registerForm.errors.weight"/>
 
                     </div>
@@ -138,7 +123,7 @@
                 <div class="mb-10 row">
                     <div class="col-lg-4">
                         <label class="form-label">Height (cm)</label>
-                        <input v-model="registerForm.height"  type="text" class="form-control form-control-solid" placeholder="Height (cm)"/>
+                        <input v-model="registerForm.height"  type="text" class="form-control form-control-sm" placeholder="Height (cm)"/>
                         <ServerErrorMessage :error="registerForm.errors.height"/>
 
                     </div>
@@ -147,7 +132,7 @@
                 <div class="mb-10 row">
                     <div class="col-lg-12">
                         <label class="form-label">Notes</label>
-                        <textarea v-model="registerForm.notes"  class="form-control form-control-solid" rows="4"></textarea>
+                        <textarea v-model="registerForm.notes"  class="form-control form-control-sm" rows="4"></textarea>
                         <ServerErrorMessage :error="registerForm.errors.notes"/>
                     </div>
                 </div>
@@ -209,17 +194,9 @@ let registerForm = useForm({
     notes: props.patientVisit?.notes
 });
 
-const range = (start: number, end: number, step: number = 1, fixed=1): string[] => {
-    const length = Math.floor((end - start) / step) + 1;
-    return Array.from({ length }, (_, index) => (start + index * step).toFixed(fixed));
-}
 
 let submit = () => {
     registerForm.post(route('registrations.update', props.patientVisit?.id));
 }
 
 </script>
-
-<style scoped>
-
-</style>

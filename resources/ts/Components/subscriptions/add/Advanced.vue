@@ -75,7 +75,7 @@
                   >
                     <span class="svg-icon svg-icon-3">
                       <inline-svg
-                        src="media/icons/duotune/general/gen027.svg"
+                        src="/media/icons/duotune/general/gen027.svg"
                       />
                     </span>
                   </button>

@@ -15,7 +15,7 @@
           data-kt-menu-flip="top-end"
         >
           <span class="svg-icon svg-icon-2">
-            <inline-svg src="media/icons/duotune/general/gen024.svg" />
+            <inline-svg src="/media/icons/duotune/general/gen024.svg" />
           </span>
         </button>
         <Dropdown2></Dropdown2>
@@ -73,27 +73,27 @@ export default defineComponent({
   setup() {
     const list = ref([
       {
-        avatar: "media/avatars/300-6.jpg",
+        avatar: "/media/avatars/300-6.jpg",
         name: "Emma Smith",
         description: "Project Manager",
       },
       {
-        avatar: "media/avatars/300-5.jpg",
+        avatar: "/media/avatars/300-5.jpg",
         name: "Sean Bean",
         description: "PHP, SQLite, Artisan CLI",
       },
       {
-        avatar: "media/avatars/300-11.jpg",
+        avatar: "/media/avatars/300-11.jpg",
         name: "Brian Cox",
         description: "PHP, SQLite, Artisan CLI",
       },
       {
-        avatar: "media/avatars/300-9.jpg",
+        avatar: "/media/avatars/300-9.jpg",
         name: "Francis Mitcham",
         description: "PHP, SQLite, Artisan CLI",
       },
       {
-        avatar: "media/avatars/300-23.jpg",
+        avatar: "/media/avatars/300-23.jpg",
         name: "Dan Wilson",
         description: "PHP, SQLite, Artisan CLI",
       },

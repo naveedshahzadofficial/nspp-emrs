@@ -21,7 +21,7 @@
           data-kt-menu-flip="top-end"
         >
           <span class="svg-icon svg-icon-2">
-            <inline-svg src="media/icons/duotune/general/gen024.svg" />
+            <inline-svg src="/media/icons/duotune/general/gen024.svg" />
           </span>
         </button>
         <Dropdown1></Dropdown1>
@@ -92,28 +92,28 @@ export default defineComponent({
   setup() {
     const list = ref([
       {
-        image: "media/stock/600x400/img-20.jpg",
+        image: "/media/stock/600x400/img-20.jpg",
         title: "Cup & Green",
         size: "87KB",
         color: "success",
         status: "Approved",
       },
       {
-        image: "media/stock/600x400/img-19.jpg",
+        image: "/media/stock/600x400/img-19.jpg",
         title: "Yellow Background",
         size: "1.2MB",
         color: "warning",
         status: "In Progress",
       },
       {
-        image: "media/stock/600x400/img-25.jpg",
+        image: "/media/stock/600x400/img-25.jpg",
         title: "Nike & Blue",
         size: "87KB",
         color: "success",
         status: "Success",
       },
       {
-        image: "media/stock/600x400/img-24.jpg",
+        image: "/media/stock/600x400/img-24.jpg",
         title: "Red Boots",
         size: "345KB",
         color: "danger",

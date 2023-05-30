@@ -30,7 +30,7 @@ div.dt-buttons button{
 }
 .section_heading {
     padding: 5px 0 4px 0px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     color: white;
     background: white;
     border-bottom: 4px solid #01603B;
@@ -43,6 +43,11 @@ div.dt-buttons button{
     font-weight: 600;
 }
 .section_box{
-    background-color: #D7FFEB;
     padding: 30px;
+}
+
+.v-select-custom{
+    .vs__search::placeholder {
+        color: #a2a4b7;
+    }
 }

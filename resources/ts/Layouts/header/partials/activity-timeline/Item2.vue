@@ -9,7 +9,7 @@
     <div class="timeline-icon symbol symbol-circle symbol-40px">
       <div class="symbol-label bg-light">
         <span class="svg-icon svg-icon-2 svg-icon-gray-500">
-          <inline-svg src="media/icons/duotune/communication/com009.svg" />
+          <inline-svg src="/media/icons/duotune/communication/com009.svg" />
         </span>
       </div>
     </div>
@@ -39,7 +39,7 @@
             data-bs-placement="top"
             title="Alan Nilson"
           >
-            <img src="media/avatars/300-1.jpg" alt="img" />
+            <img src="/media/avatars/300-1.jpg" alt="img" />
           </div>
           <!--end::User-->
         </div>

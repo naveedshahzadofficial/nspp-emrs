@@ -18,7 +18,7 @@
           data-kt-menu-flip="top-end"
         >
           <span class="svg-icon svg-icon-2">
-            <inline-svg src="media/icons/duotune/general/gen024.svg" />
+            <inline-svg src="/media/icons/duotune/general/gen024.svg" />
           </span>
         </button>
         <Dropdown1></Dropdown1>
@@ -81,31 +81,31 @@ export default defineComponent({
   setup() {
     const items = [
       {
-        icon: "media/icons/duotune/abstract/abs027.svg",
+        icon: "/media/icons/duotune/abstract/abs027.svg",
         color: "success",
         title: "Project Briefing",
         description: "Project Manager",
       },
       {
-        icon: "media/icons/duotune/art/art005.svg",
+        icon: "/media/icons/duotune/art/art005.svg",
         color: "warning",
         title: "Concept Design",
         description: "Art Director",
       },
       {
-        icon: "media/icons/duotune/communication/com012.svg",
+        icon: "/media/icons/duotune/communication/com012.svg",
         color: "primary",
         title: "Functional Logics",
         description: "Lead Developer",
       },
       {
-        icon: "media/icons/duotune/coding/cod008.svg",
+        icon: "/media/icons/duotune/coding/cod008.svg",
         color: "danger",
         title: "Development",
         description: "DevOps",
       },
       {
-        icon: "media/icons/duotune/general/gen049.svg",
+        icon: "/media/icons/duotune/general/gen049.svg",
         color: "info",
         title: "Testing",
         description: "QA Managers",

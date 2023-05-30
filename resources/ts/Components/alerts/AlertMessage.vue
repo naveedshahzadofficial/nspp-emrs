@@ -16,7 +16,7 @@
     "
     >
     <span class="svg-icon svg-icon-2hx svg-icon-light me-4 mb-5 mb-sm-0">
-      <inline-svg src="media/icons/duotune/general/gen007.svg" />
+      <inline-svg src="/media/icons/duotune/general/gen007.svg" />
     </span>
         <!--begin::Content-->
         <div class="d-flex flex-column text-light pe-0 pe-sm-10">
@@ -39,7 +39,7 @@
             data-bs-dismiss="alert"
         >
       <span class="svg-icon svg-icon-2x svg-icon-light">
-        <inline-svg src="media/icons/duotune/arrows/arr061.svg" />
+        <inline-svg src="/media/icons/duotune/arrows/arr061.svg" />
       </span>
         </button>
         <!--end::Close-->

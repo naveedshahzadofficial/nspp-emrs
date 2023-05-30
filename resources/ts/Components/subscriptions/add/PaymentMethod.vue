@@ -33,15 +33,15 @@
                 class="btn btn-sm btn-icon btn-active-color-primary ms-n3 me-2"
               >
                 <span class="svg-icon toggle-on svg-icon-primary svg-icon-2">
-                  <inline-svg src="media/icons/duotune/general/gen036.svg" />
+                  <inline-svg src="/media/icons/duotune/general/gen036.svg" />
                 </span>
                 <span class="svg-icon toggle-off svg-icon-2">
-                  <inline-svg src="media/icons/duotune/general/gen035.svg" />
+                  <inline-svg src="/media/icons/duotune/general/gen035.svg" />
                 </span>
               </div>
 
               <img
-                src="media/svg/card-logos/mastercard.svg"
+                src="/media/svg/card-logos/mastercard.svg"
                 class="w-40px me-3"
                 alt=""
               />
@@ -130,7 +130,7 @@
                       <td class="text-gray-800">
                         Australia
                         <div class="symbol symbol-20px symbol-circle ms-2">
-                          <img src="media/flags/australia.svg" />
+                          <img src="/media/flags/australia.svg" />
                         </div>
                       </td>
                     </tr>
@@ -140,7 +140,7 @@
                         Passed
                         <span class="svg-icon svg-icon-2 svg-icon-success">
                           <inline-svg
-                            src="media/icons/duotune/general/gen043.svg"
+                            src="/media/icons/duotune/general/gen043.svg"
                           />
                         </span>
                       </td>
@@ -165,16 +165,16 @@
                 class="btn btn-sm btn-icon btn-active-color-primary ms-n3 me-2"
               >
                 <span class="svg-icon toggle-on svg-icon-primary svg-icon-2">
-                  <inline-svg src="media/icons/duotune/general/gen036.svg" />
+                  <inline-svg src="/media/icons/duotune/general/gen036.svg" />
                 </span>
 
                 <span class="svg-icon toggle-off svg-icon-2">
-                  <inline-svg src="media/icons/duotune/general/gen035.svg" />
+                  <inline-svg src="/media/icons/duotune/general/gen035.svg" />
                 </span>
               </div>
 
               <img
-                src="media/svg/card-logos/visa.svg"
+                src="/media/svg/card-logos/visa.svg"
                 class="w-40px me-3"
                 alt=""
               />
@@ -255,7 +255,7 @@
                       <td class="text-gray-800">
                         United Kingdom
                         <div class="symbol symbol-20px symbol-circle ms-2">
-                          <img src="media/flags/united-kingdom.svg" />
+                          <img src="/media/flags/united-kingdom.svg" />
                         </div>
                       </td>
                     </tr>
@@ -266,7 +266,7 @@
 
                         <span class="svg-icon svg-icon-2 svg-icon-success">
                           <inline-svg
-                            src="media/icons/duotune/arrows/arr012.svg"
+                            src="/media/icons/duotune/arrows/arr012.svg"
                           />
                         </span>
                       </td>
@@ -291,16 +291,16 @@
                 class="btn btn-sm btn-icon btn-active-color-primary ms-n3 me-2"
               >
                 <span class="svg-icon toggle-on svg-icon-primary svg-icon-2">
-                  <inline-svg src="media/icons/duotune/general/gen036.svg" />
+                  <inline-svg src="/media/icons/duotune/general/gen036.svg" />
                 </span>
 
                 <span class="svg-icon toggle-off svg-icon-2">
-                  <inline-svg src="media/icons/duotune/general/gen035.svg" />
+                  <inline-svg src="/media/icons/duotune/general/gen035.svg" />
                 </span>
               </div>
 
               <img
-                src="media/svg/card-logos/american-express.svg"
+                src="/media/svg/card-logos/american-express.svg"
                 class="w-40px me-3"
                 alt=""
               />
@@ -386,7 +386,7 @@
                       <td class="text-gray-800">
                         United States of America
                         <div class="symbol symbol-20px symbol-circle ms-2">
-                          <img src="media/flags/united-states.svg" />
+                          <img src="/media/flags/united-states.svg" />
                         </div>
                       </td>
                     </tr>
@@ -397,7 +397,7 @@
 
                         <span class="svg-icon svg-icon-2 svg-icon-danger">
                           <inline-svg
-                            src="media/icons/duotune/arrows/arr061.svg"
+                            src="/media/icons/duotune/arrows/arr061.svg"
                           />
                         </span>
                       </td>

@@ -22,7 +22,7 @@
             data-bs-dismiss="modal"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="media/icons/duotune/arrows/arr061.svg" />
+              <inline-svg src="/media/icons/duotune/arrows/arr061.svg" />
             </span>
           </div>
           <!--end::Close-->
@@ -57,7 +57,7 @@
                 for="kt_modal_two_factor_authentication_option_1"
               >
                 <span class="svg-icon svg-icon-4x me-4">
-                  <inline-svg src="media/icons/duotune/coding/cod001.svg" />
+                  <inline-svg src="/media/icons/duotune/coding/cod001.svg" />
                 </span>
 
                 <span class="d-block fw-bold text-start">
@@ -87,7 +87,7 @@
               >
                 <span class="svg-icon svg-icon-4x me-4">
                   <inline-svg
-                    src="media/icons/duotune/communication/com003.svg"
+                    src="/media/icons/duotune/communication/com003.svg"
                   />
                 </span>
 
@@ -141,7 +141,7 @@
 
               <!--begin::QR code image-->
               <div class="pt-5 text-center">
-                <img src="media/misc/qr.png" alt="" class="mw-150px" />
+                <img src="/media/misc/qr.png" alt="" class="mw-150px" />
               </div>
               <!--end::QR code image-->
             </div>
@@ -151,7 +151,7 @@
               class="notice d-flex bg-light-warning rounded border-warning border border-dashed mb-10 p-6"
             >
               <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
-                <inline-svg src="media/icons/duotune/general/gen044.svg" />
+                <inline-svg src="/media/icons/duotune/general/gen044.svg" />
               </span>
               <!--begin::Wrapper-->
               <div class="d-flex flex-stack flex-grow-1">

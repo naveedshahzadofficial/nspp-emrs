@@ -4,7 +4,7 @@
     <!--begin::Icon-->
     <div class="pt-10 pb-10">
       <span class="svg-icon svg-icon-4x opacity-50">
-        <inline-svg src="media/icons/duotune/files/fil024.svg" />
+        <inline-svg src="/media/icons/duotune/files/fil024.svg" />
       </span>
     </div>
     <!--end::Icon-->

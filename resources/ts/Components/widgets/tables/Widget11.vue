@@ -11,7 +11,7 @@
       <div class="card-toolbar">
         <a href="#" class="btn btn-sm btn-light-primary">
           <span class="svg-icon svg-icon-2">
-            <inline-svg src="media/icons/duotune/arrows/arr075.svg" />
+            <inline-svg src="/media/icons/duotune/arrows/arr075.svg" />
           </span>
           New Member
         </a>
@@ -113,7 +113,7 @@
                   >
                     <span class="svg-icon svg-icon-3">
                       <inline-svg
-                        src="media/icons/duotune/general/gen019.svg"
+                        src="/media/icons/duotune/general/gen019.svg"
                       />
                     </span>
                   </a>
@@ -123,7 +123,7 @@
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                   >
                     <span class="svg-icon svg-icon-3">
-                      <inline-svg src="media/icons/duotune/art/art005.svg" />
+                      <inline-svg src="/media/icons/duotune/art/art005.svg" />
                     </span>
                   </a>
 
@@ -133,7 +133,7 @@
                   >
                     <span class="svg-icon svg-icon-3">
                       <inline-svg
-                        src="media/icons/duotune/general/gen027.svg"
+                        src="/media/icons/duotune/general/gen027.svg"
                       />
                     </span>
                   </a>
@@ -165,7 +165,7 @@ export default defineComponent({
     const list = [
       {
         product: {
-          image: "media/stock/600x400/img-26.jpg",
+          image: "/media/stock/600x400/img-26.jpg",
           name: "Sant Extreanet Solution",
           specs: "HTML, JS, ReactJS",
         },
@@ -182,7 +182,7 @@ export default defineComponent({
       },
       {
         product: {
-          image: "media/stock/600x400/img-3.jpg",
+          image: "/media/stock/600x400/img-3.jpg",
           name: "Telegram Development",
           specs: "C#, ASP.NET, MS SQL",
         },
@@ -199,7 +199,7 @@ export default defineComponent({
       },
       {
         product: {
-          image: "media/stock/600x400/img-9.jpg",
+          image: "/media/stock/600x400/img-9.jpg",
           name: "Payroll Application",
           specs: "PHP, Laravel, VueJS",
         },
@@ -216,7 +216,7 @@ export default defineComponent({
       },
       {
         product: {
-          image: "media/stock/600x400/img-18.jpg",
+          image: "/media/stock/600x400/img-18.jpg",
           name: "HR Management System",
           specs: "Python, PostgreSQL, ReactJS",
         },
@@ -233,7 +233,7 @@ export default defineComponent({
       },
       {
         product: {
-          image: "media/stock/600x400/img-8.jpg",
+          image: "/media/stock/600x400/img-8.jpg",
           name: "Telegram Mobile",
           specs: "HTML, JS, ReactJS",
         },

@@ -87,16 +87,6 @@ __webpack_require__.r(__webpack_exports__);
       height: (_props$patientVisit14 = props.patientVisit) === null || _props$patientVisit14 === void 0 ? void 0 : _props$patientVisit14.height,
       notes: (_props$patientVisit15 = props.patientVisit) === null || _props$patientVisit15 === void 0 ? void 0 : _props$patientVisit15.notes
     });
-    var range = function range(start, end) {
-      var step = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-      var fixed = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
-      var length = Math.floor((end - start) / step) + 1;
-      return Array.from({
-        length: length
-      }, function (_, index) {
-        return (start + index * step).toFixed(fixed);
-      });
-    };
     var submit = function submit() {
       var _props$patientVisit16;
       registerForm.post(route('registrations.update', (_props$patientVisit16 = props.patientVisit) === null || _props$patientVisit16 === void 0 ? void 0 : _props$patientVisit16.id));
@@ -109,7 +99,6 @@ __webpack_require__.r(__webpack_exports__);
       set registerForm(v) {
         registerForm = v;
       },
-      range: range,
       get submit() {
         return submit;
       },
@@ -196,13 +185,13 @@ var _hoisted_10 = {
   "class": "mb-10 row"
 };
 var _hoisted_11 = {
-  "class": "col-lg-6"
+  "class": "col-lg-4"
 };
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "required form-label"
 }, "Name of Patient", -1 /* HOISTED */);
 var _hoisted_13 = {
-  "class": "col-lg-6"
+  "class": "col-lg-8"
 };
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "required form-label"
@@ -259,82 +248,73 @@ var _hoisted_31 = {
 var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label"
 }, "Temperature (°F)", -1 /* HOISTED */);
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "Please Select", -1 /* HOISTED */);
-var _hoisted_34 = ["value", "textContent"];
+var _hoisted_33 = {
+  "class": "col-lg-4"
+};
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "B.P. Systolic (mmHg)", -1 /* HOISTED */);
 var _hoisted_35 = {
   "class": "col-lg-4"
 };
 var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label"
-}, "B.P. Systolic (mmHg)", -1 /* HOISTED */);
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "Please Select", -1 /* HOISTED */);
-var _hoisted_38 = ["value", "textContent"];
-var _hoisted_39 = {
-  "class": "col-lg-4"
-};
-var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "form-label"
 }, "B.P. Diastolic (mmHg)", -1 /* HOISTED */);
-var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "Please Select", -1 /* HOISTED */);
-var _hoisted_42 = ["value", "textContent"];
-var _hoisted_43 = {
+var _hoisted_37 = {
   "class": "mb-10 row"
 };
-var _hoisted_44 = {
+var _hoisted_38 = {
   "class": "col-lg-4"
 };
-var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label"
 }, "Pulse (bpm)", -1 /* HOISTED */);
-var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "Please Select", -1 /* HOISTED */);
-var _hoisted_47 = ["value", "textContent"];
-var _hoisted_48 = {
+var _hoisted_40 = {
   "class": "col-lg-4"
+};
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Sugar (mg/dL)", -1 /* HOISTED */);
+var _hoisted_42 = {
+  "class": "col-lg-4"
+};
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Weight (kg)", -1 /* HOISTED */);
+var _hoisted_44 = {
+  "class": "mb-10 row"
+};
+var _hoisted_45 = {
+  "class": "col-lg-4"
+};
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Height (cm)", -1 /* HOISTED */);
+var _hoisted_47 = {
+  "class": "mb-10 row"
+};
+var _hoisted_48 = {
+  "class": "col-lg-12"
 };
 var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label"
-}, "Sugar (mg/dL)", -1 /* HOISTED */);
-var _hoisted_50 = {
-  "class": "col-lg-4"
-};
-var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "form-label"
-}, "Weight (kg)", -1 /* HOISTED */);
-var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "Please Select", -1 /* HOISTED */);
-var _hoisted_53 = ["value", "textContent"];
-var _hoisted_54 = {
-  "class": "mb-10 row"
-};
-var _hoisted_55 = {
-  "class": "col-lg-4"
-};
-var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "form-label"
-}, "Height (cm)", -1 /* HOISTED */);
-var _hoisted_57 = {
-  "class": "mb-10 row"
-};
-var _hoisted_58 = {
-  "class": "col-lg-12"
-};
-var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "form-label"
 }, "Notes", -1 /* HOISTED */);
-var _hoisted_60 = {
+var _hoisted_50 = {
   "class": "card-footer"
 };
-var _hoisted_61 = ["disabled", "data-kt-indicator"];
-var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_51 = ["disabled", "data-kt-indicator"];
+var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "indicator-label"
 }, " Submit ", -1 /* HOISTED */);
-var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "indicator-progress"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Please wait... "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "spinner-border spinner-border-sm align-middle ms-2"
 })], -1 /* HOISTED */);
-var _hoisted_64 = [_hoisted_62, _hoisted_63];
+var _hoisted_54 = [_hoisted_52, _hoisted_53];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
+  var _component_v_select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-select");
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
     title: "Update Registration"
@@ -347,7 +327,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.patientTypes, function (patientType) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: patientType.id,
-      "class": "form-check form-check-custom form-check-solid me-10"
+      "class": "form-check form-check-custom form-check-sm me-10"
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
         return $setup.registerForm.patient_type_id = $event;
@@ -368,14 +348,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.registerForm.patient_name = $event;
     }),
     type: "text",
-    "class": "form-control form-control-solid",
+    "class": "form-control form-control-sm",
     placeholder: "Patient Name"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.registerForm.patient_name]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.patient_name
   }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.genders, function (gender) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: gender.id,
-      "class": "form-check form-check-custom form-check-solid me-10"
+      "class": "form-check form-check-custom form-check-sm me-10"
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
       "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
         return $setup.registerForm.gender_id = $event;
@@ -396,7 +376,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.registerForm.patient_age = $event;
     }),
     type: "text",
-    "class": "form-control form-control-solid",
+    "class": "form-control form-control-sm",
     placeholder: "Patient Age"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.registerForm.patient_age]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.patient_age
@@ -405,7 +385,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.registerForm.relationship_with_employee = $event;
     }),
     type: "text",
-    "class": "form-control form-control-solid",
+    "class": "form-control form-control-sm",
     placeholder: "Relationship with Employee"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.registerForm.relationship_with_employee]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.relationship_with_employee
@@ -414,7 +394,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.registerForm.designation = $event;
     }),
     type: "text",
-    "class": "form-control form-control-solid",
+    "class": "form-control form-control-sm",
     placeholder: "Designation"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.registerForm.designation]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.designation
@@ -423,108 +403,93 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.registerForm.patient_cnic = $event;
     }),
     type: "text",
-    "class": "form-control form-control-solid",
+    "class": "form-control form-control-sm",
     placeholder: "Patient CNIC"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.registerForm.patient_cnic]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.patient_cnic
-  }, null, 8 /* PROPS */, ["error"])])]), _hoisted_28, _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [_hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, null, 8 /* PROPS */, ["error"])])]), _hoisted_28, _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [_hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+    modelValue: $setup.registerForm.temperature,
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return $setup.registerForm.temperature = $event;
     }),
-    "class": "form-select form-select-solid",
-    "aria-label": "Please Select"
-  }, [_hoisted_33, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.range(97.0, 106.0, .1).reverse(), function (temperature) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-      value: temperature,
-      textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(temperature)
-    }, null, 8 /* PROPS */, _hoisted_34);
-  }), 256 /* UNKEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.registerForm.temperature]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    options: _ctx.range(97.0, 106.0, .1).reverse(),
+    "class": "v-select-custom form-select-sm",
+    placeholder: "Please Select"
+  }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.temperature
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [_hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [_hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+    modelValue: $setup.registerForm.bp_systolic,
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
       return $setup.registerForm.bp_systolic = $event;
     }),
-    "class": "form-select form-select-solid",
-    "aria-label": "Please Select"
-  }, [_hoisted_37, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.range(40, 300, 5, 0), function (systolic) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-      value: systolic,
-      textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(systolic)
-    }, null, 8 /* PROPS */, _hoisted_38);
-  }), 256 /* UNKEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.registerForm.bp_systolic]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    options: _ctx.range(40, 300, 5, 0),
+    "class": "v-select-custom form-select-sm",
+    placeholder: "Please Select"
+  }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.bp_systolic
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [_hoisted_40, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [_hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+    modelValue: $setup.registerForm.bp_diastolic,
     "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
       return $setup.registerForm.bp_diastolic = $event;
     }),
-    "class": "form-select form-select-solid",
-    "aria-label": "Please Select"
-  }, [_hoisted_41, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.range(40, 300, 5, 0), function (diastolic) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-      value: diastolic,
-      textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(diastolic)
-    }, null, 8 /* PROPS */, _hoisted_42);
-  }), 256 /* UNKEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.registerForm.bp_diastolic]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    options: _ctx.range(40, 300, 5, 0),
+    "class": "v-select-custom form-select-sm",
+    placeholder: "Please Select"
+  }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.bp_diastolic
-  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [_hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [_hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+    modelValue: $setup.registerForm.pulse,
     "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
       return $setup.registerForm.pulse = $event;
     }),
-    "class": "form-select form-select-solid",
-    "aria-label": "Please Select"
-  }, [_hoisted_46, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.range(50, 120, 1, 0), function (pulse) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-      value: pulse,
-      textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(pulse)
-    }, null, 8 /* PROPS */, _hoisted_47);
-  }), 256 /* UNKEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.registerForm.pulse]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    options: _ctx.range(50, 120, 1, 0),
+    "class": "v-select-custom form-select-sm",
+    placeholder: "Please Select"
+  }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.pulse
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [_hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [_hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
       return $setup.registerForm.sugar = $event;
     }),
     type: "text",
-    "class": "form-control form-control-solid",
+    "class": "form-control form-control-sm",
     placeholder: "Sugar (mg/dL)"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.registerForm.sugar]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.sugar
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [_hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [_hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+    modelValue: $setup.registerForm.weight,
     "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
       return $setup.registerForm.weight = $event;
     }),
-    "class": "form-select form-select-solid",
-    "aria-label": "Please Select"
-  }, [_hoisted_52, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.range(1.0, 200.0, .1), function (weight) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-      value: weight,
-      textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(weight)
-    }, null, 8 /* PROPS */, _hoisted_53);
-  }), 256 /* UNKEYED_FRAGMENT */))], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.registerForm.weight]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    options: _ctx.range(1.0, 200.0, .1),
+    "class": "v-select-custom form-select-sm",
+    placeholder: "Please Select"
+  }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.weight
-  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [_hoisted_56, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_45, [_hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
       return $setup.registerForm.height = $event;
     }),
     type: "text",
-    "class": "form-control form-control-solid",
+    "class": "form-control form-control-sm",
     placeholder: "Height (cm)"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.registerForm.height]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.height
-  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, [_hoisted_59, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [_hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
       return $setup.registerForm.notes = $event;
     }),
-    "class": "form-control form-control-solid",
+    "class": "form-control form-control-sm",
     rows: "4"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.registerForm.notes]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.notes
-  }, null, 8 /* PROPS */, ["error"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 8 /* PROPS */, ["error"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "submit",
     ref: "submitButton",
     "class": "btn btn-primary me-2",
     disabled: $setup.registerForm.processing,
     "data-kt-indicator": $setup.registerForm.processing ? 'on' : 'off'
-  }, _hoisted_64, 8 /* PROPS */, _hoisted_61), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  }, _hoisted_54, 8 /* PROPS */, _hoisted_51), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('registrations.index'),
     "class": "btn btn-secondary"
   }, {
@@ -549,13 +514,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ServerErrorMessage_vue_vue_type_template_id_c870456e_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ServerErrorMessage.vue?vue&type=template&id=c870456e&ts=true */ "./resources/ts/Components/alerts/ServerErrorMessage.vue?vue&type=template&id=c870456e&ts=true");
 /* harmony import */ var _ServerErrorMessage_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ServerErrorMessage.vue?vue&type=script&setup=true&lang=ts */ "./resources/ts/Components/alerts/ServerErrorMessage.vue?vue&type=script&setup=true&lang=ts");
-/* harmony import */ var _Users_naveed_Documents_nspp_emrs_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _home_naveed_sites_nspp_emrs_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_Users_naveed_Documents_nspp_emrs_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ServerErrorMessage_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ServerErrorMessage_vue_vue_type_template_id_c870456e_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/ts/Components/alerts/ServerErrorMessage.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_naveed_sites_nspp_emrs_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ServerErrorMessage_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ServerErrorMessage_vue_vue_type_template_id_c870456e_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/ts/Components/alerts/ServerErrorMessage.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -576,13 +541,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Edit_vue_vue_type_template_id_ae79069c_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=ae79069c&ts=true */ "./resources/ts/Pages/Registrations/Edit.vue?vue&type=template&id=ae79069c&ts=true");
 /* harmony import */ var _Edit_vue_vue_type_script_lang_ts_setup_true__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=ts&setup=true */ "./resources/ts/Pages/Registrations/Edit.vue?vue&type=script&lang=ts&setup=true");
-/* harmony import */ var _Users_naveed_Documents_nspp_emrs_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _home_naveed_sites_nspp_emrs_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_Users_naveed_Documents_nspp_emrs_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Edit_vue_vue_type_script_lang_ts_setup_true__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Edit_vue_vue_type_template_id_ae79069c_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/ts/Pages/Registrations/Edit.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_naveed_sites_nspp_emrs_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Edit_vue_vue_type_script_lang_ts_setup_true__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Edit_vue_vue_type_template_id_ae79069c_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/ts/Pages/Registrations/Edit.vue"]])
 /* hot reload */
 if (false) {}
 

@@ -10,8 +10,9 @@
 @import "~dropzone/dist/dropzone.css";
 @import "~@vueform/multiselect/themes/default.css";
 @import "~prism-themes/themes/prism-shades-of-purple.css";
-@import "~element-plus/dist/index.css";
-@import '~datatables.net-bs5';
+
+@import "vue-select/dist/vue-select.css";
+
 
 // Main demo style scss
 @import "plugins";

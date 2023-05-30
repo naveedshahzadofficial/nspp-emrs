@@ -25,7 +25,7 @@
             id="kt_help_close"
           >
             <span class="svg-icon svg-icon-2">
-              <inline-svg src="media/icons/duotune/arrows/arr061.svg" />
+              <inline-svg src="/media/icons/duotune/arrows/arr061.svg" />
             </span>
           </button>
         </div>
@@ -87,7 +87,7 @@
               <span
                 class="svg-icon svg-icon-warning svg-icon-2x svg-icon-lg-3x"
               >
-                <inline-svg src="media/icons/duotune/abstract/abs027.svg" />
+                <inline-svg src="/media/icons/duotune/abstract/abs027.svg" />
               </span>
             </div>
             <!--end::Icon-->
@@ -111,7 +111,7 @@
               </div>
               <!--end::Wrapper-->
               <span class="svg-icon svg-icon-gray-400 svg-icon-2">
-                <inline-svg src="media/icons/duotune/arrows/arr064.svg" />
+                <inline-svg src="/media/icons/duotune/arrows/arr064.svg" />
               </span>
             </div>
             <!--end::Info-->
@@ -126,7 +126,7 @@
               <span
                 class="svg-icon svg-icon-primary svg-icon-2x svg-icon-lg-3x"
               >
-                <inline-svg src="media/icons/duotune/ecommerce/ecm007.svg" />
+                <inline-svg src="/media/icons/duotune/ecommerce/ecm007.svg" />
               </span>
             </div>
             <!--end::Icon-->
@@ -150,7 +150,7 @@
               </div>
               <!--end::Wrapper-->
               <span class="svg-icon svg-icon-gray-400 svg-icon-2">
-                <inline-svg src="media/icons/duotune/arrows/arr064.svg" />
+                <inline-svg src="/media/icons/duotune/arrows/arr064.svg" />
               </span>
             </div>
             <!--end::Info-->
@@ -163,7 +163,7 @@
               class="d-flex flex-center w-50px h-50px w-lg-75px h-lg-75px flex-shrink-0 rounded bg-light-info"
             >
               <span class="svg-icon svg-icon-info svg-icon-2x svg-icon-lg-3x">
-                <inline-svg src="media/icons/duotune/art/art006.svg" />
+                <inline-svg src="/media/icons/duotune/art/art006.svg" />
               </span>
             </div>
             <!--end::Icon-->
@@ -187,7 +187,7 @@
               <!--end::Wrapper-->
               <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
               <span class="svg-icon svg-icon-gray-400 svg-icon-2">
-                <inline-svg src="media/icons/duotune/electronics/elc009.svg" />
+                <inline-svg src="/media/icons/duotune/electronics/elc009.svg" />
               </span>
               <!--end::Svg Icon-->
             </div>
@@ -201,7 +201,7 @@
               class="d-flex flex-center w-50px h-50px w-lg-75px h-lg-75px flex-shrink-0 rounded bg-light-danger"
             >
               <span class="svg-icon svg-icon-danger svg-icon-2x svg-icon-lg-3x">
-                <inline-svg src="media/icons/duotune/electronics/elc009.svg" />
+                <inline-svg src="/media/icons/duotune/electronics/elc009.svg" />
               </span>
             </div>
             <!--end::Icon-->
@@ -225,7 +225,7 @@
               </div>
               <!--end::Wrapper-->
               <span class="svg-icon svg-icon-gray-400 svg-icon-2">
-                <inline-svg src="media/icons/duotune/arrows/arr064.svg" />
+                <inline-svg src="/media/icons/duotune/arrows/arr064.svg" />
               </span>
             </div>
             <!--end::Info-->

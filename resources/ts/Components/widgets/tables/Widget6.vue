@@ -114,7 +114,7 @@
                         >
                           <span class="svg-icon svg-icon-2">
                             <inline-svg
-                              src="media/icons/duotune/arrows/arr064.svg"
+                              src="/media/icons/duotune/arrows/arr064.svg"
                             />
                           </span>
                         </a>
@@ -149,7 +149,7 @@ export default defineComponent({
     const items = [
       [
         {
-          image: "media/svg/avatars/001-boy.svg",
+          image: "/media/svg/avatars/001-boy.svg",
           user: {
             name: "Brad Simmons",
             position: "Successful Fellas",
@@ -161,7 +161,7 @@ export default defineComponent({
           },
         },
         {
-          image: "media/svg/avatars/018-girl-9.svg",
+          image: "/media/svg/avatars/018-girl-9.svg",
           user: {
             name: "Jessie Clarcson",
             position: "HTML, CSS Coding",
@@ -173,7 +173,7 @@ export default defineComponent({
           },
         },
         {
-          image: "media/svg/avatars/047-girl-25.svg",
+          image: "/media/svg/avatars/047-girl-25.svg",
           user: {
             name: "Jessie Clarcson",
             position: "PHP, Laravel, VueJS",
@@ -185,7 +185,7 @@ export default defineComponent({
           },
         },
         {
-          image: "media/svg/avatars/014-girl-7.svg",
+          image: "/media/svg/avatars/014-girl-7.svg",
           user: {
             name: "Natali Trump",
             position: "UI/UX Designer",
@@ -197,7 +197,7 @@ export default defineComponent({
           },
         },
         {
-          image: "media/svg/avatars/043-boy-18.svg",
+          image: "/media/svg/avatars/043-boy-18.svg",
           user: {
             name: "Kevin Leonard",
             position: "Art Director",
@@ -212,7 +212,7 @@ export default defineComponent({
 
       [
         {
-          image: "media/svg/avatars/018-girl-9.svg",
+          image: "/media/svg/avatars/018-girl-9.svg",
           user: {
             name: "Jessie Clarcson",
             position: "HTML, CSS Coding",
@@ -224,7 +224,7 @@ export default defineComponent({
           },
         },
         {
-          image: "media/svg/avatars/014-girl-7.svg",
+          image: "/media/svg/avatars/014-girl-7.svg",
           user: {
             name: "Natali Trump",
             position: "UI/UX Designer",
@@ -236,7 +236,7 @@ export default defineComponent({
           },
         },
         {
-          image: "media/svg/avatars/001-boy.svg",
+          image: "/media/svg/avatars/001-boy.svg",
           user: {
             name: "Brad Simmons",
             position: "Successful Fellas",
@@ -251,7 +251,7 @@ export default defineComponent({
 
       [
         {
-          image: "media/svg/avatars/047-girl-25.svg",
+          image: "/media/svg/avatars/047-girl-25.svg",
           user: {
             name: "Jessie Clarcson",
             position: "HTML, CSS Coding",
@@ -263,7 +263,7 @@ export default defineComponent({
           },
         },
         {
-          image: "media/svg/avatars/014-girl-7.svg",
+          image: "/media/svg/avatars/014-girl-7.svg",
           user: {
             name: "Natali Trump",
             position: "UI/UX Designer",
@@ -275,7 +275,7 @@ export default defineComponent({
           },
         },
         {
-          image: "media/svg/avatars/043-boy-18.svg",
+          image: "/media/svg/avatars/043-boy-18.svg",
           user: {
             name: "Kevin Leonard",
             position: "Art Director",
@@ -287,7 +287,7 @@ export default defineComponent({
           },
         },
         {
-          image: "media/svg/avatars/001-boy.svg",
+          image: "/media/svg/avatars/001-boy.svg",
           user: {
             name: "Brad Simmons",
             position: "Successful Fellas",

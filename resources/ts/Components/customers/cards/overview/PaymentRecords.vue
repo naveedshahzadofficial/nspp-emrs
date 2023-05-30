@@ -19,7 +19,7 @@
           data-bs-target="#kt_modal_add_payment"
         >
           <span class="svg-icon svg-icon-3">
-            <inline-svg src="media/icons/duotune/general/gen035.svg" />
+            <inline-svg src="/media/icons/duotune/general/gen035.svg" />
           </span>
           Add payment
         </button>
@@ -60,7 +60,7 @@
             data-kt-menu-flip="top-end"
             >Actions
             <span class="svg-icon svg-icon-5 m-0">
-              <inline-svg src="media/icons/duotune/arrows/arr072.svg" />
+              <inline-svg src="/media/icons/duotune/arrows/arr072.svg" />
             </span>
           </a>
           <!--begin::Menu-->

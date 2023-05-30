@@ -8,6 +8,9 @@ import i18n from "@/core/plugins/i18n";
 import { initInlineSvg } from "@/core/plugins/inline-svg";
 import HtmlClass from "@/core/services/LayoutService";
 import { initializeComponents } from "@/core/plugins/keenthemes";
+import vSelect from 'vue-select'
+import globalFunctions from '@/core/functions/global-functions';
+
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'EMRS';
 
@@ -28,8 +31,10 @@ createInertiaApp({
       .use<any>(i18n)
       .use(ZiggyVue)
       .use(initInlineSvg)
+      .use(globalFunctions)
       .component('Head', Head)
       .component('Link', Link)
+      .component('v-select', vSelect)
       .mount(el)
   },
 })

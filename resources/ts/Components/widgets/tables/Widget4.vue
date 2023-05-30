@@ -147,7 +147,7 @@ export default defineComponent({
     const items = [
       [
         {
-          image: "media/avatars/300-14.jpg",
+          image: "/media/avatars/300-14.jpg",
           user: {
             name: "Brad Simmons",
             position: "Movie Creator",
@@ -155,7 +155,7 @@ export default defineComponent({
           rating: 5,
         },
         {
-          image: "media/avatars/300-5.jpg",
+          image: "/media/avatars/300-5.jpg",
           user: {
             name: "Jessie Clarcson",
             position: "HTML, CSS Coding",
@@ -163,7 +163,7 @@ export default defineComponent({
           rating: 5,
         },
         {
-          image: "media/avatars/300-20.jpg",
+          image: "/media/avatars/300-20.jpg",
           user: {
             name: "Lebron Wayde",
             position: "ReactJS Developer",
@@ -171,7 +171,7 @@ export default defineComponent({
           rating: 4,
         },
         {
-          image: "media/avatars/300-23.jpg",
+          image: "/media/avatars/300-23.jpg",
           user: {
             name: "Natali Trump",
             position: "UI/UX Designer",
@@ -179,7 +179,7 @@ export default defineComponent({
           rating: 5,
         },
         {
-          image: "media/avatars/300-10.jpg",
+          image: "/media/avatars/300-10.jpg",
           user: {
             name: "Kevin Leonard",
             position: "Art Director",
@@ -190,7 +190,7 @@ export default defineComponent({
 
       [
         {
-          image: "media/svg/avatars/043-boy-18.svg",
+          image: "/media/svg/avatars/043-boy-18.svg",
           user: {
             name: "Kevin Leonard",
             position: "Art Director",
@@ -198,7 +198,7 @@ export default defineComponent({
           rating: 3,
         },
         {
-          image: "media/svg/avatars/014-girl-7.svg",
+          image: "/media/svg/avatars/014-girl-7.svg",
           user: {
             name: "Natali Trump",
             position: "UI/UX Designer",
@@ -206,7 +206,7 @@ export default defineComponent({
           rating: 5,
         },
         {
-          image: "media/svg/avatars/018-girl-9.svg",
+          image: "/media/svg/avatars/018-girl-9.svg",
           user: {
             name: "Jessie Clarcson",
             position: "HTML, CSS Coding",
@@ -214,7 +214,7 @@ export default defineComponent({
           rating: 5,
         },
         {
-          image: "media/svg/avatars/001-boy.svg",
+          image: "/media/svg/avatars/001-boy.svg",
           user: {
             name: "Brad Simmons",
             position: "Movie Creator",
@@ -225,7 +225,7 @@ export default defineComponent({
 
       [
         {
-          image: "media/svg/avatars/018-girl-9.svg",
+          image: "/media/svg/avatars/018-girl-9.svg",
           user: {
             name: "Jessie Clarcson",
             position: "HTML, CSS Coding",
@@ -233,7 +233,7 @@ export default defineComponent({
           rating: 5,
         },
         {
-          image: "media/svg/avatars/047-girl-25.svg",
+          image: "/media/svg/avatars/047-girl-25.svg",
           user: {
             name: "Lebron Wayde",
             position: "ReactJS Developer",
@@ -241,7 +241,7 @@ export default defineComponent({
           rating: 4,
         },
         {
-          image: "media/svg/avatars/014-girl-7.svg",
+          image: "/media/svg/avatars/014-girl-7.svg",
           user: {
             name: "Natali Trump",
             position: "UI/UX Designer",

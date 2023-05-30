@@ -152,7 +152,7 @@ export default defineComponent({
       [
         {
           icon: {
-            file: "media/icons/duotune/coding/cod002.svg",
+            file: "/media/icons/duotune/coding/cod002.svg",
             color: "success",
           },
           info: {
@@ -167,7 +167,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/general/gen024.svg",
+            file: "/media/icons/duotune/general/gen024.svg",
             color: "danger",
           },
           info: {
@@ -182,7 +182,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/maps/map004.svg",
+            file: "/media/icons/duotune/maps/map004.svg",
             color: "primary",
           },
           info: {
@@ -197,7 +197,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/abstract/abs027.svg",
+            file: "/media/icons/duotune/abstract/abs027.svg",
             color: "warning",
           },
           info: {
@@ -212,7 +212,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/art/art007.svg",
+            file: "/media/icons/duotune/art/art007.svg",
             color: "info",
           },
           info: {
@@ -230,7 +230,7 @@ export default defineComponent({
       [
         {
           icon: {
-            file: "media/icons/duotune/abstract/abs042.svg",
+            file: "/media/icons/duotune/abstract/abs042.svg",
             color: "info",
           },
           info: {
@@ -245,7 +245,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/general/gen024.svg",
+            file: "/media/icons/duotune/general/gen024.svg",
             color: "danger",
           },
           info: {
@@ -260,7 +260,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/abstract/abs027.svg",
+            file: "/media/icons/duotune/abstract/abs027.svg",
             color: "warning",
           },
           info: {
@@ -278,7 +278,7 @@ export default defineComponent({
       [
         {
           icon: {
-            file: "media/icons/duotune/ecommerce/ecm002.svg",
+            file: "/media/icons/duotune/ecommerce/ecm002.svg",
             color: "success",
           },
           info: {
@@ -293,7 +293,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/general/gen024.svg",
+            file: "/media/icons/duotune/general/gen024.svg",
             color: "danger",
           },
           info: {
@@ -308,7 +308,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/abstract/abs027.svg",
+            file: "/media/icons/duotune/abstract/abs027.svg",
             color: "warning",
           },
           info: {
@@ -323,7 +323,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "media/icons/duotune/abstract/abs042.svg",
+            file: "/media/icons/duotune/abstract/abs042.svg",
             color: "info",
           },
           info: {

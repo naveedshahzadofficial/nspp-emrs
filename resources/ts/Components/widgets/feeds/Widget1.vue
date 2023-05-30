@@ -9,7 +9,7 @@
         <div class="d-flex align-items-center flex-grow-1">
           <!--begin::Avatar-->
           <div class="symbol symbol-45px me-5">
-            <img src="media/avatars/300-6.jpg" alt="" />
+            <img src="/media/avatars/300-6.jpg" alt="" />
           </div>
           <!--end::Avatar-->
 
@@ -35,7 +35,7 @@
             data-kt-menu-flip="top-end"
           >
             <span class="svg-icon svg-icon-2">
-              <inline-svg src="media/icons/duotune/general/gen024.svg" />
+              <inline-svg src="/media/icons/duotune/general/gen024.svg" />
             </span>
           </button>
           <Dropdown2></Dropdown2>

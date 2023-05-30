@@ -17,12 +17,17 @@ use Inertia\Inertia;
 
 class RegistrationController extends Controller
 {
+    private $registrationService;
+    public function __construct(RegistrationService $registrationService)
+    {
+        $this->registrationService = $registrationService;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Inertia\Response
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
         $patientVisits = PatientVisit::with('patient')->get();
         return Inertia::render('Registrations/Index', compact('patientVisits'));
@@ -33,7 +38,7 @@ class RegistrationController extends Controller
      *
      * @return \Inertia\Response
      */
-    public function create()
+    public function create(): \Inertia\Response
     {
         $patientTypes = PatientTypeResource::collection(PatientType::all());
         $genders = GenderResource::collection(Gender::all());
@@ -46,11 +51,11 @@ class RegistrationController extends Controller
      * @param StoreRegistrationRequest $request
      * @return RedirectResponse
      */
-    public function store(StoreRegistrationRequest $request, RegistrationService $service): \Illuminate\Http\RedirectResponse
+    public function store(StoreRegistrationRequest $request): \Illuminate\Http\RedirectResponse
     {
-        DB::transaction(function() use ($request, $service) {
-        $patient = $service->addPatient($request->validated());
-        $service->addPatientVisit($request->validated(), $patient);
+        DB::transaction(function() use ($request) {
+        $patient = $this->registrationService->addPatient($request->validated());
+            $this->registrationService->addPatientVisit($request->validated(), $patient);
         });
         session()->flash('success', 'Your Registration has been added successfully.');
         return redirect()->route('registrations.index');
@@ -60,11 +65,14 @@ class RegistrationController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
-    public function show($id)
+    public function show($id): \Inertia\Response
     {
-        //
+        $patientVisit = PatientVisit::with('patient')->find($id);
+        $patientTypes = PatientTypeResource::collection(PatientType::all());
+        $genders = GenderResource::collection(Gender::all());
+        return Inertia::render('Registrations/Show', compact('patientTypes', 'genders', 'patientVisit'));
     }
 
     /**
@@ -73,7 +81,7 @@ class RegistrationController extends Controller
      * @param int $id
      * @return \Inertia\Response
      */
-    public function edit($id)
+    public function edit($id): \Inertia\Response
     {
         $patientVisit = PatientVisit::with('patient')->find($id);
         $patientTypes = PatientTypeResource::collection(PatientType::all());
@@ -86,21 +94,29 @@ class RegistrationController extends Controller
      *
      * @param UpdateRegistrationRequest $request
      * @param int $id
-     * @return Response
+     * @return RedirectResponse
      */
-    public function update(UpdateRegistrationRequest $request, $id)
+    public function update(UpdateRegistrationRequest $request, $id): RedirectResponse
     {
-        dd($request->all());
+        DB::transaction(function() use ($request, $id) {
+            $patientVisit = PatientVisit::with('patient')->find($id);
+            $this->registrationService->updatePatient($request->validated(), $patientVisit->patient);
+            $this->registrationService->updatePatientVisit($request->validated(), $patientVisit);
+        });
+        session()->flash('success', 'Your Registration has been updated successfully.');
+        return redirect()->route('registrations.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
-        //
+        PatientVisit::destroy($id);
+        session()->flash('success', 'Your registration has been deleted successfully.');
+        return redirect()->route('registrations.index');
     }
 }

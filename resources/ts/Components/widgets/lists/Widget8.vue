@@ -19,7 +19,7 @@
           data-kt-menu-flip="top-end"
         >
           <span class="svg-icon svg-icon-2">
-            <inline-svg src="media/icons/duotune/general/gen024.svg" />
+            <inline-svg src="/media/icons/duotune/general/gen024.svg" />
           </span>
         </button>
         <Dropdown3></Dropdown3>
@@ -73,7 +73,7 @@
 
               <a href="#" class="btn btn-icon btn-light btn-sm border-0">
                 <span class="svg-icon-2 svg-icon-primary">
-                  <inline-svg src="media/icons/duotune/arrows/arr064.svg" />
+                  <inline-svg src="/media/icons/duotune/arrows/arr064.svg" />
                 </span>
               </a>
             </div>
@@ -104,25 +104,25 @@ export default defineComponent({
   setup() {
     const list = ref([
       {
-        image: "media/stock/600x400/img-17.jpg",
+        image: "/media/stock/600x400/img-17.jpg",
         title: "Cup & Green",
         desc: "Visually stunning",
         rate: "4.2",
       },
       {
-        image: "media/stock/600x400/img-17.jpg",
+        image: "/media/stock/600x400/img-17.jpg",
         title: "Pink Patterns",
         desc: "Feminine all around",
         rate: "5.0",
       },
       {
-        image: "media/stock/600x400/img-1.jpg",
+        image: "/media/stock/600x400/img-1.jpg",
         title: "Abstract Art",
         desc: "The will to capture readers",
         rate: " 5.7",
       },
       {
-        image: "media/stock/600x400/img-9.jpg",
+        image: "/media/stock/600x400/img-9.jpg",
         title: "Desserts platter",
         desc: "Food trends & inspirations",
         rate: "3.7",

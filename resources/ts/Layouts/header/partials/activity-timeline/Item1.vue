@@ -9,7 +9,7 @@
     <div class="timeline-icon symbol symbol-circle symbol-40px me-4">
       <div class="symbol-label bg-light">
         <span class="svg-icon svg-icon-2 svg-icon-gray-500">
-          <inline-svg src="media/icons/duotune/communication/com003.svg" />
+          <inline-svg src="/media/icons/duotune/communication/com003.svg" />
         </span>
       </div>
     </div>
@@ -39,7 +39,7 @@
             data-bs-placement="top"
             title="Nina Nilson"
           >
-            <img src="media/avatars/300-14.jpg" alt="img" />
+            <img src="/media/avatars/300-14.jpg" alt="img" />
           </div>
           <!--end::User-->
         </div>
@@ -73,13 +73,13 @@
           >
             <!--begin::User-->
             <div class="symbol symbol-circle symbol-25px">
-              <img src="media/avatars/300-2.jpg" alt="img" />
+              <img src="/media/avatars/300-2.jpg" alt="img" />
             </div>
             <!--end::User-->
 
             <!--begin::User-->
             <div class="symbol symbol-circle symbol-25px">
-              <img src="media/avatars/300-14.jpg" alt="img" />
+              <img src="/media/avatars/300-14.jpg" alt="img" />
             </div>
             <!--end::User-->
 
@@ -135,7 +135,7 @@
           >
             <!--begin::User-->
             <div class="symbol symbol-circle symbol-25px">
-              <img src="media/avatars/300-20.jpg" alt="img" />
+              <img src="/media/avatars/300-20.jpg" alt="img" />
             </div>
             <!--end::User-->
 

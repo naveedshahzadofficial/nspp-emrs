@@ -39,7 +39,7 @@
                     class="btn btn-primary"
                 >
             <span class="svg-icon svg-icon-2">
-              <inline-svg src="media/icons/duotune/arrows/arr075.svg" />
+              <inline-svg src="/media/icons/duotune/arrows/arr075.svg" />
             </span>
                     Add Registration
                 </Link>
@@ -54,9 +54,9 @@
         <div class="card-body pt-0 position-relative">
 
             <!--begin::Search-->
-            <div class="d-flex align-items-center position-relative my-3">
+            <div class="d-flex align-items-center position-relative my-6">
           <span class="svg-icon svg-icon-1 position-absolute ms-6">
-               <inline-svg src="media/icons/duotune/general/gen021.svg" />
+               <inline-svg src="/media/icons/duotune/general/gen021.svg" />
           </span>
                 <input
                     type="text"
@@ -117,64 +117,64 @@
                                             href="#"
                                             class="text-muted text-hover-primary fw-bold text-muted d-block fs-7"
                                         >
-                                            <span class="text-dark">Age</span>:
-                                            {{ patientVisit.patient.patient_age }}
+                                            <span class="text-dark">Designation</span>:
+                                            {{ patientVisit.patient.designation }}
                                         </a>
                                         <a
                                             href="#"
                                             class="text-muted text-hover-primary fw-bold text-muted d-block fs-7"
                                         >
-                                            <span class="text-dark">Designation</span>:
-                                            {{ patientVisit.patient.designation }}
+                                            <span class="text-dark">Age</span>:
+                                            {{ patientVisit.patient.patient_age }}
                                         </a>
+
                                     </div>
                                     <!--end::Name-->
                                 </div>
                             </td>
 
-                            <td class="fw-semobold text-center">{{ patientVisit.token_no }}</td>
+                            <td class="fw-semibold text-center">{{ patientVisit.token_no }}</td>
 
                             <td class="text-end">
-                                <a
-                                    href="#"
+                                <Link
+                                    :href="route('registrations.show', patientVisit.id)"
+                                    title="Proceed"
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                 >
                     <span class="svg-icon svg-icon-3">
                       <inline-svg
-                          src="media/icons/duotune/general/gen019.svg"
+                          src="/media/icons/duotune/general/gen019.svg"
                       />
-                    </span>
-                                </a>
-
-                                <Link
-                                    :href="route('registrations.edit', patientVisit.id)"
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                >
-                    <span class="svg-icon svg-icon-3">
-                      <inline-svg src="media/icons/duotune/art/art005.svg" />
                     </span>
                                 </Link>
 
                                 <Link
-                                    :href="route('registrations.destroy', patientVisit.id)"
+                                    :href="route('registrations.edit', patientVisit.id)"
+                                    title="Edit"
+                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                >
+                    <span class="svg-icon svg-icon-3">
+                      <inline-svg src="/media/icons/duotune/art/art005.svg" />
+                    </span>
+                                </Link>
+
+                                <a
+                                    @click.prevent="destroy(patientVisit.id)"
+                                    title="Delete"
                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
                                 >
                     <span class="svg-icon svg-icon-3">
                       <inline-svg
-                          src="media/icons/duotune/general/gen027.svg"
+                          src="/media/icons/duotune/general/gen027.svg"
                       />
                     </span>
-                                </Link>
+                                </a>
                             </td>
 
                         </tr>
                         </template>
                         </tbody>
                         <!--end::Table body-->
-
-
-
-
                     </table>
                </div>
         </div>
@@ -184,9 +184,31 @@
 
 <script lang="ts" setup>
 import AlertMessage from "@/Components/alerts/AlertMessage.vue";
+import Swal from "sweetalert2/dist/sweetalert2.min.js";
+import {router} from "@inertiajs/vue3";
 defineProps({
    patientVisits: { type:Object, required: true}
 });
+
+const destroy = (patientVisitID: number) => {
+    Swal.fire({
+        text: "Are you sure you want to delete this?",
+        icon: "warning",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Delete',
+        denyButtonText: 'No',
+        buttonsStyling: false,
+        customClass: {
+            confirmButton: "btn fw-bold btn-danger",
+            cancelButton: "btn fw-bold btn-secondary",
+        },
+    }).then(function (result) {
+      if(result.isConfirmed){
+          router.delete(route('registrations.destroy', patientVisitID));
+      }
+    });
+}
 </script>
 
 <style scoped>

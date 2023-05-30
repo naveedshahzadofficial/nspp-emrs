@@ -10,7 +10,7 @@
         <a href="#" class="text-gray-800 text-hover-primary d-flex flex-column">
           <!--begin::Image-->
           <div class="symbol symbol-75px mb-6">
-            <img src="media/svg/files/folder-document.svg" alt="" />
+            <img src="/media/svg/files/folder-document.svg" alt="" />
           </div>
           <!--end::Image-->
 

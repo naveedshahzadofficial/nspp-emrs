@@ -23,7 +23,7 @@
             data-bs-dismiss="modal"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="media/icons/duotune/arrows/arr061.svg" />
+              <inline-svg src="/media/icons/duotune/arrows/arr061.svg" />
             </span>
           </div>
           <!--end::Close-->
@@ -54,7 +54,7 @@
                 class="notice d-flex bg-light-warning rounded border-warning border border-dashed mb-10 p-6"
               >
                 <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
-                  <inline-svg src="media/icons/duotune/general/gen044.svg" />
+                  <inline-svg src="/media/icons/duotune/general/gen044.svg" />
                 </span>
                 <!--begin::Wrapper-->
                 <div class="d-flex flex-stack flex-grow-1">

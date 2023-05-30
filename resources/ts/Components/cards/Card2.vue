@@ -30,7 +30,7 @@
           data-kt-menu-flip="top-end"
         >
           <span class="svg-icon svg-icon-3 svg-icon-primary">
-            <inline-svg src="media/icons/duotune/general/gen024.svg" />
+            <inline-svg src="/media/icons/duotune/general/gen024.svg" />
           </span>
         </button>
 
@@ -52,7 +52,7 @@
       <!--begin::Stats-->
       <div class="d-flex align-items-center flex-wrap mb-5 mt-auto fs-6">
         <span :class="`svg-icon-${color}`" class="svg-icon svg-icon-3 me-1">
-          <inline-svg :src="`media/icons/duotune/Navigation/${arrow}.svg`" />
+          <inline-svg :src="`/media/icons/duotune/Navigation/${arrow}.svg`" />
         </span>
 
         <!--begin::Number-->

@@ -32,7 +32,7 @@
                 >6,840$</span
               >
               <span class="svg-icon svg-icon-1 svg-icon-success">
-                <inline-svg src="media/icons/duotune/arrows/arr066.svg" />
+                <inline-svg src="/media/icons/duotune/arrows/arr066.svg" />
               </span>
             </span>
             <span class="fs-6 fw-bold text-muted d-block lh-1 pt-2"
@@ -50,7 +50,7 @@
                 >16</span
               >%
               <span class="svg-icon svg-icon-1 svg-icon-danger">
-                <inline-svg src="media/icons/duotune/arrows/arr065.svg" />
+                <inline-svg src="/media/icons/duotune/arrows/arr065.svg" />
               </span>
             </span>
             <span class="fs-6 fw-bold text-muted d-block lh-1 pt-2"

@@ -950,20 +950,10 @@
   resolved "https://registry.npmjs.org/@colors/colors/-/colors-1.5.0.tgz"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@ctrl/tinycolor@^3.4.1":
-  version "3.6.0"
-  resolved "https://registry.npmjs.org/@ctrl/tinycolor/-/tinycolor-3.6.0.tgz"
-  integrity sha512-/Z3l6pXthq0JvMYdUFyX9j0MaCltlIn6mfh9jLyQwg5aPKxkyNa0PTHtU1AlFXLNk55ZuAeJRcpvq+tmLfKmaQ==
-
 "@discoveryjs/json-ext@0.5.7", "@discoveryjs/json-ext@^0.5.0":
   version "0.5.7"
   resolved "https://registry.npmjs.org/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
-
-"@element-plus/icons-vue@^2.0.6":
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/@element-plus/icons-vue/-/icons-vue-2.1.0.tgz"
-  integrity sha512-PSBn3elNoanENc1vnCfh+3WA9fimRC7n+fWkf3rE5jvv+aBohNHABC/KAR5KWPecxWxDTVT1ERpRbOMRcOV/vA==
 
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
@@ -979,18 +969,6 @@
     js-yaml "^3.13.1"
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
-
-"@floating-ui/core@^1.2.6":
-  version "1.2.6"
-  resolved "https://registry.npmjs.org/@floating-ui/core/-/core-1.2.6.tgz"
-  integrity sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==
-
-"@floating-ui/dom@^1.0.1":
-  version "1.2.8"
-  resolved "https://registry.npmjs.org/@floating-ui/dom/-/dom-1.2.8.tgz"
-  integrity sha512-XLwhYV90MxiHDq6S0rzFZj00fnDM+A1R9jhSioZoMsa7G0Q0i+Q4x40ajR8FHSdYDE1bgjG45mIWe6jtv9UPmg==
-  dependencies:
-    "@floating-ui/core" "^1.2.6"
 
 "@foliojs-fork/fontkit@^1.9.1":
   version "1.9.1"
@@ -1203,7 +1181,7 @@
   resolved "https://registry.npmjs.org/@polka/url/-/url-1.0.0-next.21.tgz"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
-"@popperjs/core@^2.11.7", "@popperjs/core@npm:@sxzz/popperjs-es@^2.11.7":
+"@popperjs/core@^2.11.7":
   version "2.11.7"
   resolved "https://registry.npmjs.org/@sxzz/popperjs-es/-/popperjs-es-2.11.7.tgz"
   integrity sha512-Ccy0NlLkzr0Ex2FKvh2X+OyERHXJ88XJ1MXtsI9y9fGexlaXaVTPzBCRBwIxFkORuOb+uBqeu+RqnpgYTEZRUQ==
@@ -1454,14 +1432,7 @@
   resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.11.tgz"
   integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
 
-"@types/lodash-es@^4.17.6":
-  version "4.17.7"
-  resolved "https://registry.npmjs.org/@types/lodash-es/-/lodash-es-4.17.7.tgz"
-  integrity sha512-z0ptr6UI10VlU6l5MYhGwS4mC8DZyYer2mCoyysZtSF7p26zOX8UpbrV0YpNYLGS8K4PUFIyEr62IMFFjveSiQ==
-  dependencies:
-    "@types/lodash" "*"
-
-"@types/lodash@*", "@types/lodash@^4.14.175", "@types/lodash@^4.14.182", "@types/lodash@^4.14.194":
+"@types/lodash@^4.14.175", "@types/lodash@^4.14.194":
   version "4.14.194"
   resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.194.tgz"
   integrity sha512-r22s9tAS7imvBt2lyHC9B8AGwWnXaYb1tY09oyLkXDs4vArpYJzw09nj8MLx5VfciBPGIb+ZwG0ssYnEPJxn/g==
@@ -1575,11 +1546,6 @@
   version "1.3.6"
   resolved "https://registry.npmjs.org/@types/svgo/-/svgo-1.3.6.tgz"
   integrity sha512-AZU7vQcy/4WFEuwnwsNsJnFwupIpbllH1++LXScN6uxT1Z4zPzdrWG97w4/I7eFKFTvfy/bHFStWjdBAg2Vjug==
-
-"@types/web-bluetooth@^0.0.16":
-  version "0.0.16"
-  resolved "https://registry.npmjs.org/@types/web-bluetooth/-/web-bluetooth-0.0.16.tgz"
-  integrity sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==
 
 "@types/ws@^8.5.1":
   version "8.5.4"
@@ -1866,28 +1832,6 @@
   version "1.5.0"
   resolved "https://registry.npmjs.org/@vueform/multiselect/-/multiselect-1.5.0.tgz"
   integrity sha512-2FB5bGo4LvlDyTd4jyH5+CngOcG4lY5CAQ39KjFeBKkLJ2Z5QZ6Vz4c4fDmRQ1qX+DUEzYhY48o6/8MA3P4WVA==
-
-"@vueuse/core@^9.1.0":
-  version "9.13.0"
-  resolved "https://registry.npmjs.org/@vueuse/core/-/core-9.13.0.tgz"
-  integrity sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==
-  dependencies:
-    "@types/web-bluetooth" "^0.0.16"
-    "@vueuse/metadata" "9.13.0"
-    "@vueuse/shared" "9.13.0"
-    vue-demi "*"
-
-"@vueuse/metadata@9.13.0":
-  version "9.13.0"
-  resolved "https://registry.npmjs.org/@vueuse/metadata/-/metadata-9.13.0.tgz"
-  integrity sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ==
-
-"@vueuse/shared@9.13.0":
-  version "9.13.0"
-  resolved "https://registry.npmjs.org/@vueuse/shared/-/shared-9.13.0.tgz"
-  integrity sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==
-  dependencies:
-    vue-demi "*"
 
 "@webassemblyjs/ast@1.11.6", "@webassemblyjs/ast@^1.11.5":
   version "1.11.6"
@@ -2280,11 +2224,6 @@ async-each-series@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/async-each-series/-/async-each-series-0.1.1.tgz#7617c1917401fd8ca4a28aadce3dbae98afeb432"
   integrity sha512-p4jj6Fws4Iy2m0iCmI2am2ZNZCgbdgE+P8F/8csmn2vx7ixXrO2zGcuNsD46X5uZSVecmkEy/M06X2vG8KD6dQ==
-
-async-validator@^4.2.5:
-  version "4.2.5"
-  resolved "https://registry.npmjs.org/async-validator/-/async-validator-4.2.5.tgz"
-  integrity sha512-7HhHjtERjqlNbZtqNqy2rckN/SpOOlmDliet+lP7k+eKZEjPk3DgyeU9lIXLdeLz0uBbbVp+9Qdow9wJWgwwfg==
 
 async@^2.6.0, async@^2.6.4:
   version "2.6.4"
@@ -3392,92 +3331,6 @@ dash-ast@^2.0.1:
   resolved "https://registry.npmjs.org/dash-ast/-/dash-ast-2.0.1.tgz"
   integrity sha512-5TXltWJGc+RdnabUGzhRae1TRq6m4gr+3K2wQX0is5/F2yS6MJXJvLyI3ErAnsAXuJoGqvfVD5icRgim07DrxQ==
 
-datatables.net-bs5@>=1.12.1, datatables.net-bs5@^1.13.4:
-  version "1.13.4"
-  resolved "https://registry.npmjs.org/datatables.net-bs5/-/datatables.net-bs5-1.13.4.tgz"
-  integrity sha512-+gtaiau4vJeuGvnsYWmQy9gqa5XQ15XmkdwpK5EjwYCMzZZEXMQ3wfu2FddBcX5tX9Ual8C+Tf1s2gmqLGNbKQ==
-  dependencies:
-    datatables.net ">=1.12.1"
-    jquery ">=1.7"
-
-datatables.net-buttons-bs5@^2.3.6:
-  version "2.3.6"
-  resolved "https://registry.npmjs.org/datatables.net-buttons-bs5/-/datatables.net-buttons-bs5-2.3.6.tgz"
-  integrity sha512-rAeK04RvvtfV9Wm893t7jsIcqT/ew1uwLus37uCg2CL2gcXZcb4qR7/mLcL1I80Rz5g+8LeO5ANPAWUnfzaUqg==
-  dependencies:
-    datatables.net-bs5 ">=1.12.1"
-    datatables.net-buttons ">=2.2.3"
-    jquery ">=1.7"
-
-datatables.net-buttons@>=2.2.3, datatables.net-buttons@^2.3.6:
-  version "2.3.6"
-  resolved "https://registry.npmjs.org/datatables.net-buttons/-/datatables.net-buttons-2.3.6.tgz"
-  integrity sha512-9eid5D2kbTNfGCOiEx5WBHlwfK38W1LMz0AiNZHoSqKAiO0aXGfzrH7L2eY6reHgVMaPvHPAnqeRAjvOul2V/Q==
-  dependencies:
-    datatables.net ">=1.12.1"
-    jquery ">=1.7"
-
-datatables.net-dt@>=1.12.1:
-  version "1.13.4"
-  resolved "https://registry.npmjs.org/datatables.net-dt/-/datatables.net-dt-1.13.4.tgz"
-  integrity sha512-QAvuEej/qKSiaSmSeDQ36wWO72XzFGKkd0jdiqbp+2FHAAzIk+ffsqQAwylystMoBSiO0zlcdaqHoAPa5Dy7Pg==
-  dependencies:
-    datatables.net ">=1.12.1"
-    jquery ">=1.7"
-
-datatables.net-responsive-bs5@^2.4.1:
-  version "2.4.1"
-  resolved "https://registry.npmjs.org/datatables.net-responsive-bs5/-/datatables.net-responsive-bs5-2.4.1.tgz"
-  integrity sha512-gtW0IjNMWCWQ+KHpIPcgXiQrq2Dhxz8yKql4sS2WfuYz+Z7645mk7xmqEhy4aqpWEGXdv4rcaZhr4tt49NLOpQ==
-  dependencies:
-    datatables.net-bs5 ">=1.12.1"
-    datatables.net-responsive ">=2.3.0"
-    jquery ">=1.7"
-
-datatables.net-responsive-dt@^2.4.0:
-  version "2.4.1"
-  resolved "https://registry.npmjs.org/datatables.net-responsive-dt/-/datatables.net-responsive-dt-2.4.1.tgz"
-  integrity sha512-RukGH2DBFtuQKJgN7GVK6Brhue1zuJRdDVLZiwxhZmSXd2zpr+x6n7tH5vqDfYD75GCy4ZEULcDFnWpRWSyZIA==
-  dependencies:
-    datatables.net-dt ">=1.12.1"
-    datatables.net-responsive ">=2.3.0"
-    jquery ">=1.7"
-
-datatables.net-responsive@>=2.3.0:
-  version "2.4.1"
-  resolved "https://registry.npmjs.org/datatables.net-responsive/-/datatables.net-responsive-2.4.1.tgz"
-  integrity sha512-6aGZybNb65lRPtd+hPHRyaBgs7D3R2Hw+RQP7he3qH5BTpMH9BG4FxVvyAud0Q4gyopO9I52uf60p2GT++4qOA==
-  dependencies:
-    datatables.net ">=1.12.1"
-    jquery ">=1.7"
-
-datatables.net-select@^1.6.2:
-  version "1.6.2"
-  resolved "https://registry.npmjs.org/datatables.net-select/-/datatables.net-select-1.6.2.tgz"
-  integrity sha512-mGkWFGEN8vLJGp9POHA+CHDBIcWGOpos6mtuZ/S3hKF+niTZivqRuXybd79iDG8OHw3yRbafBIsHtcXcZxoG/g==
-  dependencies:
-    datatables.net ">=1.12.1"
-    jquery ">=1.7"
-
-datatables.net-vue3@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/datatables.net-vue3/-/datatables.net-vue3-2.1.0.tgz"
-  integrity sha512-1SUyco6ZaA41egobTVmD0BtcnMeBn1LlqfBksGO2WCo9m9dMt+i2Yo8jy25Z1YBjbW/ACXt5i+Q9cfJY1Nh0Uw==
-  dependencies:
-    datatables.net-responsive-dt "^2.4.0"
-
-datatables.net@>=1.12.1, datatables.net@^1.13.4:
-  version "1.13.4"
-  resolved "https://registry.npmjs.org/datatables.net/-/datatables.net-1.13.4.tgz"
-  integrity sha512-yzhArTOB6tPO2QFKm1z3hA4vabtt2hRvgw8XLsT1xqEirinfGYqWDiWXlkTPTaJv2e7gG+Kf985sXkzBFlGrGQ==
-  dependencies:
-    jquery ">=1.7"
-
-dayjs@^1.11.3:
-  version "1.11.7"
-  resolved "https://registry.npmjs.org/dayjs/-/dayjs-1.11.7.tgz"
-  integrity sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==
-
 de-indent@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/de-indent/-/de-indent-1.0.2.tgz"
@@ -3773,27 +3626,6 @@ electron-to-chromium@^1.4.284:
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.405.tgz"
   integrity sha512-JdDgnwU69FMZURoesf9gNOej2Cms1XJFfLk24y1IBtnAdhTcJY/mXnokmpmxHN59PcykBP4bgUU98vLY44Lhuw==
 
-element-plus@^2.3.5:
-  version "2.3.5"
-  resolved "https://registry.npmjs.org/element-plus/-/element-plus-2.3.5.tgz"
-  integrity sha512-g27DHm2C5/tPwte9H6Juu+JOdzT9z1ALHTIvia6MwnBdCrI4kd77o6KcYdodU15/tYiPBoCEmobhl/7GUDb+1Q==
-  dependencies:
-    "@ctrl/tinycolor" "^3.4.1"
-    "@element-plus/icons-vue" "^2.0.6"
-    "@floating-ui/dom" "^1.0.1"
-    "@popperjs/core" "npm:@sxzz/popperjs-es@^2.11.7"
-    "@types/lodash" "^4.14.182"
-    "@types/lodash-es" "^4.17.6"
-    "@vueuse/core" "^9.1.0"
-    async-validator "^4.2.5"
-    dayjs "^1.11.3"
-    escape-html "^1.0.3"
-    lodash "^4.17.21"
-    lodash-es "^4.17.21"
-    lodash-unified "^1.0.2"
-    memoize-one "^6.0.0"
-    normalize-wheel-es "^1.2.0"
-
 elliptic@^6.5.3:
   version "6.5.4"
   resolved "https://registry.npmjs.org/elliptic/-/elliptic-6.5.4.tgz"
@@ -3960,7 +3792,7 @@ escalade@^3.1.1:
   resolved "https://registry.npmjs.org/escalade/-/escalade-3.1.1.tgz"
   integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
 
-escape-html@^1.0.3, escape-html@~1.0.3:
+escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.npmjs.org/escape-html/-/escape-html-1.0.3.tgz"
   integrity sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==
@@ -5225,11 +5057,6 @@ joi@^17.4.0:
     "@sideway/formula" "^3.0.1"
     "@sideway/pinpoint" "^2.0.0"
 
-jquery@>=1.7:
-  version "3.7.0"
-  resolved "https://registry.npmjs.org/jquery/-/jquery-3.7.0.tgz"
-  integrity sha512-umpJ0/k8X0MvD1ds0P9SfowREz2LenHsQaxSohMZ5OMNEU2r0tf8pdeEFTHMFxWVxKNyU9rTtK3CWzUCTKJUeQ==
-
 js-message@1.0.7:
   version "1.0.7"
   resolved "https://registry.npmjs.org/js-message/-/js-message-1.0.7.tgz"
@@ -5510,11 +5337,6 @@ lodash-es@^4.17.21:
   resolved "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz"
   integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
 
-lodash-unified@^1.0.2:
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/lodash-unified/-/lodash-unified-1.0.3.tgz"
-  integrity sha512-WK9qSozxXOD7ZJQlpSqOT+om2ZfcT4yO+03FuzAHD0wF6S0l0090LRPDx3vhTTLZ8cFKpBn+IOcVXK6qOcIlfQ==
-
 lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.npmjs.org/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz"
@@ -5671,11 +5493,6 @@ memfs@^3.4.3:
   integrity sha512-UWbFJKvj5k+nETdteFndTpYxdeTMox/ULeqX5k/dpaQJCCFmj5EeKv3dBcyO2xmkRAx2vppRu5dVG7SOtsGOzA==
   dependencies:
     fs-monkey "^1.0.3"
-
-memoize-one@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.npmjs.org/memoize-one/-/memoize-one-6.0.0.tgz"
-  integrity sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==
 
 merge-descriptors@1.0.1:
   version "1.0.1"
@@ -6017,11 +5834,6 @@ normalize-url@^6.0.1:
   version "6.1.0"
   resolved "https://registry.npmjs.org/normalize-url/-/normalize-url-6.1.0.tgz"
   integrity sha512-DlL+XwOy3NxAQ8xuC0okPgK46iuVNAK01YN7RueYBqqFeGsBjV9XmCAzAdgt+667bCl5kPh9EqKKDwnaPG1I7A==
-
-normalize-wheel-es@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/normalize-wheel-es/-/normalize-wheel-es-1.2.0.tgz"
-  integrity sha512-Wj7+EJQ8mSuXr2iWfnujrimU35R2W4FAErEyTmJoJ7ucwTn2hOUSsRehMb5RSYkxXGTM7Y9QpvPmp++w5ftoJw==
 
 nouislider@^14.6.3:
   version "14.7.0"
@@ -8305,11 +8117,6 @@ vue-axios@^3.3.7:
   resolved "https://registry.npmjs.org/vue-axios/-/vue-axios-3.5.2.tgz"
   integrity sha512-GP+dct7UlAWkl1qoP3ppw0z6jcSua5/IrMpjB5O8bh089iIiJ+hdxPYH2NPEpajlYgkW5EVMP95ttXWdas1O0g==
 
-vue-demi@*:
-  version "0.14.5"
-  resolved "https://registry.npmjs.org/vue-demi/-/vue-demi-0.14.5.tgz"
-  integrity sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==
-
 vue-eslint-parser@^8.0.1:
   version "8.3.0"
   resolved "https://registry.npmjs.org/vue-eslint-parser/-/vue-eslint-parser-8.3.0.tgz"
@@ -8360,6 +8167,11 @@ vue-loader@^17.0.0:
     chalk "^4.1.0"
     hash-sum "^2.0.0"
     watchpack "^2.4.0"
+
+vue-select@^4.0.0-beta.6:
+  version "4.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/vue-select/-/vue-select-4.0.0-beta.6.tgz#7c250cb7c01280b54a311cb446629801b3c8df98"
+  integrity sha512-K+zrNBSpwMPhAxYLTCl56gaMrWZGgayoWCLqe5rWwkB8aUbAUh7u6sXjIR7v4ckp2WKC7zEEUY27g6h1MRsIHw==
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.3:
   version "4.1.3"

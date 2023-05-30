@@ -18,12 +18,12 @@ class CreatePatientVisitsTable extends Migration
             $table->foreignId('patient_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->unsignedBigInteger('token_no');
-            $table->unsignedInteger('temperature')->nullable();
+            $table->unsignedFloat('temperature', 4, 1)->nullable();
             $table->unsignedInteger('bp_systolic')->nullable();
             $table->unsignedInteger('bp_diastolic')->nullable();
             $table->unsignedInteger('pulse')->nullable();
             $table->unsignedInteger('sugar')->nullable();
-            $table->unsignedInteger('weight')->nullable();
+            $table->float('weight', 4, 1)->nullable();
             $table->string('height')->nullable();
             $table->text('notes')->nullable();
             $table->softDeletes();

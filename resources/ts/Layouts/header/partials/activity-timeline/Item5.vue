@@ -9,7 +9,7 @@
     <div class="timeline-icon symbol symbol-circle symbol-40px">
       <div class="symbol-label bg-light">
         <span class="svg-icon svg-icon-2 svg-icon-gray-500">
-          <inline-svg src="media/icons/duotune/art/art005.svg" />
+          <inline-svg src="/media/icons/duotune/art/art005.svg" />
         </span>
       </div>
     </div>
@@ -39,7 +39,7 @@
             data-bs-placement="top"
             title="Marcus Dotson"
           >
-            <img src="media/avatars/300-2.jpg" alt="img" />
+            <img src="/media/avatars/300-2.jpg" alt="img" />
           </div>
           <!--end::User-->
         </div>
@@ -59,7 +59,7 @@
               <img
                 alt="img"
                 class="rounded w-200px"
-                src="media/demos/demo1.png"
+                src="/media/demos/demo1.png"
               />
             </div>
             <!--end::Image-->
@@ -79,7 +79,7 @@
               <img
                 alt="img"
                 class="rounded w-200px"
-                src="media/demos/demo2.png"
+                src="/media/demos/demo2.png"
               />
             </div>
             <!--end::Image-->
@@ -99,7 +99,7 @@
               <img
                 alt="img"
                 class="rounded w-200px"
-                src="media/demos/demo3.png"
+                src="/media/demos/demo3.png"
               />
             </div>
             <!--end::Image-->

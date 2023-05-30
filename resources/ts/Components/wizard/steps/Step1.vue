@@ -42,7 +42,7 @@
             for="kt_create_account_form_account_type_personal"
           >
             <span class="svg-icon svg-icon-3x me-5">
-              <inline-svg src="media/icons/duotune/communication/com005.svg" />
+              <inline-svg src="/media/icons/duotune/communication/com005.svg" />
             </span>
 
             <!--begin::Info-->
@@ -75,7 +75,7 @@
             for="kt_create_account_form_account_type_corporate"
           >
             <span class="svg-icon svg-icon-3x me-5">
-              <inline-svg src="media/icons/duotune/finance/fin006.svg" />
+              <inline-svg src="/media/icons/duotune/finance/fin006.svg" />
             </span>
 
             <!--begin::Info-->

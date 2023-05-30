@@ -8,7 +8,7 @@
       <div class="card-toolbar">
         <button class="btn btn-flex btn-primary" @click="newEvent()">
           <span class="svg-icon svg-icon-2">
-            <inline-svg src="media/icons/duotune/arrows/arr075.svg" />
+            <inline-svg src="/media/icons/duotune/arrows/arr075.svg" />
           </span>
           Add Event
         </button>

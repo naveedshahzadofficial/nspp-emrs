@@ -12,7 +12,7 @@
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
-          <img src="media/avatars/300-6.jpg" alt="" />
+          <img src="/media/avatars/300-6.jpg" alt="" />
         </div>
         <!--end::Symbol-->
         <!--begin::Title-->
@@ -30,7 +30,7 @@
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
-          <img src="media/avatars/300-2.jpg" alt="" />
+          <img src="/media/avatars/300-2.jpg" alt="" />
         </div>
         <!--end::Symbol-->
         <!--begin::Title-->
@@ -48,7 +48,7 @@
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
-          <img src="media/avatars/300-9.jpg" alt="" />
+          <img src="/media/avatars/300-9.jpg" alt="" />
         </div>
         <!--end::Symbol-->
         <!--begin::Title-->
@@ -66,7 +66,7 @@
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
-          <img src="media/avatars/300-14.jpg" alt="" />
+          <img src="/media/avatars/300-14.jpg" alt="" />
         </div>
         <!--end::Symbol-->
         <!--begin::Title-->
@@ -84,7 +84,7 @@
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
-          <img src="media/avatars/300-11.jpg" alt="" />
+          <img src="/media/avatars/300-11.jpg" alt="" />
         </div>
         <!--end::Symbol-->
         <!--begin::Title-->
@@ -108,7 +108,7 @@
           <span class="symbol-label bg-light">
             <img
               class="w-20px h-20px"
-              src="media/svg/brand-logos/volicity-9.svg"
+              src="/media/svg/brand-logos/volicity-9.svg"
               alt=""
             />
           </span>
@@ -132,7 +132,7 @@
           <span class="symbol-label bg-light">
             <img
               class="w-20px h-20px"
-              src="media/svg/brand-logos/tvit.svg"
+              src="/media/svg/brand-logos/tvit.svg"
               alt=""
             />
           </span>
@@ -156,7 +156,7 @@
           <span class="symbol-label bg-light">
             <img
               class="w-20px h-20px"
-              src="media/svg/misc/infography.svg"
+              src="/media/svg/misc/infography.svg"
               alt=""
             />
           </span>
@@ -180,7 +180,7 @@
           <span class="symbol-label bg-light">
             <img
               class="w-20px h-20px"
-              src="media/svg/brand-logos/leaf.svg"
+              src="/media/svg/brand-logos/leaf.svg"
               alt=""
             />
           </span>
@@ -204,7 +204,7 @@
           <span class="symbol-label bg-light">
             <img
               class="w-20px h-20px"
-              src="media/svg/brand-logos/tower.svg"
+              src="/media/svg/brand-logos/tower.svg"
               alt=""
             />
           </span>
@@ -230,7 +230,7 @@
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <span class="svg-icon svg-icon-2 svg-icon-primary">
-              <inline-svg src="media/icons/duotune/general/gen005.svg" />
+              <inline-svg src="/media/icons/duotune/general/gen005.svg" />
             </span>
           </span>
         </div>
@@ -252,7 +252,7 @@
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <span class="svg-icon svg-icon-2 svg-icon-primary">
-              <inline-svg src="media/icons/duotune/general/gen032.svg" />
+              <inline-svg src="/media/icons/duotune/general/gen032.svg" />
             </span>
           </span>
         </div>
@@ -274,7 +274,7 @@
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <span class="svg-icon svg-icon-2 svg-icon-primary">
-              <inline-svg src="media/icons/duotune/communication/com012.svg" />
+              <inline-svg src="/media/icons/duotune/communication/com012.svg" />
             </span>
           </span>
         </div>
@@ -296,7 +296,7 @@
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <span class="svg-icon svg-icon-2 svg-icon-primary">
-              <inline-svg src="media/icons/duotune/communication/com006.svg" />
+              <inline-svg src="/media/icons/duotune/communication/com006.svg" />
             </span>
           </span>
         </div>

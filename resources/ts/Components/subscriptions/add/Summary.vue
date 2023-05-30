@@ -95,7 +95,7 @@
           <div class="fw-bold text-gray-600 d-flex align-items-center">
             Mastercard
             <img
-              src="media/svg/card-logos/mastercard.svg"
+              src="/media/svg/card-logos/mastercard.svg"
               class="w-35px ms-2"
               alt=""
             />

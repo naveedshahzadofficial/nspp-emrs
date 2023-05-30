@@ -15,7 +15,7 @@
         <div class="d-flex align-items-center" id="kt_header_search_toggle">
           <div class="btn btn-icon btn-active-light-primary">
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="media/icons/duotune/general/gen021.svg" />
+              <inline-svg src="/media/icons/duotune/general/gen021.svg" />
             </span>
           </div>
         </div>
@@ -38,7 +38,7 @@
             <span
               class="svg-icon svg-icon-2 svg-icon-lg-1 svg-icon-gray-500 position-absolute top-50 translate-middle-y ms-0"
             >
-              <inline-svg src="media/icons/duotune/general/gen021.svg" />
+              <inline-svg src="/media/icons/duotune/general/gen021.svg" />
             </span>
             <!--end::Icon-->
 
@@ -72,7 +72,7 @@
               class="btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0"
             >
               <span class="svg-icon svg-icon-2 svg-icon-lg-1 me-0">
-                <inline-svg src="media/icons/duotune/arrows/arr061.svg" />
+                <inline-svg src="/media/icons/duotune/arrows/arr061.svg" />
               </span>
             </span>
             <!--end::Reset-->
@@ -88,7 +88,7 @@
                 title="Show search preferences"
               >
                 <span class="svg-icon svg-icon-1">
-                  <inline-svg src="media/icons/duotune/coding/cod001.svg" />
+                  <inline-svg src="/media/icons/duotune/coding/cod001.svg" />
                 </span>
               </div>
               <!--end::Preferences toggle-->
@@ -102,7 +102,7 @@
                 title="Show more search options"
               >
                 <span class="svg-icon svg-icon-2">
-                  <inline-svg src="media/icons/duotune/arrows/arr072.svg" />
+                  <inline-svg src="/media/icons/duotune/arrows/arr072.svg" />
                 </span>
               </div>
               <!--end::Advanced search toggle-->

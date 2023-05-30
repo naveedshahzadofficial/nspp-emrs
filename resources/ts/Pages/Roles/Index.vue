@@ -48,7 +48,7 @@
                     class="btn btn-primary"
                 >
             <span class="svg-icon svg-icon-2">
-              <inline-svg src="media/icons/duotune/arrows/arr075.svg" />
+              <inline-svg src="/media/icons/duotune/arrows/arr075.svg" />
             </span>
                     Add Role
                 </button>
@@ -63,9 +63,9 @@
     <div class="card-body pt-0 position-relative">
 
         <!--begin::Search-->
-        <div class="d-flex align-items-center position-relative my-2">
+        <div class="d-flex align-items-center position-relative my-6">
           <span class="svg-icon svg-icon-1 position-absolute ms-6">
-               <inline-svg src="media/icons/duotune/general/gen021.svg" />
+               <inline-svg src="/media/icons/duotune/general/gen021.svg" />
           </span>
             <input
                 type="text"
@@ -77,33 +77,61 @@
 
         <div class="table-responsive ">
 
-            <DataTable class="table table-striped table-row-bordered gy-5 gs-7" :data="roles" :columns="columns"
-
-            :options="{
-                responsive:true,
-                lengthChange: false,
-                language: {
-                infoFiltered: '',
-                },
-                processing: true,
-                pageLength: 30,
-                serverSide: false,
-                autoWidth:false,
-                lengthMenu: [
-                [10, 20, 30, 50, 100, -1],
-                ['10', '20', '30', '50', '100', 'All']
-                ],
-                dom:'Blrtip',
-                buttons: buttons
-                }">
+            <table
+                class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4"
+            >
+                <!--begin::Table head-->
                 <thead>
-                <tr>
-                    <th>Role Name</th>
-                    <th>Created Date</th>
-                    <th>Actions</th>
+                <tr class="fw-bold">
+                    <th class="p-0">Role Name</th>
+                    <th class="p-0  text-center">Created</th>
+                    <th class="p-0 min-w-100px text-end">Action</th>
                 </tr>
                 </thead>
-            </DataTable>
+                <tbody>
+                <template v-for="role in roles" :key="role.id">
+                    <tr>
+                        <td class="fw-semibold">{{ role.name }}</td>
+                        <td class="text-center">{{ role.created_at }}</td>
+                        <td class="text-end">
+                            <Link
+                                :href="route('roles.show', role.id)"
+                                title="Proceed"
+                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                            >
+                    <span class="svg-icon svg-icon-3">
+                      <inline-svg
+                          src="/media/icons/duotune/general/gen019.svg"
+                      />
+                    </span>
+                            </Link>
+
+                            <Link
+                                :href="route('roles.edit', role.id)"
+                                title="Edit"
+                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                            >
+                    <span class="svg-icon svg-icon-3">
+                      <inline-svg src="/media/icons/duotune/art/art005.svg" />
+                    </span>
+                            </Link>
+
+                            <a
+                                @click.prevent="destroy(role.id)"
+                                title="Delete"
+                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+                            >
+                    <span class="svg-icon svg-icon-3">
+                      <inline-svg
+                          src="/media/icons/duotune/general/gen027.svg"
+                      />
+                    </span>
+                            </a>
+                        </td>
+                    </tr>
+                </template>
+                </tbody>
+            </table>
         </div>
     </div>
     </div>
@@ -113,112 +141,15 @@
 
 <script lang="ts" setup>
 import { router } from '@inertiajs/vue3'
-import DataTable from 'datatables.net-vue3'
-import Select from 'datatables.net-select';
-import DataTablesCore from 'datatables.net-bs5';
-import Buttons from 'datatables.net-buttons-bs5';
-import ButtonsHtml5 from 'datatables.net-buttons/js/buttons.html5';
-import print from 'datatables.net-buttons/js/buttons.print';
-import pdfmake from 'pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
-(pdfmake as any).vfs = pdfFonts.pdfMake.vfs;
-
-import 'datatables.net-buttons-bs5';
-DataTable.use(Select);
-DataTable.use(Buttons);
-DataTable.use(print);
-DataTable.use(DataTablesCore);
-DataTable.use(pdfmake);
-DataTable.use(ButtonsHtml5);
+import Swal from "sweetalert2/dist/sweetalert2.min.js";
 
 import { setCurrentPageBreadcrumbs } from "@/core/helpers/breadcrumb";
-import {onMounted, ref} from "vue";
+import {onMounted} from "vue";
 const props = defineProps({
     roles: { type: Array, required: true },
 });
 
-const columns = [
-    { name:'Role Name', data: 'name' },
-    { name:'Created Date', data: 'created_at' },
-    { name:'Actions', data: 'id', orderable: false, searchable: false, class: 'text-center not-exported', render: function(data,type,row,meta){
-           `'<a href="roles/3/edit" class="btn btn-icon btn-outline-success btn-circle btn-sm mr-2" title="Update">
-            <i class="flaticon2-edit"></i>
-                </a>'<a
-            href='roles'
-            class='btn btn-icon  btn-outline-danger btn-circle btn-sm mr-2' title='Delete'>
-            <i class=' icon-xl fas fa-toggle-off'></i>
-                </a>"`;
-    } },
-];
-
-const buttons= [
-        {
-            extend: 'print',
-            text: '<i class="fa fa-print"></i>',
-            titleAttr: 'Print',
-            charset: "utf-8",
-            bom: "true",
-            className: 'btn btn-xs',
-            exportOptions: {
-                columns: ':visible:not(.not-exported)',
-                modifier: {
-                    search: 'applied',
-                    order: 'applied',
-                    page: 'all'
-                }
-            }
-        },
-        {
-            extend: 'csvHtml5',
-            text: '<i class="fa fa-file-csv"></i>',
-            titleAttr: 'CSV',
-            charset: "utf-8",
-            "bom": "true",
-            className: 'btn btn-xs',
-            exportOptions: {
-                columns: ':visible:not(.not-exported)',
-                modifier: {
-                    search: 'applied',
-                    order: 'applied',
-                    page: 'all'
-                }
-            }
-
-        },
-        {
-            extend: 'excelHtml5',
-            text: '<i class="fa fa-file-excel"></i>',
-            titleAttr: 'Excel',
-            charset: "utf-8",
-            "bom": "true",
-            className: 'btn btn-xs',
-            exportOptions: {
-                columns: ':visible:not(.not-exported)',
-                modifier: {
-                    search: 'applied',
-                    order: 'applied',
-                    page: 'all'
-                }
-            }
-        },
-        {
-            extend: 'pdfHtml5',
-            text: '<i class="fa fa-file-pdf"></i>',
-            titleAttr: 'PDF',
-            charset: "utf-8",
-            "bom": "true",
-            className: 'btn btn-xs',
-            exportOptions: {
-                columns: ':visible:not(.not-exported)',
-                modifier: {
-                    search: 'applied',
-                    order: 'applied',
-                    page: 'all'
-                }
-            }
-        }
-    ];
-    onMounted(() => {
+onMounted(() => {
    //setCurrentPageTitle("Roles");
     setCurrentPageBreadcrumbs("Roles", ["System Settings"]);
 })
@@ -226,6 +157,26 @@ const buttons= [
 const getRoles = () => {
     router.get(route('roles.index'),{},{
         preserveState: true
+    });
+}
+
+const destroy = (RoleId: number) => {
+    Swal.fire({
+        text: "Are you sure you want to delete this?",
+        icon: "warning",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Delete',
+        denyButtonText: 'No',
+        buttonsStyling: false,
+        customClass: {
+            confirmButton: "btn fw-bold btn-danger",
+            cancelButton: "btn fw-bold btn-secondary",
+        },
+    }).then(function (result) {
+        if(result.isConfirmed){
+            router.delete(route('roles.destroy', RoleId));
+        }
     });
 }
 

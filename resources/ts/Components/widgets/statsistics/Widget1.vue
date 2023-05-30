@@ -2,7 +2,7 @@
   <!--begin::Statistics Widget 1-->
   <div
     :class="widgetClasses"
-    :style="`background-image: url('media/svg/shapes/${background}')`"
+    :style="`background-image: url('/media/svg/shapes/${background}')`"
     class="card bgi-no-repeat"
     style="background-position: right top; background-size: 30% auto"
   >

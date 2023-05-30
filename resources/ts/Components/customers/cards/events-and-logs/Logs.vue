@@ -14,7 +14,7 @@
         <!--begin::Button-->
         <button type="button" class="btn btn-sm btn-light-primary">
           <span class="svg-icon svg-icon-3">
-            <inline-svg src="media/icons/duotune/files/fil021.svg" />
+            <inline-svg src="/media/icons/duotune/files/fil021.svg" />
           </span>
           Download Report
         </button>

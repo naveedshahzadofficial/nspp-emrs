@@ -19,7 +19,7 @@
           data-kt-menu-flip="top-end"
         >
           <span class="svg-icon svg-icon-2">
-            <inline-svg src="media/icons/duotune/general/gen024.svg" />
+            <inline-svg src="/media/icons/duotune/general/gen024.svg" />
           </span>
         </button>
         <Dropdown1></Dropdown1>
@@ -44,7 +44,7 @@
             <div class="d-flex align-items-center">
               <div class="fs-4 fw-bolder">$650</div>
               <span class="svg-icon svg-icon-5 svg-icon-success ms-1">
-                <inline-svg src="media/icons/duotune/arrows/arr066.svg" />
+                <inline-svg src="/media/icons/duotune/arrows/arr066.svg" />
               </span>
             </div>
             <!--end::Stat-->
@@ -89,7 +89,7 @@
             <div class="d-flex align-items-center">
               <div class="fs-4 fw-bolder">$1,480,00</div>
               <span class="svg-icon svg-icon-5 svg-icon-danger ms-1">
-                <inline-svg src="media/icons/duotune/arrows/arr065.svg" />
+                <inline-svg src="/media/icons/duotune/arrows/arr065.svg" />
               </span>
             </div>
             <!--end::Stat-->

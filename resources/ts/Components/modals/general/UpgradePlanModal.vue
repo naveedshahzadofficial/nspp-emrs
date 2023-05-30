@@ -18,7 +18,7 @@
             data-bs-dismiss="modal"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="media/icons/duotune/arrows/arr061.svg" />
+              <inline-svg src="/media/icons/duotune/arrows/arr061.svg" />
             </span>
           </div>
           <!--end::Close-->
@@ -198,7 +198,7 @@
                                 class="svg-icon svg-icon-1 svg-icon-success"
                               >
                                 <inline-svg
-                                  src="media/icons/duotune/general/gen043.svg"
+                                  src="/media/icons/duotune/general/gen043.svg"
                                 />
                               </span>
                             </template>
@@ -210,7 +210,7 @@
                               </span>
                               <span class="svg-icon svg-icon-1">
                                 <inline-svg
-                                  src="media/icons/duotune/general/gen040.svg"
+                                  src="/media/icons/duotune/general/gen040.svg"
                                 />
                               </span>
                             </template>

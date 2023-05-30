@@ -78,15 +78,8 @@
     },
     "dependencies": {
         "core-js": "^3.30.2",
-        "datatables.net": "^1.13.4",
-        "datatables.net-bs5": "^1.13.4",
-        "datatables.net-buttons": "^2.3.6",
-        "datatables.net-buttons-bs5": "^2.3.6",
-        "datatables.net-responsive-bs5": "^2.4.1",
-        "datatables.net-select": "^1.6.2",
-        "datatables.net-vue3": "^2.1.0",
-        "element-plus": "^2.3.5",
         "jszip": "^3.10.1",
-        "pdfmake": "^0.2.7"
+        "pdfmake": "^0.2.7",
+        "vue-select": "^4.0.0-beta.6"
     }
 }

@@ -1,6 +1,7 @@
 const mix = require('laravel-mix');
 
 const webpackConfig = require('./webpack.config');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -16,9 +17,6 @@ mix.ts('resources/ts/app.ts', 'public/js')
     .extract()
     .vue({ version: 3 })
     .sass('resources/sass/app.scss', 'public/css')
-    .browserSync({
-        proxy: 'nspp-emrs.test'
-    })
     .webpackConfig(webpackConfig);
 
 if (mix.inProduction()) {

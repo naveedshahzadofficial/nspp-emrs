@@ -23,7 +23,7 @@
             data-bs-dismiss="modal"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="media/icons/duotune/arrows/arr061.svg" />
+              <inline-svg src="/media/icons/duotune/arrows/arr061.svg" />
             </span>
           </div>
           <!--end::Close-->
@@ -127,7 +127,7 @@
                         >
                           <span class="svg-icon svg-icon-3x me-5">
                             <inline-svg
-                              src="media/icons/duotune/communication/com005.svg"
+                              src="/media/icons/duotune/communication/com005.svg"
                             />
                           </span>
 
@@ -163,7 +163,7 @@
                         >
                           <span class="svg-icon svg-icon-3x me-5">
                             <inline-svg
-                              src="media/icons/duotune/finance/fin006.svg"
+                              src="/media/icons/duotune/finance/fin006.svg"
                             />
                           </span>
 
@@ -368,7 +368,7 @@
                                 class="svg-icon svg-icon-1 svg-icon-gray-600"
                               >
                                 <inline-svg
-                                  src="media/icons/duotune/finance/fin001.svg"
+                                  src="/media/icons/duotune/finance/fin001.svg"
                                 />
                               </span>
                             </span>
@@ -416,7 +416,7 @@
                                 class="svg-icon svg-icon-1 svg-icon-gray-600"
                               >
                                 <inline-svg
-                                  src="media/icons/duotune/graphs/gra006.svg"
+                                  src="/media/icons/duotune/graphs/gra006.svg"
                                 />
                               </span>
                             </span>
@@ -465,7 +465,7 @@
                                 class="svg-icon svg-icon-1 svg-icon-gray-600"
                               >
                                 <inline-svg
-                                  src="media/icons/duotune/graphs/gra008.svg"
+                                  src="/media/icons/duotune/graphs/gra008.svg"
                                 />
                               </span>
                             </span>
@@ -774,17 +774,17 @@
                         class="position-absolute translate-middle-y top-50 end-0 me-5"
                       >
                         <img
-                          src="media/svg/card-logos/visa.svg"
+                          src="/media/svg/card-logos/visa.svg"
                           alt=""
                           class="h-25px"
                         />
                         <img
-                          src="media/svg/card-logos/mastercard.svg"
+                          src="/media/svg/card-logos/mastercard.svg"
                           alt=""
                           class="h-25px"
                         />
                         <img
-                          src="media/svg/card-logos/american-express.svg"
+                          src="/media/svg/card-logos/american-express.svg"
                           alt=""
                           class="h-25px"
                         />
@@ -896,7 +896,7 @@
                         >
                           <span class="svg-icon svg-icon-2hx">
                             <inline-svg
-                              src="media/icons/duotune/finance/fin002.svg"
+                              src="/media/icons/duotune/finance/fin002.svg"
                             />
                           </span>
                         </div>
@@ -987,7 +987,7 @@
                       <!--begin::Icon-->
                       <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
                         <inline-svg
-                          src="media/icons/duotune/general/gen044.svg"
+                          src="/media/icons/duotune/general/gen044.svg"
                         />
                       </span>
                       <!--end::Icon-->
@@ -1028,7 +1028,7 @@
                     @click="previousStep()"
                   >
                     <span class="svg-icon svg-icon-3 me-1">
-                      <inline-svg src="media/icons/duotune/arrows/arr063.svg" />
+                      <inline-svg src="/media/icons/duotune/arrows/arr063.svg" />
                     </span>
                     Back
                   </button>
@@ -1047,7 +1047,7 @@
                       Submit
                       <span class="svg-icon svg-icon-3 ms-2 me-0">
                         <inline-svg
-                          src="media/icons/duotune/arrows/arr064.svg"
+                          src="/media/icons/duotune/arrows/arr064.svg"
                         />
                       </span>
                     </span>
@@ -1062,7 +1062,7 @@
                   <button type="submit" class="btn btn-lg btn-primary" v-else>
                     Continue
                     <span class="svg-icon svg-icon-3 ms-1 me-0">
-                      <inline-svg src="media/icons/duotune/arrows/arr064.svg" />
+                      <inline-svg src="/media/icons/duotune/arrows/arr064.svg" />
                     </span>
                   </button>
                 </div>

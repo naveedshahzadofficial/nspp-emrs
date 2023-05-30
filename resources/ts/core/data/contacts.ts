@@ -6,21 +6,21 @@ const contacts = [
     color: "danger",
   },
   {
-    image: "media/avatars/300-1.jpg",
+    image: "/media/avatars/300-1.jpg",
     name: "Max Smith",
     email: "max@kt.com",
     time: "5 hrs",
     color: "danger",
   },
   {
-    image: "media/avatars/300-5.jpg",
+    image: "/media/avatars/300-5.jpg",
     name: "Sean Bean",
     email: "sean@dellito.com",
     time: "20 hrs",
     color: "danger",
   },
   {
-    image: "media/avatars/300-25.jpg",
+    image: "/media/avatars/300-25.jpg",
     name: "Brian Cox",
     email: "brian@exchange.com",
     time: "2 weeks",
@@ -35,7 +35,7 @@ const contacts = [
     color: "warning",
   },
   {
-    image: "media/avatars/300-9.jpg",
+    image: "/media/avatars/300-9.jpg",
     name: "Francis Mitcham",
     email: "f.mitcham@kpmg.com.au",
     time: "20 hrs",
@@ -55,7 +55,7 @@ const contacts = [
     color: "primary",
   },
   {
-    image: "media/avatars/300-23.jpg",
+    image: "/media/avatars/300-23.jpg",
     name: "Dan Wilson",
     email: "dam@consilting.com",
     time: "3 hrs",

@@ -15,7 +15,7 @@
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <span class="svg-icon svg-icon-2 svg-icon-primary">
-              <inline-svg src="media/icons/duotune/electronics/elc004.svg" />
+              <inline-svg src="/media/icons/duotune/electronics/elc004.svg" />
             </span>
           </span>
         </div>
@@ -36,7 +36,7 @@
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <span class="svg-icon svg-icon-2 svg-icon-primary">
-              <inline-svg src="media/icons/duotune/graphs/gra001.svg" />
+              <inline-svg src="/media/icons/duotune/graphs/gra001.svg" />
             </span>
           </span>
         </div>
@@ -57,7 +57,7 @@
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <span class="svg-icon svg-icon-2 svg-icon-primary">
-              <inline-svg src="media/icons/duotune/graphs/gra006.svg" />
+              <inline-svg src="/media/icons/duotune/graphs/gra006.svg" />
             </span>
           </span>
         </div>
@@ -78,7 +78,7 @@
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <span class="svg-icon svg-icon-2 svg-icon-primary">
-              <inline-svg src="media/icons/duotune/graphs/gra002.svg" />
+              <inline-svg src="/media/icons/duotune/graphs/gra002.svg" />
             </span>
           </span>
         </div>
@@ -99,7 +99,7 @@
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <span class="svg-icon svg-icon-2 svg-icon-primary">
-              <inline-svg src="media/icons/duotune/communication/com010.svg" />
+              <inline-svg src="/media/icons/duotune/communication/com010.svg" />
             </span>
           </span>
         </div>
@@ -120,7 +120,7 @@
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <span class="svg-icon svg-icon-2 svg-icon-primary">
-              <inline-svg src="media/icons/duotune/finance/fin001.svg" />
+              <inline-svg src="/media/icons/duotune/finance/fin001.svg" />
             </span>
           </span>
         </div>
@@ -141,7 +141,7 @@
         <div class="symbol symbol-40px symbol-circle me-4">
           <span class="symbol-label bg-light">
             <span class="svg-icon svg-icon-2 svg-icon-primary">
-              <inline-svg src="media/icons/duotune/graphs/gra002.svg" />
+              <inline-svg src="/media/icons/duotune/graphs/gra002.svg" />
             </span>
           </span>
         </div>

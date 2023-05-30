@@ -18,7 +18,7 @@
           data-kt-menu-flip="top-end"
         >
           <span class="svg-icon svg-icon-2">
-            <inline-svg src="media/icons/duotune/general/gen024.svg" />
+            <inline-svg src="/media/icons/duotune/general/gen024.svg" />
           </span>
         </button>
         <Dropdown3></Dropdown3>
@@ -110,7 +110,7 @@ export default defineComponent({
   setup() {
     const items = [
       {
-        icon: "media/icons/duotune/ecommerce/ecm002.svg",
+        icon: "/media/icons/duotune/ecommerce/ecm002.svg",
         color: "success",
         title: "Top Authors",
         description: "Best Customers",
@@ -119,7 +119,7 @@ export default defineComponent({
         size: "5.4MB",
       },
       {
-        icon: "media/icons/duotune/general/gen024.svg",
+        icon: "/media/icons/duotune/general/gen024.svg",
         color: "danger",
         title: "Popular Authors",
         description: "Best Customers",
@@ -128,7 +128,7 @@ export default defineComponent({
         size: "2.8MB",
       },
       {
-        icon: "media/icons/duotune/finance/fin006.svg",
+        icon: "/media/icons/duotune/finance/fin006.svg",
         color: "info",
         title: "New Users",
         description: "Communication/Group.svg",
@@ -137,7 +137,7 @@ export default defineComponent({
         size: "1.5MB",
       },
       {
-        icon: "media/icons/duotune/abstract/abs027.svg",
+        icon: "/media/icons/duotune/abstract/abs027.svg",
         color: "warning",
         title: "Active Customers",
         description: "Best Customers",
@@ -146,7 +146,7 @@ export default defineComponent({
         size: "5.4MB",
       },
       {
-        icon: "media/icons/duotune/abstract/abs042.svg",
+        icon: "/media/icons/duotune/abstract/abs042.svg",
         color: "primary",
         title: "Active Customers",
         description: "Best Customers",

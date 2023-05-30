@@ -8,15 +8,15 @@ const config: LayoutConfigTypes = {
     type: "default",
     primaryColor: "#009EF7",
     logo: {
-      dark: "media/logos/logo-1-dark.svg",
-      light: "media/logos/logo-1.svg",
+      dark: "/media/logos/logo-1-dark.svg",
+      light: "/media/logos/logo-1.svg",
     },
   },
   illustrations: {
     set: "sketchy-1",
   },
   loader: {
-    logo: "media/logos/logo-1-dark.svg",
+    logo: "/media/logos/logo-1-dark.svg",
     display: true,
     type: "default",
   },

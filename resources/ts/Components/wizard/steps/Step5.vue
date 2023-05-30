@@ -34,7 +34,7 @@
       >
         <!--begin::Icon-->
         <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
-          <inline-svg src="media/icons/duotune/general/gen044.svg" />
+          <inline-svg src="/media/icons/duotune/general/gen044.svg" />
         </span>
         <!--end::Icon-->
         <!--begin::Wrapper-->

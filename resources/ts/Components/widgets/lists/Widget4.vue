@@ -19,7 +19,7 @@
           data-kt-menu-flip="top-end"
         >
           <span class="svg-icon svg-icon-2">
-            <inline-svg src="media/icons/duotune/general/gen024.svg" />
+            <inline-svg src="/media/icons/duotune/general/gen024.svg" />
           </span>
         </button>
         <Dropdown3></Dropdown3>
@@ -87,31 +87,31 @@ export default defineComponent({
   setup() {
     const list = ref([
       {
-        image: "media/svg/brand-logos/plurk.svg",
+        image: "/media/svg/brand-logos/plurk.svg",
         title: "Top Authors",
         text: "Mark, Rowling, Esther",
         badge: "+82$",
       },
       {
-        image: "media/svg/brand-logos/telegram.svg",
+        image: "/media/svg/brand-logos/telegram.svg",
         title: "Popular Authors",
         text: "Randy, Steve, Mike",
         badge: "+280$",
       },
       {
-        image: "media/svg/brand-logos/vimeo.svg",
+        image: "/media/svg/brand-logos/vimeo.svg",
         title: "New Users",
         text: "John, Pat, Jimmy",
         badge: "+4500$",
       },
       {
-        image: "media/svg/brand-logos/bebo.svg",
+        image: "/media/svg/brand-logos/bebo.svg",
         title: "Active Customers",
         text: "Mark, Rowling, Esther",
         badge: "+4500$",
       },
       {
-        image: "media/svg/brand-logos/kickstarter.svg",
+        image: "/media/svg/brand-logos/kickstarter.svg",
         title: "Bestseller Theme",
         text: "Disco, Retro, Sports",
         badge: "+4500$",

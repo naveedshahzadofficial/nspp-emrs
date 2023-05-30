@@ -9,7 +9,7 @@
         <div class="d-flex align-items-center flex-grow-1">
           <!--begin::Avatar-->
           <div class="symbol symbol-45px me-5">
-            <img src="media/avatars/300-7.jpg" alt="" />
+            <img src="/media/avatars/300-7.jpg" alt="" />
           </div>
           <!--end::Avatar-->
 
@@ -34,7 +34,7 @@
             data-kt-menu-flip="top-end"
           >
             <span class="svg-icon svg-icon-2">
-              <inline-svg src="media/icons/duotune/general/gen024.svg" />
+              <inline-svg src="/media/icons/duotune/general/gen024.svg" />
             </span>
           </button>
           <Dropdown3></Dropdown3>
@@ -60,7 +60,7 @@
             class="btn btn-sm btn-light btn-color-muted btn-active-light-success px-4 py-2 me-4"
           >
             <span class="svg-icon svg-icon-3">
-              <inline-svg src="media/icons/duotune/communication/com012.svg" />
+              <inline-svg src="/media/icons/duotune/communication/com012.svg" />
             </span>
             22
           </a>
@@ -70,7 +70,7 @@
             class="btn btn-sm btn-light btn-color-muted btn-active-light-danger px-4 py-2"
           >
             <span class="svg-icon svg-icon-2">
-              <inline-svg src="media/icons/duotune/general/gen030.svg" />
+              <inline-svg src="/media/icons/duotune/general/gen030.svg" />
             </span>
             59
           </a>
@@ -95,13 +95,13 @@
         <div class="position-absolute top-0 end-0 me-n5">
           <span class="btn btn-icon btn-sm btn-active-color-primary pe-0 me-2">
             <span class="svg-icon svg-icon-3 mb-3">
-              <inline-svg src="media/icons/duotune/communication/com008.svg" />
+              <inline-svg src="/media/icons/duotune/communication/com008.svg" />
             </span>
           </span>
 
           <span class="btn btn-icon btn-sm btn-active-color-primary ps-0">
             <span class="svg-icon svg-icon-2 mb-3">
-              <inline-svg src="media/icons/duotune/general/gen018.svg" />
+              <inline-svg src="/media/icons/duotune/general/gen018.svg" />
             </span>
           </span>
         </div>

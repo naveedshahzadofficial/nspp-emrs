@@ -9,7 +9,7 @@
     <div class="timeline-icon symbol symbol-circle symbol-40px">
       <div class="symbol-label bg-light">
         <span class="svg-icon svg-icon-2 svg-icon-gray-500">
-          <inline-svg src="media/icons/duotune/coding/cod008.svg" />
+          <inline-svg src="/media/icons/duotune/coding/cod008.svg" />
         </span>
       </div>
     </div>
@@ -39,7 +39,7 @@
             data-bs-placement="top"
             title="Jan Hummer"
           >
-            <img src="media/avatars/300-23.jpg" alt="img" />
+            <img src="/media/avatars/300-23.jpg" alt="img" />
           </div>
           <!--end::User-->
         </div>
@@ -55,7 +55,7 @@
           <!--begin::Item-->
           <div class="d-flex flex-aligns-center pe-10 pe-lg-20">
             <!--begin::Icon-->
-            <img alt="" class="w-30px me-3" src="media/svg/files/pdf.svg" />
+            <img alt="" class="w-30px me-3" src="/media/svg/files/pdf.svg" />
             <!--end::Icon-->
 
             <!--begin::Info-->
@@ -77,7 +77,7 @@
           <!--begin::Item-->
           <div class="d-flex flex-aligns-center pe-10 pe-lg-20">
             <!--begin::Icon-->
-            <img alt="" class="w-30px me-3" src="media/svg/files/doc.svg" />
+            <img alt="" class="w-30px me-3" src="/media/svg/files/doc.svg" />
             <!--end::Icon-->
 
             <!--begin::Info-->
@@ -99,7 +99,7 @@
           <!--begin::Item-->
           <div class="d-flex flex-aligns-center">
             <!--begin::Icon-->
-            <img alt="" class="w-30px me-3" src="media/svg/files/css.svg" />
+            <img alt="" class="w-30px me-3" src="/media/svg/files/css.svg" />
             <!--end::Icon-->
 
             <!--begin::Info-->
