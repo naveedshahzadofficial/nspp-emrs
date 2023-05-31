@@ -404,7 +404,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.registerForm.temperature = $event;
     }),
     options: _ctx.range(97.0, 106.0, .1).reverse(),
-    "class": "v-select-custom form-select-sm",
+    "class": "v-select-custom",
     placeholder: "Please Select"
   }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.temperature
@@ -414,7 +414,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.registerForm.bp_systolic = $event;
     }),
     options: _ctx.range(40, 300, 5, 0),
-    "class": "v-select-custom form-select-sm",
+    "class": "v-select-custom",
     placeholder: "Please Select"
   }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.bp_systolic
@@ -424,7 +424,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.registerForm.bp_diastolic = $event;
     }),
     options: _ctx.range(40, 300, 5, 0),
-    "class": "v-select-custom form-select-sm",
+    "class": "v-select-custom",
     placeholder: "Please Select"
   }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.bp_diastolic
@@ -434,7 +434,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.registerForm.pulse = $event;
     }),
     options: _ctx.range(50, 120, 1, 0),
-    "class": "v-select-custom form-select-sm",
+    "class": "v-select-custom",
     placeholder: "Please Select"
   }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.pulse
@@ -453,7 +453,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.registerForm.weight = $event;
     }),
     options: _ctx.range(1.0, 200.0, .1),
-    "class": "v-select-custom form-select-sm",
+    "class": "v-select-custom",
     placeholder: "Please Select"
   }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.registerForm.errors.weight

@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Gender extends Model
+class Disease extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['gender_name', 'status'];
 
+    protected $fillable = ['disease_type_id', 'disease_name', 'disease_description', 'status'];
     public function scopeActive($query) {
         return $query->where('active', true);
     }

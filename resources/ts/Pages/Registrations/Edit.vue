@@ -76,21 +76,21 @@
                 <div class="mb-10 row">
                     <div class="col-lg-4">
                         <label class="form-label">Temperature (°F)</label>
-                        <v-select v-model="registerForm.temperature" :options="range(97.0, 106.0, .1).reverse()" class="v-select-custom form-select-sm" placeholder="Please Select" />
+                        <v-select v-model="registerForm.temperature" :options="range(97.0, 106.0, .1).reverse()" class="v-select-custom" placeholder="Please Select" />
                         <ServerErrorMessage :error="registerForm.errors.temperature"/>
 
                     </div>
 
                     <div class="col-lg-4">
                         <label class="form-label">B.P. Systolic (mmHg)</label>
-                        <v-select v-model="registerForm.bp_systolic" :options="range(40, 300, 5, 0)" class="v-select-custom form-select-sm" placeholder="Please Select" />
+                        <v-select v-model="registerForm.bp_systolic" :options="range(40, 300, 5, 0)" class="v-select-custom" placeholder="Please Select" />
                         <ServerErrorMessage :error="registerForm.errors.bp_systolic"/>
 
                     </div>
 
                     <div class="col-lg-4">
                         <label class="form-label">B.P. Diastolic (mmHg)</label>
-                        <v-select v-model="registerForm.bp_diastolic" :options="range(40, 300, 5, 0)" class="v-select-custom form-select-sm" placeholder="Please Select" />
+                        <v-select v-model="registerForm.bp_diastolic" :options="range(40, 300, 5, 0)" class="v-select-custom" placeholder="Please Select" />
                         <ServerErrorMessage :error="registerForm.errors.bp_diastolic"/>
 
                     </div>
@@ -101,7 +101,7 @@
                 <div class="mb-10 row">
                     <div class="col-lg-4">
                         <label class="form-label">Pulse (bpm)</label>
-                        <v-select v-model="registerForm.pulse" :options="range(50, 120, 1, 0)" class="v-select-custom form-select-sm" placeholder="Please Select" />
+                        <v-select v-model="registerForm.pulse" :options="range(50, 120, 1, 0)" class="v-select-custom" placeholder="Please Select" />
                         <ServerErrorMessage :error="registerForm.errors.pulse"/>
 
                     </div>
@@ -114,7 +114,7 @@
                     </div>
                     <div class="col-lg-4">
                         <label class="form-label">Weight (kg)</label>
-                        <v-select v-model="registerForm.weight" :options="range(1.0, 200.0, .1)" class="v-select-custom form-select-sm" placeholder="Please Select" />
+                        <v-select v-model="registerForm.weight" :options="range(1.0, 200.0, .1)" class="v-select-custom" placeholder="Please Select" />
                         <ServerErrorMessage :error="registerForm.errors.weight"/>
 
                     </div>

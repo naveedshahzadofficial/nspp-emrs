@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRegistrationRequest;
 use App\Http\Requests\UpdateRegistrationRequest;
+use App\Http\Resources\ComplaintResource;
+use App\Http\Resources\DiseaseResource;
 use App\Http\Resources\GenderResource;
 use App\Http\Resources\PatientTypeResource;
+use App\Models\Complaint;
+use App\Models\Disease;
 use App\Models\Gender;
+use App\Models\Patient;
 use App\Models\PatientType;
 use App\Models\PatientVisit;
 use App\Services\RegistrationService;
@@ -69,10 +74,15 @@ class RegistrationController extends Controller
      */
     public function show($id): \Inertia\Response
     {
-        $patientVisit = PatientVisit::with('patient')->find($id);
+        $patientVisit = PatientVisit::with('patient.patientVisits')->findOrFail($id);
         $patientTypes = PatientTypeResource::collection(PatientType::all());
         $genders = GenderResource::collection(Gender::all());
-        return Inertia::render('Registrations/Show', compact('patientTypes', 'genders', 'patientVisit'));
+        $patient = $patientVisit->patient?? null;
+        $complaints = ComplaintResource::collection(Complaint::all());
+        $diseases = DiseaseResource::collection(Disease::all());
+        return Inertia::render('Registrations/Show',
+            compact('patientTypes', 'genders', 'patient',
+                'patientVisit', 'complaints', 'diseases'));
     }
 
     /**

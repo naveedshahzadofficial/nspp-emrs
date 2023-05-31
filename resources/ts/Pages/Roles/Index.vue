@@ -84,7 +84,6 @@
                 <thead>
                 <tr class="fw-bold">
                     <th class="p-0">Role Name</th>
-                    <th class="p-0  text-center">Created</th>
                     <th class="p-0 min-w-100px text-end">Action</th>
                 </tr>
                 </thead>
@@ -92,7 +91,6 @@
                 <template v-for="role in roles" :key="role.id">
                     <tr>
                         <td class="fw-semibold">{{ role.name }}</td>
-                        <td class="text-center">{{ role.created_at }}</td>
                         <td class="text-end">
                             <Link
                                 :href="route('roles.show', role.id)"

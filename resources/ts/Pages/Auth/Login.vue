@@ -18,8 +18,8 @@
 
             <div class="mb-10 bg-light-info p-8 rounded">
                 <div class="text-info">
-                    Use account <strong>admin@demo.com</strong> and password
-                    <strong>demo</strong> to continue.
+                    Use account <strong>admin@gmail.com</strong> and password
+                    <strong>12345678</strong> to continue.
                 </div>
             </div>
 
