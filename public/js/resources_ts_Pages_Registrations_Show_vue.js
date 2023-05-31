@@ -48,6 +48,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: 'Show',
   props: {
@@ -60,11 +61,19 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     },
     complaints: {
-      type: Object,
+      type: Array,
       required: true
     },
     diseases: {
-      type: Object,
+      type: Array,
+      required: true
+    },
+    diseaseTypes: {
+      type: Array,
+      required: true
+    },
+    procedures: {
+      type: Array,
       required: true
     }
   },
@@ -73,6 +82,25 @@ __webpack_require__.r(__webpack_exports__);
     var __expose = _ref.expose;
     __expose();
     var props = __props;
+    var diagForm = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)({
+      disease_type_id: '',
+      disease_id: '',
+      procedure_id: ''
+    });
+    var filterDiseases = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)();
+    var filterProcedures = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)();
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
+      return diagForm.disease_type_id;
+    }, function (value) {
+      var _props$diseases, _props$procedures;
+      diagForm.reset("disease_id", "procedure_id");
+      filterDiseases.value = (_props$diseases = props.diseases) === null || _props$diseases === void 0 ? void 0 : _props$diseases.filter(function (disease) {
+        return disease.disease_type_id === value;
+      });
+      filterProcedures.value = (_props$procedures = props.procedures) === null || _props$procedures === void 0 ? void 0 : _props$procedures.filter(function (procedure) {
+        return procedure.disease_type_id === value;
+      });
+    });
     var preForm = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)({
       vital: {
         temperature: (_props$patientVisit = props.patientVisit) === null || _props$patientVisit === void 0 ? void 0 : _props$patientVisit.temperature,
@@ -91,10 +119,24 @@ __webpack_require__.r(__webpack_exports__);
       disease: {
         disease_ids: [],
         disease_notes: ''
+      },
+      diagnosis: {
+        diagnosis_advise: '',
+        disease_types_id: [],
+        disease_id: [],
+        procedure_id: []
       }
     });
     var __returned__ = {
       props: props,
+      get diagForm() {
+        return diagForm;
+      },
+      set diagForm(v) {
+        diagForm = v;
+      },
+      filterDiseases: filterDiseases,
+      filterProcedures: filterProcedures,
       get preForm() {
         return preForm;
       },
@@ -325,10 +367,10 @@ var _hoisted_57 = {
   "class": "table-responsive"
 };
 var _hoisted_58 = {
-  "class": "table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4"
+  "class": "table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
 };
 var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
-  "class": "fw-bold"
+  "class": "fw-semibold fs-6 text-gray-800"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "text-center"
 }, "Vital Date"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
@@ -422,23 +464,158 @@ var _hoisted_80 = {
 var _hoisted_81 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label"
 }, "Disease Notes", -1 /* HOISTED */);
-var _hoisted_82 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_82 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
+  "class": "font-weight-bold main_section_heading"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-uppercase"
+}, "Complaint History")], -1 /* HOISTED */);
+var _hoisted_83 = {
+  "class": "section_box"
+};
+var _hoisted_84 = {
+  "class": "table-responsive"
+};
+var _hoisted_85 = {
+  "class": "table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+};
+var _hoisted_86 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+  "class": "fw-semibold fs-6 text-gray-800"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "text-center"
+}, "Date"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "text-center"
+}, "Complaint"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "text-center"
+}, "Complaint Notes")])], -1 /* HOISTED */);
+var _hoisted_87 = {
+  "class": "text-center"
+};
+var _hoisted_88 = {
+  "class": "text-center"
+};
+var _hoisted_89 = {
+  "class": "text-left"
+};
+var _hoisted_90 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
+  "class": "font-weight-bold main_section_heading"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-uppercase"
+}, "Disease History")], -1 /* HOISTED */);
+var _hoisted_91 = {
+  "class": "section_box"
+};
+var _hoisted_92 = {
+  "class": "table-responsive"
+};
+var _hoisted_93 = {
+  "class": "table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+};
+var _hoisted_94 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+  "class": "fw-semibold fs-6 text-gray-800"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "text-center"
+}, "Date"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "text-center"
+}, "Disease"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "text-center"
+}, "Disease Notes")])], -1 /* HOISTED */);
+var _hoisted_95 = {
+  "class": "text-center"
+};
+var _hoisted_96 = {
+  "class": "text-center"
+};
+var _hoisted_97 = {
+  "class": "text-left"
+};
+var _hoisted_98 = {
   "class": "tab-pane fade",
   id: "kt_tab_pane_4",
   role: "tabpanel"
-}, " tab4 ", -1 /* HOISTED */);
-var _hoisted_83 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+};
+var _hoisted_99 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
+  "class": "font-weight-bold main_section_heading mt-6"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-uppercase"
+}, "Preliminary Diagnosis")], -1 /* HOISTED */);
+var _hoisted_100 = {
+  "class": "section_box"
+};
+var _hoisted_101 = {
+  "class": "mb-10 row"
+};
+var _hoisted_102 = {
+  "class": "col-lg-3"
+};
+var _hoisted_103 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Category", -1 /* HOISTED */);
+var _hoisted_104 = {
+  "class": "col-lg-3"
+};
+var _hoisted_105 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Diagnosis", -1 /* HOISTED */);
+var _hoisted_106 = {
+  key: 0,
+  "class": "col-lg-3"
+};
+var _hoisted_107 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Procedure", -1 /* HOISTED */);
+var _hoisted_108 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-lg-3"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "btn btn-success btn-sm mt-7"
+}, "Save")], -1 /* HOISTED */);
+var _hoisted_109 = {
+  "class": "mb-10 row"
+};
+var _hoisted_110 = {
+  "class": "col-lg-12"
+};
+var _hoisted_111 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Advise", -1 /* HOISTED */);
+var _hoisted_112 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
+  "class": "font-weight-bold main_section_heading"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-uppercase"
+}, "History")], -1 /* HOISTED */);
+var _hoisted_113 = {
+  "class": "section_box"
+};
+var _hoisted_114 = {
+  "class": "table-responsive"
+};
+var _hoisted_115 = {
+  "class": "table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+};
+var _hoisted_116 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+  "class": "fw-semibold fs-6 text-gray-800"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "text-center"
+}, "Date"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "text-center"
+}, "Diagnosis")])], -1 /* HOISTED */);
+var _hoisted_117 = {
+  "class": "text-center"
+};
+var _hoisted_118 = {
+  "class": "text-center"
+};
+var _hoisted_119 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "tab-pane fade",
   id: "kt_tab_pane_5",
   role: "tabpanel"
 }, " tab5 ", -1 /* HOISTED */);
-var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_120 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "tab-pane fade",
   id: "kt_tab_pane_6",
   role: "tabpanel"
 }, " tab6 ", -1 /* HOISTED */);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _$props$patientVisit, _$props$patientVisit2, _$props$patientVisit3, _$props$patientVisit4, _$props$patientVisit5, _$props$patientVisit6, _$setup$preForm$error, _$setup$preForm$error2, _$setup$preForm$error3, _$setup$preForm$error4, _$setup$preForm$error5, _$setup$preForm$error6, _$setup$preForm$error7, _$setup$preForm$error8, _$props$patient, _$setup$preForm$error9, _$setup$preForm$error10, _$setup$preForm$error11, _$setup$preForm$error12;
+  var _$props$patientVisit, _$props$patientVisit2, _$props$patientVisit3, _$props$patientVisit4, _$props$patientVisit5, _$props$patientVisit6, _$setup$preForm$error, _$setup$preForm$error2, _$setup$preForm$error3, _$setup$preForm$error4, _$setup$preForm$error5, _$setup$preForm$error6, _$setup$preForm$error7, _$setup$preForm$error8, _$props$patient, _$setup$preForm$error9, _$setup$preForm$error10, _$setup$preForm$error11, _$setup$preForm$error12, _$props$patient2, _$props$patient3, _$setup$preForm$error13, _$props$patient4;
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
   var _component_v_select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-select");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
@@ -576,7 +753,69 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     rows: "4"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.preForm.disease.disease_notes]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: (_$setup$preForm$error12 = $setup.preForm.errors.disease) === null || _$setup$preForm$error12 === void 0 ? void 0 : _$setup$preForm$error12.disease_notes
-  }, null, 8 /* PROPS */, ["error"])])])])]), _hoisted_82, _hoisted_83, _hoisted_84])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card")], 64 /* STABLE_FRAGMENT */);
+  }, null, 8 /* PROPS */, ["error"])])])]), _hoisted_82, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_83, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_84, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_85, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Table head"), _hoisted_86, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((_$props$patient2 = $props.patient) === null || _$props$patient2 === void 0 ? void 0 : _$props$patient2.patient_complaints, function (history) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+      key: history.id
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_87, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.created_at), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_88, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.complaint_name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_89, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.complaint_notes), 1 /* TEXT */)]);
+  }), 128 /* KEYED_FRAGMENT */))])])])]), _hoisted_90, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_91, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_92, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_93, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Table head"), _hoisted_94, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((_$props$patient3 = $props.patient) === null || _$props$patient3 === void 0 ? void 0 : _$props$patient3.patient_diseases, function (history) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+      key: history.id
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_95, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.created_at), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_96, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.disease_name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_97, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.disease_notes), 1 /* TEXT */)]);
+  }), 128 /* KEYED_FRAGMENT */))])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_98, [_hoisted_99, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_100, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_101, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_102, [_hoisted_103, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+    modelValue: $setup.diagForm.disease_type_id,
+    "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+      return $setup.diagForm.disease_type_id = $event;
+    }),
+    options: $props.diseaseTypes,
+    label: "type_name",
+    reduce: function reduce(option) {
+      return option.id;
+    },
+    "class": "v-select-custom",
+    placeholder: "Please Select"
+  }, null, 8 /* PROPS */, ["modelValue", "options", "reduce"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    error: $setup.diagForm.errors.disease_type_id
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_104, [_hoisted_105, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+    modelValue: $setup.diagForm.disease_id,
+    "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+      return $setup.diagForm.disease_id = $event;
+    }),
+    options: $setup.filterDiseases,
+    label: "disease_name",
+    reduce: function reduce(option) {
+      return option.id;
+    },
+    "class": "v-select-custom",
+    placeholder: "Please Select"
+  }, null, 8 /* PROPS */, ["modelValue", "options", "reduce"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    error: $setup.diagForm.errors.disease_id
+  }, null, 8 /* PROPS */, ["error"])]), $setup.diagForm.disease_type_id === 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_106, [_hoisted_107, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+    modelValue: $setup.diagForm.procedure_id,
+    "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
+      return $setup.diagForm.procedure_id = $event;
+    }),
+    options: $setup.filterProcedures,
+    label: "procedure_name",
+    reduce: function reduce(option) {
+      return option.id;
+    },
+    "class": "v-select-custom",
+    placeholder: "Please Select"
+  }, null, 8 /* PROPS */, ["modelValue", "options", "reduce"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    error: $setup.diagForm.errors.procedure_id
+  }, null, 8 /* PROPS */, ["error"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_108]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_109, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_110, [_hoisted_111, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+    "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
+      return $setup.preForm.diagnosis.diagnosis_advise = $event;
+    }),
+    "class": "form-control form-control-sm",
+    rows: "4"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.preForm.diagnosis.diagnosis_advise]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    error: (_$setup$preForm$error13 = $setup.preForm.errors.diagnosis) === null || _$setup$preForm$error13 === void 0 ? void 0 : _$setup$preForm$error13.diagnosis_advise
+  }, null, 8 /* PROPS */, ["error"])])])]), _hoisted_112, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_113, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_114, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_115, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Table head"), _hoisted_116, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((_$props$patient4 = $props.patient) === null || _$props$patient4 === void 0 ? void 0 : _$props$patient4.patient_diagnosis, function (history) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+      key: history.id
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_117, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.created_at), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_118, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.diagnosis_name), 1 /* TEXT */)]);
+  }), 128 /* KEYED_FRAGMENT */))])])])])]), _hoisted_119, _hoisted_120])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card")], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

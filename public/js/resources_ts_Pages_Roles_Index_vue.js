@@ -123,10 +123,10 @@ var _hoisted_11 = {
   "class": "table-responsive"
 };
 var _hoisted_12 = {
-  "class": "table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4"
+  "class": "table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
 };
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
-  "class": "fw-bold"
+  "class": "fw-semibold fs-6 text-gray-800"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "p-0"
 }, "Role Name"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {

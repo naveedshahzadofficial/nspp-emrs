@@ -12,6 +12,6 @@ class Gender extends Model
     protected $fillable = ['gender_name', 'status'];
 
     public function scopeActive($query) {
-        return $query->where('active', true);
+        return $query->where('status', true);
     }
 }

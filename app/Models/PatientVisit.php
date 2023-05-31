@@ -29,6 +29,10 @@ class PatientVisit extends Model
         return Carbon::parse($value)->format('d-m-Y');
     }
 
+    public function scopeActive($query) {
+        return $query->where('status', true);
+    }
+
     public static function boot()
     {
         parent::boot();

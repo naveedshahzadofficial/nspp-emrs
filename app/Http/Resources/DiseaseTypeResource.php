@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DiseaseResource extends JsonResource
+class DiseaseTypeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,8 +16,7 @@ class DiseaseResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'disease_type_id' => $this->disease_type_id,
-            'disease_name'=> $this->disease_name,
+            'type_name'=> $this->type_name,
         ];
     }
 }

@@ -203,11 +203,11 @@
                     <div class="section_box">
                         <div class="table-responsive">
                             <table
-                                class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4"
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
                             >
                                 <!--begin::Table head-->
                                 <thead>
-                                <tr class="fw-bold">
+                                <tr class="fw-semibold fs-6 text-gray-800">
                                     <th class="text-center">Vital Date</th>
                                     <th class="text-center">Pulse</th>
                                     <th class="text-center">Temperature</th>
@@ -289,9 +289,148 @@
                         </div>
                     </div>
 
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Complaint History</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-center">Date</th>
+                                    <th class="text-center">Complaint</th>
+                                    <th class="text-center">Complaint Notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_complaints" :key="history.id">
+                                    <tr>
+                                        <td class="text-center">{{ history.created_at }}</td>
+                                        <td class="text-center">{{ history.complaint_name }}</td>
+                                        <td class="text-left">{{ history.complaint_notes }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Disease History</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-center">Date</th>
+                                    <th class="text-center">Disease</th>
+                                    <th class="text-center">Disease Notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_diseases" :key="history.id">
+                                    <tr>
+                                        <td class="text-center">{{ history.created_at }}</td>
+                                        <td class="text-center">{{ history.disease_name }}</td>
+                                        <td class="text-left">{{ history.disease_notes }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
                 </div>
                 <div class="tab-pane fade" id="kt_tab_pane_4" role="tabpanel">
-                    tab4
+
+                    <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Preliminary Diagnosis</span></h4>
+                    <div class="section_box">
+                        <div class="mb-10 row">
+                            <div class="col-lg-3">
+                                <label class="form-label">Category</label>
+                                <v-select
+                                          v-model="diagForm.disease_type_id"
+                                          :options="diseaseTypes"
+                                          label="type_name"
+                                          :reduce="(option) => option.id"
+                                          class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="diagForm.errors.disease_type_id"/>
+
+
+                            </div>
+
+                            <div class="col-lg-3">
+                                <label class="form-label">Diagnosis</label>
+                                <v-select
+                                          v-model="diagForm.disease_id"
+                                          :options="filterDiseases"
+                                          label="disease_name"
+                                          :reduce="(option) => option.id"
+                                          class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="diagForm.errors.disease_id"/>
+
+
+                            </div>
+
+                            <div class="col-lg-3" v-if="diagForm.disease_type_id===1">
+                                <label class="form-label">Procedure</label>
+                                <v-select
+                                    v-model="diagForm.procedure_id"
+                                    :options="filterProcedures"
+                                    label="procedure_name"
+                                    :reduce="(option) => option.id"
+                                    class="v-select-custom" placeholder="Please Select" />
+                                 <ServerErrorMessage :error="diagForm.errors.procedure_id"/>
+
+                            </div>
+                            <div class="col-lg-3">
+                                <button class="btn btn-success btn-sm mt-7">Save</button>
+                            </div>
+
+
+                        </div>
+
+                        <div class="mb-10 row">
+                            <div class="col-lg-12">
+                                <label class="form-label">Advise</label>
+                                <textarea v-model="preForm.diagnosis.diagnosis_advise"  class="form-control form-control-sm" rows="4"></textarea>
+                                <ServerErrorMessage :error="preForm.errors.diagnosis?.diagnosis_advise"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">History</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-center">Date</th>
+                                    <th class="text-center">Diagnosis</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_diagnosis" :key="history.id">
+                                    <tr>
+                                        <td class="text-center">{{ history.created_at }}</td>
+                                        <td class="text-center">{{ history.diagnosis_name }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="tab-pane fade" id="kt_tab_pane_5" role="tabpanel">
                     tab5
@@ -310,12 +449,30 @@
 <script setup lang="ts">
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 import {useForm} from "@inertiajs/vue3";
+import {ref, watch, PropType} from "vue";
+import { IDisease } from "@/interfaces/disease.interface";
 
 const props = defineProps({
     patient: { type: Object, required: true},
     patientVisit: { type: Object, required: true},
-    complaints: { type: Object, required: true},
-    diseases: { type: Object, required: true},
+    complaints: { type: Array, required: true},
+    diseases: { type: Array, required: true},
+    diseaseTypes: { type: Array, required: true},
+    procedures: { type: Array, required: true},
+});
+let diagForm = useForm({
+    disease_type_id: '',
+    disease_id: '',
+    procedure_id: '',
+});
+
+const filterDiseases = ref();
+const filterProcedures = ref();
+
+watch(() => diagForm.disease_type_id, value => {
+    diagForm.reset("disease_id","procedure_id");
+    filterDiseases.value = props.diseases?.filter((disease: any) => disease.disease_type_id === value);
+    filterProcedures.value = props.procedures?.filter((procedure: any) => procedure.disease_type_id === value);
 });
 
 let preForm = useForm({
@@ -336,6 +493,12 @@ let preForm = useForm({
     disease: {
         disease_ids: [],
         disease_notes: ''
+    },
+    diagnosis: {
+        diagnosis_advise: '',
+        disease_types_id: [],
+        disease_id: [],
+        procedure_id: [],
     }
    }
 );

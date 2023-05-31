@@ -6,14 +6,18 @@ use App\Http\Requests\StoreRegistrationRequest;
 use App\Http\Requests\UpdateRegistrationRequest;
 use App\Http\Resources\ComplaintResource;
 use App\Http\Resources\DiseaseResource;
+use App\Http\Resources\DiseaseTypeResource;
 use App\Http\Resources\GenderResource;
 use App\Http\Resources\PatientTypeResource;
+use App\Http\Resources\ProcedureResource;
 use App\Models\Complaint;
 use App\Models\Disease;
+use App\Models\DiseaseType;
 use App\Models\Gender;
 use App\Models\Patient;
 use App\Models\PatientType;
 use App\Models\PatientVisit;
+use App\Models\Procedure;
 use App\Services\RegistrationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -45,8 +49,8 @@ class RegistrationController extends Controller
      */
     public function create(): \Inertia\Response
     {
-        $patientTypes = PatientTypeResource::collection(PatientType::all());
-        $genders = GenderResource::collection(Gender::all());
+        $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
+        $genders = GenderResource::collection(Gender::active()->get());
         return Inertia::render('Registrations/Create', compact('patientTypes', 'genders'));
     }
 
@@ -75,14 +79,16 @@ class RegistrationController extends Controller
     public function show($id): \Inertia\Response
     {
         $patientVisit = PatientVisit::with('patient.patientVisits')->findOrFail($id);
-        $patientTypes = PatientTypeResource::collection(PatientType::all());
-        $genders = GenderResource::collection(Gender::all());
+        $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
+        $genders = GenderResource::collection(Gender::active()->get());
         $patient = $patientVisit->patient?? null;
-        $complaints = ComplaintResource::collection(Complaint::all());
-        $diseases = DiseaseResource::collection(Disease::all());
+        $complaints = ComplaintResource::collection(Complaint::active()->get());
+        $diseases = DiseaseResource::collection(Disease::active()->get());
+        $diseaseTypes = DiseaseTypeResource::collection(DiseaseType::active()->get());
+        $procedures = ProcedureResource::collection(Procedure::active()->get());
         return Inertia::render('Registrations/Show',
             compact('patientTypes', 'genders', 'patient',
-                'patientVisit', 'complaints', 'diseases'));
+                'patientVisit', 'complaints', 'diseases', 'diseaseTypes', 'procedures'));
     }
 
     /**
@@ -94,8 +100,8 @@ class RegistrationController extends Controller
     public function edit($id): \Inertia\Response
     {
         $patientVisit = PatientVisit::with('patient')->find($id);
-        $patientTypes = PatientTypeResource::collection(PatientType::all());
-        $genders = GenderResource::collection(Gender::all());
+        $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
+        $genders = GenderResource::collection(Gender::active()->get());
         return Inertia::render('Registrations/Edit', compact('patientTypes', 'genders', 'patientVisit'));
     }
 

@@ -12,6 +12,6 @@ class ComplaintType extends Model
 
     protected $fillable = ['type_name', 'status'];
     public function scopeActive($query) {
-        return $query->where('active', true);
+        return $query->where('status', true);
     }
 }

@@ -12,6 +12,6 @@ class PatientType extends Model
 
     protected $fillable = ['patient_type', 'status' ];
     public function scopeActive($query) {
-        return $query->where('active', true);
+        return $query->where('status', true);
     }
 }

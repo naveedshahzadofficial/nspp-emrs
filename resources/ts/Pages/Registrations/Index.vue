@@ -70,11 +70,11 @@
                 <div class="table-responsive">
                     <!--begin::Table-->
                     <table
-                        class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4"
+                        class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
                     >
                         <!--begin::Table head-->
                         <thead>
-                        <tr class="fw-bold">
+                        <tr class="fw-semibold fs-6 text-gray-800">
                             <th class="p-0 min-w-150px">Patient</th>
                             <th class="p-0 min-w-200px text-center">Token No.</th>
                             <th class="p-0 min-w-100px text-end">Action</th>

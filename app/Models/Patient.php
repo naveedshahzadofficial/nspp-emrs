@@ -18,7 +18,7 @@ class Patient extends Model
         'relationship_with_employee', 'designation', 'patient_cnic', 'patient_phone', 'status'
     ];
     public function scopeActive($query) {
-        return $query->where('active', true);
+        return $query->where('status', true);
     }
 
     public function patientVisits(): HasMany

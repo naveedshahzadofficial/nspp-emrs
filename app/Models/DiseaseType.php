@@ -12,6 +12,6 @@ class DiseaseType extends Model
 
     protected $fillable = ['type_name', 'type_description', 'status'];
     public function scopeActive($query) {
-        return $query->where('active', true);
+        return $query->where('status', true);
     }
 }

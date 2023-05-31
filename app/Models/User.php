@@ -45,6 +45,6 @@ class User extends Authenticatable
     ];
 
     public function scopeActive($query) {
-        return $query->where('active', true);
+        return $query->where('status', true);
     }
 }
