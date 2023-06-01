@@ -10,6 +10,7 @@ use App\Http\Resources\DiseaseTypeResource;
 use App\Http\Resources\GenderResource;
 use App\Http\Resources\PatientTypeResource;
 use App\Http\Resources\ProcedureResource;
+use App\Http\Resources\RiskFactorResource;
 use App\Models\Complaint;
 use App\Models\Disease;
 use App\Models\DiseaseType;
@@ -18,6 +19,7 @@ use App\Models\Patient;
 use App\Models\PatientType;
 use App\Models\PatientVisit;
 use App\Models\Procedure;
+use App\Models\RiskFactor;
 use App\Services\RegistrationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -86,9 +88,10 @@ class RegistrationController extends Controller
         $diseases = DiseaseResource::collection(Disease::active()->get());
         $diseaseTypes = DiseaseTypeResource::collection(DiseaseType::active()->get());
         $procedures = ProcedureResource::collection(Procedure::active()->get());
+        $riskFactors = RiskFactorResource::collection(RiskFactor::active()->get());
         return Inertia::render('Registrations/Show',
             compact('patientTypes', 'genders', 'patient',
-                'patientVisit', 'complaints', 'diseases', 'diseaseTypes', 'procedures'));
+                'patientVisit', 'complaints', 'diseases', 'diseaseTypes', 'procedures', 'riskFactors'));
     }
 
     /**

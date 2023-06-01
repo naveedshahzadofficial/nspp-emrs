@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DiseaseTypeSeeder::class);
         $this->call(DiseaseSeeder::class);
         $this->call(ProcedureSeeder::class);
+        $this->call(RiskFactorSeeder::class);
     }
 }

@@ -236,7 +236,59 @@
                 <div class="tab-pane fade" id="kt_tab_pane_2" role="tabpanel">
                     <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Risk Factors</span></h4>
                     <div class="section_box">
+
+                        <div class="mb-10 row">
+                            <div class="col-lg-4">
+                                <label class="form-label">Risk Factors</label>
+                                <v-select v-model="preForm.risk_factor.risk_factor_ids"
+                                          :options="riskFactors"
+                                          label="factor_name"
+                                          :reduce="(option) => option.id"
+                                          multiple
+                                          class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="preForm.errors.risk_factor?.risk_factor_ids"/>
+
+                            </div>
+
+                            <div class="col-lg-8">
+                                <label class="form-label">Notes</label>
+                                <textarea v-model="preForm.risk_factor.risk_factor_notes"  class="form-control form-control-sm" rows="4"></textarea>
+                                <ServerErrorMessage :error="preForm.errors.risk_factor?.risk_factor_notes"/>
+                            </div>
+
+
+                        </div>
+
                     </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">History</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-center">Date</th>
+                                    <th class="text-center">Risk Factor</th>
+                                    <th class="text-center">Notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_risk_factors" :key="history.id">
+                                    <tr>
+                                        <td class="text-center">{{ history.created_at }}</td>
+                                        <td class="text-center">{{ history.factor_name }}</td>
+                                        <td class="text-left">{{ history.factor_notes }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="tab-pane fade" id="kt_tab_pane_3" role="tabpanel">
                     <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Presenting Complaints</span></h4>
@@ -390,11 +442,46 @@
 
                             </div>
                             <div class="col-lg-3">
-                                <button class="btn btn-success btn-sm mt-7">Save</button>
+                                <button class="btn btn-success btn-sm mt-7" @click.prevent="addDiagnosis">Save</button>
                             </div>
 
 
                         </div>
+
+                        <div class="mb-10 row">
+
+                            <div class="table-responsive">
+                                <table
+                                    class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                                >
+                                    <!--begin::Table head-->
+                                    <thead>
+                                    <tr class="fw-semibold fs-6 text-gray-800">
+                                        <th class="text-center">Category</th>
+                                        <th class="text-center">Diagnosis</th>
+                                        <th class="text-center">Procedure</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <template v-for="dig in preForm.diagnosis.diagnoses">
+                                        <tr>
+                                            <td class="text-center">{{ getDiseaseTypeName(dig.disease_type_id) }}</td>
+                                            <td class="text-center">{{ getDiseaseName(dig.disease_id) }}</td>
+                                            <td class="text-center">{{ getProcedureName(dig.disease_id) }}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteDiagnosis(dig)"><i class="las la-trash fs-1"></i></button>
+                                            </td>
+                                        </tr>
+                                    </template>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+
 
                         <div class="mb-10 row">
                             <div class="col-lg-12">
@@ -433,10 +520,16 @@
 
                 </div>
                 <div class="tab-pane fade" id="kt_tab_pane_5" role="tabpanel">
-                    tab5
+                    <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Medicine Prescription</span></h4>
+                    <div class="section_box">
+
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="kt_tab_pane_6" role="tabpanel">
-                    tab6
+                    <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Referrals</span></h4>
+                    <div class="section_box">
+
+                    </div>
                 </div>
             </div>
 
@@ -450,7 +543,9 @@
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 import {useForm} from "@inertiajs/vue3";
 import {ref, watch, PropType} from "vue";
-import { IDisease } from "@/interfaces/disease.interface";
+import {IDisease} from "@/interfaces/disease.interface";
+import {IDiagnosis} from "@/interfaces/diagnosis.interface";
+import {IDiseaseType} from "@/interfaces/diseaseType.interface";
 
 const props = defineProps({
     patient: { type: Object, required: true},
@@ -459,20 +554,16 @@ const props = defineProps({
     diseases: { type: Array, required: true},
     diseaseTypes: { type: Array, required: true},
     procedures: { type: Array, required: true},
-});
-let diagForm = useForm({
-    disease_type_id: '',
-    disease_id: '',
-    procedure_id: '',
+    riskFactors: { type: Array, required: true},
 });
 
 const filterDiseases = ref();
 const filterProcedures = ref();
 
-watch(() => diagForm.disease_type_id, value => {
-    diagForm.reset("disease_id","procedure_id");
-    filterDiseases.value = props.diseases?.filter((disease: any) => disease.disease_type_id === value);
-    filterProcedures.value = props.procedures?.filter((procedure: any) => procedure.disease_type_id === value);
+let diagForm = useForm({
+    disease_type_id: null,
+    disease_id: null,
+    procedure_id: null,
 });
 
 let preForm = useForm({
@@ -486,6 +577,10 @@ let preForm = useForm({
             height: props.patientVisit?.height,
             notes: props.patientVisit?.notes
         },
+    risk_factor: {
+      risk_factor_ids: [],
+      risk_factor_notes: ''
+    },
     complaint: {
         complaint_ids: [],
         complaint_notes: ''
@@ -495,13 +590,45 @@ let preForm = useForm({
         disease_notes: ''
     },
     diagnosis: {
+        diagnoses: <IDiagnosis[]>[],
         diagnosis_advise: '',
-        disease_types_id: [],
-        disease_id: [],
-        procedure_id: [],
     }
    }
 );
+
+watch(() => diagForm.disease_type_id, value => {
+    diagForm.reset( "disease_id", "procedure_id");
+    filterDiseases.value = props.diseases?.filter((disease: any) => disease.disease_type_id === value);
+    filterProcedures.value = props.procedures?.filter((procedure: any) => procedure.disease_type_id === value);
+});
+
+const addDiagnosis = () => {
+    diagForm.clearErrors();
+    const row = diagForm.data();
+    if(row.disease_type_id === null){
+        diagForm.setError("disease_type_id", "Category is required.");
+    }
+    if(row.disease_id === null){
+        diagForm.setError("disease_id", "Diagnosis is required.");
+    }
+    if(row.disease_type_id === null || row.disease_id === null)
+        return;
+
+    preForm.diagnosis.diagnoses.push({
+        disease_type_id: row.disease_type_id,
+        disease_id: row.disease_id,
+        procedure_id: row.procedure_id,
+    })
+    diagForm.reset()
+}
+
+const deleteDiagnosis = (dig: Object) => {
+    preForm.diagnosis.diagnoses = preForm.diagnosis.diagnoses.filter(obj => obj != dig);
+}
+
+const getDiseaseTypeName = (id: number) => (props.diseaseTypes?.filter((diseaseType: any) => diseaseType.id === id)[0] as any)?.type_name
+const getDiseaseName = (id: number) => (props.diseases.filter((disease: any) => disease.id === id)[0] as any)?.disease_name;
+const getProcedureName = (id: number) => (props.procedures.filter((procedure: any) => procedure.id === id)[0] as any)?.procedure_name || 'Not Available';
 
 
 </script>
