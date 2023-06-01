@@ -8,6 +8,7 @@ use App\Http\Resources\ComplaintResource;
 use App\Http\Resources\DiseaseResource;
 use App\Http\Resources\DiseaseTypeResource;
 use App\Http\Resources\GenderResource;
+use App\Http\Resources\MedicineTypeResource;
 use App\Http\Resources\PatientTypeResource;
 use App\Http\Resources\ProcedureResource;
 use App\Http\Resources\RiskFactorResource;
@@ -15,6 +16,7 @@ use App\Models\Complaint;
 use App\Models\Disease;
 use App\Models\DiseaseType;
 use App\Models\Gender;
+use App\Models\MedicineType;
 use App\Models\Patient;
 use App\Models\PatientType;
 use App\Models\PatientVisit;
@@ -89,9 +91,11 @@ class RegistrationController extends Controller
         $diseaseTypes = DiseaseTypeResource::collection(DiseaseType::active()->get());
         $procedures = ProcedureResource::collection(Procedure::active()->get());
         $riskFactors = RiskFactorResource::collection(RiskFactor::active()->get());
+        $medicineTypes = MedicineTypeResource::collection(MedicineType::active()->get());
         return Inertia::render('Registrations/Show',
             compact('patientTypes', 'genders', 'patient',
-                'patientVisit', 'complaints', 'diseases', 'diseaseTypes', 'procedures', 'riskFactors'));
+                'patientVisit', 'complaints', 'diseases', 'diseaseTypes', 'procedures',
+                'riskFactors', 'medicineTypes'));
     }
 
     /**

@@ -522,6 +522,20 @@
                 <div class="tab-pane fade" id="kt_tab_pane_5" role="tabpanel">
                     <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Medicine Prescription</span></h4>
                     <div class="section_box">
+                        <div class="mb-10 row">
+                            <div class="col-lg-4">
+                                <label class="form-label">Medicine Type</label>
+                                <v-select
+                                          v-model="medicineForm.medicine_type_id"
+                                          :options="medicineTypes"
+                                          label="type_name"
+                                          :reduce="(option) => option.id"
+                                          multiple
+                                          class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="medicineForm.errors.medicine_type_id"/>
+
+                            </div>
+                       </div>
 
                     </div>
                 </div>
@@ -555,6 +569,7 @@ const props = defineProps({
     diseaseTypes: { type: Array, required: true},
     procedures: { type: Array, required: true},
     riskFactors: { type: Array, required: true},
+    medicineTypes: { type: Array, required: true},
 });
 
 const filterDiseases = ref();
@@ -564,6 +579,11 @@ let diagForm = useForm({
     disease_type_id: null,
     disease_id: null,
     procedure_id: null,
+});
+
+let medicineForm = useForm({
+    medicine_type_id: null,
+    medicine_id: null,
 });
 
 let preForm = useForm({

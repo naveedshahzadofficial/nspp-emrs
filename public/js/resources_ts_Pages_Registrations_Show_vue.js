@@ -79,6 +79,10 @@ __webpack_require__.r(__webpack_exports__);
     riskFactors: {
       type: Array,
       required: true
+    },
+    medicineTypes: {
+      type: Array,
+      required: true
     }
   },
   setup: function setup(__props, _ref) {
@@ -92,6 +96,10 @@ __webpack_require__.r(__webpack_exports__);
       disease_type_id: null,
       disease_id: null,
       procedure_id: null
+    });
+    var medicineForm = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)({
+      medicine_type_id: null,
+      medicine_id: null
     });
     var preForm = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)({
       vital: {
@@ -182,6 +190,12 @@ __webpack_require__.r(__webpack_exports__);
       },
       set diagForm(v) {
         diagForm = v;
+      },
+      get medicineForm() {
+        return medicineForm;
+      },
+      set medicineForm(v) {
+        medicineForm = v;
       },
       get preForm() {
         return preForm;
@@ -740,18 +754,29 @@ var _hoisted_144 = {
 var _hoisted_145 = {
   "class": "text-center"
 };
-var _hoisted_146 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_146 = {
   "class": "tab-pane fade",
   id: "kt_tab_pane_5",
   role: "tabpanel"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
+};
+var _hoisted_147 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
   "class": "font-weight-bold main_section_heading mt-6"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "text-uppercase"
-}, "Medicine Prescription")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+}, "Medicine Prescription")], -1 /* HOISTED */);
+var _hoisted_148 = {
   "class": "section_box"
-})], -1 /* HOISTED */);
-var _hoisted_147 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+};
+var _hoisted_149 = {
+  "class": "mb-10 row"
+};
+var _hoisted_150 = {
+  "class": "col-lg-4"
+};
+var _hoisted_151 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Medicine Type", -1 /* HOISTED */);
+var _hoisted_152 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "tab-pane fade",
   id: "kt_tab_pane_6",
   role: "tabpanel"
@@ -1000,7 +1025,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: history.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_144, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.created_at), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_145, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.diagnosis_name), 1 /* TEXT */)]);
-  }), 128 /* KEYED_FRAGMENT */))])])])])]), _hoisted_146, _hoisted_147])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card")], 64 /* STABLE_FRAGMENT */);
+  }), 128 /* KEYED_FRAGMENT */))])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_146, [_hoisted_147, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_148, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_149, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_150, [_hoisted_151, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+    modelValue: $setup.medicineForm.medicine_type_id,
+    "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
+      return $setup.medicineForm.medicine_type_id = $event;
+    }),
+    options: $props.medicineTypes,
+    label: "type_name",
+    reduce: function reduce(option) {
+      return option.id;
+    },
+    multiple: "",
+    "class": "v-select-custom",
+    placeholder: "Please Select"
+  }, null, 8 /* PROPS */, ["modelValue", "options", "reduce"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    error: $setup.medicineForm.errors.medicine_type_id
+  }, null, 8 /* PROPS */, ["error"])])])])]), _hoisted_152])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card")], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
