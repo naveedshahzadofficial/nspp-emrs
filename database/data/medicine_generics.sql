@@ -499,7 +499,7 @@ INSERT INTO `medicine_generics` (`id`, `generic_name`) VALUES
 (498, 'Absorbed Tetanus Vaccine'),
 (499, 'Enema Liquid'),
 (500, 'Biotinylated Monoclonal Device');
-INSERT INTO `tbl_generic` (`id`, `generic_name`) VALUES
+INSERT INTO `medicine_generics` (`id`, `generic_name`) VALUES
 (501, 'Gentamycin,  H.C.'),
 (502, 'Airway All Size'),
 (503, 'Catgut Chromic'),
