@@ -530,12 +530,149 @@
                                           :options="medicineTypes"
                                           label="type_name"
                                           :reduce="(option) => option.id"
-                                          multiple
                                           class="v-select-custom" placeholder="Please Select" />
                                 <ServerErrorMessage :error="medicineForm.errors.medicine_type_id"/>
 
                             </div>
+
+                            <div class="col-lg-4">
+                                <label class="form-label">Medicine</label>
+                                <v-select
+                                    v-model="medicineForm.medicine_id"
+                                    :options="filterMedicines"
+                                    label="medicine_name"
+                                    :reduce="(option) => option.id"
+                                    class="v-select-custom" placeholder="Please Select" >
+                                    <template v-slot:option="option">
+                                        {{ option.medicine_name }}<template v-if="option.medicine_generic?.generic_name"> --- [ {{ option.medicine_generic.generic_name }} ]<span>--- (0)</span></template>
+                                    </template>
+                                    <template #selected-option="{ medicine_name, medicine_generic }">
+                                        {{ medicine_name }}<template v-if="medicine_generic?.generic_name"> --- [ {{ medicine_generic.generic_name }} ]<span>--- (0)</span></template>
+                                    </template>
+                                </v-select>
+                                <ServerErrorMessage :error="medicineForm.errors.medicine_id"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+                                <label class="form-label">Route</label>
+                                <v-select
+                                    v-model="medicineForm.route_id"
+                                    :options="routes"
+                                    label="route_name"
+                                    :reduce="(option) => option.id"
+                                    class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="medicineForm.errors.route_id"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+                                <label class="form-label">Dosage</label>
+                                <v-select
+                                    v-model="medicineForm.dosage"
+                                    :options="['1/4', '1/3', '1/2', '3/4'].concat(range(1, 180, 1, 0))"
+                                    class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="medicineForm.errors.dosage"/>
+
+                            </div>
+
                        </div>
+
+                        <div class="mb-10 row">
+
+                            <div class="col-lg-4">
+                                <label class="form-label">Frequency</label>
+                                <v-select
+                                    v-model="medicineForm.frequency_id"
+                                    :options="frequencies"
+                                    label="frequency_name"
+                                    :reduce="(option) => option.id"
+                                    class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="medicineForm.errors.frequency_id"/>
+
+                            </div>
+
+                            <div class="col-lg-2">
+                                <label class="form-label">Days</label>
+                                <input v-model="medicineForm.duration_value" type="text" class="form-control form-control-sm" />
+                            </div>
+
+                            <div class="col-lg-2">
+                                <label class="form-label">Qty</label>
+                                <input v-model="medicineForm.qty" type="text" class="form-control form-control-sm" />
+                            </div>
+
+                            <div class="col-lg-4">
+                                <label class="form-label">To be Taken</label>
+                                <div class="d-flex">
+                                    <div v-for="taken_meal in optionsTakenMeals" :key="taken_meal" class="form-check form-check-custom form-check-sm me-10">
+                                        <input v-model="medicineForm.taken_meal" :value="taken_meal" class="form-check-input" name="taken_meal" type="radio" :id="`taken_meal_${taken_meal}`">
+                                        <label class="form-check-label" :for="`taken_meal_${taken_meal}`">{{ taken_meal }}</label>
+                                    </div>
+                                </div>
+                                <ServerErrorMessage :error="medicineForm.errors.taken_meal"/>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-10 row">
+                            <div class="col-lg-8">
+                                <label class="form-label">Notes</label>
+                                <textarea v-model="medicineForm.medicine_notes"  class="form-control form-control-sm" rows="2"></textarea>
+                                <ServerErrorMessage :error="medicineForm.errors.medicine_notes"/>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <label class="form-label">Acquire From</label>
+                                <div class="d-flex">
+                                    <div v-for="acquire_from in optionsAcquireFrom" :key="acquire_from" class="form-check form-check-custom form-check-sm me-10">
+                                        <input v-model="medicineForm.acquire_from" :value="acquire_from" class="form-check-input" name="acquire_from" type="radio" :id="`acquire_from_${acquire_from}`">
+                                        <label class="form-check-label" :for="`acquire_from_${acquire_from}`">{{ acquire_from }}</label>
+                                    </div>
+                                </div>
+                                <ServerErrorMessage :error="medicineForm.errors.acquire_from"/>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-10 row">
+                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm">Save</button></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table
+                                    class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                                >
+                                    <!--begin::Table head-->
+                                    <thead>
+                                    <tr class="fw-semibold fs-6 text-gray-800">
+                                        <th> Medicine</th>
+                                        <th> Route</th>
+                                        <th> Dosage</th>
+                                        <th> Frequency</th>
+                                        <th> Duration</th>
+                                        <th> Qty</th>
+                                        <th class="text-center"> Action </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <template v-for="patient_medicine in patient?.patient_medicines" :key="patient_medicine.id">
+                                        <tr>
+                                            <td class="text-center">{{ patient_medicine.medicine_id }}</td>
+                                            <td class="text-center">{{ patient_medicine.route_id }}</td>
+                                            <td class="text-center">{{ patient_medicine.dosage }}</td>
+                                            <td class="text-center">{{ patient_medicine.frequency_id }}</td>
+                                            <td class="text-center">{{ patient_medicine.duration_value }}</td>
+                                            <td class="text-center">{{ patient_medicine.qty }}</td>
+                                            <td class="text-center">Delete</td>
+                                        </tr>
+                                    </template>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -570,10 +707,16 @@ const props = defineProps({
     procedures: { type: Array, required: true},
     riskFactors: { type: Array, required: true},
     medicineTypes: { type: Array, required: true},
+    medicines: { type: Array, required: true},
+    routes: { type: Array, required: true},
+    frequencies: { type: Array, required: true}
 });
 
 const filterDiseases = ref();
 const filterProcedures = ref();
+const filterMedicines = ref();
+const optionsTakenMeals = ref(["Before Meal", "After Meal", "During Meal"]);
+const optionsAcquireFrom = ref(["In-House", "External"]);
 
 let diagForm = useForm({
     disease_type_id: null,
@@ -584,6 +727,15 @@ let diagForm = useForm({
 let medicineForm = useForm({
     medicine_type_id: null,
     medicine_id: null,
+    route_id: null,
+    frequency_id: null,
+    dosage: null,
+    duration_unit: null,
+    duration_value: null,
+    qty: null,
+    taken_meal: null,
+    medicine_notes: null,
+    acquire_from: null,
 });
 
 let preForm = useForm({
@@ -620,6 +772,15 @@ watch(() => diagForm.disease_type_id, value => {
     diagForm.reset( "disease_id", "procedure_id");
     filterDiseases.value = props.diseases?.filter((disease: any) => disease.disease_type_id === value);
     filterProcedures.value = props.procedures?.filter((procedure: any) => procedure.disease_type_id === value);
+});
+
+watch(() => medicineForm.medicine_type_id, value => {
+    medicineForm.reset( "medicine_id");
+    filterMedicines.value = props.medicines?.filter((medicine: any) => medicine.medicine_type_id === value);
+});
+
+watch(() => medicineForm.medicine_id, value => {
+    console.log(value)
 });
 
 const addDiagnosis = () => {

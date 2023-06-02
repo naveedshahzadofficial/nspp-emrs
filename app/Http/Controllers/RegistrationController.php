@@ -7,21 +7,27 @@ use App\Http\Requests\UpdateRegistrationRequest;
 use App\Http\Resources\ComplaintResource;
 use App\Http\Resources\DiseaseResource;
 use App\Http\Resources\DiseaseTypeResource;
+use App\Http\Resources\FrequencyResource;
 use App\Http\Resources\GenderResource;
+use App\Http\Resources\MedicineResource;
 use App\Http\Resources\MedicineTypeResource;
 use App\Http\Resources\PatientTypeResource;
 use App\Http\Resources\ProcedureResource;
 use App\Http\Resources\RiskFactorResource;
+use App\Http\Resources\RouteResource;
 use App\Models\Complaint;
 use App\Models\Disease;
 use App\Models\DiseaseType;
+use App\Models\Frequency;
 use App\Models\Gender;
+use App\Models\Medicine;
 use App\Models\MedicineType;
 use App\Models\Patient;
 use App\Models\PatientType;
 use App\Models\PatientVisit;
 use App\Models\Procedure;
 use App\Models\RiskFactor;
+use App\Models\Route;
 use App\Services\RegistrationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -92,10 +98,14 @@ class RegistrationController extends Controller
         $procedures = ProcedureResource::collection(Procedure::active()->get());
         $riskFactors = RiskFactorResource::collection(RiskFactor::active()->get());
         $medicineTypes = MedicineTypeResource::collection(MedicineType::active()->get());
+        $medicines = MedicineResource::collection(Medicine::with('medicineGeneric')->active()->get());
+        $routes = RouteResource::collection(Route::active()->get());
+        $frequencies = FrequencyResource::collection(Frequency::active()->get());
+
         return Inertia::render('Registrations/Show',
             compact('patientTypes', 'genders', 'patient',
                 'patientVisit', 'complaints', 'diseases', 'diseaseTypes', 'procedures',
-                'riskFactors', 'medicineTypes'));
+                'riskFactors', 'medicineTypes', 'medicines', 'routes', 'frequencies'));
     }
 
     /**

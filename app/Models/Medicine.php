@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Medicine extends Model
@@ -16,5 +17,18 @@ class Medicine extends Model
 
     public function scopeActive($query) {
         return $query->where('status', true);
+    }
+
+    public function medicineCategory(): BelongsTo
+    {
+        return $this->belongsTo(MedicineCategory::class);
+    }
+    public function medicineGeneric(): BelongsTo
+    {
+        return $this->belongsTo(MedicineGeneric::class);
+    }
+    public function medicineType(): BelongsTo
+    {
+        return $this->belongsTo(MedicineType::class);
     }
 }
