@@ -1,14 +1,10 @@
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CleanupMiniCssExtractPlugin = require("cleanup-mini-css-extract-plugin");
 
 
 module.exports = {
     module: {
         rules: [
-            {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader"],
-            },
             {
                 test: /\.tsx?$/,
                 loader: "ts-loader",
@@ -28,7 +24,8 @@ module.exports = {
     stats: {
         children: true,
     },
-    plugins: [
-        new MiniCssExtractPlugin(),
-    ],
+    plugins: [new CleanupMiniCssExtractPlugin({
+        children: true,
+        warnings: false
+    })]
 };
