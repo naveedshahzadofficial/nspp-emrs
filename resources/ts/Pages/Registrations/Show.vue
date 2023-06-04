@@ -240,20 +240,20 @@
                         <div class="mb-10 row">
                             <div class="col-lg-4">
                                 <label class="form-label">Risk Factors</label>
-                                <v-select v-model="preForm.risk_factor.risk_factor_ids"
+                                <v-select v-model="preForm.risk_factor_ids"
                                           :options="riskFactors"
                                           label="factor_name"
                                           :reduce="(option) => option.id"
                                           multiple
                                           class="v-select-custom" placeholder="Please Select" />
-                                <ServerErrorMessage :error="preForm.errors.risk_factor?.risk_factor_ids"/>
+                                <ServerErrorMessage :error="preForm.errors.risk_factor_ids"/>
 
                             </div>
 
                             <div class="col-lg-8">
                                 <label class="form-label">Notes</label>
-                                <textarea v-model="preForm.risk_factor.risk_factor_notes"  class="form-control form-control-sm" rows="4"></textarea>
-                                <ServerErrorMessage :error="preForm.errors.risk_factor?.risk_factor_notes"/>
+                                <textarea v-model="preForm.risk_factor_notes"  class="form-control form-control-sm" rows="4"></textarea>
+                                <ServerErrorMessage :error="preForm.errors.risk_factor_notes"/>
                             </div>
 
 
@@ -296,20 +296,20 @@
                         <div class="mb-10 row">
                             <div class="col-lg-4">
                                 <label class="form-label">Complaints</label>
-                                <v-select v-model="preForm.complaint.complaint_ids"
+                                <v-select v-model="preForm.complaint_ids"
                                           :options="complaints"
                                           label="complaint_name"
                                           :reduce="(option) => option.id"
                                            multiple
                                           class="v-select-custom" placeholder="Please Select" />
-                                <ServerErrorMessage :error="preForm.errors.complaint?.complaint_ids"/>
+                                <ServerErrorMessage :error="preForm.errors.complaint_ids"/>
 
                             </div>
 
                             <div class="col-lg-8">
                                 <label class="form-label">Complaint Notes</label>
-                                <textarea v-model="preForm.complaint.complaint_notes"  class="form-control form-control-sm" rows="4"></textarea>
-                                <ServerErrorMessage :error="preForm.errors.complaint?.complaint_notes"/>
+                                <textarea v-model="preForm.complaint_notes"  class="form-control form-control-sm" rows="4"></textarea>
+                                <ServerErrorMessage :error="preForm.errors.complaint_notes"/>
                             </div>
 
 
@@ -321,20 +321,20 @@
                         <div class="mb-10 row">
                             <div class="col-lg-4">
                                 <label class="form-label">Diseases</label>
-                                <v-select v-model="preForm.disease.disease_ids"
+                                <v-select v-model="preForm.disease_ids"
                                           :options="diseases"
                                           label="disease_name"
                                           :reduce="(option) => option.id"
                                           multiple
                                           class="v-select-custom" placeholder="Please Select" />
-                                <ServerErrorMessage :error="preForm.errors.disease?.disease_ids"/>
+                                <ServerErrorMessage :error="preForm.errors.disease_ids"/>
 
                             </div>
 
                             <div class="col-lg-8">
                                 <label class="form-label">Disease Notes</label>
-                                <textarea v-model="preForm.disease.disease_notes"  class="form-control form-control-sm" rows="4"></textarea>
-                                <ServerErrorMessage :error="preForm.errors.disease?.disease_notes"/>
+                                <textarea v-model="preForm.disease_notes"  class="form-control form-control-sm" rows="4"></textarea>
+                                <ServerErrorMessage :error="preForm.errors.disease_notes"/>
                             </div>
 
 
@@ -405,7 +405,7 @@
                     <div class="section_box">
                         <div class="mb-10 row">
                             <div class="col-lg-3">
-                                <label class="form-label">Category</label>
+                                <label class="form-label required">Category</label>
                                 <v-select
                                           v-model="diagForm.disease_type_id"
                                           :options="diseaseTypes"
@@ -418,7 +418,7 @@
                             </div>
 
                             <div class="col-lg-3">
-                                <label class="form-label">Diagnosis</label>
+                                <label class="form-label required">Diagnosis</label>
                                 <v-select
                                           v-model="diagForm.disease_id"
                                           :options="filterDiseases"
@@ -464,11 +464,11 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <template v-for="dig in preForm.diagnosis.diagnoses">
+                                    <template v-for="dig in preForm.diagnoses">
                                         <tr>
                                             <td class="text-center">{{ getDiseaseTypeName(dig.disease_type_id) }}</td>
                                             <td class="text-center">{{ getDiseaseName(dig.disease_id) }}</td>
-                                            <td class="text-center">{{ getProcedureName(dig.disease_id) }}</td>
+                                            <td class="text-center">{{ getProcedureName(dig.procedure_id) }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteDiagnosis(dig)"><i class="las la-trash fs-1"></i></button>
                                             </td>
@@ -486,8 +486,8 @@
                         <div class="mb-10 row">
                             <div class="col-lg-12">
                                 <label class="form-label">Advise</label>
-                                <textarea v-model="preForm.diagnosis.diagnosis_advise"  class="form-control form-control-sm" rows="4"></textarea>
-                                <ServerErrorMessage :error="preForm.errors.diagnosis?.diagnosis_advise"/>
+                                <textarea v-model="preForm.diagnosis_advise"  class="form-control form-control-sm" rows="4"></textarea>
+                                <ServerErrorMessage :error="preForm.errors.diagnosis_advise"/>
                             </div>
                         </div>
                     </div>
@@ -523,25 +523,14 @@
                     <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Medicine Prescription</span></h4>
                     <div class="section_box">
                         <div class="mb-10 row">
-                            <div class="col-lg-4">
-                                <label class="form-label">Medicine Type</label>
-                                <v-select
-                                          v-model="medicineForm.medicine_type_id"
-                                          :options="medicineTypes"
-                                          label="type_name"
-                                          :reduce="(option) => option.id"
-                                          class="v-select-custom" placeholder="Please Select" />
-                                <ServerErrorMessage :error="medicineForm.errors.medicine_type_id"/>
 
-                            </div>
-
-                            <div class="col-lg-4">
-                                <label class="form-label">Medicine</label>
+                            <div class="col-lg-6">
+                                <label class="form-label required">Medicine</label>
                                 <v-select
-                                    v-model="medicineForm.medicine_id"
-                                    :options="filterMedicines"
+                                    v-model="medicineOption"
+                                    :options="medicines"
+                                    :reduce="(option) => option"
                                     label="medicine_name"
-                                    :reduce="(option) => option.id"
                                     class="v-select-custom" placeholder="Please Select" >
                                     <template v-slot:option="option">
                                         {{ option.medicine_name }}<template v-if="option.medicine_generic?.generic_name"> --- [ {{ option.medicine_generic.generic_name }} ]<span>--- (0)</span></template>
@@ -552,6 +541,10 @@
                                 </v-select>
                                 <ServerErrorMessage :error="medicineForm.errors.medicine_id"/>
 
+                            </div>
+                            <div class="col-lg-2">
+                                <label class="form-label">Dosage Form</label>
+                                <input v-model="medicineForm.medicine_type" type="text" class="form-control form-control-sm form-control-solid" readonly />
                             </div>
 
                             <div class="col-lg-2">
@@ -593,7 +586,7 @@
                             </div>
 
                             <div class="col-lg-2">
-                                <label class="form-label">Days</label>
+                                <label class="form-label">Duration ({{ medicineForm.duration_unit }})</label>
                                 <input v-model="medicineForm.duration_value" type="text" class="form-control form-control-sm" />
                             </div>
 
@@ -617,9 +610,9 @@
 
                         <div class="mb-10 row">
                             <div class="col-lg-8">
-                                <label class="form-label">Notes</label>
-                                <textarea v-model="medicineForm.medicine_notes"  class="form-control form-control-sm" rows="2"></textarea>
-                                <ServerErrorMessage :error="medicineForm.errors.medicine_notes"/>
+                                <label class="form-label">Instructions</label>
+                                <textarea v-model="medicineForm.medicine_instructions"  class="form-control form-control-sm" rows="2"></textarea>
+                                <ServerErrorMessage :error="medicineForm.errors.medicine_instructions"/>
                             </div>
 
                             <div class="col-lg-4">
@@ -636,7 +629,7 @@
                         </div>
 
                         <div class="mb-10 row">
-                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm">Save</button></div>
+                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addMedicine">Save</button></div>
                         </div>
 
                         <div class="row">
@@ -647,25 +640,27 @@
                                     <!--begin::Table head-->
                                     <thead>
                                     <tr class="fw-semibold fs-6 text-gray-800">
-                                        <th> Medicine</th>
-                                        <th> Route</th>
-                                        <th> Dosage</th>
-                                        <th> Frequency</th>
-                                        <th> Duration</th>
-                                        <th> Qty</th>
+                                        <th class="text-start"> Medicine</th>
+                                        <th class="text-start"> Route</th>
+                                        <th class="text-center"> Dosage</th>
+                                        <th class="text-start"> Frequency</th>
+                                        <th class="text-center"> Duration</th>
+                                        <th class="text-center"> Qty</th>
                                         <th class="text-center"> Action </th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <template v-for="patient_medicine in patient?.patient_medicines" :key="patient_medicine.id">
+                                    <template v-for="pmed in preForm.patient_medicines">
                                         <tr>
-                                            <td class="text-center">{{ patient_medicine.medicine_id }}</td>
-                                            <td class="text-center">{{ patient_medicine.route_id }}</td>
-                                            <td class="text-center">{{ patient_medicine.dosage }}</td>
-                                            <td class="text-center">{{ patient_medicine.frequency_id }}</td>
-                                            <td class="text-center">{{ patient_medicine.duration_value }}</td>
-                                            <td class="text-center">{{ patient_medicine.qty }}</td>
-                                            <td class="text-center">Delete</td>
+                                            <td class="text-start">{{ getMedicineName(pmed.medicine_id) }}</td>
+                                            <td class="text-start">{{ getRouteName(pmed.route_id) }}</td>
+                                            <td class="text-center">{{ pmed.dosage }}</td>
+                                            <td class="text-start">{{ getFrequencyName(pmed.frequency_id) }}</td>
+                                            <td class="text-center">{{ pmed.duration_value }}</td>
+                                            <td class="text-center">{{ pmed.qty }}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteMedicine(pmed)"><i class="las la-trash fs-1"></i></button>
+                                            </td>
                                         </tr>
                                     </template>
 
@@ -675,6 +670,8 @@
                         </div>
 
                     </div>
+                    <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Other Items</span></h4>
+
                 </div>
                 <div class="tab-pane fade" id="kt_tab_pane_6" role="tabpanel">
                     <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Referrals</span></h4>
@@ -693,7 +690,7 @@
 <script setup lang="ts">
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 import {useForm} from "@inertiajs/vue3";
-import {ref, watch, PropType} from "vue";
+import {ref, watch, onMounted} from "vue";
 import {IDisease} from "@/interfaces/disease.interface";
 import {IDiagnosis} from "@/interfaces/diagnosis.interface";
 import {IDiseaseType} from "@/interfaces/diseaseType.interface";
@@ -706,7 +703,6 @@ const props = defineProps({
     diseaseTypes: { type: Array, required: true},
     procedures: { type: Array, required: true},
     riskFactors: { type: Array, required: true},
-    medicineTypes: { type: Array, required: true},
     medicines: { type: Array, required: true},
     routes: { type: Array, required: true},
     frequencies: { type: Array, required: true}
@@ -715,6 +711,8 @@ const props = defineProps({
 const filterDiseases = ref();
 const filterProcedures = ref();
 const filterMedicines = ref();
+const filterOtherMedicines = ref();
+const medicineOption = ref();
 const optionsTakenMeals = ref(["Before Meal", "After Meal", "During Meal"]);
 const optionsAcquireFrom = ref(["In-House", "External"]);
 
@@ -725,16 +723,17 @@ let diagForm = useForm({
 });
 
 let medicineForm = useForm({
-    medicine_type_id: null,
     medicine_id: null,
-    route_id: null,
-    frequency_id: null,
+    medicine_type_id: null,
+    medicine_type: null,
+    route_id: 1,
     dosage: null,
-    duration_unit: null,
-    duration_value: null,
-    qty: null,
+    frequency_id: null,
+    duration_unit: "Days",
+    duration_value: 1,
+    qty: 1,
     taken_meal: null,
-    medicine_notes: null,
+    medicine_instructions: null,
     acquire_from: null,
 });
 
@@ -749,22 +748,16 @@ let preForm = useForm({
             height: props.patientVisit?.height,
             notes: props.patientVisit?.notes
         },
-    risk_factor: {
-      risk_factor_ids: [],
-      risk_factor_notes: ''
-    },
-    complaint: {
-        complaint_ids: [],
-        complaint_notes: ''
-    },
-    disease: {
-        disease_ids: [],
-        disease_notes: ''
-    },
-    diagnosis: {
-        diagnoses: <IDiagnosis[]>[],
-        diagnosis_advise: '',
-    }
+    risk_factor_ids: [],
+    risk_factor_notes: '',
+    complaint_ids: [],
+    complaint_notes: '',
+    disease_ids: [],
+    disease_notes: '',
+    diagnoses: <IDiagnosis[]>[],
+    diagnosis_advise: '',
+    patient_medicines: <any>[],
+
    }
 );
 
@@ -774,14 +767,36 @@ watch(() => diagForm.disease_type_id, value => {
     filterProcedures.value = props.procedures?.filter((procedure: any) => procedure.disease_type_id === value);
 });
 
-watch(() => medicineForm.medicine_type_id, value => {
-    medicineForm.reset( "medicine_id");
-    filterMedicines.value = props.medicines?.filter((medicine: any) => medicine.medicine_type_id === value);
+watch(() => medicineOption.value, option => {
+    medicineForm.reset( );
+    if(option?.id){
+        medicineForm.medicine_id = option.id;
+        medicineForm.medicine_type_id = option.medicine_type_id;
+        medicineForm.medicine_type = option.medicine_type?.type_name;
+    }else{
+        medicineForm.medicine_id = null;
+        medicineForm.medicine_type_id = null;
+        medicineForm.medicine_type = null;
+    }
 });
 
-watch(() => medicineForm.medicine_id, value => {
-    console.log(value)
+watch(() => [medicineForm.dosage, medicineForm.frequency_id, medicineForm.duration_value], ([dosage, frequency_id, duration_value]) => {
+    let total = 1;
+    let isMultiply = medicineOption.value?.medicine_type?.is_multiply;
+    if(isMultiply){
+        let dosage = medicineForm.dosage || 1;
+        let multiplyFactor = 1;
+        if(frequency_id !== null) {
+            let frequency = props.frequencies?.find((freq: any) => freq.id === frequency_id) as any;
+            multiplyFactor = frequency?.multiply_factor || 1;
+        }
+        total = Math.ceil(eval(String(dosage)) * multiplyFactor * (duration_value || 1));
+    }
+
+    medicineForm.qty = total;
 });
+
+
 
 const addDiagnosis = () => {
     diagForm.clearErrors();
@@ -795,21 +810,39 @@ const addDiagnosis = () => {
     if(row.disease_type_id === null || row.disease_id === null)
         return;
 
-    preForm.diagnosis.diagnoses.push({
-        disease_type_id: row.disease_type_id,
-        disease_id: row.disease_id,
-        procedure_id: row.procedure_id,
-    })
+    preForm.diagnoses.push(diagForm.data())
     diagForm.reset()
 }
-
 const deleteDiagnosis = (dig: Object) => {
-    preForm.diagnosis.diagnoses = preForm.diagnosis.diagnoses.filter(obj => obj != dig);
+    preForm.diagnoses = preForm.diagnoses.filter(obj => obj !== dig);
 }
 
-const getDiseaseTypeName = (id: number) => (props.diseaseTypes?.filter((diseaseType: any) => diseaseType.id === id)[0] as any)?.type_name
-const getDiseaseName = (id: number) => (props.diseases.filter((disease: any) => disease.id === id)[0] as any)?.disease_name;
-const getProcedureName = (id: number) => (props.procedures.filter((procedure: any) => procedure.id === id)[0] as any)?.procedure_name || 'Not Available';
+const getDiseaseTypeName = (id: number) => (props.diseaseTypes?.find((diseaseType: any) => diseaseType.id === id) as any)?.type_name;
+const getDiseaseName = (id: number) => (props.diseases.find((disease: any) => disease.id === id) as any)?.disease_name;
+const getProcedureName = (id: number) => (props.procedures.find((procedure: any) => procedure.id === id) as any)?.procedure_name || 'Not Available';
 
+const addMedicine = () => {
+    medicineForm.clearErrors();
+    const row = medicineForm.data();
+    if(row.medicine_id === null)
+        medicineForm.setError("medicine_id", "Medicine is required.");
+    if(row.route_id === null)
+        medicineForm.setError("route_id", "Route is required.");
+    if(row.acquire_from === null)
+        medicineForm.setError("acquire_from", "Acquire From is required.");
 
+    if(row.medicine_id === null || row.route_id === null || row.acquire_from === null)
+        return;
+
+    preForm.patient_medicines.push(medicineForm.data())
+
+    medicineForm.reset();
+}
+const deleteMedicine = (pmed: Object) =>{
+    preForm.patient_medicines = preForm.patient_medicines.filter(obj => obj !== pmed);
+}
+
+const getMedicineName = (id: number) => (props.medicines?.find((medicine: any) => medicine.id === id) as any).medicine_name;
+const getRouteName = (id: number) => (props.routes?.find((route: any) => route.id === id) as any).route_name;
+const getFrequencyName = (id: number) => (props.frequencies?.find((frequency: any) => frequency.id === id) as any).frequency_name;
 </script>

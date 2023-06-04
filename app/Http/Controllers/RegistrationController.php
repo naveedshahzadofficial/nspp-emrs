@@ -97,15 +97,14 @@ class RegistrationController extends Controller
         $diseaseTypes = DiseaseTypeResource::collection(DiseaseType::active()->get());
         $procedures = ProcedureResource::collection(Procedure::active()->get());
         $riskFactors = RiskFactorResource::collection(RiskFactor::active()->get());
-        $medicineTypes = MedicineTypeResource::collection(MedicineType::active()->get());
-        $medicines = MedicineResource::collection(Medicine::with('medicineGeneric')->active()->get());
+        $medicines = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')->active()->get());
         $routes = RouteResource::collection(Route::active()->get());
         $frequencies = FrequencyResource::collection(Frequency::active()->get());
 
         return Inertia::render('Registrations/Show',
             compact('patientTypes', 'genders', 'patient',
                 'patientVisit', 'complaints', 'diseases', 'diseaseTypes', 'procedures',
-                'riskFactors', 'medicineTypes', 'medicines', 'routes', 'frequencies'));
+                'riskFactors', 'medicines', 'routes', 'frequencies'));
     }
 
     /**
