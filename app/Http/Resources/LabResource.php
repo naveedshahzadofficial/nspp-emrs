@@ -16,7 +16,7 @@ class LabResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'lab_name' => $this->hospital_name,
+            'lab_name' => $this->lab_name,
             'speciality' => $this->speciality,
             'address' => $this->address,
             'contact' => $this->contact,

@@ -171,7 +171,7 @@ class RegistrationController extends Controller
 
     public function checkout(PrescriptionCheckoutRequest $request, PatientVisit $patientVisit)
     {
-        
+        dd($request->all());
         DB::transaction(function() use ($request, $patientVisit) {
             $this->registrationService->updatePatientVisit($request->validated(), $patientVisit);
         });
