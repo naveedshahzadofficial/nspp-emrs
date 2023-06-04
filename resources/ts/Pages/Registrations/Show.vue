@@ -24,6 +24,23 @@
             </div>
             <!--begin::Card title-->
 
+            <!--begin::Card toolbar-->
+            <div class="card-toolbar">
+
+                <!--begin::Add button-->
+                <Link
+                    @click.prevent="checkout"
+                    as="button"
+                    type="button"
+                    class="btn btn-success"
+                >
+                    Checkout
+                </Link>
+                <!--end::Add button-->
+
+            </div>
+            <!--end::Card toolbar-->
+
         </div>
         <!--end::Card header-->
 
@@ -137,22 +154,22 @@
                         <div class="mb-10 row">
                             <div class="col-lg-4">
                                 <label class="form-label">Temperature (°F)</label>
-                                <v-select v-model="preForm.vital.temperature" :options="range(97.0, 106.0, .1).reverse()" class="v-select-custom" placeholder="Please Select" />
-                                <ServerErrorMessage :error="preForm.errors.vital?.temperature"/>
+                                <v-select v-model="preForm.temperature" :options="range(97.0, 106.0, .1).reverse()" class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="preForm.errors.temperature"/>
 
                             </div>
 
                             <div class="col-lg-4">
                                 <label class="form-label">B.P. Systolic (mmHg)</label>
-                                <v-select v-model="preForm.vital.bp_systolic" :options="range(40, 300, 5, 0)" class="v-select-custom" placeholder="Please Select" />
-                                <ServerErrorMessage :error="preForm.errors.vital?.bp_systolic"/>
+                                <v-select v-model="preForm.bp_systolic" :options="range(40, 300, 5, 0)" class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="preForm.errors.bp_systolic"/>
 
                             </div>
 
                             <div class="col-lg-4">
                                 <label class="form-label">B.P. Diastolic (mmHg)</label>
-                                <v-select v-model="preForm.vital.bp_diastolic" :options="range(40, 300, 5, 0)" class="v-select-custom" placeholder="Please Select" />
-                                <ServerErrorMessage :error="preForm.errors.vital?.bp_diastolic"/>
+                                <v-select v-model="preForm.bp_diastolic" :options="range(40, 300, 5, 0)" class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="preForm.errors.bp_diastolic"/>
 
                             </div>
 
@@ -161,21 +178,21 @@
                         <div class="mb-10 row">
                             <div class="col-lg-4">
                                 <label class="form-label">Pulse (bpm)</label>
-                                <v-select v-model="preForm.vital.pulse" :options="range(50, 120, 1, 0)" class="v-select-custom" placeholder="Please Select" />
-                                <ServerErrorMessage :error="preForm.errors.vital?.pulse"/>
+                                <v-select v-model="preForm.pulse" :options="range(50, 120, 1, 0)" class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="preForm.errors.pulse"/>
 
                             </div>
 
                             <div class="col-lg-4">
                                 <label class="form-label">Sugar (mg/dL)</label>
-                                <input v-model="preForm.vital.sugar"  type="text" class="form-control form-control-sm" placeholder="Sugar (mg/dL)"/>
-                                <ServerErrorMessage :error="preForm.errors.vital?.sugar"/>
+                                <input v-model="preForm.sugar"  type="text" class="form-control form-control-sm" placeholder="Sugar (mg/dL)"/>
+                                <ServerErrorMessage :error="preForm.errors.sugar"/>
 
                             </div>
                             <div class="col-lg-4">
                                 <label class="form-label">Weight (kg)</label>
-                                <v-select v-model="preForm.vital.weight" :options="range(1.0, 200.0, .1)" class="v-select-custom" placeholder="Please Select" />
-                                <ServerErrorMessage :error="preForm.errors.vital?.weight"/>
+                                <v-select v-model="preForm.weight" :options="range(1.0, 200.0, .1)" class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="preForm.errors.weight"/>
 
                             </div>
                         </div>
@@ -183,8 +200,8 @@
                         <div class="mb-10 row">
                             <div class="col-lg-4">
                                 <label class="form-label">Height (cm)</label>
-                                <input v-model="preForm.vital.height"  type="text" class="form-control form-control-sm" placeholder="Height (cm)"/>
-                                <ServerErrorMessage :error="preForm.errors.vital?.height"/>
+                                <input v-model="preForm.height"  type="text" class="form-control form-control-sm" placeholder="Height (cm)"/>
+                                <ServerErrorMessage :error="preForm.errors.height"/>
 
                             </div>
                         </div>
@@ -192,8 +209,8 @@
                         <div class="mb-10 row">
                             <div class="col-lg-12">
                                 <label class="form-label">Notes</label>
-                                <textarea v-model="preForm.vital.notes"  class="form-control form-control-sm" rows="4"></textarea>
-                                <ServerErrorMessage :error="preForm.errors.vital?.notes"/>
+                                <textarea v-model="preForm.notes"  class="form-control form-control-sm" rows="4"></textarea>
+                                <ServerErrorMessage :error="preForm.errors.notes"/>
                             </div>
                         </div>
 
@@ -776,10 +793,225 @@
 
                 </div>
                 <div class="tab-pane fade" id="kt_tab_pane_6" role="tabpanel">
-                    <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Referrals</span></h4>
+                    <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Referral – Lab</span></h4>
                     <div class="section_box">
+                        <div class="mb-10 row">
+                            <div class="col-lg-4">
+                                <label class="form-label required">Test Category</label>
+                                <v-select
+                                    v-model="labForm.test_category_id"
+                                    :options="testCategories"
+                                    label="category_name"
+                                    :reduce="(option) => option.id"
+                                    class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="labForm.errors.test_category_id"/>
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="form-label required">Test Type</label>
+                                <v-select
+                                    v-model="labForm.test_type_id"
+                                    :options="testTypes"
+                                    label="type_name"
+                                    :reduce="(option) => option.id"
+                                    class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="labForm.errors.test_type_id"/>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <label class="form-label required">Test</label>
+                                <v-select
+                                    v-model="labForm.test_id"
+                                    :options="tests"
+                                    label="test_name"
+                                    :reduce="(option) => option.id"
+                                    class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="labForm.errors.test_id"/>
+                            </div>
+                        </div>
+                        <div class="mb-10 row">
+                            <div class="col-lg-4">
+                                <label class="form-label required">Refer to Lab</label>
+                                <v-select
+                                    v-model="labForm.lab_id"
+                                    :options="labs"
+                                    label="lab_name"
+                                    :reduce="(option) => option.id"
+                                    class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="labForm.errors.lab_id"/>
+                            </div>
+
+                            <div class="col-lg-8">
+                                <label class="form-label">Further Instructions</label>
+                                <textarea v-model="labForm.test_instructions"  class="form-control form-control-sm" rows="2"></textarea>
+                                <ServerErrorMessage :error="labForm.errors.test_instructions"/>
+                            </div>
+
+                        </div>
+                        <div class="mb-10 row">
+                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addLab">Save</button></div>
+                        </div>
+                        <div class="mb-10 row">
+                            <div class="table-responsive">
+                                <table
+                                    class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                                >
+                                    <!--begin::Table head-->
+                                    <thead>
+                                    <tr class="fw-semibold fs-6 text-gray-800">
+                                        <th class="text-start"> Test Category</th>
+                                        <th class="text-start">Test Type</th>
+                                        <th class="text-start">Test Name</th>
+                                        <th class="text-start">Further Instructions</th>
+                                        <th class="text-start">Refer to Lab</th>
+                                        <th class="text-center"> Action </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <template v-for="hospital in preForm.patient_labs">
+                                        <tr>
+                                            <td class="text-start">{{ getTestCategoryName(hospital.test_category_id) }}</td>
+                                            <td class="text-start">{{ getTestTypeName(hospital.test_type_id) }}</td>
+                                            <td class="text-start">{{ getTestName(hospital.test_id) }}</td>
+                                            <td class="text-start">{{ hospital.test_instructions }}</td>
+                                            <td class="text-start">{{ getLabName(hospital.test_category_id) }}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteHospital(hospital)"><i class="las la-trash fs-1"></i></button>
+                                            </td>
+                                        </tr>
+                                    </template>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
                     </div>
+
+                    <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Referral – Hospital</span></h4>
+                    <div class="section_box">
+                        <div class="mb-10 row">
+                            <div class="col-lg-4">
+                                <label class="form-label required">Hospital</label>
+                                <v-select
+                                    v-model="hospitalForm.hospital_id"
+                                    :options="hospitals"
+                                    label="hospital_name"
+                                    :reduce="(option) => option.id"
+                                    class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="hospitalForm.errors.hospital_id"/>
+                            </div>
+                            <div class="col-lg-2">
+                                <label class="form-label">Priority</label>
+                                <v-select v-model="hospitalForm.priority" :options="range(1, 50, 1, 0)" class="v-select-custom" placeholder="Please Select" />
+                                <ServerErrorMessage :error="hospitalForm.errors.priority"/>
+
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="form-label">Remarks</label>
+                                <textarea v-model="hospitalForm.remarks"  class="form-control form-control-sm" rows="2"></textarea>
+                                <ServerErrorMessage :error="hospitalForm.errors.remarks"/>
+                            </div>
+                        </div>
+                        <div class="mb-10 row">
+                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addHospital">Save</button></div>
+                        </div>
+                        <div class="mb-10 row">
+                            <div class="table-responsive">
+                                <table
+                                    class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                                >
+                                    <!--begin::Table head-->
+                                    <thead>
+                                    <tr class="fw-semibold fs-6 text-gray-800">
+                                        <th class="text-start"> Hospital</th>
+                                        <th class="text-center">Priority</th>
+                                        <th class="text-start"> Remarks</th>
+                                        <th class="text-center"> Action </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <template v-for="hospital in preForm.patient_hospitals">
+                                        <tr>
+                                            <td class="text-start">{{ getHospitalName(hospital.hospital_id) }}</td>
+                                            <td class="text-center">{{ hospital.priority }}</td>
+                                            <td class="text-start">{{ hospital.remarks }}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteHospital(hospital)"><i class="las la-trash fs-1"></i></button>
+                                            </td>
+                                        </tr>
+                                    </template>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Referral – Lab History</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-start">Date</th>
+                                    <th class="text-start">Test Category</th>
+                                    <th class="text-start">Test Type</th>
+                                    <th class="text-start">Test Name</th>
+                                    <th class="text-start">Further Instructions</th>
+                                    <th class="text-start">Refer to Lab</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_labs" :key="history.id">
+                                    <tr>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td>{{ history?.test_category?.category_name }}</td>
+                                        <td>{{ history?.test_type?.type_name }}</td>
+                                        <td>{{ history?.test?.test_name }}</td>
+                                        <td>{{ history.test_instructions }}</td>
+                                        <td>{{ history?.lab?.lab_name }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Referral – Hospital History</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-start">Date</th>
+                                    <th class="text-start"> Hospital</th>
+                                    <th class="text-center">Priority</th>
+                                    <th class="text-start"> Remarks</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_hospitals" :key="history.id">
+                                    <tr>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td>{{ history?.hospital?.hospital_name }}</td>
+                                        <td>{{ history.priority }}</td>
+                                        <td>{{ history.remarks }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -807,7 +1039,12 @@ const props = defineProps({
     riskFactors: { type: Array, required: true},
     medicines: { type: Array, required: true},
     routes: { type: Array, required: true},
-    frequencies: { type: Array, required: true}
+    frequencies: { type: Array, required: true},
+    hospitals: { type: Array, required: true},
+    testCategories: { type: Array, required: true},
+    testTypes: { type: Array, required: true},
+    tests: { type: Array, required: true},
+    labs: { type: Array, required: true},
 });
 
 const filterDiseases = ref();
@@ -818,13 +1055,13 @@ const medicineOption = ref();
 const optionsTakenMeals = ref(["Before Meal", "After Meal", "During Meal"]);
 const optionsAcquireFrom = ref(["In-House", "External"]);
 
-let diagForm = useForm({
+const diagForm = useForm({
     disease_type_id: null,
     disease_id: null,
     procedure_id: null,
 });
 
-let medicineForm = useForm({
+const medicineForm = useForm({
     medicine_id: null,
     medicine_type_id: null,
     medicine_type: null,
@@ -839,33 +1076,49 @@ let medicineForm = useForm({
     acquire_from: null,
 });
 
-let otherMedicineForm = useForm({
+const otherMedicineForm = useForm({
     medicine_id: null,
     qty: null,
     medicine_instructions: null
 });
 
-let preForm = useForm({
-    vital: {
-            temperature: props.patientVisit?.temperature,
-            bp_systolic: props.patientVisit?.bp_systolic,
-            bp_diastolic: props.patientVisit?.bp_diastolic,
-            pulse: props.patientVisit?.pulse,
-            sugar: props.patientVisit?.sugar,
-            weight: props.patientVisit?.weight,
-            height: props.patientVisit?.height,
-            notes: props.patientVisit?.notes
-        },
-    risk_factor_ids: [],
+const hospitalForm = useForm({
+    hospital_id: null,
+    priority: 1,
+    remarks: null,
+});
+
+const labForm = useForm({
+    test_category_id: null,
+    test_type_id: null,
+    test_id: null,
+    test_instructions: null,
+    lab_id: null,
+});
+
+const preForm = useForm({
+    temperature: props.patientVisit?.temperature,
+    bp_systolic: props.patientVisit?.bp_systolic,
+    bp_diastolic: props.patientVisit?.bp_diastolic,
+    pulse: props.patientVisit?.pulse,
+    sugar: props.patientVisit?.sugar,
+    weight: props.patientVisit?.weight,
+    height: props.patientVisit?.height,
+    notes: props.patientVisit?.notes,
+
     risk_factor_notes: '',
-    complaint_ids: [],
     complaint_notes: '',
-    disease_ids: [],
     disease_notes: '',
-    diagnoses: <IDiagnosis[]>[],
     diagnosis_advise: '',
+
+    risk_factor_ids: [],
+    complaint_ids: [],
+    disease_ids: [],
+    diagnoses: <IDiagnosis[]>[],
     patient_medicines: <any>[],
     patient_other_medicines: <any>[],
+    patient_hospitals: <any>[],
+    patient_labs: <any>[],
 
    }
 );
@@ -910,6 +1163,18 @@ watch(() => [medicineForm.dosage, medicineForm.frequency_id, medicineForm.durati
     medicineForm.qty = total;
 });
 
+const getDiseaseTypeName = (id: number) => (props.diseaseTypes?.find((diseaseType: any) => diseaseType.id === id) as any)?.type_name;
+const getDiseaseName = (id: number) => (props.diseases.find((disease: any) => disease.id === id) as any)?.disease_name;
+const getProcedureName = (id: number) => (props.procedures.find((procedure: any) => procedure.id === id) as any)?.procedure_name || 'Not Available';
+const getMedicineName = (id: number) => (props.medicines?.find((medicine: any) => medicine.id === id) as any)?.medicine_name;
+const getRouteName = (id: number) => (props.routes?.find((route: any) => route.id === id) as any)?.route_name;
+const getFrequencyName = (id: number) => (props.frequencies?.find((frequency: any) => frequency.id === id) as any)?.frequency_name;
+const getHospitalName = (id: number) => (props.hospitals?.find((hospital: any) => hospital.id === id) as any)?.hospital_name;
+const getTestCategoryName = (id: number) => (props.testCategories?.find((category: any) => category.id === id) as any)?.category_name;
+const getTestTypeName = (id: number) => (props.testTypes?.find((type: any) => type.id === id) as any)?.type_name;
+const getTestName = (id: number) => (props.tests?.find((test: any) => test.id === id) as any)?.test_name;
+const getLabName = (id: number) => (props.labs?.find((lab: any) => lab.id === id) as any)?.lab_name;
+
 const addDiagnosis = () => {
     diagForm.clearErrors();
     const row = diagForm.data();
@@ -925,13 +1190,7 @@ const addDiagnosis = () => {
     preForm.diagnoses.push(diagForm.data())
     diagForm.reset()
 }
-const deleteDiagnosis = (dig: Object) => {
-    preForm.diagnoses = preForm.diagnoses.filter(obj => obj !== dig);
-}
-
-const getDiseaseTypeName = (id: number) => (props.diseaseTypes?.find((diseaseType: any) => diseaseType.id === id) as any)?.type_name;
-const getDiseaseName = (id: number) => (props.diseases.find((disease: any) => disease.id === id) as any)?.disease_name;
-const getProcedureName = (id: number) => (props.procedures.find((procedure: any) => procedure.id === id) as any)?.procedure_name || 'Not Available';
+const deleteDiagnosis = (dig: Object) => preForm.diagnoses = preForm.diagnoses.filter(obj => obj !== dig);
 
 const addMedicine = () => {
     medicineForm.clearErrors();
@@ -952,9 +1211,6 @@ const addMedicine = () => {
 }
 const deleteMedicine = (pmed: Object) => preForm.patient_medicines = preForm.patient_medicines.filter(obj => obj !== pmed);
 
-const getMedicineName = (id: number) => (props.medicines?.find((medicine: any) => medicine.id === id) as any)?.medicine_name;
-const getRouteName = (id: number) => (props.routes?.find((route: any) => route.id === id) as any)?.route_name;
-const getFrequencyName = (id: number) => (props.frequencies?.find((frequency: any) => frequency.id === id) as any)?.frequency_name;
 
 const addOtherMedicine = () => {
     otherMedicineForm.clearErrors();
@@ -971,7 +1227,51 @@ const addOtherMedicine = () => {
 
     otherMedicineForm.reset();
 }
-
 const deleteOtherMedicine = (pmed: Object) => preForm.patient_other_medicines = preForm.patient_other_medicines.filter(obj => obj !== pmed);
+
+const addHospital = () => {
+    hospitalForm.clearErrors();
+    const row = hospitalForm.data();
+    if(row.hospital_id === null)
+        hospitalForm.setError("hospital_id", "Hospital is required.");
+    if(row.priority === null)
+        hospitalForm.setError("priority", "Qty is required.");
+
+    if(row.hospital_id === null || row.priority === null)
+        return;
+
+    preForm.patient_hospitals.push(hospitalForm.data())
+
+    hospitalForm.reset();
+}
+const deleteHospital = (hospital: Object) => preForm.patient_hospitals = preForm.patient_hospitals.filter(obj => obj !== hospital);
+
+const addLab = () => {
+    labForm.clearErrors();
+    const row = labForm.data();
+    if(row.test_category_id === null)
+        labForm.setError("test_category_id", "Test Category is required.");
+
+    if(row.test_type_id === null)
+        labForm.setError("test_type_id", "Test Type is required.");
+
+    if(row.test_id === null)
+        labForm.setError("test_id", "Test is required.");
+
+    if(row.lab_id === null)
+        labForm.setError("lab_id", "Test Lab is required.");
+
+    if(row.test_category_id === null || row.test_type_id === null || row.test_id === null || row.lab_id === null)
+        return;
+
+    preForm.patient_hospitals.push(labForm.data())
+
+    labForm.reset();
+}
+const deleteLab = (lab: Object) => preForm.patient_labs = preForm.patient_labs.filter(obj => obj !== lab);
+
+const checkout = () => {
+    preForm.post(route('registrations.checkout', props.patientVisit?.id));
+}
 
 </script>

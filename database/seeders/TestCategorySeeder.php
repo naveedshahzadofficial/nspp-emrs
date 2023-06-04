@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TestCategory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,7 @@ class TestCategorySeeder extends Seeder
      */
     public function run()
     {
-        $path = base_path("database/data/test_categories.sql");
-        $sql = file_get_contents($path);
-        DB::unprepared($sql);
+        TestCategory::create(['category_name' => 'Pathology', 'short_name' => 'L']);
+        TestCategory::create(['category_name' => 'Radiology', 'short_name' => 'R']);
     }
 }

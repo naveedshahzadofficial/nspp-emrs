@@ -174,7 +174,7 @@ defineProps({
     genders: { type: Object, required: true },
 });
 
-let registerForm = useForm({
+const registerForm = useForm({
     patient_type_id: '',
     patient_name: '',
     gender_id: '',
@@ -192,7 +192,7 @@ let registerForm = useForm({
     notes: ''
 });
 
-let submit = () => {
+const submit = () => {
     registerForm.post(route('registrations.store'));
 }
 

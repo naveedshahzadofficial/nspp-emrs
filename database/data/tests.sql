@@ -1,4 +1,4 @@
-INSERT INTO `tests` (`test_category_id`, `test_name`, `status`) VALUES
+INSERT INTO `tests` (`test_type_id`, `test_name`, `status`) VALUES
 (5, 'WBC', 1),
 (5, 'RBC', 1),
 (6, 'electrolytes', 0),

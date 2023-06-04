@@ -10,7 +10,7 @@ class Test extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['test_category_id', 'test_name', 'status', ];
+    protected $fillable = ['test_type_id', 'test_name', 'status', ];
 
     public function scopeActive($query) {
         return $query->where('status', true);

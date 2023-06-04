@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PrescriptionCheckoutRequest;
 use App\Http\Requests\StoreRegistrationRequest;
 use App\Http\Requests\UpdateRegistrationRequest;
 use App\Http\Resources\ComplaintResource;
@@ -9,17 +10,24 @@ use App\Http\Resources\DiseaseResource;
 use App\Http\Resources\DiseaseTypeResource;
 use App\Http\Resources\FrequencyResource;
 use App\Http\Resources\GenderResource;
+use App\Http\Resources\HospitalResource;
+use App\Http\Resources\LabResource;
 use App\Http\Resources\MedicineResource;
 use App\Http\Resources\MedicineTypeResource;
 use App\Http\Resources\PatientTypeResource;
 use App\Http\Resources\ProcedureResource;
 use App\Http\Resources\RiskFactorResource;
 use App\Http\Resources\RouteResource;
+use App\Http\Resources\TestCategoryResource;
+use App\Http\Resources\TestResource;
+use App\Http\Resources\TestTypeResource;
 use App\Models\Complaint;
 use App\Models\Disease;
 use App\Models\DiseaseType;
 use App\Models\Frequency;
 use App\Models\Gender;
+use App\Models\Hospital;
+use App\Models\Lab;
 use App\Models\Medicine;
 use App\Models\MedicineType;
 use App\Models\Patient;
@@ -28,6 +36,9 @@ use App\Models\PatientVisit;
 use App\Models\Procedure;
 use App\Models\RiskFactor;
 use App\Models\Route;
+use App\Models\Test;
+use App\Models\TestCategory;
+use App\Models\TestType;
 use App\Services\RegistrationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -88,6 +99,7 @@ class RegistrationController extends Controller
      */
     public function show($id): \Inertia\Response
     {
+        //$data = new \stdClass;
         $patientVisit = PatientVisit::with('patient.patientVisits')->findOrFail($id);
         $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
         $genders = GenderResource::collection(Gender::active()->get());
@@ -100,11 +112,16 @@ class RegistrationController extends Controller
         $medicines = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')->active()->get());
         $routes = RouteResource::collection(Route::active()->get());
         $frequencies = FrequencyResource::collection(Frequency::active()->get());
+        $hospitals = HospitalResource::collection(Hospital::active()->get());
+        $testCategories = TestCategoryResource::collection(TestCategory::active()->get());
+        $testTypes = TestTypeResource::collection(TestType::active()->get());
+        $tests = TestResource::collection(Test::active()->get());
+        $labs = LabResource::collection(Lab::active()->get());
 
         return Inertia::render('Registrations/Show',
             compact('patientTypes', 'genders', 'patient',
                 'patientVisit', 'complaints', 'diseases', 'diseaseTypes', 'procedures',
-                'riskFactors', 'medicines', 'routes', 'frequencies'));
+                'riskFactors', 'medicines', 'routes', 'frequencies', 'hospitals', 'testCategories', 'testTypes', 'tests', 'labs'));
     }
 
     /**
@@ -150,5 +167,15 @@ class RegistrationController extends Controller
         PatientVisit::destroy($id);
         session()->flash('success', 'Your registration has been deleted successfully.');
         return redirect()->route('registrations.index');
+    }
+
+    public function checkout(PrescriptionCheckoutRequest $request, PatientVisit $patientVisit)
+    {
+        
+        DB::transaction(function() use ($request, $patientVisit) {
+            $this->registrationService->updatePatientVisit($request->validated(), $patientVisit);
+        });
+        //session()->flash('success', 'Your prescription has been saved successfully.');
+        //return redirect()->route('registrations.index');
     }
 }

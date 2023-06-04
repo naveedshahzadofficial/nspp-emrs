@@ -175,7 +175,7 @@ const props =  defineProps({
     patientVisit: { type: Object, required: true },
 });
 
-let registerForm = useForm({
+const registerForm = useForm({
     _method: 'put',
     patient_type_id: props.patientVisit?.patient?.patient_type_id,
     patient_name: props.patientVisit?.patient?.patient_name,
@@ -195,7 +195,7 @@ let registerForm = useForm({
 });
 
 
-let submit = () => {
+const submit = () => {
     registerForm.post(route('registrations.update', props.patientVisit?.id));
 }
 
