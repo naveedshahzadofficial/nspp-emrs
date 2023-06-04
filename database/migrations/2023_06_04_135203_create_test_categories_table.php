@@ -15,6 +15,10 @@ class CreateTestCategoriesTable extends Migration
     {
         Schema::create('test_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('category_name');
+            $table->enum('investigations', ['R', 'L']);
+            $table->boolean('status')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

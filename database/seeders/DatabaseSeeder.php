@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
         $this->call(RouteSeeder::class);
         $this->call(FrequencySeeder::class);
         $this->call(HospitalSeeder::class);
+        $this->call(TestCategorySeeder::class);
+        $this->call(TestSeeder::class);
 
     }
 }
