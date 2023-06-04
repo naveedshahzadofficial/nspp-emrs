@@ -761,9 +761,9 @@
                                     <tr>
                                         <td class="text-start">{{ history.created_at }}</td>
                                         <td>{{ history.medicine_name }}</td>
-                                        <td>{{ history.route_name }}</td>
+                                        <td>{{ history?.route?.route_name }}</td>
                                         <td>{{ history.dosage }}</td>
-                                        <td>{{ history.frequency_name }}</td>
+                                        <td>{{ history?.frequency?.frequency_name }}</td>
                                         <td>{{ history.duration_value }}</td>
                                         <td>{{ history.medicine_instructions }}</td>
                                     </tr>
@@ -778,7 +778,7 @@
                 <div class="tab-pane fade" id="kt_tab_pane_6" role="tabpanel">
                     <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Referrals</span></h4>
                     <div class="section_box">
-                        
+
                     </div>
                 </div>
             </div>
