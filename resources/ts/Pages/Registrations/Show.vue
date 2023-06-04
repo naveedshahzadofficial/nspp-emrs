@@ -528,7 +528,7 @@
                                 <label class="form-label required">Medicine</label>
                                 <v-select
                                     v-model="medicineOption"
-                                    :options="medicines"
+                                    :options="filterMedicines"
                                     :reduce="(option) => option"
                                     label="medicine_name"
                                     class="v-select-custom" placeholder="Please Select" >
@@ -671,12 +671,114 @@
 
                     </div>
                     <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Other Items</span></h4>
+                    <div class="section_box">
+                        <div class="mb-10 row">
+                            <div class="col-lg-6">
+                                <label class="form-label required">Name</label>
+                                <v-select
+                                    v-model="otherMedicineForm.medicine_id"
+                                    :options="filterOtherMedicines"
+                                    :reduce="(option) => option.id"
+                                    label="medicine_name"
+                                    class="v-select-custom" placeholder="Please Select" >
+                                    <template v-slot:option="option">
+                                        {{ option.medicine_name }}<template v-if="option.medicine_generic?.generic_name"> --- [ {{ option.medicine_generic.generic_name }} ]<span>--- (0)</span></template>
+                                    </template>
+                                    <template #selected-option="{ medicine_name, medicine_generic }">
+                                        {{ medicine_name }}<template v-if="medicine_generic?.generic_name"> --- [ {{ medicine_generic.generic_name }} ]<span>--- (0)</span></template>
+                                    </template>
+                                </v-select>
+                                <ServerErrorMessage :error="otherMedicineForm.errors.medicine_id"/>
+
+                            </div>
+                            <div class="col-lg-1">
+                                <label class="form-label">Qty</label>
+                                <input v-model="otherMedicineForm.qty" type="text" class="form-control form-control-sm" />
+                                <ServerErrorMessage :error="otherMedicineForm.errors.qty"/>
+                            </div>
+                            <div class="col-lg-5">
+                                <label class="form-label">Instructions</label>
+                                <textarea v-model="otherMedicineForm.medicine_instructions"  class="form-control form-control-sm" rows="1"></textarea>
+                                <ServerErrorMessage :error="otherMedicineForm.errors.medicine_instructions"/>
+                            </div>
+                        </div>
+                        <div class="mb-10 row">
+                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addOtherMedicine">Save</button></div>
+                        </div>
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table
+                                    class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                                >
+                                    <!--begin::Table head-->
+                                    <thead>
+                                    <tr class="fw-semibold fs-6 text-gray-800">
+                                        <th class="text-start"> Medicine</th>
+                                        <th class="text-center"> Qty</th>
+                                        <th class="text-start"> Instructions</th>
+                                        <th class="text-center"> Action </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <template v-for="pmed in preForm.patient_other_medicines">
+                                        <tr>
+                                            <td class="text-start">{{ getMedicineName(pmed.medicine_id) }}</td>
+                                            <td class="text-center">{{ pmed.qty }}</td>
+                                            <td class="text-start">{{ pmed.medicine_instructions }}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteOtherMedicine(pmed)"><i class="las la-trash fs-1"></i></button>
+                                            </td>
+                                        </tr>
+                                    </template>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">History</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-start">Order Date</th>
+                                    <th>Name</th>
+                                    <th>Generic</th>
+                                    <th>Route</th>
+                                    <th>Dosage</th>
+                                    <th>Frequency</th>
+                                    <th>Days</th>
+                                    <th>Instructions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_medicines" :key="history.id">
+                                    <tr>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td>{{ history.medicine_name }}</td>
+                                        <td>{{ history.route_name }}</td>
+                                        <td>{{ history.dosage }}</td>
+                                        <td>{{ history.frequency_name }}</td>
+                                        <td>{{ history.duration_value }}</td>
+                                        <td>{{ history.medicine_instructions }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="tab-pane fade" id="kt_tab_pane_6" role="tabpanel">
                     <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Referrals</span></h4>
                     <div class="section_box">
-
+                        
                     </div>
                 </div>
             </div>
@@ -737,6 +839,12 @@ let medicineForm = useForm({
     acquire_from: null,
 });
 
+let otherMedicineForm = useForm({
+    medicine_id: null,
+    qty: null,
+    medicine_instructions: null
+});
+
 let preForm = useForm({
     vital: {
             temperature: props.patientVisit?.temperature,
@@ -757,9 +865,15 @@ let preForm = useForm({
     diagnoses: <IDiagnosis[]>[],
     diagnosis_advise: '',
     patient_medicines: <any>[],
+    patient_other_medicines: <any>[],
 
    }
 );
+
+onMounted(() => {
+    filterMedicines.value = props.medicines?.filter((medicine: any) => medicine.medicine_category_id === 1);
+    filterOtherMedicines.value = props.medicines?.filter((medicine: any) => medicine.medicine_category_id !== 1);
+})
 
 watch(() => diagForm.disease_type_id, value => {
     diagForm.reset( "disease_id", "procedure_id");
@@ -795,8 +909,6 @@ watch(() => [medicineForm.dosage, medicineForm.frequency_id, medicineForm.durati
 
     medicineForm.qty = total;
 });
-
-
 
 const addDiagnosis = () => {
     diagForm.clearErrors();
@@ -835,14 +947,31 @@ const addMedicine = () => {
         return;
 
     preForm.patient_medicines.push(medicineForm.data())
-
+    medicineOption.value = null;
     medicineForm.reset();
 }
-const deleteMedicine = (pmed: Object) =>{
-    preForm.patient_medicines = preForm.patient_medicines.filter(obj => obj !== pmed);
+const deleteMedicine = (pmed: Object) => preForm.patient_medicines = preForm.patient_medicines.filter(obj => obj !== pmed);
+
+const getMedicineName = (id: number) => (props.medicines?.find((medicine: any) => medicine.id === id) as any)?.medicine_name;
+const getRouteName = (id: number) => (props.routes?.find((route: any) => route.id === id) as any)?.route_name;
+const getFrequencyName = (id: number) => (props.frequencies?.find((frequency: any) => frequency.id === id) as any)?.frequency_name;
+
+const addOtherMedicine = () => {
+    otherMedicineForm.clearErrors();
+    const row = otherMedicineForm.data();
+    if(row.medicine_id === null)
+        otherMedicineForm.setError("medicine_id", "Medicine is required.");
+    if(row.qty === null)
+        otherMedicineForm.setError("qty", "Qty is required.");
+
+    if(row.medicine_id === null || row.qty === null)
+        return;
+
+    preForm.patient_other_medicines.push(otherMedicineForm.data())
+
+    otherMedicineForm.reset();
 }
 
-const getMedicineName = (id: number) => (props.medicines?.find((medicine: any) => medicine.id === id) as any).medicine_name;
-const getRouteName = (id: number) => (props.routes?.find((route: any) => route.id === id) as any).route_name;
-const getFrequencyName = (id: number) => (props.frequencies?.find((frequency: any) => frequency.id === id) as any).frequency_name;
+const deleteOtherMedicine = (pmed: Object) => preForm.patient_other_medicines = preForm.patient_other_medicines.filter(obj => obj !== pmed);
+
 </script>

@@ -130,6 +130,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       medicine_instructions: null,
       acquire_from: null
     });
+    var otherMedicineForm = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)({
+      medicine_id: null,
+      qty: null,
+      medicine_instructions: null
+    });
     var preForm = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)({
       vital: {
         temperature: (_props$patientVisit = props.patientVisit) === null || _props$patientVisit === void 0 ? void 0 : _props$patientVisit.temperature,
@@ -149,7 +154,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       disease_notes: '',
       diagnoses: [],
       diagnosis_advise: '',
-      patient_medicines: []
+      patient_medicines: [],
+      patient_other_medicines: []
+    });
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
+      var _props$medicines, _props$medicines2;
+      filterMedicines.value = (_props$medicines = props.medicines) === null || _props$medicines === void 0 ? void 0 : _props$medicines.filter(function (medicine) {
+        return medicine.medicine_category_id === 1;
+      });
+      filterOtherMedicines.value = (_props$medicines2 = props.medicines) === null || _props$medicines2 === void 0 ? void 0 : _props$medicines2.filter(function (medicine) {
+        return medicine.medicine_category_id !== 1;
+      });
     });
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
       return diagForm.disease_type_id;
@@ -246,30 +261,45 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       if (row.acquire_from === null) medicineForm.setError("acquire_from", "Acquire From is required.");
       if (row.medicine_id === null || row.route_id === null || row.acquire_from === null) return;
       preForm.patient_medicines.push(medicineForm.data());
+      medicineOption.value = null;
       medicineForm.reset();
     };
     var deleteMedicine = function deleteMedicine(pmed) {
-      preForm.patient_medicines = preForm.patient_medicines.filter(function (obj) {
+      return preForm.patient_medicines = preForm.patient_medicines.filter(function (obj) {
         return obj !== pmed;
       });
     };
     var getMedicineName = function getMedicineName(id) {
-      var _props$medicines;
-      return ((_props$medicines = props.medicines) === null || _props$medicines === void 0 ? void 0 : _props$medicines.find(function (medicine) {
+      var _props$medicines3, _props$medicines3$fin;
+      return (_props$medicines3 = props.medicines) === null || _props$medicines3 === void 0 ? void 0 : (_props$medicines3$fin = _props$medicines3.find(function (medicine) {
         return medicine.id === id;
-      })).medicine_name;
+      })) === null || _props$medicines3$fin === void 0 ? void 0 : _props$medicines3$fin.medicine_name;
     };
     var getRouteName = function getRouteName(id) {
-      var _props$routes;
-      return ((_props$routes = props.routes) === null || _props$routes === void 0 ? void 0 : _props$routes.find(function (route) {
+      var _props$routes, _props$routes$find;
+      return (_props$routes = props.routes) === null || _props$routes === void 0 ? void 0 : (_props$routes$find = _props$routes.find(function (route) {
         return route.id === id;
-      })).route_name;
+      })) === null || _props$routes$find === void 0 ? void 0 : _props$routes$find.route_name;
     };
     var getFrequencyName = function getFrequencyName(id) {
-      var _props$frequencies2;
-      return ((_props$frequencies2 = props.frequencies) === null || _props$frequencies2 === void 0 ? void 0 : _props$frequencies2.find(function (frequency) {
+      var _props$frequencies2, _props$frequencies2$f;
+      return (_props$frequencies2 = props.frequencies) === null || _props$frequencies2 === void 0 ? void 0 : (_props$frequencies2$f = _props$frequencies2.find(function (frequency) {
         return frequency.id === id;
-      })).frequency_name;
+      })) === null || _props$frequencies2$f === void 0 ? void 0 : _props$frequencies2$f.frequency_name;
+    };
+    var addOtherMedicine = function addOtherMedicine() {
+      otherMedicineForm.clearErrors();
+      var row = otherMedicineForm.data();
+      if (row.medicine_id === null) otherMedicineForm.setError("medicine_id", "Medicine is required.");
+      if (row.qty === null) otherMedicineForm.setError("qty", "Qty is required.");
+      if (row.medicine_id === null || row.qty === null) return;
+      preForm.patient_other_medicines.push(otherMedicineForm.data());
+      otherMedicineForm.reset();
+    };
+    var deleteOtherMedicine = function deleteOtherMedicine(pmed) {
+      return preForm.patient_other_medicines = preForm.patient_other_medicines.filter(function (obj) {
+        return obj !== pmed;
+      });
     };
     var __returned__ = {
       props: props,
@@ -292,6 +322,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       set medicineForm(v) {
         medicineForm = v;
       },
+      get otherMedicineForm() {
+        return otherMedicineForm;
+      },
+      set otherMedicineForm(v) {
+        otherMedicineForm = v;
+      },
       get preForm() {
         return preForm;
       },
@@ -308,6 +344,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       getMedicineName: getMedicineName,
       getRouteName: getRouteName,
       getFrequencyName: getFrequencyName,
+      addOtherMedicine: addOtherMedicine,
+      deleteOtherMedicine: deleteOtherMedicine,
       ServerErrorMessage: _Components_alerts_ServerErrorMessage_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -1012,7 +1050,99 @@ var _hoisted_197 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElemen
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "text-uppercase"
 }, "Other Items")], -1 /* HOISTED */);
-var _hoisted_198 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_198 = {
+  "class": "section_box"
+};
+var _hoisted_199 = {
+  "class": "mb-10 row"
+};
+var _hoisted_200 = {
+  "class": "col-lg-6"
+};
+var _hoisted_201 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label required"
+}, "Name", -1 /* HOISTED */);
+var _hoisted_202 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "--- (0)", -1 /* HOISTED */);
+var _hoisted_203 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "--- (0)", -1 /* HOISTED */);
+var _hoisted_204 = {
+  "class": "col-lg-1"
+};
+var _hoisted_205 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Qty", -1 /* HOISTED */);
+var _hoisted_206 = {
+  "class": "col-lg-5"
+};
+var _hoisted_207 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Instructions", -1 /* HOISTED */);
+var _hoisted_208 = {
+  "class": "mb-10 row"
+};
+var _hoisted_209 = {
+  "class": "col-lg-12 text-end"
+};
+var _hoisted_210 = ["onClick"];
+var _hoisted_211 = {
+  "class": "row"
+};
+var _hoisted_212 = {
+  "class": "table-responsive"
+};
+var _hoisted_213 = {
+  "class": "table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+};
+var _hoisted_214 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+  "class": "fw-semibold fs-6 text-gray-800"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "text-start"
+}, " Medicine"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "text-center"
+}, " Qty"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "text-start"
+}, " Instructions"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "text-center"
+}, " Action ")])], -1 /* HOISTED */);
+var _hoisted_215 = {
+  "class": "text-start"
+};
+var _hoisted_216 = {
+  "class": "text-center"
+};
+var _hoisted_217 = {
+  "class": "text-start"
+};
+var _hoisted_218 = {
+  "class": "text-center"
+};
+var _hoisted_219 = ["onClick"];
+var _hoisted_220 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "las la-trash fs-1"
+}, null, -1 /* HOISTED */);
+var _hoisted_221 = [_hoisted_220];
+var _hoisted_222 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", {
+  "class": "font-weight-bold main_section_heading"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-uppercase"
+}, "History")], -1 /* HOISTED */);
+var _hoisted_223 = {
+  "class": "section_box"
+};
+var _hoisted_224 = {
+  "class": "table-responsive"
+};
+var _hoisted_225 = {
+  "class": "table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+};
+var _hoisted_226 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+  "class": "fw-semibold fs-6 text-gray-800"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "text-start"
+}, "Order Date"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Name"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Generic"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Route"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Dosage"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Frequency"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Days"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Instructions")])], -1 /* HOISTED */);
+var _hoisted_227 = {
+  "class": "text-start"
+};
+var _hoisted_228 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "tab-pane fade",
   id: "kt_tab_pane_6",
   role: "tabpanel"
@@ -1024,7 +1154,7 @@ var _hoisted_198 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElemen
   "class": "section_box"
 })], -1 /* HOISTED */);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _$props$patientVisit, _$props$patientVisit2, _$props$patientVisit3, _$props$patientVisit4, _$props$patientVisit5, _$props$patientVisit6, _$setup$preForm$error, _$setup$preForm$error2, _$setup$preForm$error3, _$setup$preForm$error4, _$setup$preForm$error5, _$setup$preForm$error6, _$setup$preForm$error7, _$setup$preForm$error8, _$props$patient, _$props$patient2, _$props$patient3, _$props$patient4, _$props$patient5;
+  var _$props$patientVisit, _$props$patientVisit2, _$props$patientVisit3, _$props$patientVisit4, _$props$patientVisit5, _$props$patientVisit6, _$setup$preForm$error, _$setup$preForm$error2, _$setup$preForm$error3, _$setup$preForm$error4, _$setup$preForm$error5, _$setup$preForm$error6, _$setup$preForm$error7, _$setup$preForm$error8, _$props$patient, _$props$patient2, _$props$patient3, _$props$patient4, _$props$patient5, _$props$patient6;
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
   var _component_v_select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-select");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
@@ -1266,7 +1396,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
       return $setup.medicineOption = $event;
     }),
-    options: $props.medicines,
+    options: $setup.filterMedicines,
     reduce: function reduce(option) {
       return option;
     },
@@ -1403,7 +1533,66 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return $setup.deleteMedicine(pmed);
       }, ["prevent"])
     }, _hoisted_196, 8 /* PROPS */, _hoisted_194)])]);
-  }), 256 /* UNKEYED_FRAGMENT */))])])])])]), _hoisted_197]), _hoisted_198])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card")], 64 /* STABLE_FRAGMENT */);
+  }), 256 /* UNKEYED_FRAGMENT */))])])])])]), _hoisted_197, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_198, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_199, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_200, [_hoisted_201, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+    modelValue: $setup.otherMedicineForm.medicine_id,
+    "onUpdate:modelValue": _cache[26] || (_cache[26] = function ($event) {
+      return $setup.otherMedicineForm.medicine_id = $event;
+    }),
+    options: $setup.filterOtherMedicines,
+    reduce: function reduce(option) {
+      return option.id;
+    },
+    label: "medicine_name",
+    "class": "v-select-custom",
+    placeholder: "Please Select"
+  }, {
+    option: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (option) {
+      var _option$medicine_gene2;
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option.medicine_name), 1 /* TEXT */), (_option$medicine_gene2 = option.medicine_generic) !== null && _option$medicine_gene2 !== void 0 && _option$medicine_gene2.generic_name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        key: 0
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" --- [ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option.medicine_generic.generic_name) + " ]", 1 /* TEXT */), _hoisted_202], 64 /* STABLE_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+    }),
+    "selected-option": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref2) {
+      var medicine_name = _ref2.medicine_name,
+        medicine_generic = _ref2.medicine_generic;
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(medicine_name), 1 /* TEXT */), medicine_generic !== null && medicine_generic !== void 0 && medicine_generic.generic_name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        key: 0
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" --- [ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(medicine_generic.generic_name) + " ]", 1 /* TEXT */), _hoisted_203], 64 /* STABLE_FRAGMENT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+    }),
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["modelValue", "options", "reduce"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    error: $setup.otherMedicineForm.errors.medicine_id
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_204, [_hoisted_205, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[27] || (_cache[27] = function ($event) {
+      return $setup.otherMedicineForm.qty = $event;
+    }),
+    type: "text",
+    "class": "form-control form-control-sm"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.otherMedicineForm.qty]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    error: $setup.otherMedicineForm.errors.qty
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_206, [_hoisted_207, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+    "onUpdate:modelValue": _cache[28] || (_cache[28] = function ($event) {
+      return $setup.otherMedicineForm.medicine_instructions = $event;
+    }),
+    "class": "form-control form-control-sm",
+    rows: "1"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.otherMedicineForm.medicine_instructions]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    error: $setup.otherMedicineForm.errors.medicine_instructions
+  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_208, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_209, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-success btn-sm",
+    onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.addOtherMedicine, ["prevent"])
+  }, "Save", 8 /* PROPS */, _hoisted_210)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_211, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_212, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_213, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Table head"), _hoisted_214, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.preForm.patient_other_medicines, function (pmed) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_215, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.getMedicineName(pmed.medicine_id)), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_216, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(pmed.qty), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_217, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(pmed.medicine_instructions), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_218, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      "class": "btn btn-icon btn-sm btn-danger",
+      onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+        return $setup.deleteOtherMedicine(pmed);
+      }, ["prevent"])
+    }, _hoisted_221, 8 /* PROPS */, _hoisted_219)])]);
+  }), 256 /* UNKEYED_FRAGMENT */))])])])])]), _hoisted_222, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_223, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_224, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_225, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Table head"), _hoisted_226, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)((_$props$patient6 = $props.patient) === null || _$props$patient6 === void 0 ? void 0 : _$props$patient6.patient_medicines, function (history) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+      key: history.id
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_227, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.created_at), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.medicine_name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.route_name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.dosage), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.frequency_name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.duration_value), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.medicine_instructions), 1 /* TEXT */)]);
+  }), 128 /* KEYED_FRAGMENT */))])])])])]), _hoisted_228])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card")], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
