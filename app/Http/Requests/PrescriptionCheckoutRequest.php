@@ -32,10 +32,8 @@ class PrescriptionCheckoutRequest extends FormRequest
             'weight' => 'nullable|sometimes',
             'height' => 'nullable|sometimes',
             'notes' => 'nullable|sometimes',
-            'risk_factor_notes' => 'nullable|sometimes',
-            'complaint_notes' => 'nullable|sometimes',
-            'disease_notes' => 'nullable|sometimes',
             'diagnosis_advise' => 'nullable|sometimes',
+            'patient_risk_factors.*.risk_factor_id' => 'nullable|sometimes',
         ];
     }
 }

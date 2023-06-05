@@ -24,4 +24,6 @@ class RegistrationService
     public function updatePatientVisit($data, PatientVisit  $patientVisit){
         $patientVisit->update($data);
     }
+
+
 }

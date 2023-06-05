@@ -253,29 +253,57 @@
                 <div class="tab-pane fade" id="kt_tab_pane_2" role="tabpanel">
                     <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Risk Factors</span></h4>
                     <div class="section_box">
-
                         <div class="mb-10 row">
                             <div class="col-lg-4">
                                 <label class="form-label">Risk Factors</label>
-                                <v-select v-model="preForm.risk_factor_ids"
+                                <v-select v-model="riskFactorForm.risk_factor_id"
                                           :options="riskFactors"
                                           label="factor_name"
                                           :reduce="(option) => option.id"
-                                          multiple
                                           class="v-select-custom" placeholder="Please Select" />
-                                <ServerErrorMessage :error="preForm.errors.risk_factor_ids"/>
+                                <ServerErrorMessage :error="riskFactorForm.errors.risk_factor_id"/>
 
                             </div>
 
                             <div class="col-lg-8">
                                 <label class="form-label">Notes</label>
-                                <textarea v-model="preForm.risk_factor_notes"  class="form-control form-control-sm" rows="4"></textarea>
-                                <ServerErrorMessage :error="preForm.errors.risk_factor_notes"/>
+                                <textarea v-model="riskFactorForm.risk_factor_notes"  class="form-control form-control-sm" rows="2"></textarea>
+                                <ServerErrorMessage :error="riskFactorForm.errors.risk_factor_notes"/>
                             </div>
 
 
                         </div>
+                        <div class="mb-10 row">
+                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addRiskFactor">Add</button></div>
+                        </div>
+                        <div class="mb-10 row">
+                            <div class="table-responsive">
+                                <table
+                                    class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                                >
+                                    <!--begin::Table head-->
+                                    <thead>
+                                    <tr class="fw-semibold fs-6 text-gray-800">
+                                        <th class="text-start">Risk Factor</th>
+                                        <th class="text-start">Notes</th>
+                                        <th class="text-center"> Action </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <template v-for="risk_factor in preForm.patient_risk_factors">
+                                        <tr>
+                                            <td class="text-start">{{ getRiskFactorName(risk_factor.risk_factor_id) }}</td>
+                                            <td class="text-start">{{ risk_factor.risk_factor_notes }}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteRiskFactor(risk_factor)"><i class="las la-trash fs-1"></i></button>
+                                            </td>
+                                        </tr>
+                                    </template>
 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
 
                     <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">History</span></h4>
@@ -287,9 +315,9 @@
                                 <!--begin::Table head-->
                                 <thead>
                                 <tr class="fw-semibold fs-6 text-gray-800">
-                                    <th class="text-center">Date</th>
-                                    <th class="text-center">Risk Factor</th>
-                                    <th class="text-center">Notes</th>
+                                    <th class="text-start">Date</th>
+                                    <th class="text-start">Risk Factor</th>
+                                    <th class="text-start">Notes</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -313,23 +341,50 @@
                         <div class="mb-10 row">
                             <div class="col-lg-4">
                                 <label class="form-label">Complaints</label>
-                                <v-select v-model="preForm.complaint_ids"
+                                <v-select v-model="complaintForm.complaint_id"
                                           :options="complaints"
                                           label="complaint_name"
                                           :reduce="(option) => option.id"
-                                           multiple
                                           class="v-select-custom" placeholder="Please Select" />
-                                <ServerErrorMessage :error="preForm.errors.complaint_ids"/>
+                                <ServerErrorMessage :error="complaintForm.errors.complaint_id"/>
 
                             </div>
-
                             <div class="col-lg-8">
                                 <label class="form-label">Complaint Notes</label>
-                                <textarea v-model="preForm.complaint_notes"  class="form-control form-control-sm" rows="4"></textarea>
-                                <ServerErrorMessage :error="preForm.errors.complaint_notes"/>
+                                <textarea v-model="complaintForm.complaint_notes"  class="form-control form-control-sm" rows="2"></textarea>
+                                <ServerErrorMessage :error="complaintForm.errors.complaint_notes"/>
                             </div>
+                        </div>
+                        <div class="mb-10 row">
+                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addComplaint">Add</button></div>
+                        </div>
+                        <div class="mb-10 row">
+                            <div class="table-responsive">
+                                <table
+                                    class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                                >
+                                    <!--begin::Table head-->
+                                    <thead>
+                                    <tr class="fw-semibold fs-6 text-gray-800">
+                                        <th class="text-start">Complaint</th>
+                                        <th class="text-start">Complaint Notes</th>
+                                        <th class="text-center"> Action </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <template v-for="complaint in preForm.patient_complaints">
+                                        <tr>
+                                            <td class="text-start">{{ getComplaintName(complaint.complaint_id) }}</td>
+                                            <td class="text-start">{{ complaint.complaint_notes }}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteComplaint(risk_factor)"><i class="las la-trash fs-1"></i></button>
+                                            </td>
+                                        </tr>
+                                    </template>
 
-
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
@@ -338,24 +393,53 @@
                         <div class="mb-10 row">
                             <div class="col-lg-4">
                                 <label class="form-label">Diseases</label>
-                                <v-select v-model="preForm.disease_ids"
+                                <v-select v-model="diseaseForm.disease_id"
                                           :options="diseases"
                                           label="disease_name"
                                           :reduce="(option) => option.id"
-                                          multiple
                                           class="v-select-custom" placeholder="Please Select" />
-                                <ServerErrorMessage :error="preForm.errors.disease_ids"/>
+                                <ServerErrorMessage :error="diseaseForm.errors.disease_id"/>
 
                             </div>
 
                             <div class="col-lg-8">
                                 <label class="form-label">Disease Notes</label>
-                                <textarea v-model="preForm.disease_notes"  class="form-control form-control-sm" rows="4"></textarea>
-                                <ServerErrorMessage :error="preForm.errors.disease_notes"/>
+                                <textarea v-model="diseaseForm.disease_notes"  class="form-control form-control-sm" rows="2"></textarea>
+                                <ServerErrorMessage :error="diseaseForm.errors.disease_notes"/>
                             </div>
-
-
                         </div>
+                        <div class="mb-10 row">
+                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addDisease">Add</button></div>
+                        </div>
+                        <div class="mb-10 row">
+                            <div class="table-responsive">
+                                <table
+                                    class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                                >
+                                    <!--begin::Table head-->
+                                    <thead>
+                                    <tr class="fw-semibold fs-6 text-gray-800">
+                                        <th class="text-start">Disease</th>
+                                        <th class="text-start">Disease Notes</th>
+                                        <th class="text-center"> Action </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <template v-for="disease in preForm.patient_diseases">
+                                        <tr>
+                                            <td class="text-start">{{ getDiseaseName(disease.disease_id) }}</td>
+                                            <td class="text-start">{{ disease.disease_notes }}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteDisease(disease)"><i class="las la-trash fs-1"></i></button>
+                                            </td>
+                                        </tr>
+                                    </template>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
                     </div>
 
                     <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Complaint History</span></h4>
@@ -367,9 +451,9 @@
                                 <!--begin::Table head-->
                                 <thead>
                                 <tr class="fw-semibold fs-6 text-gray-800">
-                                    <th class="text-center">Date</th>
-                                    <th class="text-center">Complaint</th>
-                                    <th class="text-center">Complaint Notes</th>
+                                    <th class="text-start">Date</th>
+                                    <th class="text-start">Complaint</th>
+                                    <th class="text-start">Complaint Notes</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -395,9 +479,9 @@
                                 <!--begin::Table head-->
                                 <thead>
                                 <tr class="fw-semibold fs-6 text-gray-800">
-                                    <th class="text-center">Date</th>
-                                    <th class="text-center">Disease</th>
-                                    <th class="text-center">Disease Notes</th>
+                                    <th class="text-start">Date</th>
+                                    <th class="text-start">Disease</th>
+                                    <th class="text-start">Disease Notes</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -459,7 +543,7 @@
 
                             </div>
                             <div class="col-lg-3">
-                                <button class="btn btn-success btn-sm mt-7" @click.prevent="addDiagnosis">Save</button>
+                                <button class="btn btn-success btn-sm mt-7" @click.prevent="addDiagnosis">Add</button>
                             </div>
 
 
@@ -474,18 +558,18 @@
                                     <!--begin::Table head-->
                                     <thead>
                                     <tr class="fw-semibold fs-6 text-gray-800">
-                                        <th class="text-center">Category</th>
-                                        <th class="text-center">Diagnosis</th>
-                                        <th class="text-center">Procedure</th>
+                                        <th class="text-start">Category</th>
+                                        <th class="text-start">Diagnosis</th>
+                                        <th class="text-start">Procedure</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <template v-for="dig in preForm.diagnoses">
+                                    <template v-for="dig in preForm.patient_diagnoses">
                                         <tr>
-                                            <td class="text-center">{{ getDiseaseTypeName(dig.disease_type_id) }}</td>
-                                            <td class="text-center">{{ getDiseaseName(dig.disease_id) }}</td>
-                                            <td class="text-center">{{ getProcedureName(dig.procedure_id) }}</td>
+                                            <td class="text-start">{{ getDiseaseTypeName(dig.disease_type_id) }}</td>
+                                            <td class="text-start">{{ getDiseaseName(dig.disease_id) }}</td>
+                                            <td class="text-start">{{ getProcedureName(dig.procedure_id) }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteDiagnosis(dig)"><i class="las la-trash fs-1"></i></button>
                                             </td>
@@ -518,15 +602,15 @@
                                 <!--begin::Table head-->
                                 <thead>
                                 <tr class="fw-semibold fs-6 text-gray-800">
-                                    <th class="text-center">Date</th>
-                                    <th class="text-center">Diagnosis</th>
+                                    <th class="text-start">Date</th>
+                                    <th class="text-start">Diagnosis</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <template v-for="history in patient?.patient_diagnosis" :key="history.id">
+                                <template v-for="history in patient?.patient_diagnoses" :key="history.id">
                                     <tr>
-                                        <td class="text-center">{{ history.created_at }}</td>
-                                        <td class="text-center">{{ history.diagnosis_name }}</td>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td class="text-start">{{ history.diagnosis_name }}</td>
                                     </tr>
                                 </template>
 
@@ -646,7 +730,7 @@
                         </div>
 
                         <div class="mb-10 row">
-                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addMedicine">Save</button></div>
+                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addMedicine">Add</button></div>
                         </div>
 
                         <div class="row">
@@ -720,7 +804,7 @@
                             </div>
                         </div>
                         <div class="mb-10 row">
-                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addOtherMedicine">Save</button></div>
+                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addOtherMedicine">Add</button></div>
                         </div>
                         <div class="row">
                             <div class="table-responsive">
@@ -763,7 +847,7 @@
                                 <!--begin::Table head-->
                                 <thead>
                                 <tr class="fw-semibold fs-6 text-gray-800">
-                                    <th class="text-start">Order Date</th>
+                                    <th class="text-start">Date</th>
                                     <th>Name</th>
                                     <th>Generic</th>
                                     <th>Route</th>
@@ -848,7 +932,7 @@
 
                         </div>
                         <div class="mb-10 row">
-                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addLab">Save</button></div>
+                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addLab">Add</button></div>
                         </div>
                         <div class="mb-10 row">
                             <div class="table-responsive">
@@ -913,7 +997,7 @@
                             </div>
                         </div>
                         <div class="mb-10 row">
-                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addHospital">Save</button></div>
+                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addHospital">Add</button></div>
                         </div>
                         <div class="mb-10 row">
                             <div class="table-responsive">
@@ -1055,6 +1139,21 @@ const medicineOption = ref();
 const optionsTakenMeals = ref(["Before Meal", "After Meal", "During Meal"]);
 const optionsAcquireFrom = ref(["In-House", "External"]);
 
+const riskFactorForm = useForm({
+    risk_factor_id: null,
+    risk_factor_notes: null
+});
+
+const complaintForm = useForm({
+    complaint_id: null,
+    complaint_notes: null
+});
+
+const diseaseForm = useForm({
+    disease_id: null,
+    disease_notes: null
+});
+
 const diagForm = useForm({
     disease_type_id: null,
     disease_id: null,
@@ -1106,15 +1205,11 @@ const preForm = useForm({
     height: props.patientVisit?.height,
     notes: props.patientVisit?.notes,
 
-    risk_factor_notes: '',
-    complaint_notes: '',
-    disease_notes: '',
     diagnosis_advise: '',
-
-    risk_factor_ids: [],
-    complaint_ids: [],
-    disease_ids: [],
-    diagnoses: <IDiagnosis[]>[],
+    patient_risk_factors: <any>[],
+    patient_complaints: <any>[],
+    patient_diseases: <any>[],
+    patient_diagnoses: <any>[],
     patient_medicines: <any>[],
     patient_other_medicines: <any>[],
     patient_hospitals: <any>[],
@@ -1163,6 +1258,8 @@ watch(() => [medicineForm.dosage, medicineForm.frequency_id, medicineForm.durati
     medicineForm.qty = total;
 });
 
+const getRiskFactorName = (id: number) => (props.riskFactors?.find((riskFactor: any) => riskFactor.id === id) as any)?.factor_name;
+const getComplaintName = (id: number) => (props.complaints?.find((complaint: any) => complaint.id === id) as any)?.complaint_name;
 const getDiseaseTypeName = (id: number) => (props.diseaseTypes?.find((diseaseType: any) => diseaseType.id === id) as any)?.type_name;
 const getDiseaseName = (id: number) => (props.diseases.find((disease: any) => disease.id === id) as any)?.disease_name;
 const getProcedureName = (id: number) => (props.procedures.find((procedure: any) => procedure.id === id) as any)?.procedure_name || 'Not Available';
@@ -1174,6 +1271,51 @@ const getTestCategoryName = (id: number) => (props.testCategories?.find((categor
 const getTestTypeName = (id: number) => (props.testTypes?.find((type: any) => type.id === id) as any)?.type_name;
 const getTestName = (id: number) => (props.tests?.find((test: any) => test.id === id) as any)?.test_name;
 const getLabName = (id: number) => (props.labs?.find((lab: any) => lab.id === id) as any)?.lab_name;
+
+const addRiskFactor = () => {
+    riskFactorForm.clearErrors();
+    const row = riskFactorForm.data();
+    if(row.risk_factor_id === null)
+        riskFactorForm.setError("risk_factor_id", "Risk Factor is required.");
+
+    if(row.risk_factor_id === null)
+        return;
+
+    preForm.patient_risk_factors.push(riskFactorForm.data())
+
+    riskFactorForm.reset();
+}
+const deleteRiskFactor = (_obj: Object) => preForm.patient_risk_factors = preForm.patient_risk_factors.filter(obj => obj !== _obj);
+
+const addComplaint = () => {
+    complaintForm.clearErrors();
+    const row = complaintForm.data();
+    if(row.complaint_id === null)
+        complaintForm.setError("complaint_id", "Complaint is required.");
+
+    if(row.complaint_id === null)
+        return;
+
+    preForm.patient_complaints.push(complaintForm.data())
+
+    complaintForm.reset();
+}
+const deleteComplaint = (_obj: Object) => preForm.patient_complaints = preForm.patient_complaints.filter(obj => obj !== _obj);
+
+const addDisease = () => {
+    diseaseForm.clearErrors();
+    const row = diseaseForm.data();
+    if(row.disease_id === null)
+        diseaseForm.setError("disease_id", "Disease is required.");
+
+    if(row.disease_id === null)
+        return;
+
+    preForm.patient_diseases.push(diseaseForm.data())
+
+    diseaseForm.reset();
+}
+const deleteDisease = (_obj: Object) => preForm.patient_diseases = preForm.patient_diseases.filter(obj => obj !== _obj);
 
 const addDiagnosis = () => {
     diagForm.clearErrors();
@@ -1187,10 +1329,10 @@ const addDiagnosis = () => {
     if(row.disease_type_id === null || row.disease_id === null)
         return;
 
-    preForm.diagnoses.push(diagForm.data())
+    preForm.patient_diagnoses.push(diagForm.data())
     diagForm.reset()
 }
-const deleteDiagnosis = (dig: Object) => preForm.diagnoses = preForm.diagnoses.filter(obj => obj !== dig);
+const deleteDiagnosis = (dig: Object) => preForm.patient_diagnoses = preForm.patient_diagnoses.filter(obj => obj !== dig);
 
 const addMedicine = () => {
     medicineForm.clearErrors();

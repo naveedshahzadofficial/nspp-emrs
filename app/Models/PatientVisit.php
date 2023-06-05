@@ -12,8 +12,7 @@ class PatientVisit extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = ['user_id','patient_id', 'token_no', 'temperature', 'bp_systolic', 'bp_diastolic', 'pulse', 'sugar',
-        'weight', 'height', 'notes',
-        'risk_factor_notes', 'complaint_notes', 'disease_notes', 'diagnosis_advise',];
+        'weight', 'height', 'notes', 'diagnosis_advise',];
 
     public function patient(): BelongsTo
     {
