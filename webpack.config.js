@@ -3,7 +3,7 @@ const CleanupMiniCssExtractPlugin = require("cleanup-mini-css-extract-plugin");
 
 
 module.exports = {
-    output: { chunkFilename: 'js/[name].js?id=[chunkhash]', publicPath: '/nspp_emrs/' },
+    output: { chunkFilename: 'js/[name].js?id=[chunkhash]', publicPath: '/' },
     module: {
         rules: [
             {

@@ -10,9 +10,7 @@ use App\Http\Controllers\{
     PatientController,
 };
 
-Route::get('/', function () {
-    return Inertia::render('Home', ['test' => 'working home page perfectly']);
-});
+Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/login', [AuthController::class,'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class,'submitLoginForm'])->name('login.submit');

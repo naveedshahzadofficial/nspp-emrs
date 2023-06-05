@@ -20,7 +20,7 @@ mix.ts('resources/ts/app.ts', 'public/js')
     .webpackConfig(webpackConfig);
 
 //mix.setPublicPath('/nspp_emrs/')
-mix.setResourceRoot('/nspp_emrs/');
+//mix.setResourceRoot('/nspp_emrs/');
 if (mix.inProduction()) {
     mix.version();
 }
