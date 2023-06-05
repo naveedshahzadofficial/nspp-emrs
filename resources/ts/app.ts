@@ -37,6 +37,7 @@ createInertiaApp({
       .component('v-select', vSelect)
       .mount(el)
   },
+
 })
 
 // initialize html element classes
