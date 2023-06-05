@@ -10,7 +10,7 @@ use App\Http\Controllers\{
     PatientController,
 };
 
-Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/',[AuthController::class,'showLoginForm']);
 
 Route::get('/login', [AuthController::class,'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class,'submitLoginForm'])->name('login.submit');
