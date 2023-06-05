@@ -20,5 +20,5 @@ mix.ts('resources/ts/app.ts', 'public/js')
     .webpackConfig(webpackConfig);
 
 if (mix.inProduction()) {
-    mix.version();
+    //mix.version();
 }
