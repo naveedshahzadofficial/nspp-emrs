@@ -6,13 +6,18 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PatientVisit extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = ['user_id','patient_id', 'token_no', 'temperature', 'bp_systolic', 'bp_diastolic', 'pulse', 'sugar',
-        'weight', 'height', 'notes', 'diagnosis_advise',];
+        'weight', 'height', 'notes',];
+
+    public function scopeActive($query) {
+        return $query->where('status', true);
+    }
 
     public function patient(): BelongsTo
     {
@@ -28,8 +33,38 @@ class PatientVisit extends Model
         return Carbon::parse($value)->format('d-m-Y');
     }
 
-    public function scopeActive($query) {
-        return $query->where('status', true);
+   public function patientRiskFactors(): HasMany
+   {
+       return $this->hasMany(PatientRiskFactor::class);
+   }
+   public function patientComplaints(): HasMany
+   {
+       return $this->hasMany(PatientComplaint::class);
+   }
+   public function patientDiseases(): HasMany
+   {
+       return $this->hasMany(PatientDisease::class);
+   }
+   public function patientDiagnoses(): HasMany
+   {
+       return $this->hasMany(PatientDiagnosis::class);
+   }
+   public function patientMedicines(): HasMany
+   {
+       return $this->hasMany(PatientMedicine::class);
+   }
+   public function patientOtherMedicines(): HasMany
+   {
+       return $this->hasMany(PatientOtherMedicine::class);
+   }
+   public function patientHospitals(): HasMany
+   {
+       return $this->hasMany(PatientHospital::class);
+   }
+
+    public function patientLabs(): HasMany
+    {
+        return $this->hasMany(PatientLab::class);
     }
 
     public static function boot()

@@ -100,10 +100,11 @@ class RegistrationController extends Controller
     public function show($id): \Inertia\Response
     {
         //$data = new \stdClass;
-        $patientVisit = PatientVisit::with('patient.patientVisits')->findOrFail($id);
+        $patientVisit = PatientVisit::findOrFail($id);
+        $patient = Patient::relations()->find($patientVisit->patient_id);
+
         $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
         $genders = GenderResource::collection(Gender::active()->get());
-        $patient = $patientVisit->patient?? null;
         $complaints = ComplaintResource::collection(Complaint::active()->get());
         $diseases = DiseaseResource::collection(Disease::active()->get());
         $diseaseTypes = DiseaseTypeResource::collection(DiseaseType::active()->get());
@@ -171,11 +172,11 @@ class RegistrationController extends Controller
 
     public function checkout(PrescriptionCheckoutRequest $request, PatientVisit $patientVisit)
     {
-        dd($request->all());
-        DB::transaction(function() use ($request, $patientVisit) {
-            $this->registrationService->updatePatientVisit($request->validated(), $patientVisit);
-        });
-        //session()->flash('success', 'Your prescription has been saved successfully.');
-        //return redirect()->route('registrations.index');
+        //dd($request->all());
+
+        $response = $this->registrationService->moCheckout($request->all(), $patientVisit);
+
+        session()->flash('success', 'Your prescription has been saved successfully.');
+        return redirect()->route('registrations.index');
     }
 }

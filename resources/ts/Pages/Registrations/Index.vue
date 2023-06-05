@@ -38,9 +38,6 @@
                     type="button"
                     class="btn btn-primary"
                 >
-            <span class="svg-icon svg-icon-2">
-              <inline-svg src="/media/icons/duotune/arrows/arr075.svg" />
-            </span>
                     Add Registration
                 </Link>
                 <!--end::Add button-->
@@ -77,7 +74,7 @@
                         <tr class="fw-semibold fs-6 text-gray-800">
                             <th class="p-0 min-w-150px">Patient</th>
                             <th class="p-0 min-w-200px text-center">Token No.</th>
-                            <th class="p-0 min-w-100px text-end">Action</th>
+                            <th class="p-0 min-w-100px text-center">Action</th>
                         </tr>
                         </thead>
                         <!--end::Table head-->
@@ -135,40 +132,34 @@
 
                             <td class="fw-semibold text-center">{{ patientVisit.token_no }}</td>
 
-                            <td class="text-end">
+                            <td class="text-center">
                                 <Link
                                     :href="route('registrations.show', patientVisit.id)"
-                                    title="Proceed"
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                >
-                    <span class="svg-icon svg-icon-3">
-                      <inline-svg
-                          src="/media/icons/duotune/general/gen019.svg"
-                      />
-                    </span>
+                                    class="btn btn-icon btn-warning btn-circle btn-sm me-2"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Proceed">
+                                    <i class="fas fa-step-forward"></i>
                                 </Link>
 
                                 <Link
                                     :href="route('registrations.edit', patientVisit.id)"
-                                    title="Edit"
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                >
-                    <span class="svg-icon svg-icon-3">
-                      <inline-svg src="/media/icons/duotune/art/art005.svg" />
-                    </span>
+                                    class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Edit Registration">
+                                    <i class="fas fa-edit"></i>
                                 </Link>
 
                                 <a
                                     @click.prevent="destroy(patientVisit.id)"
-                                    title="Delete"
-                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
-                                >
-                    <span class="svg-icon svg-icon-3">
-                      <inline-svg
-                          src="/media/icons/duotune/general/gen027.svg"
-                      />
-                    </span>
+                                    class="btn btn-icon  btn-danger btn-circle btn-sm me-2"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Delete Registration">
+                                    <i class="fas fa-trash"></i>
                                 </a>
+
                             </td>
 
                         </tr>

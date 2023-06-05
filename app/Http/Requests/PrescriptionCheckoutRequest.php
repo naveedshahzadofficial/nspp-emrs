@@ -32,8 +32,48 @@ class PrescriptionCheckoutRequest extends FormRequest
             'weight' => 'nullable|sometimes',
             'height' => 'nullable|sometimes',
             'notes' => 'nullable|sometimes',
-            'diagnosis_advise' => 'nullable|sometimes',
+
+            //'patient_risk_factors' => 'required|array',
             'patient_risk_factors.*.risk_factor_id' => 'nullable|sometimes',
+            'patient_risk_factors.*.risk_factor_notes' => 'nullable|sometimes',
+
+            'patient_complaints.*.complaint_id' => 'nullable|sometimes',
+            'patient_complaints.*.complaint_notes' => 'nullable|sometimes',
+
+
+            'patient_diseases.*.disease_id' => 'nullable|sometimes',
+            'patient_diseases.*.disease_notes' => 'nullable|sometimes',
+
+            'patient_diagnoses.*.disease_type_id' => 'nullable|sometimes',
+            'patient_diagnoses.*.disease_id' => 'nullable|sometimes',
+            'patient_diagnoses.*.procedure_id' => 'nullable|sometimes',
+            'patient_diagnoses.*.diagnosis_notes' => 'nullable|sometimes',
+
+            'patient_medicines.*.medicine_id' => 'nullable|sometimes',
+            'patient_medicines.*.medicine_type_id' => 'nullable|sometimes',
+            'patient_medicines.*.route_id' => 'nullable|sometimes',
+            'patient_medicines.*.dosage' => 'nullable|sometimes',
+            'patient_medicines.*.frequency_id' => 'nullable|sometimes',
+            'patient_medicines.*.duration_unit' => 'nullable|sometimes',
+            'patient_medicines.*.qty' => 'nullable|sometimes',
+            'patient_medicines.*.taken_meal' => 'nullable|sometimes',
+            'patient_medicines.*.medicine_instructions' => 'nullable|sometimes',
+            'patient_medicines.*.acquire_from' => 'nullable|sometimes',
+
+            'patient_other_medicines.*.medicine_id' => 'nullable|sometimes',
+            'patient_other_medicines.*.qty' => 'nullable|sometimes',
+            'patient_other_medicines.*.medicine_instructions' => 'nullable|sometimes',
+            'patient_other_medicines.*.acquire_from' => 'nullable|sometimes',
+
+            'patient_hospitals.*.hospital_id' => 'nullable|sometimes',
+            'patient_hospitals.*.priority' => 'nullable|sometimes',
+            'patient_hospitals.*.remarks' => 'nullable|sometimes',
+
+            'patient_labs.*.test_category_id' => 'nullable|sometimes',
+            'patient_labs.*.test_type_id' => 'nullable|sometimes',
+            'patient_labs.*.test_id' => 'nullable|sometimes',
+            'patient_labs.*.test_instructions' => 'nullable|sometimes',
+            'patient_labs.*.lab_id' => 'nullable|sometimes',
         ];
     }
 }

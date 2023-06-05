@@ -26,7 +26,6 @@ class CreatePatientVisitsTable extends Migration
             $table->float('weight', 4, 1)->nullable();
             $table->string('height')->nullable();
             $table->text('notes')->nullable();
-            $table->text('diagnosis_advise')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -29,6 +29,17 @@
 
                 <!--begin::Add button-->
                 <Link
+                    :href="route('registrations.index')"
+                    as="button"
+                    type="button"
+                    class="btn btn-secondary me-2"
+                >
+                    Cancel
+                </Link>
+                <!--end::Add button-->
+
+                <!--begin::Add button-->
+                <Link
                     @click.prevent="checkout"
                     as="button"
                     type="button"
@@ -323,9 +334,9 @@
                                 <tbody>
                                 <template v-for="history in patient?.patient_risk_factors" :key="history.id">
                                     <tr>
-                                        <td class="text-center">{{ history.created_at }}</td>
-                                        <td class="text-center">{{ history.factor_name }}</td>
-                                        <td class="text-left">{{ history.factor_notes }}</td>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td class="text-start">{{ history?.risk_factor?.factor_name }}</td>
+                                        <td class="text-start">{{ history.risk_factor_notes }}</td>
                                     </tr>
                                 </template>
 
@@ -459,9 +470,9 @@
                                 <tbody>
                                 <template v-for="history in patient?.patient_complaints" :key="history.id">
                                     <tr>
-                                        <td class="text-center">{{ history.created_at }}</td>
-                                        <td class="text-center">{{ history.complaint_name }}</td>
-                                        <td class="text-left">{{ history.complaint_notes }}</td>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td class="text-start">{{ history?.complaint?.complaint_name }}</td>
+                                        <td class="text-start">{{ history.complaint_notes }}</td>
                                     </tr>
                                 </template>
 
@@ -487,9 +498,9 @@
                                 <tbody>
                                 <template v-for="history in patient?.patient_diseases" :key="history.id">
                                     <tr>
-                                        <td class="text-center">{{ history.created_at }}</td>
-                                        <td class="text-center">{{ history.disease_name }}</td>
-                                        <td class="text-left">{{ history.disease_notes }}</td>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td class="text-start">{{ history?.disease?.disease_name }}</td>
+                                        <td class="text-start">{{ history.disease_notes }}</td>
                                     </tr>
                                 </template>
 
@@ -505,7 +516,7 @@
                     <h4 class="font-weight-bold main_section_heading mt-6"><span class="text-uppercase">Preliminary Diagnosis</span></h4>
                     <div class="section_box">
                         <div class="mb-10 row">
-                            <div class="col-lg-3">
+                            <div class="col-lg-4">
                                 <label class="form-label required">Category</label>
                                 <v-select
                                           v-model="diagForm.disease_type_id"
@@ -518,7 +529,7 @@
 
                             </div>
 
-                            <div class="col-lg-3">
+                            <div class="col-lg-4">
                                 <label class="form-label required">Diagnosis</label>
                                 <v-select
                                           v-model="diagForm.disease_id"
@@ -531,7 +542,7 @@
 
                             </div>
 
-                            <div class="col-lg-3" v-if="diagForm.disease_type_id===1">
+                            <div class="col-lg-4" v-if="diagForm.disease_type_id===1">
                                 <label class="form-label">Procedure</label>
                                 <v-select
                                     v-model="diagForm.procedure_id"
@@ -542,10 +553,18 @@
                                  <ServerErrorMessage :error="diagForm.errors.procedure_id"/>
 
                             </div>
-                            <div class="col-lg-3">
-                                <button class="btn btn-success btn-sm mt-7" @click.prevent="addDiagnosis">Add</button>
+                        </div>
+
+                        <div class="mb-10 row">
+                            <div class="col-lg-8">
+                                <label class="form-label">Advise</label>
+                                <textarea v-model="diagForm.diagnosis_notes"  class="form-control form-control-sm" rows="4"></textarea>
+                                <ServerErrorMessage :error="diagForm.errors.diagnosis_notes"/>
                             </div>
 
+                            <div class="col-lg-4">
+                                <button class="btn btn-success btn-sm mt-7" @click.prevent="addDiagnosis">Add</button>
+                            </div>
 
                         </div>
 
@@ -582,15 +601,6 @@
 
                         </div>
 
-
-
-                        <div class="mb-10 row">
-                            <div class="col-lg-12">
-                                <label class="form-label">Advise</label>
-                                <textarea v-model="preForm.diagnosis_advise"  class="form-control form-control-sm" rows="4"></textarea>
-                                <ServerErrorMessage :error="preForm.errors.diagnosis_advise"/>
-                            </div>
-                        </div>
                     </div>
 
                     <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">History</span></h4>
@@ -603,14 +613,20 @@
                                 <thead>
                                 <tr class="fw-semibold fs-6 text-gray-800">
                                     <th class="text-start">Date</th>
+                                    <th class="text-start">Category</th>
                                     <th class="text-start">Diagnosis</th>
+                                    <th class="text-start">Procedure</th>
+                                    <th class="text-start">Advise</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <template v-for="history in patient?.patient_diagnoses" :key="history.id">
                                     <tr>
                                         <td class="text-start">{{ history.created_at }}</td>
-                                        <td class="text-start">{{ history.diagnosis_name }}</td>
+                                        <td class="text-start">{{ history?.disease_type?.type_name }}</td>
+                                        <td class="text-start">{{ history?.disease?.disease_name }}</td>
+                                        <td class="text-start">{{ history?.procedure?.procedure_name }}</td>
+                                        <td class="text-start">{{ history.diagnosis_notes }}</td>
                                     </tr>
                                 </template>
 
@@ -747,6 +763,7 @@
                                         <th class="text-start"> Frequency</th>
                                         <th class="text-center"> Duration</th>
                                         <th class="text-center"> Qty</th>
+                                        <th class="text-center"> Acquire From</th>
                                         <th class="text-center"> Action </th>
                                     </tr>
                                     </thead>
@@ -759,6 +776,7 @@
                                             <td class="text-start">{{ getFrequencyName(pmed.frequency_id) }}</td>
                                             <td class="text-center">{{ pmed.duration_value }}</td>
                                             <td class="text-center">{{ pmed.qty }}</td>
+                                            <td class="text-center">{{ pmed.acquire_from }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteMedicine(pmed)"><i class="las la-trash fs-1"></i></button>
                                             </td>
@@ -804,7 +822,17 @@
                             </div>
                         </div>
                         <div class="mb-10 row">
-                            <div class="col-lg-12 text-end"><button class="btn btn-success btn-sm" @click.prevent="addOtherMedicine">Add</button></div>
+                            <div class="col-lg-6 text-start">
+                                <label class="form-label">Acquire From</label>
+                                <div class="d-flex">
+                                    <div v-for="acquire_from in optionsAcquireFrom" :key="acquire_from" class="form-check form-check-custom form-check-sm me-10">
+                                        <input v-model="otherMedicineForm.acquire_from" :value="acquire_from" class="form-check-input" name="acquire_from_other" type="radio" :id="`acquire_from_other_${acquire_from}`">
+                                        <label class="form-check-label" :for="`acquire_from_other_${acquire_from}`">{{ acquire_from }}</label>
+                                    </div>
+                                </div>
+                                <ServerErrorMessage :error="otherMedicineForm.errors.acquire_from"/>
+                            </div>
+                            <div class="col-lg-6 text-end"><button class="btn btn-success btn-sm" @click.prevent="addOtherMedicine">Add</button></div>
                         </div>
                         <div class="row">
                             <div class="table-responsive">
@@ -816,6 +844,7 @@
                                     <tr class="fw-semibold fs-6 text-gray-800">
                                         <th class="text-start"> Medicine</th>
                                         <th class="text-center"> Qty</th>
+                                        <th class="text-center"> Acquire From</th>
                                         <th class="text-start"> Instructions</th>
                                         <th class="text-center"> Action </th>
                                     </tr>
@@ -825,6 +854,7 @@
                                         <tr>
                                             <td class="text-start">{{ getMedicineName(pmed.medicine_id) }}</td>
                                             <td class="text-center">{{ pmed.qty }}</td>
+                                            <td class="text-center">{{ pmed.acquire_from }}</td>
                                             <td class="text-start">{{ pmed.medicine_instructions }}</td>
                                             <td class="text-center">
                                                 <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteOtherMedicine(pmed)"><i class="las la-trash fs-1"></i></button>
@@ -838,7 +868,7 @@
                         </div>
                     </div>
 
-                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">History</span></h4>
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Medicine History</span></h4>
                     <div class="section_box">
                         <div class="table-responsive">
                             <table
@@ -854,6 +884,7 @@
                                     <th>Dosage</th>
                                     <th>Frequency</th>
                                     <th>Days</th>
+                                    <th>Acquire From</th>
                                     <th>Instructions</th>
                                 </tr>
                                 </thead>
@@ -861,11 +892,46 @@
                                 <template v-for="history in patient?.patient_medicines" :key="history.id">
                                     <tr>
                                         <td class="text-start">{{ history.created_at }}</td>
-                                        <td>{{ history.medicine_name }}</td>
+                                        <td>{{ history?.medicine?.medicine_name }}</td>
+                                        <td>{{ history?.medicine?.medicine_generic.generic_name }}</td>
                                         <td>{{ history?.route?.route_name }}</td>
                                         <td>{{ history.dosage }}</td>
                                         <td>{{ history?.frequency?.frequency_name }}</td>
                                         <td>{{ history.duration_value }}</td>
+                                        <td>{{ history.acquire_from }}</td>
+                                        <td>{{ history.medicine_instructions }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Other Item History</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-start">Date</th>
+                                    <th>Name</th>
+                                    <th>Generic</th>
+                                    <th>Acquire From</th>
+                                    <th>Instructions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_other_medicines" :key="history.id">
+                                    <tr>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td>{{ history?.medicine?.medicine_name }}</td>
+                                        <td>{{ history?.medicine?.medicine_generic.generic_name }}</td>
+                                        <td>{{ history.acquire_from }}</td>
                                         <td>{{ history.medicine_instructions }}</td>
                                     </tr>
                                 </template>
@@ -894,7 +960,7 @@
                                 <label class="form-label required">Test Type</label>
                                 <v-select
                                     v-model="labForm.test_type_id"
-                                    :options="testTypes"
+                                    :options="filterTestTypes"
                                     label="type_name"
                                     :reduce="(option) => option.id"
                                     class="v-select-custom" placeholder="Please Select" />
@@ -905,7 +971,7 @@
                                 <label class="form-label required">Test</label>
                                 <v-select
                                     v-model="labForm.test_id"
-                                    :options="tests"
+                                    :options="filterTests"
                                     label="test_name"
                                     :reduce="(option) => option.id"
                                     class="v-select-custom" placeholder="Please Select" />
@@ -951,15 +1017,15 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <template v-for="hospital in preForm.patient_labs">
+                                    <template v-for="lab in preForm.patient_labs">
                                         <tr>
-                                            <td class="text-start">{{ getTestCategoryName(hospital.test_category_id) }}</td>
-                                            <td class="text-start">{{ getTestTypeName(hospital.test_type_id) }}</td>
-                                            <td class="text-start">{{ getTestName(hospital.test_id) }}</td>
-                                            <td class="text-start">{{ hospital.test_instructions }}</td>
-                                            <td class="text-start">{{ getLabName(hospital.test_category_id) }}</td>
+                                            <td class="text-start">{{ getTestCategoryName(lab.test_category_id) }}</td>
+                                            <td class="text-start">{{ getTestTypeName(lab.test_type_id) }}</td>
+                                            <td class="text-start">{{ getTestName(lab.test_id) }}</td>
+                                            <td class="text-start">{{ lab.test_instructions }}</td>
+                                            <td class="text-start">{{ getLabName(lab.test_category_id) }}</td>
                                             <td class="text-center">
-                                                <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteHospital(hospital)"><i class="las la-trash fs-1"></i></button>
+                                                <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteLab(lab)"><i class="las la-trash fs-1"></i></button>
                                             </td>
                                         </tr>
                                     </template>
@@ -1086,7 +1152,7 @@
                                     <tr>
                                         <td class="text-start">{{ history.created_at }}</td>
                                         <td>{{ history?.hospital?.hospital_name }}</td>
-                                        <td>{{ history.priority }}</td>
+                                        <td class="text-center">{{ history.priority }}</td>
                                         <td>{{ history.remarks }}</td>
                                     </tr>
                                 </template>
@@ -1135,6 +1201,8 @@ const filterDiseases = ref();
 const filterProcedures = ref();
 const filterMedicines = ref();
 const filterOtherMedicines = ref();
+const filterTestTypes = ref();
+const filterTests = ref();
 const medicineOption = ref();
 const optionsTakenMeals = ref(["Before Meal", "After Meal", "During Meal"]);
 const optionsAcquireFrom = ref(["In-House", "External"]);
@@ -1158,6 +1226,7 @@ const diagForm = useForm({
     disease_type_id: null,
     disease_id: null,
     procedure_id: null,
+    diagnosis_notes: null,
 });
 
 const medicineForm = useForm({
@@ -1178,7 +1247,8 @@ const medicineForm = useForm({
 const otherMedicineForm = useForm({
     medicine_id: null,
     qty: null,
-    medicine_instructions: null
+    medicine_instructions: null,
+    acquire_from: null,
 });
 
 const hospitalForm = useForm({
@@ -1205,7 +1275,6 @@ const preForm = useForm({
     height: props.patientVisit?.height,
     notes: props.patientVisit?.notes,
 
-    diagnosis_advise: '',
     patient_risk_factors: <any>[],
     patient_complaints: <any>[],
     patient_diseases: <any>[],
@@ -1256,6 +1325,16 @@ watch(() => [medicineForm.dosage, medicineForm.frequency_id, medicineForm.durati
     }
 
     medicineForm.qty = total;
+});
+
+watch(() => labForm.test_category_id, value => {
+    labForm.reset( "test_type_id");
+    filterTestTypes.value = props.testTypes?.filter((testType: any) => testType.test_category_id === value);
+});
+
+watch(() => labForm.test_type_id, value => {
+    labForm.reset("test_id");
+    filterTests.value = props.tests?.filter((test: any) => test.test_type_id === value);
 });
 
 const getRiskFactorName = (id: number) => (props.riskFactors?.find((riskFactor: any) => riskFactor.id === id) as any)?.factor_name;
@@ -1361,8 +1440,10 @@ const addOtherMedicine = () => {
         otherMedicineForm.setError("medicine_id", "Medicine is required.");
     if(row.qty === null)
         otherMedicineForm.setError("qty", "Qty is required.");
+    if(row.acquire_from === null)
+        otherMedicineForm.setError("acquire_from", "Acquire Form is required.");
 
-    if(row.medicine_id === null || row.qty === null)
+    if(row.medicine_id === null || row.qty === null || row.acquire_from === null)
         return;
 
     preForm.patient_other_medicines.push(otherMedicineForm.data())
@@ -1406,7 +1487,7 @@ const addLab = () => {
     if(row.test_category_id === null || row.test_type_id === null || row.test_id === null || row.lab_id === null)
         return;
 
-    preForm.patient_hospitals.push(labForm.data())
+    preForm.patient_labs.push(labForm.data())
 
     labForm.reset();
 }
