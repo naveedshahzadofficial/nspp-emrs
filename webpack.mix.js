@@ -19,7 +19,7 @@ mix.ts('resources/ts/app.ts', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .webpackConfig(webpackConfig);
 
-mix.setResourceRoot('/nspp_emrs/public/');
+mix.setResourceRoot('/webdev/nspp_emrs/public/');
 if (mix.inProduction()) {
     mix.version();
 }
