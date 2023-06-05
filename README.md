@@ -21,6 +21,7 @@ notify: true, //Enable or disable notifications
 })
 
 
+
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 
 - **[Vehikl](https://vehikl.com/)**
@@ -32,5 +33,12 @@ https://laracasts.com/series/inertia-and-spa-techniques/episodes/7
 
 https://vuejs.org/guide/typescript/composition-api.html
 https://adocasts.com/lessons/creating-layouts-and-defining-default-layouts
+
+- ** Webpack.mix.js**
+//mix.setPublicPath('/nspp_emrs/')
+//mix.setResourceRoot('/nspp_emrs/');
+
+- ** webpack.config.js**
+  /*output: { chunkFilename: 'js/[name].js?id=[chunkhash]', publicPath: '/' }, */
 
 
