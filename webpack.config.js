@@ -21,6 +21,7 @@ module.exports = {
         },
         extensions: ['.ts', '.js',".vue", '.mjs', '.json','.wasm','.jsx', '.tsx'],
     },
+
     stats: {
         children: true,
     },
