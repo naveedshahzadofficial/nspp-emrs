@@ -144,7 +144,7 @@ import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import { setCurrentPageBreadcrumbs } from "@/core/helpers/breadcrumb";
 import {onMounted} from "vue";
 const props = defineProps({
-    roles: { type: Array, required: true },
+    roles: { type: Object, required: true },
 });
 
 onMounted(() => {
