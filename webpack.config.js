@@ -3,7 +3,6 @@ const CleanupMiniCssExtractPlugin = require("cleanup-mini-css-extract-plugin");
 
 
 module.exports = {
-    output: { publicPath: '/nspp_emrs/' },
     module: {
         rules: [
             {
