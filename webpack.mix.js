@@ -21,5 +21,5 @@ mix.ts('resources/ts/app.ts', 'public/js')
 
 mix.setResourceRoot('/nspp_emrs/public/');
 if (mix.inProduction()) {
-    //mix.version();
+    mix.version();
 }
