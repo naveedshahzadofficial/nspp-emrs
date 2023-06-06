@@ -70,6 +70,7 @@
                        <inline-svg src="/media/icons/duotune/general/gen021.svg" />
                   </span>
                             <input
+                                v-model="search"
                                 type="text"
                                 class="form-control form-control-solid w-250px ps-15"
                                 placeholder="Search"
@@ -96,7 +97,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <template v-for="role in roles" :key="role.id">
+                        <template v-for="role in roles.data" :key="role.id">
                             <tr>
                                 <td>{{ role.name }}</td>
                                 <td class="text-center">
@@ -178,19 +179,25 @@
 import { router } from '@inertiajs/vue3'
 import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import AlertMessage from "@/Components/alerts/AlertMessage.vue";
+import {ref, watch } from "vue";
 
-import {onMounted} from "vue";
 const props = defineProps({
     roles: { type: Object, required: true },
+    filters: Object
 });
 
-onMounted(() => {
-    //test
-})
+const search: any = ref(props.filters?.search);
 
-const getRoles = () => {
-    router.get(route('roles.index'),{},{
-        preserveState: true
+
+watch(search, value => {
+    filterData();
+});
+
+const filterData = () => {
+    router.get(route('roles.index'),{search: search.value},{
+        preserveScroll: true,
+        preserveState: true,
+        replace: true
     });
 }
 

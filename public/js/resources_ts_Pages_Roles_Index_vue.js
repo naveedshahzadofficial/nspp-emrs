@@ -65,18 +65,25 @@ __webpack_require__.r(__webpack_exports__);
     roles: {
       type: Object,
       required: true
-    }
+    },
+    filters: Object
   },
   setup: function setup(__props, _ref) {
+    var _props$filters;
     var __expose = _ref.expose;
     __expose();
     var props = __props;
-    (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
-      //test
+    var search = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)((_props$filters = props.filters) === null || _props$filters === void 0 ? void 0 : _props$filters.search);
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(search, function (value) {
+      filterData();
     });
-    var getRoles = function getRoles() {
-      _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_1__.router.get(route('roles.index'), {}, {
-        preserveState: true
+    var filterData = function filterData() {
+      _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_1__.router.get(route('roles.index'), {
+        search: search.value
+      }, {
+        preserveScroll: true,
+        preserveState: true,
+        replace: true
       });
     };
     var destroy = function destroy(RoleId) {
@@ -119,7 +126,8 @@ __webpack_require__.r(__webpack_exports__);
     };
     var __returned__ = {
       props: props,
-      getRoles: getRoles,
+      search: search,
+      filterData: filterData,
       destroy: destroy,
       changeStatus: changeStatus,
       AlertMessage: _Components_alerts_AlertMessage_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -229,46 +237,41 @@ var _hoisted_10 = {
 var _hoisted_11 = {
   "class": "svg-icon svg-icon-1 position-absolute ms-6"
 };
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "text",
-  "class": "form-control form-control-solid w-250px ps-15",
-  placeholder: "Search"
-}, null, -1 /* HOISTED */);
-var _hoisted_13 = {
+var _hoisted_12 = {
   "class": "card-body"
 };
-var _hoisted_14 = {
+var _hoisted_13 = {
   "class": "table-responsive"
 };
-var _hoisted_15 = {
+var _hoisted_14 = {
   "class": "table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
 };
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
   "class": "fw-semibold fs-6 text-gray-800"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Role Name"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "text-center"
 }, "Status"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "text-center w-200px"
 }, "Action")])], -1 /* HOISTED */);
+var _hoisted_16 = {
+  "class": "text-center"
+};
 var _hoisted_17 = {
   "class": "text-center"
 };
-var _hoisted_18 = {
-  "class": "text-center"
-};
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-eye"
 }, null, -1 /* HOISTED */);
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-edit"
 }, null, -1 /* HOISTED */);
-var _hoisted_21 = ["onClick", "title"];
-var _hoisted_22 = ["onClick"];
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_20 = ["onClick", "title"];
+var _hoisted_21 = ["onClick"];
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-trash"
 }, null, -1 /* HOISTED */);
-var _hoisted_24 = [_hoisted_23];
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row d-flex align-items-center\"><div class=\"col-sm-12 col-md-5\"><div class=\"pagination-info\">Showing 1 to 4 of 4 records</div></div><div class=\"col-sm-12 col-md-7\"><ul class=\"pagination pagination-circle pagination-outline justify-content-end\"><li class=\"page-item previous disabled m-1\"><a href=\"#\" class=\"page-link\"><i class=\"previous\"></i></a></li><li class=\"page-item m-1\"><a href=\"#\" class=\"page-link\">1</a></li><li class=\"page-item active m-1\"><a href=\"#\" class=\"page-link\">2</a></li><li class=\"page-item m-1\"><a href=\"#\" class=\"page-link\">3</a></li><li class=\"page-item m-1\"><a href=\"#\" class=\"page-link\">4</a></li><li class=\"page-item m-1\"><a href=\"#\" class=\"page-link\">5</a></li><li class=\"page-item m-1\"><a href=\"#\" class=\"page-link\">6</a></li><li class=\"page-item next m-1\"><a href=\"#\" class=\"page-link\"><i class=\"next\"></i></a></li></ul></div></div>", 1);
+var _hoisted_23 = [_hoisted_22];
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row d-flex align-items-center\"><div class=\"col-sm-12 col-md-5\"><div class=\"pagination-info\">Showing 1 to 4 of 4 records</div></div><div class=\"col-sm-12 col-md-7\"><ul class=\"pagination pagination-circle pagination-outline justify-content-end\"><li class=\"page-item previous disabled m-1\"><a href=\"#\" class=\"page-link\"><i class=\"previous\"></i></a></li><li class=\"page-item m-1\"><a href=\"#\" class=\"page-link\">1</a></li><li class=\"page-item active m-1\"><a href=\"#\" class=\"page-link\">2</a></li><li class=\"page-item m-1\"><a href=\"#\" class=\"page-link\">3</a></li><li class=\"page-item m-1\"><a href=\"#\" class=\"page-link\">4</a></li><li class=\"page-item m-1\"><a href=\"#\" class=\"page-link\">5</a></li><li class=\"page-item m-1\"><a href=\"#\" class=\"page-link\">6</a></li><li class=\"page-item next m-1\"><a href=\"#\" class=\"page-link\"><i class=\"next\"></i></a></li></ul></div></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
   var _component_inline_svg = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inline-svg");
@@ -285,12 +288,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(limit), 9 /* TEXT, PROPS */, _hoisted_8);
   }), 256 /* UNKEYED_FRAGMENT */))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Card title"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Card toolbar"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Search"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inline_svg, {
     src: "/media/icons/duotune/general/gen021.svg"
-  })]), _hoisted_12]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Search")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card toolbar")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card header"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Table head"), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.roles, function (role) {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $setup.search = $event;
+    }),
+    type: "text",
+    "class": "form-control form-control-solid w-250px ps-15",
+    placeholder: "Search"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.search]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Search")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card toolbar")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card header"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Table head"), _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.roles.data, function (role) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: role.id
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["badge font-weight-bold", [role.status ? 'badge-success' : 'badge-danger']])
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.status ? 'Active' : 'Inactive'), 3 /* TEXT, CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.status ? 'Active' : 'Inactive'), 3 /* TEXT, CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
       href: _ctx.route('roles.show', role.id),
       "class": "btn btn-icon btn-primary btn-circle btn-sm me-2",
       "data-bs-toggle": "tooltip",
@@ -298,7 +308,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       title: "View Role"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [_hoisted_19];
+        return [_hoisted_18];
       }),
       _: 2 /* DYNAMIC */
     }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
@@ -309,7 +319,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       title: "Edit Role"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [_hoisted_20];
+        return [_hoisted_19];
       }),
       _: 2 /* DYNAMIC */
     }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
@@ -322,7 +332,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       title: [role.status ? 'Deactivate' : 'Activate']
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["icon-xl fas", [role.status ? 'fa-toggle-off' : 'fa-toggle-on']])
-    }, null, 2 /* CLASS */)], 10 /* CLASS, PROPS */, _hoisted_21), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    }, null, 2 /* CLASS */)], 10 /* CLASS, PROPS */, _hoisted_20), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return $setup.destroy(role.id);
       }, ["prevent"]),
@@ -330,8 +340,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "data-bs-toggle": "tooltip",
       "data-bs-placement": "top",
       title: "Delete Role"
-    }, _hoisted_24, 8 /* PROPS */, _hoisted_22)])]);
-  }), 128 /* KEYED_FRAGMENT */))])])]), _hoisted_25])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Container")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end:: Content Body ")], 64 /* STABLE_FRAGMENT */);
+    }, _hoisted_23, 8 /* PROPS */, _hoisted_21)])]);
+  }), 128 /* KEYED_FRAGMENT */))])])]), _hoisted_24])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Container")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end:: Content Body ")], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
