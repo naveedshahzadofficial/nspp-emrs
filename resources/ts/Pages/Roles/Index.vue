@@ -56,8 +56,8 @@
                 <div class="card-header">
                     <!--begin::Card title-->
                     <div class="card-title">
-                        <select class="form-select form-select-sm form-select-solid">
-                            <option v-for="limit in range(30, 100, 10, 0)" :value="limit">{{ limit }}</option>
+                        <select v-model="limit" @change.prevent="filterData" class="form-select form-select-sm form-select-solid">
+                            <option v-for="_limit in range(30, 100, 10, 0)" :value="_limit">{{ _limit }}</option>
                         </select>
                     </div>
                     <!--begin::Card title-->
@@ -150,23 +150,8 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="row d-flex align-items-center">
-                    <div class="col-sm-12 col-md-5">
-                        <div class="pagination-info">Showing 1 to 4 of 4 records</div>
-                    </div>
-                    <div class="col-sm-12 col-md-7">
-                        <ul class="pagination pagination-circle pagination-outline justify-content-end">
-                            <li class="page-item previous disabled m-1"><a href="#" class="page-link"><i class="previous"></i></a></li>
-                            <li class="page-item m-1"><a href="#" class="page-link">1</a></li>
-                            <li class="page-item active m-1"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item m-1"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item m-1"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item m-1"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item m-1"><a href="#" class="page-link">6</a></li>
-                            <li class="page-item next m-1"><a href="#"  class="page-link"><i class="next"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
+
+                <Pagination :meta="roles?.meta" :links="roles?.links" />
             </div>
             </div>
         </div>
@@ -179,7 +164,9 @@
 import { router } from '@inertiajs/vue3'
 import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import AlertMessage from "@/Components/alerts/AlertMessage.vue";
+import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch } from "vue";
+import {debounce} from "lodash";
 
 const props = defineProps({
     roles: { type: Object, required: true },
@@ -187,14 +174,15 @@ const props = defineProps({
 });
 
 const search: any = ref(props.filters?.search);
+const limit: any = ref(props.filters?.limit || '30');
 
 
-watch(search, value => {
+watch(search, debounce((value: any) =>{
     filterData();
-});
+}, 300 ) as any);
 
 const filterData = () => {
-    router.get(route('roles.index'),{search: search.value},{
+    router.get(route('roles.index'),{search: search.value, limit:limit.value},{
         preserveScroll: true,
         preserveState: true,
         replace: true

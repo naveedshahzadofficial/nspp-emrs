@@ -16,13 +16,13 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $filters = request()->only(['search']);
-        $role_paginate = Role::query()
+        $filters = request()->only(['search', 'limit']);
+        $roles = RoleResource::collection(
+            Role::query()
             ->when(request()->input('search'), function ($query, $search){
                 $query->where('name', 'like', "%{$search}%");
-            })->paginate(2);
-
-        $roles = RoleResource::collection($role_paginate);
+            })->paginate(request()->input('limit', 30))->withQueryString()
+        );
         return Inertia::render('Roles/Index', compact('roles', 'filters'));
     }
 
