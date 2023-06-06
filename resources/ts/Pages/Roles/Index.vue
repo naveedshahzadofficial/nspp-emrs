@@ -159,7 +159,7 @@ const limit: any = ref(props.filters?.limit || '30');
 
 watch(search, debounce((value: any) =>{
     filterData();
-}, 300 ) as any);
+}, 500 ) as any);
 
 const filterData = () => {
     router.get(route('roles.index'),{search: search.value, limit:limit.value},{

@@ -156,7 +156,7 @@ __webpack_require__.r(__webpack_exports__);
     var limit = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(((_props$filters2 = props.filters) === null || _props$filters2 === void 0 ? void 0 : _props$filters2.limit) || '30');
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(search, (0,lodash__WEBPACK_IMPORTED_MODULE_6__.debounce)(function (value) {
       filterData();
-    }, 300));
+    }, 500));
     var filterData = function filterData() {
       _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_1__.router.get(route('roles.index'), {
         search: search.value,
