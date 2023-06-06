@@ -42,6 +42,7 @@ class CreatePermissionTables extends Migration
             }
             $table->string('name');       // For MySQL 8.0 use string('name', 125);
             $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
+            $table->boolean('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
             if ($teams || config('permission.testing')) {

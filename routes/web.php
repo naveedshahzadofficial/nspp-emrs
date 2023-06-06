@@ -18,7 +18,10 @@ Route::post('/login', [AuthController::class,'submitLoginForm'])->name('login.su
 Route::group(['middleware' => ['auth']],function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class,'logout'])->name('logout');
+
+    Route::delete('/roles/{role}/change-status', [RoleController::class, 'changeStatus'])->name('roles.change-status');
     Route::resource('/roles', RoleController::class);
+
     Route::post('/registrations/{patient_visit}/checkout', [RegistrationController::class, 'checkout'])->name('registrations.checkout');
     Route::resource('/registrations', RegistrationController::class);
     Route::resource('/patients', PatientController::class);

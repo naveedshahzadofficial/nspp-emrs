@@ -11,8 +11,13 @@ class Role extends \Spatie\Permission\Models\Role
 {
     use HasFactory, SoftDeletes;
 
+    public function scopeActive($query) {
+        return $query->where('status', true);
+    }
+
     public function getCreatedAtAttribute($value): string
     {
         return Carbon::parse($value)->format('d-m-Y');
     }
+
 }

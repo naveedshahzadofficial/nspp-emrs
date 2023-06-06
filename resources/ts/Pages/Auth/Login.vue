@@ -18,7 +18,7 @@
 
             <div class="mb-10 bg-light-info p-8 rounded">
                 <div class="text-info">
-                    Use account <strong>admin@gmail.com</strong> and password
+                    Use account <strong>admin</strong> and password
                     <strong>12345678</strong> to continue.
                 </div>
             </div>
@@ -26,21 +26,21 @@
             <!--begin::Input group-->
             <div class="fv-row mb-10">
                 <!--begin::Label-->
-                <label class="form-label fs-6 fw-bolder text-dark">Email</label>
+                <label class="form-label fs-6 fw-bolder text-dark">Username</label>
                 <!--end::Label-->
 
                 <!--begin::Input-->
                 <input
-                    v-model="form.email"
+                    v-model="form.username"
                     class="form-control form-control-lg form-control-solid"
                     type="text"
-                    name="email"
+                    name="username"
                     autocomplete="off"
                 />
                 <!--end::Input-->
-                <div v-if="form.errors.email" class="fv-plugins-message-container">
+                <div v-if="form.errors.username" class="fv-plugins-message-container">
                     <div class="fv-help-block">
-                        <span>{{ form.errors.email }}</span>
+                        <span>{{ form.errors.username }}</span>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     autocomplete="off"
                 />
                 <!--end::Input-->
-                <div v-if="form.errors.email" class="fv-plugins-message-container">
+                <div v-if="form.errors.password" class="fv-plugins-message-container">
                     <div class="fv-help-block">
                         <span>{{ form.errors.password }}</span>
                     </div>
@@ -133,7 +133,7 @@ import { useForm } from "@inertiajs/vue3";
 const submitButton = ref<HTMLButtonElement | null>(null);
 
 let form = useForm({
-    email: '',
+    username: '',
     password: ''
 });
 

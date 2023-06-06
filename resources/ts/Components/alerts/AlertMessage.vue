@@ -1,26 +1,26 @@
 <template>
     <div
         :class="{
-        'bg-success': title==='Success',
-        'bg-danger': title==='Error',
-        'bg-warning': title==='Warning',
-        'bg-info': title==='Info',
+        'alert-success': title==='Success',
+        'alert-danger': title==='Error',
+        'alert-warning': title==='Warning',
+        'alert-info': title==='Info',
          }"
-        class="
-      alert alert-dismissible
-      d-flex
-      flex-column flex-sm-row
-      w-100
-      p-5
-      mb-10
-    "
+        class="alert alert-success alert-dismissible d-flex align-items-center p-5"
     >
-    <span class="svg-icon svg-icon-2hx svg-icon-light me-4 mb-5 mb-sm-0">
-      <inline-svg src="/media/icons/duotune/general/gen007.svg" />
+     <span class="svg-icon svg-icon-2hx svg-icon-success me-4">
+      <inline-svg src="/media/icons/duotune/general/gen048.svg" />
     </span>
         <!--begin::Content-->
-        <div class="d-flex flex-column text-light pe-0 pe-sm-10">
-            <h4 class="mb-2 text-light" v-text="title"></h4>
+        <div class="d-flex flex-column">
+            <h4 class="mb-2"
+                :class="{
+        'text-success': title==='Success',
+        'text-danger': title==='Error',
+        'text-warning': title==='Warning',
+        'text-info': title==='Info',
+         }"
+                v-text="title"></h4>
             <span v-text="message"></span
             >
         </div>
@@ -28,19 +28,9 @@
         <!--begin::Close-->
         <button
             type="button"
-            class="
-        position-absolute position-sm-relative
-        m-2 m-sm-0
-        top-0
-        end-0
-        btn btn-icon
-        ms-sm-auto
-      "
+            class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto"
             data-bs-dismiss="alert"
-        >
-      <span class="svg-icon svg-icon-2x svg-icon-light">
-        <inline-svg src="/media/icons/duotune/arrows/arr061.svg" />
-      </span>
+        ><i class="bi bi-x fs-1 text-black"></i>
         </button>
         <!--end::Close-->
     </div>
