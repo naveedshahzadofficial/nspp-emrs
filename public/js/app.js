@@ -14105,6 +14105,14 @@ var map = {
 		"./resources/ts/Pages/Registrations/Show.vue",
 		"resources_ts_Pages_Registrations_Show_vue"
 	],
+	"./Roles/Create": [
+		"./resources/ts/Pages/Roles/Create.vue",
+		"resources_ts_Pages_Roles_Create_vue"
+	],
+	"./Roles/Create.vue": [
+		"./resources/ts/Pages/Roles/Create.vue",
+		"resources_ts_Pages_Roles_Create_vue"
+	],
 	"./Roles/Index": [
 		"./resources/ts/Pages/Roles/Index.vue",
 		"resources_ts_Pages_Roles_Index_vue"
