@@ -1,62 +1,25 @@
 <template>
-    <Head title="Add Prescription"/>
+    <Head title="Prescription"/>
+    <Head title="Prescription"/>
+    <Toolbar
+        title="Prescription"
+        :buttons="[
+            {label: 'Cancel', link: route('registrations.index'), class:'btn-secondary'},
+            {label: 'Checkout', link: null, click: checkout, class:'btn-success'},
+            ]"
+        :breadcrumbs="[
+            {label: 'Registrations', link: route('registrations.index')},
+            {label: 'Update', link: null}
+        ]"
+    />
+    <!-- begin:: Content Body -->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div id="kt_content_container" class="container-fluid">
+
     <div class="card">
-        <!--begin::Card header-->
-        <div class="card-header">
-            <!--begin::Card title-->
-            <div class="card-title">
-                <!--begin::Page title-->
-                <div
-                    id="kt_page_title"
-                    data-kt-swapper="true"
-                    data-kt-swapper-mode="prepend"
-                    data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
-                    class="page-title d-flex flex-column justify-content-center flex-wrap me-3"
-                >
-                    <!--begin::Title-->
-                    <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3">
-                        Prescription
-                    </h1>
-                    <!--end::Title-->
-
-                </div>
-                <!--end::Page title-->
-            </div>
-            <!--begin::Card title-->
-
-            <!--begin::Card toolbar-->
-            <div class="card-toolbar">
-
-                <!--begin::Add button-->
-                <Link
-                    :href="route('registrations.index')"
-                    as="button"
-                    type="button"
-                    class="btn btn-secondary me-2"
-                >
-                    Cancel
-                </Link>
-                <!--end::Add button-->
-
-                <!--begin::Add button-->
-                <Link
-                    @click.prevent="checkout"
-                    as="button"
-                    type="button"
-                    class="btn btn-success"
-                >
-                    Checkout
-                </Link>
-                <!--end::Add button-->
-
-            </div>
-            <!--end::Card toolbar-->
-
-        </div>
-        <!--end::Card header-->
-
         <!--begin::Card body-->
-        <div class="card-body pt-0 position-relative">
+        <div class="card-body card-custom">
 
             <ul class="nav nav-tabs nav-line-tabs mb-5 fs-5">
                 <li class="nav-item">
@@ -1169,6 +1132,12 @@
         <!--end::Card body-->
     </div>
     <!--end::Card-->
+
+        </div>
+        <!--end::Container-->
+    </div>
+    <!-- end:: Content Body -->
+
 </template>
 
 <script setup lang="ts">

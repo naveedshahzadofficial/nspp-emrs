@@ -4,7 +4,6 @@
         title="Registrations"
         :buttons="[{label: 'Add Registration', link: route('registrations.create')}]"
         :breadcrumbs="[
-           {label: 'Dashboard', link: route('dashboard')},
            {label: 'Registrations', link: null}
         ]"
     />
@@ -119,6 +118,15 @@
                             <td class="text-center">
                                 <Link
                                     :href="route('registrations.show', patientVisit.id)"
+                                    class="btn btn-icon btn-primary btn-circle btn-sm me-2"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="View">
+                                    <i class="fas fa-eye"></i>
+                                </Link>
+
+                                <Link
+                                    :href="route('registrations.proceed', patientVisit.id)"
                                     class="btn btn-icon btn-warning btn-circle btn-sm me-2"
                                     data-bs-toggle="tooltip"
                                     data-bs-placement="top"

@@ -10,7 +10,7 @@ import HtmlClass from "@/core/services/LayoutService";
 import { initializeComponents } from "@/core/plugins/keenthemes";
 import vSelect from 'vue-select'
 import globalFunctions from '@/core/functions/global-functions';
-import Toolbar from "@/Components/toobars/Toolbar.vue";
+import Toolbar from "@/Components/toolbars/Toolbar.vue";
 
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'EMRS';

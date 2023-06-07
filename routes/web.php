@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth']],function() {
     Route::delete('/patient-types/{patient-type}/change-status', [PatientTypeController::class, 'changeStatus'])->name('patient-types.change-status');
     Route::resource('/patient-types', PatientTypeController::class);
 
+    Route::get('/registrations/{patient_visit}/proceed', [RegistrationController::class, 'proceed'])->name('registrations.proceed');
     Route::post('/registrations/{patient_visit}/checkout', [RegistrationController::class, 'checkout'])->name('registrations.checkout');
     Route::resource('/registrations', RegistrationController::class);
     Route::resource('/patients', PatientController::class);

@@ -38,7 +38,18 @@
             <div class="d-flex align-items-center py-1">
                 <!--begin::Button-->
                 <template v-for="(button, index) in buttons" :key="index">
-                    <Link :href="button.link" class="btn btn-sm btn-primary ms-2"  v-html="button.label"/>
+                    <Link v-if="button.link"
+                          :href="button.link"
+                          class="btn btn-sm ms-2"
+                          :class="[button.class?button.class:'btn-primary']"
+                          v-html="button.label"/>
+                    <Link v-else
+                          @click.prevent="button.click"
+                          as="button"
+                          type="button"
+                          class="btn btn-sm btn-primary ms-2"
+                          :class="[button.class?button.class:'btn-primary']"
+                          v-html="button.label"/>
                 </template>
                 <!--end::Button-->
             </div>

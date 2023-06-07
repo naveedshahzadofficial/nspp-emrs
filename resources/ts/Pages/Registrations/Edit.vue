@@ -4,7 +4,6 @@
         title="Update Registration"
         :buttons="[{label: 'Back', link: route('registrations.index')}]"
         :breadcrumbs="[
-            {label: 'Dashboard', link: route('dashboard')},
             {label: 'Registrations', link: route('registrations.index')},
             {label: 'Update', link: null}
         ]"
