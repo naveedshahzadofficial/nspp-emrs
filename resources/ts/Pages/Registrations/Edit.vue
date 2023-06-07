@@ -16,10 +16,6 @@
         <div id="kt_content_container" class="container-fluid">
     <!--begin::Card-->
     <div class="card card-custom gutter-b">
-        <div class="card-header">
-            <h3 class="card-title">Registration</h3>
-        </div>
-
         <!--begin::Form-->
         <form @submit.prevent="form.put(route('registrations.update', patientVisit?.id))" >
             <div class="card-body">

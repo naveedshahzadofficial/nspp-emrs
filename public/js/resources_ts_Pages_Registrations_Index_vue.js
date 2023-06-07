@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
       filterData();
     }, 500));
     var filterData = function filterData() {
-      _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_3__.router.get(route('patient-visits.index'), {
+      _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_3__.router.get(route('registrations.index'), {
         search: search.value,
         limit: limit.value
       }, {
@@ -144,7 +144,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (result) {
         if (result.isConfirmed) {
-          _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_3__.router["delete"](route('patient-types.destroy', _id), {
+          _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_3__.router["delete"](route('registrations.destroy', _id), {
             preserveScroll: true
           });
         }

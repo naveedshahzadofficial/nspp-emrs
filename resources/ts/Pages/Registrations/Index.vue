@@ -184,7 +184,7 @@ watch(search, debounce((value: any) =>{
 }, 500 ) as any);
 
 const filterData = () => {
-    router.get(route('patient-visits.index'),{search: search.value, limit:limit.value},{
+    router.get(route('registrations.index'),{search: search.value, limit:limit.value},{
         preserveScroll: true,
         preserveState: true,
         replace: true
@@ -204,7 +204,7 @@ const destroy = (_id: number) => {
         },
     }).then(function (result) {
         if(result.isConfirmed){
-            router.delete(route('patient-types.destroy', _id), {
+            router.delete(route('registrations.destroy', _id), {
                 preserveScroll: true
             });
         }
