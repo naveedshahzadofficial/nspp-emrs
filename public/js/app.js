@@ -14360,6 +14360,14 @@ var map = {
 		"./resources/ts/Pages/Registrations/Index.vue",
 		"resources_ts_Pages_Registrations_Index_vue"
 	],
+	"./Registrations/Proceed": [
+		"./resources/ts/Pages/Registrations/Proceed.vue",
+		"resources_ts_Pages_Registrations_Proceed_vue"
+	],
+	"./Registrations/Proceed.vue": [
+		"./resources/ts/Pages/Registrations/Proceed.vue",
+		"resources_ts_Pages_Registrations_Proceed_vue"
+	],
 	"./Registrations/Show": [
 		"./resources/ts/Pages/Registrations/Show.vue",
 		"resources_ts_Pages_Registrations_Show_vue"

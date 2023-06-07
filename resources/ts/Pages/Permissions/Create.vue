@@ -1,5 +1,5 @@
 <template>
-    <Head title="Create Permission"/>
+    <Head title="Add Permission"/>
     <Toolbar
         title="Add Permission"
         :buttons="[{label: 'Back', link: route('permissions.index')}]"

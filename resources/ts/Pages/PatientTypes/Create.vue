@@ -1,5 +1,5 @@
 <template>
-    <Head title="Create Role"/>
+    <Head title="Add Role"/>
     <Toolbar
         title="Add Role"
         :buttons="[{label: 'Back', link: route('roles.index')}]"
