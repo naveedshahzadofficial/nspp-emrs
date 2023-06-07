@@ -2,19 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PatientTypeResource;
 use App\Models\PatientType;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class PatientTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function index()
     {
-        //
+        $filters = request()->only(['search', 'limit']);
+        $patientTypes = PatientTypeResource::collection(
+            PatientType::query()
+                ->when(request()->input('search'), function ($query, $search){
+                    $query->where('type_name', 'like', "%{$search}%");
+                })->paginate(request()->input('limit', 30))->withQueryString()
+        );
+        return Inertia::render('PatientTypes/Index', compact('patientTypes', 'filters'));
     }
 
     /**

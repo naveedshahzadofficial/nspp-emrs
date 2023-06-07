@@ -9779,6 +9779,9 @@ var DocMenuConfig = [{
     }, {
       heading: "Users",
       route: "users.index"
+    }, {
+      heading: "Patient Types",
+      route: "patient-types.index"
     }]
   }, {
     heading: "Registrations",
@@ -14268,6 +14271,38 @@ var map = {
 	"./Home.vue": [
 		"./resources/ts/Pages/Home.vue",
 		"resources_ts_Pages_Home_vue"
+	],
+	"./PatientTypes/Create": [
+		"./resources/ts/Pages/PatientTypes/Create.vue",
+		"resources_ts_Pages_PatientTypes_Create_vue"
+	],
+	"./PatientTypes/Create.vue": [
+		"./resources/ts/Pages/PatientTypes/Create.vue",
+		"resources_ts_Pages_PatientTypes_Create_vue"
+	],
+	"./PatientTypes/Edit": [
+		"./resources/ts/Pages/PatientTypes/Edit.vue",
+		"resources_ts_Pages_PatientTypes_Edit_vue"
+	],
+	"./PatientTypes/Edit.vue": [
+		"./resources/ts/Pages/PatientTypes/Edit.vue",
+		"resources_ts_Pages_PatientTypes_Edit_vue"
+	],
+	"./PatientTypes/Index": [
+		"./resources/ts/Pages/PatientTypes/Index.vue",
+		"resources_ts_Pages_PatientTypes_Index_vue"
+	],
+	"./PatientTypes/Index.vue": [
+		"./resources/ts/Pages/PatientTypes/Index.vue",
+		"resources_ts_Pages_PatientTypes_Index_vue"
+	],
+	"./PatientTypes/Show": [
+		"./resources/ts/Pages/PatientTypes/Show.vue",
+		"resources_ts_Pages_PatientTypes_Show_vue"
+	],
+	"./PatientTypes/Show.vue": [
+		"./resources/ts/Pages/PatientTypes/Show.vue",
+		"resources_ts_Pages_PatientTypes_Show_vue"
 	],
 	"./Permissions/Create": [
 		"./resources/ts/Pages/Permissions/Create.vue",

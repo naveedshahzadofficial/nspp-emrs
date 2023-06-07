@@ -1,68 +1,52 @@
 <template>
     <Head title="Registrations"/>
+    <Toolbar
+        title="Registrations"
+        :buttons="[{label: 'Add Registration', link: route('registrations.create')}]"
+        :breadcrumbs="[
+           {label: 'Dashboard', link: route('dashboard')},
+           {label: 'Registrations', link: null}
+        ]"
+    />
+
+    <!-- begin:: Content Body -->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div id="kt_content_container" class="container-fluid">
 
     <AlertMessage v-if="$page.props.flash.title" :title="$page.props.flash.title" :message="$page.props.flash.message"/>
 
-
-    <div class="card">
+    <div class="card card-custom">
         <!--begin::Card header-->
         <div class="card-header">
             <!--begin::Card title-->
             <div class="card-title">
-                <!--begin::Page title-->
-                <div
-                    id="kt_page_title"
-                    data-kt-swapper="true"
-                    data-kt-swapper-mode="prepend"
-                    data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
-                    class="page-title d-flex flex-column justify-content-center flex-wrap me-3"
-                >
-                    <!--begin::Title-->
-                    <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3">
-                        Registrations
-                    </h1>
-                    <!--end::Title-->
-
-                </div>
-                <!--end::Page title-->
+                <select v-model="limit" @change.prevent="filterData" class="form-select form-select-sm form-select-solid">
+                    <option v-for="_limit in range(30, 100, 10, 0)" :value="_limit">{{ _limit }}</option>
+                </select>
             </div>
             <!--begin::Card title-->
 
             <!--begin::Card toolbar-->
             <div class="card-toolbar">
-
-                <!--begin::Add button-->
-                <Link
-                    :href="route('registrations.create')"
-                    as="button"
-                    type="button"
-                    class="btn btn-primary"
-                >
-                    Add Registration
-                </Link>
-                <!--end::Add button-->
-
+                <!--begin::Search-->
+                <div class="d-flex align-items-center position-relative">
+                  <span class="svg-icon svg-icon-1 position-absolute ms-6">
+                       <inline-svg src="/media/icons/duotune/general/gen021.svg" />
+                  </span>
+                    <input
+                        v-model="search"
+                        type="text"
+                        class="form-control form-control-solid w-250px ps-15"
+                        placeholder="Search"
+                    />
+                </div>
+                <!--end::Search-->
             </div>
             <!--end::Card toolbar-->
-
         </div>
         <!--end::Card header-->
-
-        <div class="card-body pt-0 position-relative">
-
-            <!--begin::Search-->
-            <div class="d-flex align-items-center position-relative my-6">
-          <span class="svg-icon svg-icon-1 position-absolute ms-6">
-               <inline-svg src="/media/icons/duotune/general/gen021.svg" />
-          </span>
-                <input
-                    type="text"
-                    class="form-control form-control-solid w-250px ps-15"
-                    placeholder="Search"
-                />
-            </div>
-            <!--end::Search-->
-
+        <div class="card-body">
                 <!--begin::Table container-->
                 <div class="table-responsive">
                     <!--begin::Table-->
@@ -81,7 +65,7 @@
 
                         <!--begin::Table body-->
                         <tbody>
-                        <template v-for="patientVisit in patientVisits" :key="patientVisit.id">
+                        <template v-for="patientVisit in patientVisits.data" :key="patientVisit.id">
                         <tr>
 
                             <td>
@@ -147,7 +131,7 @@
                                     class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
                                     data-bs-toggle="tooltip"
                                     data-bs-placement="top"
-                                    title="Edit Registration">
+                                    title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </Link>
 
@@ -156,7 +140,7 @@
                                     class="btn btn-icon  btn-danger btn-circle btn-sm me-2"
                                     data-bs-toggle="tooltip"
                                     data-bs-placement="top"
-                                    title="Delete Registration">
+                                    title="Delete">
                                     <i class="fas fa-trash"></i>
                                 </a>
 
@@ -168,8 +152,15 @@
                         <!--end::Table body-->
                     </table>
                </div>
+            <Pagination :meta="patientVisits?.meta" :links="patientVisits?.links" />
+
         </div>
     </div>
+
+      </div>
+        <!--end::Container-->
+    </div>
+    <!-- end:: Content Body -->
 
 </template>
 
@@ -177,29 +168,49 @@
 import AlertMessage from "@/Components/alerts/AlertMessage.vue";
 import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import {router} from "@inertiajs/vue3";
-defineProps({
-   patientVisits: { type:Object, required: true}
+import Pagination from "@/Components/paginations/Pagination.vue";
+import {ref, watch} from "vue";
+import {debounce} from "lodash";
+const props = defineProps({
+   patientVisits: { type:Object, required: true},
+   filters: Object
 });
 
-const destroy = (patientVisitID: number) => {
+const search: any = ref(props.filters?.search);
+const limit: any = ref(props.filters?.limit || '30');
+
+watch(search, debounce((value: any) =>{
+    filterData();
+}, 500 ) as any);
+
+const filterData = () => {
+    router.get(route('patient-visits.index'),{search: search.value, limit:limit.value},{
+        preserveScroll: true,
+        preserveState: true,
+        replace: true
+    });
+}
+
+const destroy = (_id: number) => {
     Swal.fire({
         text: "Are you sure you want to delete this?",
         icon: "warning",
-        showDenyButton: true,
         showCancelButton: true,
         confirmButtonText: 'Delete',
-        denyButtonText: 'No',
         buttonsStyling: false,
         customClass: {
             confirmButton: "btn fw-bold btn-danger",
             cancelButton: "btn fw-bold btn-secondary",
         },
     }).then(function (result) {
-      if(result.isConfirmed){
-          router.delete(route('registrations.destroy', patientVisitID));
-      }
+        if(result.isConfirmed){
+            router.delete(route('patient-types.destroy', _id), {
+                preserveScroll: true
+            });
+        }
     });
 }
+
 </script>
 
 <style scoped>

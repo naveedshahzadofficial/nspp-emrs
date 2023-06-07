@@ -15,6 +15,7 @@ use App\Http\Resources\LabResource;
 use App\Http\Resources\MedicineResource;
 use App\Http\Resources\MedicineTypeResource;
 use App\Http\Resources\PatientTypeResource;
+use App\Http\Resources\PatientVisitResource;
 use App\Http\Resources\ProcedureResource;
 use App\Http\Resources\RiskFactorResource;
 use App\Http\Resources\RouteResource;
@@ -57,10 +58,17 @@ class RegistrationController extends Controller
      *
      * @return \Inertia\Response
      */
-    public function index(): \Inertia\Response
+    public function index()
     {
-        $patientVisits = PatientVisit::with('patient')->get();
-        return Inertia::render('Registrations/Index', compact('patientVisits'));
+        $filters = request()->only(['search', 'limit']);
+        $patientVisits = PatientVisitResource::collection(
+            PatientVisit::query()
+                ->with('patient')
+                ->when(request()->input('search'), function ($query, $search){
+                    $query->where('token_no', 'like', "%{$search}%");
+                })->paginate(request()->input('limit', 30))->withQueryString()
+        );
+        return Inertia::render('Registrations/Index', compact('patientVisits', 'filters'));
     }
 
     /**

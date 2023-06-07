@@ -28,6 +28,10 @@ const DocMenuConfig = [
                 heading: "Users",
                 route: "users.index",
             },
+            {
+                heading: "Patient Types",
+                route: "patient-types.index",
+            },
         ],
       },
         {

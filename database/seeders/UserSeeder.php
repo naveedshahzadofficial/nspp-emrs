@@ -23,6 +23,6 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ]);
-        User::factory(10)->create();
+        User::factory(300)->create();
     }
 }
