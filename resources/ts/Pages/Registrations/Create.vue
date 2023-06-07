@@ -136,9 +136,6 @@
                     <ServerErrorMessage :error="registerForm.errors.notes"/>
                 </div>
             </div>
-
-
-
         </div>
         <div class="card-footer">
             <button

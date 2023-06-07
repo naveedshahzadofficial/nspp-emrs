@@ -10,6 +10,7 @@ import HtmlClass from "@/core/services/LayoutService";
 import { initializeComponents } from "@/core/plugins/keenthemes";
 import vSelect from 'vue-select'
 import globalFunctions from '@/core/functions/global-functions';
+import Toolbar from "@/Components/toobars/Toolbar.vue";
 
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'EMRS';
@@ -34,6 +35,7 @@ createInertiaApp({
       .use(globalFunctions)
       .component('Head', Head)
       .component('Link', Link)
+      .component('Toolbar', Toolbar)
       .component('v-select', vSelect)
       .mount(el)
   },

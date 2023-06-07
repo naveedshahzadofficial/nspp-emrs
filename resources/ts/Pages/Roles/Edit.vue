@@ -1,12 +1,12 @@
 <template>
-    <Head title="Create Role"/>
+    <Head title="Update Role"/>
     <Toolbar
-        title="Add Role"
+        title="Update Role"
         :buttons="[{label: 'Back', link: route('roles.index')}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
             {label: 'Roles', link: route('roles.index')},
-            {label: 'Add', link: null}
+            {label: 'Update', link: null}
         ]"
     />
     <!-- begin:: Content Body -->
@@ -16,9 +16,9 @@
             <div class="card card-custom">
                 <!--begin::Form-->
                 <form @submit.prevent="$event => form.post(route('roles.store'))">
-                <!--begin::Card body-->
-                <div class="card-body">
-                     <div class="row">
+                    <!--begin::Card body-->
+                    <div class="card-body">
+                        <div class="row">
                             <div class="col-lg-6">
                                 <label class="required form-label">Role Name</label>
                                 <input v-model="form.name"  type="text" class="form-control form-control-sm" placeholder="Role Name"/>
@@ -35,9 +35,9 @@
                                 <ServerErrorMessage :error="form.errors.status"/>
                             </div>
                         </div>
-                </div>
-                <!--end::Card body-->
-                <div class="card-footer">
+                    </div>
+                    <!--end::Card body-->
+                    <div class="card-footer">
                         <button
                             type="submit"
                             ref="submitButton"
@@ -45,7 +45,7 @@
                             :disabled="form.processing"
                             :data-kt-indicator="form.processing?'on':'off'"
                         >
-                            <span class="indicator-label"> Submit </span>
+                            <span class="indicator-label"> Update </span>
 
                             <span class="indicator-progress">
                                     Please wait...
@@ -67,11 +67,13 @@
 </template>
 
 <script lang="ts" setup>
-import {useForm} from "@inertiajs/vue3";
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
-
+import {useForm} from "@inertiajs/vue3";
+const props = defineProps({
+    role: { type: Object, required: true}
+});
 const form = useForm({
-    name: '',
-    status: '',
+    name: props.role?.name,
+    status: props.role?.status,
 });
 </script>

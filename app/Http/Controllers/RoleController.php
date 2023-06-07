@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RoleRequest;
 use App\Http\Resources\RoleResource;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Inertia\Inertia;
 
 class RoleController extends Controller
@@ -39,46 +41,53 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param RoleRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
-        //
+        $role = Role::create($request->validated());
+        /*if ($request->has('permissions')) {
+            $role->syncPermissions($request->input('permissions.*.name'));
+        }*/
+        session()->flash('success', "Role has been created successfully.");
+        return redirect()->route('roles.index');
     }
 
     /**
      * Display the specified resource.
      *
      * @param Role $role
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function show(Role $role)
     {
-        //
+        return Inertia::render('Roles/Show', compact('role'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param Role $role
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function edit(Role $role)
     {
-        //
+        return Inertia::render('Roles/Edit', compact('role'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param RoleRequest $request
      * @param Role $role
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Role $role)
+    public function update(RoleRequest $request, Role $role)
     {
-        //
+        $role->update($request->validated());
+        session()->flash('success', "Role has been updated successfully.");
+        return redirect()->route('roles.index');
     }
 
     /**

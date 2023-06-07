@@ -1,27 +1,13 @@
 <template>
     <Head title="Roles"/>
-
-    <Toolbar title="Roles">
-    <template v-slot:breadcrumbs>
-        <!--begin::Item-->
-        <li class="breadcrumb-item text-muted">
-            <Link href="#"
-               class="text-muted text-hover-primary">System Settings</Link>
-        </li>
-        <!--end::Item-->
-        <!--begin::Item-->
-        <li class="breadcrumb-item">
-            <span class="bullet bg-gray-200 w-5px h-2px"></span>
-        </li>
-        <!--end::Item-->
-        <!--begin::Item-->
-        <li class="breadcrumb-item text-dark">Roles</li>
-        <!--end::Item-->
-    </template>
-     <template v-slot:buttons>
-         <Link :href="route('roles.create')" class="btn btn-sm btn-primary ms-2"  v-html="'Add Role'"/>
-     </template>
-    </Toolbar>
+    <Toolbar
+        title="Roles"
+        :buttons="[{label: 'Add Role', link: route('roles.create')}]"
+        :breadcrumbs="[
+            {label: 'System Settings', link: '#'},
+        {label: 'Roles', link: null}
+        ]"
+    />
 
     <!-- begin:: Content Body -->
     <div class="d-flex flex-column-fluid">
@@ -144,7 +130,6 @@ import { router } from '@inertiajs/vue3'
 import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import AlertMessage from "@/Components/alerts/AlertMessage.vue";
 import Pagination from "@/Components/paginations/Pagination.vue";
-import Toolbar from "@/Components/toobars/Toolbar.vue";
 import {ref, watch } from "vue";
 import {debounce} from "lodash";
 
