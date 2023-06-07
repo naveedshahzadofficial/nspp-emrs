@@ -111,26 +111,10 @@ class RegistrationController extends Controller
         $patientVisit = PatientVisit::findOrFail($id);
         $patient = Patient::relations()->find($patientVisit->patient_id);
 
-        $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
-        $genders = GenderResource::collection(Gender::active()->get());
-        $complaints = ComplaintResource::collection(Complaint::active()->get());
-        $diseases = DiseaseResource::collection(Disease::active()->get());
-        $diseaseTypes = DiseaseTypeResource::collection(DiseaseType::active()->get());
-        $procedures = ProcedureResource::collection(Procedure::active()->get());
-        $riskFactors = RiskFactorResource::collection(RiskFactor::active()->get());
-        $medicines = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')->active()->get());
-        $routes = RouteResource::collection(Route::active()->get());
-        $frequencies = FrequencyResource::collection(Frequency::active()->get());
-        $hospitals = HospitalResource::collection(Hospital::active()->get());
-        $testCategories = TestCategoryResource::collection(TestCategory::active()->get());
-        $testTypes = TestTypeResource::collection(TestType::active()->get());
-        $tests = TestResource::collection(Test::active()->get());
-        $labs = LabResource::collection(Lab::active()->get());
 
         return Inertia::render('Registrations/Show',
-            compact('patientTypes', 'genders', 'patient',
-                'patientVisit', 'complaints', 'diseases', 'diseaseTypes', 'procedures',
-                'riskFactors', 'medicines', 'routes', 'frequencies', 'hospitals', 'testCategories', 'testTypes', 'tests', 'labs'));
+            compact( 'patient',
+                'patientVisit'));
     }
 
     /**

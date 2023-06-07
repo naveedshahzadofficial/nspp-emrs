@@ -305,9 +305,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       link: _ctx.route('registrations.index')
     }],
     breadcrumbs: [{
-      label: 'Dashboard',
-      link: _ctx.route('dashboard')
-    }, {
       label: 'Registrations',
       link: _ctx.route('registrations.index')
     }, {
