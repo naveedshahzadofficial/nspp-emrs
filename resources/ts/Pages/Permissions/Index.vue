@@ -1,11 +1,11 @@
 <template>
-    <Head title="Roles"/>
+    <Head title="Permissions"/>
     <Toolbar
-        title="Roles"
-        :buttons="[{label: 'Add Role', link: route('roles.create')}]"
+        title="Permissions"
+        :buttons="[{label: 'Add Permission', link: route('permissions.create')}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
-        {label: 'Roles', link: null}
+        {label: 'Permissions', link: null}
         ]"
     />
 
@@ -56,24 +56,17 @@
                         <!--begin::Table head-->
                         <thead>
                         <tr class="fw-semibold fs-6 text-gray-800">
-                            <th>Role Name</th>
-                            <th class="text-center">Status</th>
+                            <th>Permission Name</th>
                             <th class="text-center w-200px">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <template v-for="role in roles.data" :key="role.id">
+                        <template v-for="permission in permissions.data" :key="permission.id">
                             <tr>
-                                <td>{{ role.name }}</td>
-                                <td class="text-center">
-                                    <span class="badge font-weight-bold"
-                                          :class="[role.status?'badge-success':'badge-danger']">
-                                        {{ role.status?'Active':'Inactive' }}
-                                    </span>
-                                </td>
+                                <td>{{ permission.name }}</td>
                                 <td class="text-center">
                                     <Link
-                                        :href="route('roles.show', role.id)"
+                                        :href="route('permissions.show', permission.id)"
                                         class="btn btn-icon btn-primary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -82,7 +75,7 @@
                                     </Link>
 
                                     <Link
-                                        :href="route('roles.edit', role.id)"
+                                        :href="route('permissions.edit', permission.id)"
                                         class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -90,19 +83,9 @@
                                         <i class="fas fa-edit"></i>
                                     </Link>
 
-                                    <a @click.prevent="changeStatus(role)"
-                                       class="btn btn-icon btn-circle btn-sm me-2"
-                                       :class="[role.status?'btn-danger':'btn-success']"
-                                       data-bs-toggle="tooltip"
-                                       data-bs-placement="top"
-                                       :title="[role.status?'Deactivate':'Activate']">
-                                        <i class="icon-xl fas"
-                                           :class="[role.status?'fa-toggle-off':'fa-toggle-on']"
-                                        ></i>
-                                    </a>
 
                                     <a
-                                        @click.prevent="destroy(role.id)"
+                                        @click.prevent="destroy(permission.id)"
                                         class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -116,7 +99,7 @@
                     </table>
                 </div>
 
-                <Pagination :meta="roles?.meta" :links="roles?.links" />
+                <Pagination :meta="permissions?.meta" :links="permissions?.links" />
             </div>
             </div>
         </div>
@@ -134,7 +117,7 @@ import {ref, watch } from "vue";
 import {debounce} from "lodash";
 
 const props = defineProps({
-    roles: { type: Object, required: true },
+    permissions: { type: Object, required: true },
     filters: Object
 });
 
@@ -147,14 +130,14 @@ watch(search, debounce((value: any) =>{
 }, 500 ) as any);
 
 const filterData = () => {
-    router.get(route('roles.index'),{search: search.value, limit:limit.value},{
+    router.get(route('permissions.index'),{search: search.value, limit:limit.value},{
         preserveScroll: true,
         preserveState: true,
         replace: true
     });
 }
 
-const destroy = (RoleId: number) => {
+const destroy = (_id: number) => {
     Swal.fire({
         text: "Are you sure you want to delete this?",
         icon: "warning",
@@ -167,27 +150,8 @@ const destroy = (RoleId: number) => {
         },
     }).then(function (result) {
         if(result.isConfirmed){
-            router.delete(route('roles.destroy', RoleId), {
+            router.delete(route('permissions.destroy', _id), {
                 preserveScroll: true
-            });
-        }
-    });
-}
-const changeStatus = (role: any) => {
-    Swal.fire({
-        text: "Are you sure?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: role?.status?'Deactivate':'Activate',
-        buttonsStyling: false,
-        customClass: {
-            confirmButton: role?.status?'btn fw-bold btn-danger':'btn fw-bold btn-success',
-            cancelButton: "btn fw-bold btn-secondary",
-        },
-    }).then(function (result) {
-        if(result.isConfirmed){
-            router.delete(route('roles.change-status', role?.id), {
-                preserveScroll: true,
             });
         }
     });

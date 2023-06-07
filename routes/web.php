@@ -6,6 +6,7 @@ use App\Http\Controllers\{
     AuthController,
     DashboardController,
     RoleController,
+    PermissionController,
     RegistrationController,
     PatientController,
 };
@@ -21,6 +22,8 @@ Route::group(['middleware' => ['auth']],function() {
 
     Route::delete('/roles/{role}/change-status', [RoleController::class, 'changeStatus'])->name('roles.change-status');
     Route::resource('/roles', RoleController::class);
+
+    Route::resource('/permissions', PermissionController::class);
 
     Route::post('/registrations/{patient_visit}/checkout', [RegistrationController::class, 'checkout'])->name('registrations.checkout');
     Route::resource('/registrations', RegistrationController::class);

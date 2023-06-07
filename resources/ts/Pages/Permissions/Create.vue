@@ -1,11 +1,11 @@
 <template>
-    <Head title="Create Role"/>
+    <Head title="Create Permission"/>
     <Toolbar
-        title="Add Role"
-        :buttons="[{label: 'Back', link: route('roles.index')}]"
+        title="Add Permission"
+        :buttons="[{label: 'Back', link: route('permissions.index')}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
-            {label: 'Roles', link: route('roles.index')},
+            {label: 'Permissions', link: route('permissions.index')},
             {label: 'Add', link: null}
         ]"
     />
@@ -15,24 +15,14 @@
         <div id="kt_content_container" class="container-fluid">
             <div class="card card-custom">
                 <!--begin::Form-->
-                <form @submit.prevent="form.post(route('roles.store'))">
+                <form @submit.prevent="form.post(route('permissions.store'))">
                 <!--begin::Card body-->
                 <div class="card-body">
                      <div class="row">
                             <div class="col-lg-6">
-                                <label class="required form-label">Role Name</label>
-                                <input v-model="form.name"  type="text" class="form-control form-control-sm" placeholder="Role Name"/>
+                                <label class="required form-label">Permission Name</label>
+                                <input v-model="form.name"  type="text" class="form-control form-control-sm" placeholder="Permission Name"/>
                                 <ServerErrorMessage :error="form.errors.name"/>
-                            </div>
-                            <div class="col-lg-6">
-                                <label class="required form-label">Status</label>
-                                <div class="d-flex">
-                                    <div v-for="status in [{id: 1, name:'Active'}, {id: 0, name:'Inactive'}]" :key="status.id" class="form-check form-check-custom form-check-sm me-10">
-                                        <input v-model="form.status" :value="status.id" class="form-check-input" name="status" type="radio" :id="`status_${status.id}`">
-                                        <label class="form-check-label" :for="`status_${status.id}`">{{ status.name }}</label>
-                                    </div>
-                                </div>
-                                <ServerErrorMessage :error="form.errors.status"/>
                             </div>
                         </div>
                 </div>
@@ -54,7 +44,7 @@
                 ></span>
           </span>
                         </button>
-                        <Link :href="route('roles.index')" class="btn btn-secondary">Cancel</Link>
+                        <Link :href="route('permissions.index')" class="btn btn-secondary">Cancel</Link>
                     </div>
                 </form>
                 <!--end::Form-->

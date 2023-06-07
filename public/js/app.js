@@ -9773,6 +9773,9 @@ var DocMenuConfig = [{
     sub: [{
       heading: "Roles",
       route: "roles.index"
+    }, {
+      heading: "Permissions",
+      route: "permissions.index"
     }]
   }, {
     heading: "Registrations",
@@ -14262,6 +14265,38 @@ var map = {
 	"./Home.vue": [
 		"./resources/ts/Pages/Home.vue",
 		"resources_ts_Pages_Home_vue"
+	],
+	"./Permissions/Create": [
+		"./resources/ts/Pages/Permissions/Create.vue",
+		"resources_ts_Pages_Permissions_Create_vue"
+	],
+	"./Permissions/Create.vue": [
+		"./resources/ts/Pages/Permissions/Create.vue",
+		"resources_ts_Pages_Permissions_Create_vue"
+	],
+	"./Permissions/Edit": [
+		"./resources/ts/Pages/Permissions/Edit.vue",
+		"resources_ts_Pages_Permissions_Edit_vue"
+	],
+	"./Permissions/Edit.vue": [
+		"./resources/ts/Pages/Permissions/Edit.vue",
+		"resources_ts_Pages_Permissions_Edit_vue"
+	],
+	"./Permissions/Index": [
+		"./resources/ts/Pages/Permissions/Index.vue",
+		"resources_ts_Pages_Permissions_Index_vue"
+	],
+	"./Permissions/Index.vue": [
+		"./resources/ts/Pages/Permissions/Index.vue",
+		"resources_ts_Pages_Permissions_Index_vue"
+	],
+	"./Permissions/Show": [
+		"./resources/ts/Pages/Permissions/Show.vue",
+		"resources_ts_Pages_Permissions_Show_vue"
+	],
+	"./Permissions/Show.vue": [
+		"./resources/ts/Pages/Permissions/Show.vue",
+		"resources_ts_Pages_Permissions_Show_vue"
 	],
 	"./Registrations/Create": [
 		"./resources/ts/Pages/Registrations/Create.vue",
