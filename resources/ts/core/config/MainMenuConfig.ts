@@ -2,9 +2,9 @@ const DocMenuConfig = [
   {
     pages: [
       {
-        heading: "dashboard",
+        heading: "Dashboard",
         route: "dashboard",
-        component: "Dashboard",
+        components: ["Dashboard"],
         fontIcon: "bi bi-house-door",
       },
     ],
@@ -37,6 +37,7 @@ const DocMenuConfig = [
         {
             heading: "Registrations",
             route: "registrations.index",
+            components: ["Registration/index"],
             fontIcon: "bi bi-pencil-square",
         },
     ],

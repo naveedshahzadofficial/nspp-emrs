@@ -21,7 +21,7 @@
         <div v-if="item.heading" class="menu-item">
           <div class="menu-content pt-8 pb-2">
             <span class="menu-section text-muted text-uppercase fs-8 ls-1">
-              {{ translate(item.heading) }}
+              {{ item.heading }}
             </span>
           </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="menu-item">
               <Link
                 class="menu-link"
-                :class="{ 'active': $page.component === menuItem.component??'' }"
+                :class="{ 'active': (menuItem?.components??[] as any).includes($page.component) }"
                 :href="route(menuItem.route??null)"
               >
                 <span
@@ -50,7 +50,7 @@
                   </span>
                 </span>
                 <span class="menu-title">{{
-                  translate(menuItem.heading)
+                  menuItem.heading
                 }}</span>
               </Link>
             </div>
@@ -80,7 +80,7 @@
                 </span>
               </span>
               <span class="menu-title">{{
-                translate(menuItem.sectionTitle)
+                menuItem.sectionTitle
               }}</span>
               <span class="menu-arrow"></span>
             </span>
@@ -92,14 +92,14 @@
                 <div v-if="item2.heading" class="menu-item">
                     <Link
                         class="menu-link"
-                        :class="{ 'active': $page.component === item2.component??'' }"
+                        :class="{ 'active': (item2?.components??[] as any).includes($page.component) }"
                         :href="route(item2.route??null)"
                     >
                     <span class="menu-bullet">
                       <span class="bullet bullet-dot"></span>
                     </span>
                     <span class="menu-title">{{
-                      translate(item2.heading)
+                      item2.heading
                     }}</span>
                   </Link>
                 </div>
@@ -114,9 +114,7 @@
                     <span class="menu-bullet">
                       <span class="bullet bullet-dot"></span>
                     </span>
-                    <span class="menu-title">{{
-                      translate(item2.sectionTitle)
-                    }}</span>
+                    <span class="menu-title">{{ item2.sectionTitle }}</span>
                     <span class="menu-arrow"></span>
                   </span>
                   <div
@@ -127,14 +125,14 @@
                       <div v-if="item3.heading" class="menu-item">
                           <Link
                               class="menu-link"
-                              :class="{ 'active': $page.component === item3.component??'' }"
+                              :class="{ 'active': (item3?.components??[] as any).includes($page.component) }"
                               :href="route(item3.route??null)"
                           >
                           <span class="menu-bullet">
                             <span class="bullet bullet-dot"></span>
                           </span>
                           <span class="menu-title">{{
-                            translate(item3.heading)
+                            item3.heading
                           }}</span>
                         </Link>
                       </div>
@@ -154,7 +152,6 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
-import { useI18n } from "vue-i18n";
 import { version } from "@/core/helpers/documentation";
 import { asideMenuIcons } from "@/core/helpers/config";
 import MainMenuConfig from "@/core/config/MainMenuConfig";
@@ -163,7 +160,6 @@ export default defineComponent({
   name: "kt-menu",
   components: {},
   setup() {
-    const { t, te } = useI18n();
     const scrollElRef = ref<null | HTMLElement>(null);
 
     onMounted(() => {
@@ -171,14 +167,6 @@ export default defineComponent({
         //scrollElRef.value.scrollTop = 0;
       }
     });
-
-    const translate = (text) => {
-      if (te(text)) {
-        return t(text);
-      } else {
-        return text;
-      }
-    };
 
     const hasActiveChildren = (match) => {
       return false;
@@ -189,7 +177,6 @@ export default defineComponent({
       MainMenuConfig,
       asideMenuIcons,
       version,
-      translate,
     };
   },
 });
