@@ -9776,6 +9776,9 @@ var DocMenuConfig = [{
     }, {
       heading: "Permissions",
       route: "permissions.index"
+    }, {
+      heading: "Users",
+      route: "users.index"
     }]
   }, {
     heading: "Registrations",
@@ -14361,6 +14364,38 @@ var map = {
 	"./Roles/Show.vue": [
 		"./resources/ts/Pages/Roles/Show.vue",
 		"resources_ts_Pages_Roles_Show_vue"
+	],
+	"./Users/Create": [
+		"./resources/ts/Pages/Users/Create.vue",
+		"resources_ts_Pages_Users_Create_vue"
+	],
+	"./Users/Create.vue": [
+		"./resources/ts/Pages/Users/Create.vue",
+		"resources_ts_Pages_Users_Create_vue"
+	],
+	"./Users/Edit": [
+		"./resources/ts/Pages/Users/Edit.vue",
+		"resources_ts_Pages_Users_Edit_vue"
+	],
+	"./Users/Edit.vue": [
+		"./resources/ts/Pages/Users/Edit.vue",
+		"resources_ts_Pages_Users_Edit_vue"
+	],
+	"./Users/Index": [
+		"./resources/ts/Pages/Users/Index.vue",
+		"resources_ts_Pages_Users_Index_vue"
+	],
+	"./Users/Index.vue": [
+		"./resources/ts/Pages/Users/Index.vue",
+		"resources_ts_Pages_Users_Index_vue"
+	],
+	"./Users/Show": [
+		"./resources/ts/Pages/Users/Show.vue",
+		"resources_ts_Pages_Users_Show_vue"
+	],
+	"./Users/Show.vue": [
+		"./resources/ts/Pages/Users/Show.vue",
+		"resources_ts_Pages_Users_Show_vue"
 	]
 };
 function webpackAsyncContext(req) {

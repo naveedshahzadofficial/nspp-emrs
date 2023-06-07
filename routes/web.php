@@ -9,6 +9,7 @@ use App\Http\Controllers\{
     PermissionController,
     RegistrationController,
     PatientController,
+    UserController,
 };
 
 Route::get('/',[AuthController::class,'showLoginForm']);
@@ -24,6 +25,9 @@ Route::group(['middleware' => ['auth']],function() {
     Route::resource('/roles', RoleController::class);
 
     Route::resource('/permissions', PermissionController::class);
+
+    Route::delete('/users/{user}/change-status', [UserController::class, 'changeStatus'])->name('users.change-status');
+    Route::resource('/users', UserController::class);
 
     Route::post('/registrations/{patient_visit}/checkout', [RegistrationController::class, 'checkout'])->name('registrations.checkout');
     Route::resource('/registrations', RegistrationController::class);

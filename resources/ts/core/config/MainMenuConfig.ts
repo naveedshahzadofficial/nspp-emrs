@@ -24,6 +24,10 @@ const DocMenuConfig = [
                 heading: "Permissions",
                 route: "permissions.index",
             },
+            {
+                heading: "Users",
+                route: "users.index",
+            },
         ],
       },
         {

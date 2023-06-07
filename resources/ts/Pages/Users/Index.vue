@@ -1,11 +1,11 @@
 <template>
-    <Head title="Roles"/>
+    <Head title="Users"/>
     <Toolbar
-        title="Roles"
-        :buttons="[{label: 'Add Role', link: route('roles.create')}]"
+        title="Users"
+        :buttons="[{label: 'Add User', link: route('users.create')}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
-        {label: 'Roles', link: null}
+        {label: 'Users', link: null}
         ]"
     />
 
@@ -56,24 +56,24 @@
                         <!--begin::Table head-->
                         <thead>
                         <tr class="fw-semibold fs-6 text-gray-800">
-                            <th>Role Name</th>
+                            <th>User Name</th>
                             <th class="text-center">Status</th>
                             <th class="text-center w-200px">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <template v-for="role in roles.data" :key="role.id">
+                        <template v-for="user in users.data" :key="user.id">
                             <tr>
-                                <td>{{ role.name }}</td>
+                                <td>{{ user.name }}</td>
                                 <td class="text-center">
                                     <span class="badge font-weight-bold"
-                                          :class="[role.status?'badge-success':'badge-danger']">
-                                        {{ role.status?'Active':'Inactive' }}
+                                          :class="[user.status?'badge-success':'badge-danger']">
+                                        {{ user.status?'Active':'Inactive' }}
                                     </span>
                                 </td>
                                 <td class="text-center">
                                     <Link
-                                        :href="route('roles.show', role.id)"
+                                        :href="route('users.show', user.id)"
                                         class="btn btn-icon btn-primary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -82,7 +82,7 @@
                                     </Link>
 
                                     <Link
-                                        :href="route('roles.edit', role.id)"
+                                        :href="route('users.edit', user.id)"
                                         class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -90,19 +90,19 @@
                                         <i class="fas fa-edit"></i>
                                     </Link>
 
-                                    <a @click.prevent="changeStatus(role)"
+                                    <a @click.prevent="changeStatus(user)"
                                        class="btn btn-icon btn-circle btn-sm me-2"
-                                       :class="[role.status?'btn-danger':'btn-success']"
+                                       :class="[user.status?'btn-danger':'btn-success']"
                                        data-bs-toggle="tooltip"
                                        data-bs-placement="top"
-                                       :title="[role.status?'Deactivate':'Activate']">
+                                       :title="[user.status?'Deactivate':'Activate']">
                                         <i class="icon-xl fas"
-                                           :class="[role.status?'fa-toggle-off':'fa-toggle-on']"
+                                           :class="[user.status?'fa-toggle-off':'fa-toggle-on']"
                                         ></i>
                                     </a>
 
                                     <a
-                                        @click.prevent="destroy(role.id)"
+                                        @click.prevent="destroy(user.id)"
                                         class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -116,7 +116,7 @@
                     </table>
                 </div>
 
-                <Pagination :meta="roles?.meta" :links="roles?.links" />
+                <Pagination :meta="users?.meta" :links="users?.links" />
             </div>
             </div>
         </div>
@@ -134,7 +134,7 @@ import {ref, watch } from "vue";
 import {debounce} from "lodash";
 
 const props = defineProps({
-    roles: { type: Object, required: true },
+    users: { type: Object, required: true },
     filters: Object
 });
 
@@ -147,7 +147,7 @@ watch(search, debounce((value: any) =>{
 }, 500 ) as any);
 
 const filterData = () => {
-    router.get(route('roles.index'),{search: search.value, limit:limit.value},{
+    router.get(route('users.index'),{search: search.value, limit:limit.value},{
         preserveScroll: true,
         preserveState: true,
         replace: true
@@ -167,7 +167,7 @@ const destroy = (_id: number) => {
         },
     }).then(function (result) {
         if(result.isConfirmed){
-            router.delete(route('roles.destroy', _id), {
+            router.delete(route('users.destroy', _id), {
                 preserveScroll: true
             });
         }
@@ -186,7 +186,7 @@ const changeStatus = (object: any) => {
         },
     }).then(function (result) {
         if(result.isConfirmed){
-            router.delete(route('roles.change-status', object?.id), {
+            router.delete(route('users.change-status', object?.id), {
                 preserveScroll: true,
             });
         }
