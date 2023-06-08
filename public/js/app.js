@@ -571,6 +571,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _core_helpers_documentation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/core/helpers/documentation */ "./resources/ts/core/helpers/documentation.ts");
 /* harmony import */ var _core_helpers_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/core/helpers/config */ "./resources/ts/core/helpers/config.ts");
 /* harmony import */ var _core_config_MainMenuConfig__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/core/config/MainMenuConfig */ "./resources/ts/core/config/MainMenuConfig.ts");
+/* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
+
 
 
 
@@ -585,11 +587,12 @@ __webpack_require__.r(__webpack_exports__);
         //scrollElRef.value.scrollTop = 0;
       }
     });
-    var hasActiveChildren = function hasActiveChildren(match) {
-      return false;
+    var hasActive = function hasActive(match) {
+      var _match$components;
+      return ((_match$components = match === null || match === void 0 ? void 0 : match.components) !== null && _match$components !== void 0 ? _match$components : []).includes((0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_4__.usePage)().component);
     };
     return {
-      hasActiveChildren: hasActiveChildren,
+      hasActive: hasActive,
       MainMenuConfig: _core_config_MainMenuConfig__WEBPACK_IMPORTED_MODULE_3__["default"],
       asideMenuIcons: _core_helpers_config__WEBPACK_IMPORTED_MODULE_2__.asideMenuIcons,
       version: _core_helpers_documentation__WEBPACK_IMPORTED_MODULE_1__.version
@@ -2647,12 +2650,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: i
     }, [item.heading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.heading), 1 /* TEXT */)])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(item.pages, function (menuItem, j) {
-      var _menuItem$components, _menuItem$route;
+      var _menuItem$route;
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         key: j
       }, [menuItem.heading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["menu-link", {
-          'active': ((_menuItem$components = menuItem === null || menuItem === void 0 ? void 0 : menuItem.components) !== null && _menuItem$components !== void 0 ? _menuItem$components : []).includes(_ctx.$page.component)
+          'active': _ctx.hasActive(menuItem)
         }]),
         href: _ctx.route((_menuItem$route = menuItem.route) !== null && _menuItem$route !== void 0 ? _menuItem$route : null)
       }, {
@@ -2669,7 +2672,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["class", "href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), menuItem.sectionTitle ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
         key: 1,
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
-          show: _ctx.hasActiveChildren(menuItem.route)
+          show: _ctx.hasActive(menuItem)
         }, "menu-item menu-accordion"]),
         "data-kt-menu-sub": "accordion",
         "data-kt-menu-trigger": "click"
@@ -2680,15 +2683,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         src: menuItem.svgIcon
       }, null, 8 /* PROPS */, ["src"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(menuItem.sectionTitle), 1 /* TEXT */), _hoisted_14]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
-          show: _ctx.hasActiveChildren(menuItem.route)
+          show: _ctx.hasActive(menuItem)
         }, "menu-sub menu-sub-accordion"])
       }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(menuItem.sub, function (item2, k) {
-        var _item2$components, _item2$route;
+        var _item2$route;
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
           key: k
         }, [item2.heading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
           "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["menu-link", {
-            'active': ((_item2$components = item2 === null || item2 === void 0 ? void 0 : item2.components) !== null && _item2$components !== void 0 ? _item2$components : []).includes(_ctx.$page.component)
+            'active': _ctx.hasActive(item2)
           }]),
           href: _ctx.route((_item2$route = item2.route) !== null && _item2$route !== void 0 ? _item2$route : null)
         }, {
@@ -2700,21 +2703,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["class", "href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), item2.sectionTitle ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
           key: 1,
           "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
-            show: _ctx.hasActiveChildren(item2.route)
+            show: _ctx.hasActive(item2)
           }, "menu-item menu-accordion"]),
           "data-kt-menu-sub": "accordion",
           "data-kt-menu-trigger": "click"
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item2.sectionTitle), 1 /* TEXT */), _hoisted_21]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
           "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
-            show: _ctx.hasActiveChildren(item2.route)
+            show: _ctx.hasActive(item2)
           }, "menu-sub menu-sub-accordion"])
         }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(item2.sub, function (item3, k) {
-          var _item3$components, _item3$route;
+          var _item3$route;
           return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
             key: k
           }, [item3.heading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
             "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["menu-link", {
-              'active': ((_item3$components = item3 === null || item3 === void 0 ? void 0 : item3.components) !== null && _item3$components !== void 0 ? _item3$components : []).includes(_ctx.$page.component)
+              'active': _ctx.hasActive(item3)
             }]),
             href: _ctx.route((_item3$route = item3.route) !== null && _item3$route !== void 0 ? _item3$route : null)
           }, {
@@ -9766,23 +9769,28 @@ var DocMenuConfig = [{
   pages: [{
     sectionTitle: "System Settings",
     fontIcon: "bi bi-gear",
+    components: ["Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show"],
     sub: [{
-      heading: "Roles",
-      route: "roles.index"
-    }, {
       heading: "Permissions",
-      route: "permissions.index"
+      route: "permissions.index",
+      components: ["Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show"]
+    }, {
+      heading: "Roles",
+      route: "roles.index",
+      components: ["Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show"]
     }, {
       heading: "Users",
-      route: "users.index"
+      route: "users.index",
+      components: ["Users/Index", "Users/Create", "Users/Edit", "Users/Show"]
     }, {
       heading: "Patient Types",
-      route: "patient-types.index"
+      route: "patient-types.index",
+      components: ["PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show"]
     }]
   }, {
     heading: "Registrations",
     route: "registrations.index",
-    components: ["Registration/index"],
+    components: ["Registrations/Index", "Registrations/Create", "Registrations/Edit", "Registrations/Show", "Registrations/Proceed"],
     fontIcon: "bi bi-pencil-square"
   }]
 }];

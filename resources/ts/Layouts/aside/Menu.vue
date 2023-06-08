@@ -30,7 +30,7 @@
             <div class="menu-item">
               <Link
                 class="menu-link"
-                :class="{ 'active': (menuItem?.components??[] as any).includes($page.component) }"
+                :class="{ 'active': hasActive(menuItem) }"
                 :href="route(menuItem.route??null)"
               >
                 <span
@@ -57,7 +57,7 @@
           </template>
           <div
             v-if="menuItem.sectionTitle"
-            :class="{ show: hasActiveChildren(menuItem.route) }"
+            :class="{ show: hasActive(menuItem) }"
             class="menu-item menu-accordion"
             data-kt-menu-sub="accordion"
             data-kt-menu-trigger="click"
@@ -85,14 +85,14 @@
               <span class="menu-arrow"></span>
             </span>
             <div
-              :class="{ show: hasActiveChildren(menuItem.route) }"
+              :class="{ show: hasActive(menuItem) }"
               class="menu-sub menu-sub-accordion"
             >
               <template v-for="(item2, k) in menuItem.sub" :key="k">
                 <div v-if="item2.heading" class="menu-item">
                     <Link
                         class="menu-link"
-                        :class="{ 'active': (item2?.components??[] as any).includes($page.component) }"
+                        :class="{ 'active': hasActive(item2) }"
                         :href="route(item2.route??null)"
                     >
                     <span class="menu-bullet">
@@ -105,7 +105,7 @@
                 </div>
                 <div
                   v-if="item2.sectionTitle"
-                  :class="{ show: hasActiveChildren(item2.route) }"
+                  :class="{ show: hasActive(item2) }"
                   class="menu-item menu-accordion"
                   data-kt-menu-sub="accordion"
                   data-kt-menu-trigger="click"
@@ -118,14 +118,14 @@
                     <span class="menu-arrow"></span>
                   </span>
                   <div
-                    :class="{ show: hasActiveChildren(item2.route) }"
+                    :class="{ show: hasActive(item2) }"
                     class="menu-sub menu-sub-accordion"
                   >
                     <template v-for="(item3, k) in item2.sub" :key="k">
                       <div v-if="item3.heading" class="menu-item">
                           <Link
                               class="menu-link"
-                              :class="{ 'active': (item3?.components??[] as any).includes($page.component) }"
+                              :class="{ 'active': hasActive(item3) }"
                               :href="route(item3.route??null)"
                           >
                           <span class="menu-bullet">
@@ -155,6 +155,7 @@ import { defineComponent, onMounted, ref } from "vue";
 import { version } from "@/core/helpers/documentation";
 import { asideMenuIcons } from "@/core/helpers/config";
 import MainMenuConfig from "@/core/config/MainMenuConfig";
+import {usePage} from "@inertiajs/vue3";
 
 export default defineComponent({
   name: "kt-menu",
@@ -163,17 +164,18 @@ export default defineComponent({
     const scrollElRef = ref<null | HTMLElement>(null);
 
     onMounted(() => {
-      if (scrollElRef.value) {
+
+        if (scrollElRef.value) {
         //scrollElRef.value.scrollTop = 0;
       }
     });
 
-    const hasActiveChildren = (match) => {
-      return false;
+    const hasActive = (match) => {
+      return (match?.components??[] as any).includes(usePage().component)
     };
 
     return {
-      hasActiveChildren,
+      hasActive,
       MainMenuConfig,
       asideMenuIcons,
       version,
