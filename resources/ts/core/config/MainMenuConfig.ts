@@ -20,6 +20,7 @@ const DocMenuConfig = [
             "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show",
             "Users/Index", "Users/Create", "Users/Edit", "Users/Show",
             "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show",
+            "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show",
         ],
         sub: [
             {
@@ -43,6 +44,11 @@ const DocMenuConfig = [
                 heading: "Patient Types",
                 route: "patient-types.index",
                 components: ["PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show"],
+            },
+            {
+                heading: "Complaints",
+                route: "complaints.index",
+                components: ["Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show"],
             },
         ],
       },

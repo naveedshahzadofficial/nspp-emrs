@@ -43,10 +43,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.js */ "./node_modules/sweetalert2/dist/sweetalert2.min.js");
-/* harmony import */ var sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Components_alerts_ServerErrorMessage_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/alerts/ServerErrorMessage.vue */ "./resources/ts/Components/alerts/ServerErrorMessage.vue");
-/* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
+/* harmony import */ var _Components_alerts_ServerErrorMessage_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Components/alerts/ServerErrorMessage.vue */ "./resources/ts/Components/alerts/ServerErrorMessage.vue");
+/* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
+/* harmony import */ var _core_composables_commons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/core/composables/commons */ "./resources/ts/core/composables/commons.ts");
 
 
 
@@ -67,7 +66,9 @@ __webpack_require__.r(__webpack_exports__);
     var __expose = _ref.expose;
     __expose();
     var props = __props;
-    var form = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_3__.useForm)({
+    var _useCommons = (0,_core_composables_commons__WEBPACK_IMPORTED_MODULE_3__.useCommons)(),
+      revoke = _useCommons.revoke;
+    var form = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)({
       name: (_props$user = props.user) === null || _props$user === void 0 ? void 0 : _props$user.name,
       username: (_props$user2 = props.user) === null || _props$user2 === void 0 ? void 0 : _props$user2.username,
       email: (_props$user3 = props.user) === null || _props$user3 === void 0 ? void 0 : _props$user3.email,
@@ -88,50 +89,11 @@ __webpack_require__.r(__webpack_exports__);
       var _props$user7, _props$user8;
       form.permissions = (_props$user7 = props.user) === null || _props$user7 === void 0 ? void 0 : _props$user7.permissions, form.roles = (_props$user8 = props.user) === null || _props$user8 === void 0 ? void 0 : _props$user8.roles;
     });
-    var revokeRole = function revokeRole(user_id, role_id) {
-      sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1___default().fire({
-        text: "Are you sure you want to revoke this?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: 'Revoke',
-        buttonsStyling: false,
-        customClass: {
-          confirmButton: "btn fw-bold btn-danger",
-          cancelButton: "btn fw-bold btn-secondary"
-        }
-      }).then(function (result) {
-        if (result.isConfirmed) {
-          _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_3__.router["delete"](route('users.roles.revoke', [user_id, role_id]), {
-            preserveScroll: true
-          });
-        }
-      });
-    };
-    var revokePermission = function revokePermission(user_id, permission_id) {
-      sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1___default().fire({
-        text: "Are you sure you want to revoke this?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: 'Revoke',
-        buttonsStyling: false,
-        customClass: {
-          confirmButton: "btn fw-bold btn-danger",
-          cancelButton: "btn fw-bold btn-secondary"
-        }
-      }).then(function (result) {
-        if (result.isConfirmed) {
-          _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_3__.router["delete"](route('users.permissions.revoke', [user_id, permission_id]), {
-            preserveScroll: true
-          });
-        }
-      });
-    };
     var __returned__ = {
+      revoke: revoke,
       props: props,
       form: form,
-      revokeRole: revokeRole,
-      revokePermission: revokePermission,
-      ServerErrorMessage: _Components_alerts_ServerErrorMessage_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+      ServerErrorMessage: _Components_alerts_ServerErrorMessage_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -473,7 +435,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: role.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-        return $setup.revokeRole($props.user.id, role.id);
+        return $setup.revoke('users.roles.revoke', $props.user.id, role.id);
       }, ["prevent"]),
       "class": "btn btn-icon btn-danger btn-circle btn-sm me-2",
       "data-bs-toggle": "tooltip",
@@ -485,7 +447,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: permission.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(permission.name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-        return $setup.revokePermission($props.user.id, permission.id);
+        return $setup.revoke('users.permissions.revoke', $props.user.id, permission.id);
       }, ["prevent"]),
       "class": "btn btn-icon btn-danger btn-circle btn-sm me-2",
       "data-bs-toggle": "tooltip",
@@ -493,6 +455,99 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       title: "Revoke"
     }, _hoisted_51, 8 /* PROPS */, _hoisted_49)])]);
   }), 128 /* KEYED_FRAGMENT */))])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Container")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end:: Content Body ")], 64 /* STABLE_FRAGMENT */);
+}
+
+/***/ }),
+
+/***/ "./resources/ts/core/composables/commons.ts":
+/*!**************************************************!*\
+  !*** ./resources/ts/core/composables/commons.ts ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useCommons: () => (/* binding */ useCommons)
+/* harmony export */ });
+/* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.js */ "./node_modules/sweetalert2/dist/sweetalert2.min.js");
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function useCommons() {
+  var filterData = function filterData(routeName, _filter) {
+    _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router.get(route(routeName), {
+      search: _filter === null || _filter === void 0 ? void 0 : _filter.search,
+      limit: _filter === null || _filter === void 0 ? void 0 : _filter.limit
+    }, {
+      preserveScroll: true,
+      preserveState: true,
+      replace: true
+    });
+  };
+  var destroy = function destroy(routeName, _id) {
+    sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1___default().fire({
+      text: "Are you sure you want to delete this?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      buttonsStyling: false,
+      customClass: {
+        confirmButton: "btn fw-bold btn-danger",
+        cancelButton: "btn fw-bold btn-secondary"
+      }
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router["delete"](route(routeName, _id), {
+          preserveScroll: true
+        });
+      }
+    });
+  };
+  var changeStatus = function changeStatus(routeName, object) {
+    sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1___default().fire({
+      text: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: object !== null && object !== void 0 && object.status ? 'Deactivate' : 'Activate',
+      buttonsStyling: false,
+      customClass: {
+        confirmButton: object !== null && object !== void 0 && object.status ? 'btn fw-bold btn-danger' : 'btn fw-bold btn-success',
+        cancelButton: "btn fw-bold btn-secondary"
+      }
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router["delete"](route(routeName, object === null || object === void 0 ? void 0 : object.id), {
+          preserveScroll: true
+        });
+      }
+    });
+  };
+  var revoke = function revoke(routeName, _idFrom, _idTo) {
+    sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1___default().fire({
+      text: "Are you sure you want to revoke this?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: 'Revoke',
+      buttonsStyling: false,
+      customClass: {
+        confirmButton: "btn fw-bold btn-danger",
+        cancelButton: "btn fw-bold btn-secondary"
+      }
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router["delete"](route(routeName, [_idFrom, _idTo]), {
+          preserveScroll: true
+        });
+      }
+    });
+  };
+  return {
+    filterData: filterData,
+    destroy: destroy,
+    changeStatus: changeStatus,
+    revoke: revoke
+  };
 }
 
 /***/ }),

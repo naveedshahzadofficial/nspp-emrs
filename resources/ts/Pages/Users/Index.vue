@@ -94,7 +94,7 @@
                                         <i class="fas fa-edit"></i>
                                     </Link>
 
-                                    <a @click.prevent="changeStatus(user)"
+                                    <a @click.prevent="changeStatus('users.change-status', user)"
                                        class="btn btn-icon btn-circle btn-sm me-2"
                                        :class="[user.status?'btn-danger':'btn-success']"
                                        data-bs-toggle="tooltip"
@@ -106,7 +106,7 @@
                                     </a>
 
                                     <a
-                                        @click.prevent="destroy(user.id)"
+                                        @click.prevent="destroy('users.destroy', user.id)"
                                         class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -130,12 +130,13 @@
 </template>
 
 <script lang="ts" setup>
-import { router } from '@inertiajs/vue3'
-import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import AlertMessage from "@/Components/alerts/AlertMessage.vue";
 import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch } from "vue";
 import {debounce} from "lodash";
+import {useCommons} from "@/core/composables/commons";
+const { filterData, destroy, changeStatus } = useCommons();
+
 
 const props = defineProps({
     users: { type: Object, required: true },
@@ -149,55 +150,9 @@ const sortKey: any = ref(props.filters?.sortKey || 'created_at');
 const sortOrder: any = ref(props.filters?.sortOrder || 'desc');
 
 watch(search, debounce((value: any) =>{
-    filterData();
+    filterData('users.index', {search: search.value, limit:limit.value});
 }, 500 ) as any);
 
-const filterData = () => {
-    router.get(route('users.index'),{search: search.value, limit:limit.value},{
-        preserveScroll: true,
-        preserveState: true,
-        replace: true
-    });
-}
-
-const destroy = (_id: number) => {
-    Swal.fire({
-        text: "Are you sure you want to delete this?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: 'Delete',
-        buttonsStyling: false,
-        customClass: {
-            confirmButton: "btn fw-bold btn-danger",
-            cancelButton: "btn fw-bold btn-secondary",
-        },
-    }).then(function (result) {
-        if(result.isConfirmed){
-            router.delete(route('users.destroy', _id), {
-                preserveScroll: true
-            });
-        }
-    });
-}
-const changeStatus = (object: any) => {
-    Swal.fire({
-        text: "Are you sure?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: object?.status?'Deactivate':'Activate',
-        buttonsStyling: false,
-        customClass: {
-            confirmButton: object?.status?'btn fw-bold btn-danger':'btn fw-bold btn-success',
-            cancelButton: "btn fw-bold btn-secondary",
-        },
-    }).then(function (result) {
-        if(result.isConfirmed){
-            router.delete(route('users.change-status', object?.id), {
-                preserveScroll: true,
-            });
-        }
-    });
-}
 
 </script>
 

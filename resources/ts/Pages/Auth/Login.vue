@@ -37,12 +37,8 @@
                     name="username"
                     autocomplete="off"
                 />
+                <ServerErrorMessage :error="form.errors.username"/>
                 <!--end::Input-->
-                <div v-if="form.errors.username" class="fv-plugins-message-container">
-                    <div class="fv-help-block">
-                        <span>{{ form.errors.username }}</span>
-                    </div>
-                </div>
             </div>
             <!--end::Input group-->
 
@@ -64,11 +60,7 @@
                     autocomplete="off"
                 />
                 <!--end::Input-->
-                <div v-if="form.errors.password" class="fv-plugins-message-container">
-                    <div class="fv-help-block">
-                        <span>{{ form.errors.password }}</span>
-                    </div>
-                </div>
+                <ServerErrorMessage :error="form.errors.password"/>
 
                 <!--begin::Wrapper-->
                 <div class="d-flex flex-stack  mt-2">
@@ -130,7 +122,10 @@ export default {
 import { ref } from "vue";
 
 import { useForm } from "@inertiajs/vue3";
+import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 const submitButton = ref<HTMLButtonElement | null>(null);
+
+defineProps({ errors: Object })
 
 let form = useForm({
     username: '',

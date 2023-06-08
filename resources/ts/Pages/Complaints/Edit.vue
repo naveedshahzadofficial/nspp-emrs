@@ -95,7 +95,7 @@
                                 <td>{{ permission.name }}</td>
                                 <td class="text-center">
                                     <a
-                                        @click.prevent="revoke('roles.permissions.revoke', role.id, permission.id)"
+                                        @click.prevent="revoke(role.id, permission.id)"
                                         class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -119,12 +119,10 @@
 </template>
 
 <script lang="ts" setup>
+import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
-import {useForm} from "@inertiajs/vue3";
+import {router, useForm} from "@inertiajs/vue3";
 import {onMounted, watch} from "vue";
-import {useCommons} from "@/core/composables/commons";
-const { revoke } = useCommons();
-
 const props = defineProps({
     role: { type: Object, required: true},
     permissions: Array,
@@ -144,5 +142,25 @@ watch(
     () => props.role,
     () => (form.permissions = props.role?.permissions)
 );
+
+const revoke = (role_id: number, permission_id: number) => {
+    Swal.fire({
+        text: "Are you sure you want to revoke this?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: 'Revoke',
+        buttonsStyling: false,
+        customClass: {
+            confirmButton: "btn fw-bold btn-danger",
+            cancelButton: "btn fw-bold btn-secondary",
+        },
+    }).then(function (result) {
+        if(result.isConfirmed){
+            router.delete(route('roles.permissions.revoke', [role_id, permission_id]), {
+                preserveScroll: true
+            });
+        }
+    });
+}
 
 </script>

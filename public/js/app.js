@@ -9574,7 +9574,7 @@ var DocMenuConfig = [{
   pages: [{
     sectionTitle: "System Settings",
     fontIcon: "bi bi-gear",
-    components: ["Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show"],
+    components: ["Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show", "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show"],
     sub: [{
       heading: "Permissions",
       route: "permissions.index",
@@ -9591,6 +9591,10 @@ var DocMenuConfig = [{
       heading: "Patient Types",
       route: "patient-types.index",
       components: ["PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show"]
+    }, {
+      heading: "Complaints",
+      route: "complaints.index",
+      components: ["Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show"]
     }]
   }, {
     heading: "Registrations",
@@ -14065,6 +14069,38 @@ var map = {
 	"./Auth/Login.vue": [
 		"./resources/ts/Pages/Auth/Login.vue",
 		"resources_ts_Pages_Auth_Login_vue"
+	],
+	"./Complaints/Create": [
+		"./resources/ts/Pages/Complaints/Create.vue",
+		"resources_ts_Pages_Complaints_Create_vue"
+	],
+	"./Complaints/Create.vue": [
+		"./resources/ts/Pages/Complaints/Create.vue",
+		"resources_ts_Pages_Complaints_Create_vue"
+	],
+	"./Complaints/Edit": [
+		"./resources/ts/Pages/Complaints/Edit.vue",
+		"resources_ts_Pages_Complaints_Edit_vue"
+	],
+	"./Complaints/Edit.vue": [
+		"./resources/ts/Pages/Complaints/Edit.vue",
+		"resources_ts_Pages_Complaints_Edit_vue"
+	],
+	"./Complaints/Index": [
+		"./resources/ts/Pages/Complaints/Index.vue",
+		"resources_ts_Pages_Complaints_Index_vue"
+	],
+	"./Complaints/Index.vue": [
+		"./resources/ts/Pages/Complaints/Index.vue",
+		"resources_ts_Pages_Complaints_Index_vue"
+	],
+	"./Complaints/Show": [
+		"./resources/ts/Pages/Complaints/Show.vue",
+		"resources_ts_Pages_Complaints_Show_vue"
+	],
+	"./Complaints/Show.vue": [
+		"./resources/ts/Pages/Complaints/Show.vue",
+		"resources_ts_Pages_Complaints_Show_vue"
 	],
 	"./Dashboard": [
 		"./resources/ts/Pages/Dashboard.vue",

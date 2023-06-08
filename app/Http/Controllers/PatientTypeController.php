@@ -92,7 +92,7 @@ class PatientTypeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\PatientType  $patientType
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(PatientType $patientType)
     {

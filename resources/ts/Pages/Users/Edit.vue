@@ -140,7 +140,7 @@
                                     <td>{{ role.name }}</td>
                                     <td class="text-center">
                                         <a
-                                            @click.prevent="revokeRole(user.id, role.id)"
+                                            @click.prevent="revoke('users.roles.revoke', user.id, role.id)"
                                             class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                             data-bs-toggle="tooltip"
                                             data-bs-placement="top"
@@ -178,7 +178,7 @@
                                     <td>{{ permission.name }}</td>
                                     <td class="text-center">
                                         <a
-                                            @click.prevent="revokePermission(user.id, permission.id)"
+                                            @click.prevent="revoke('users.permissions.revoke', user.id, permission.id)"
                                             class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                             data-bs-toggle="tooltip"
                                             data-bs-placement="top"
@@ -203,10 +203,12 @@
 </template>
 
 <script lang="ts" setup>
-import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
-import {router, useForm} from "@inertiajs/vue3";
+import {useForm} from "@inertiajs/vue3";
 import {onMounted, watch} from "vue";
+import {useCommons} from "@/core/composables/commons";
+const { revoke } = useCommons();
+
 const props = defineProps({
     user: { type: Object, required: true},
     roles: Array,
@@ -236,43 +238,4 @@ watch(
     }
 );
 
-const revokeRole = (user_id: number, role_id: number) => {
-    Swal.fire({
-        text: "Are you sure you want to revoke this?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: 'Revoke',
-        buttonsStyling: false,
-        customClass: {
-            confirmButton: "btn fw-bold btn-danger",
-            cancelButton: "btn fw-bold btn-secondary",
-        },
-    }).then(function (result) {
-        if(result.isConfirmed){
-            router.delete(route('users.roles.revoke', [user_id, role_id]), {
-                preserveScroll: true
-            });
-        }
-    });
-}
-
-const revokePermission = (user_id: number, permission_id: number) => {
-    Swal.fire({
-        text: "Are you sure you want to revoke this?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: 'Revoke',
-        buttonsStyling: false,
-        customClass: {
-            confirmButton: "btn fw-bold btn-danger",
-            cancelButton: "btn fw-bold btn-secondary",
-        },
-    }).then(function (result) {
-        if(result.isConfirmed){
-            router.delete(route('users.permissions.revoke', [user_id, permission_id]), {
-                preserveScroll: true
-            });
-        }
-    });
-}
 </script>

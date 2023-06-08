@@ -1,11 +1,11 @@
 <template>
-    <Head title="Roles"/>
+    <Head title="Complaints"/>
     <Toolbar
-        title="Roles"
-        :buttons="[{label: 'Add Role', link: route('roles.create')}]"
+        title="Complaints"
+        :buttons="[{label: 'Add Complaint', link: route('complaints.create')}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
-        {label: 'Roles', link: null}
+        {label: 'Complaints', link: null}
         ]"
     />
 
@@ -56,24 +56,24 @@
                         <!--begin::Table head-->
                         <thead>
                         <tr class="fw-semibold fs-6 text-gray-800">
-                            <th>Role Name</th>
+                            <th>Complaint Name</th>
                             <th class="text-center">Status</th>
                             <th class="text-center w-200px">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <template v-for="role in roles.data" :key="role.id">
+                        <template v-for="complaint in complaints.data" :key="complaint.id">
                             <tr>
-                                <td>{{ role.name }}</td>
+                                <td>{{ complaint.complaint_name }}</td>
                                 <td class="text-center">
                                     <span class="badge font-weight-bold"
-                                          :class="[role.status?'badge-success':'badge-danger']">
-                                        {{ role.status?'Active':'Inactive' }}
+                                          :class="[complaint.status?'badge-success':'badge-danger']">
+                                        {{ complaint.status?'Active':'Inactive' }}
                                     </span>
                                 </td>
                                 <td class="text-center">
                                     <Link
-                                        :href="route('roles.show', role.id)"
+                                        :href="route('complaints.show', complaint.id)"
                                         class="btn btn-icon btn-primary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -82,7 +82,7 @@
                                     </Link>
 
                                     <Link
-                                        :href="route('roles.edit', role.id)"
+                                        :href="route('complaints.edit', complaint.id)"
                                         class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -90,19 +90,19 @@
                                         <i class="fas fa-edit"></i>
                                     </Link>
 
-                                    <a @click.prevent="changeStatus('roles.change-status', role)"
+                                    <a @click.prevent="changeStatus('complaints.change-status',complaint)"
                                        class="btn btn-icon btn-circle btn-sm me-2"
-                                       :class="[role.status?'btn-danger':'btn-success']"
+                                       :class="[complaint.status?'btn-danger':'btn-success']"
                                        data-bs-toggle="tooltip"
                                        data-bs-placement="top"
-                                       :title="[role.status?'Deactivate':'Activate']">
+                                       :title="[complaint.status?'Deactivate':'Activate']">
                                         <i class="icon-xl fas"
-                                           :class="[role.status?'fa-toggle-off':'fa-toggle-on']"
+                                           :class="[complaint.status?'fa-toggle-off':'fa-toggle-on']"
                                         ></i>
                                     </a>
 
                                     <a
-                                        @click.prevent="destroy('roles.destroy', role.id)"
+                                        @click.prevent="destroy('complaints.destroy',complaint.id)"
                                         class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -116,7 +116,7 @@
                     </table>
                 </div>
 
-                <Pagination :meta="roles?.meta" :links="roles?.links" />
+                <Pagination :meta="complaints?.meta" :links="complaints?.links" />
             </div>
             </div>
         </div>
@@ -126,6 +126,7 @@
 </template>
 
 <script lang="ts" setup>
+import { router } from '@inertiajs/vue3'
 import AlertMessage from "@/Components/alerts/AlertMessage.vue";
 import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch } from "vue";
@@ -134,17 +135,17 @@ import {useCommons} from "@/core/composables/commons";
 const { filterData, destroy, changeStatus } = useCommons();
 
 const props = defineProps({
-    roles: { type: Object, required: true },
+    complaints: { type: Object, required: true },
     filters: Object
 });
 
 const search: any = ref(props.filters?.search);
 const limit: any = ref(props.filters?.limit || '30');
 
-
 watch(search, debounce((value: any) =>{
-    filterData('roles.index', {search: search.value, limit:limit.value});
+    filterData('complaints.index', {search: search.value, limit:limit.value});
 }, 500 ) as any);
+
 
 
 </script>

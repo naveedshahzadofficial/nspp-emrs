@@ -144,7 +144,7 @@
                                 </Link>
 
                                 <a
-                                    @click.prevent="destroy(patientVisit.id)"
+                                    @click.prevent="destroy('registrations.destroy', patientVisit.id)"
                                     class="btn btn-icon  btn-danger btn-circle btn-sm me-2"
                                     data-bs-toggle="tooltip"
                                     data-bs-placement="top"
@@ -179,6 +179,9 @@ import {router} from "@inertiajs/vue3";
 import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch} from "vue";
 import {debounce} from "lodash";
+import {useCommons} from "@/core/composables/commons";
+const { filterData, destroy } = useCommons();
+
 const props = defineProps({
    patientVisits: { type:Object, required: true},
    filters: Object
@@ -188,36 +191,8 @@ const search: any = ref(props.filters?.search);
 const limit: any = ref(props.filters?.limit || '30');
 
 watch(search, debounce((value: any) =>{
-    filterData();
+    filterData('registrations.index', {search: search.value, limit:limit.value});
 }, 500 ) as any);
-
-const filterData = () => {
-    router.get(route('registrations.index'),{search: search.value, limit:limit.value},{
-        preserveScroll: true,
-        preserveState: true,
-        replace: true
-    });
-}
-
-const destroy = (_id: number) => {
-    Swal.fire({
-        text: "Are you sure you want to delete this?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: 'Delete',
-        buttonsStyling: false,
-        customClass: {
-            confirmButton: "btn fw-bold btn-danger",
-            cancelButton: "btn fw-bold btn-secondary",
-        },
-    }).then(function (result) {
-        if(result.isConfirmed){
-            router.delete(route('registrations.destroy', _id), {
-                preserveScroll: true
-            });
-        }
-    });
-}
 
 </script>
 

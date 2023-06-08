@@ -85,7 +85,7 @@
 
 
                                     <a
-                                        @click.prevent="destroy(permission.id)"
+                                        @click.prevent="destroy('permissions.destroy', permission.id)"
                                         class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -109,12 +109,12 @@
 </template>
 
 <script lang="ts" setup>
-import { router } from '@inertiajs/vue3'
-import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import AlertMessage from "@/Components/alerts/AlertMessage.vue";
 import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch } from "vue";
 import {debounce} from "lodash";
+import {useCommons} from "@/core/composables/commons";
+const { filterData, destroy } = useCommons();
 
 const props = defineProps({
     permissions: { type: Object, required: true },
@@ -124,38 +124,9 @@ const props = defineProps({
 const search: any = ref(props.filters?.search);
 const limit: any = ref(props.filters?.limit || '30');
 
-
 watch(search, debounce((value: any) =>{
-    filterData();
+    filterData('permissions.index', {search: search.value, limit:limit.value});
 }, 500 ) as any);
-
-const filterData = () => {
-    router.get(route('permissions.index'),{search: search.value, limit:limit.value},{
-        preserveScroll: true,
-        preserveState: true,
-        replace: true
-    });
-}
-
-const destroy = (_id: number) => {
-    Swal.fire({
-        text: "Are you sure you want to delete this?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: 'Delete',
-        buttonsStyling: false,
-        customClass: {
-            confirmButton: "btn fw-bold btn-danger",
-            cancelButton: "btn fw-bold btn-secondary",
-        },
-    }).then(function (result) {
-        if(result.isConfirmed){
-            router.delete(route('permissions.destroy', _id), {
-                preserveScroll: true
-            });
-        }
-    });
-}
 
 </script>
 
