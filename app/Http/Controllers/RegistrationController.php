@@ -66,7 +66,9 @@ class RegistrationController extends Controller
                 ->with('patient')
                 ->when(request()->input('search'), function ($query, $search){
                     $query->where('token_no', 'like', "%{$search}%");
-                })->paginate(request()->input('limit', 30))->withQueryString()
+                })
+                ->orderBy('created_at', 'desc')
+                ->paginate(request()->input('limit', 30))->withQueryString()
         );
         return Inertia::render('Registrations/Index', compact('patientVisits', 'filters'));
     }

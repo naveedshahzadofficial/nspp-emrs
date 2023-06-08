@@ -16,15 +16,15 @@
         <!--begin::Username-->
         <div class="d-flex flex-column">
           <div class="fw-bolder d-flex align-items-center fs-5">
-            Max Smith
-            <span
-              class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2"
-              >Pro</span
-            >
+              {{ $page.props.auth.user.name }}
           </div>
-          <a href="#" class="fw-bold text-muted text-hover-primary fs-7"
-            >max@kt.com</a
-          >
+            <span
+                class="badge badge-light-info fw-bolder fs-7 py-1"
+            >Roles: {{ $page.props.auth.user?.roles.map(role => role).join(', ') }}</span>
+          <span class="badge badge-light-info fw-bolder fs-7 py-1"
+            >Username: {{ $page.props.auth.user.username }}</span>
+            <span class="badge badge-light-info fw-bolder fs-7 py-1"
+            >Email: {{ $page.props.auth.user.email }}</span>
         </div>
         <!--end::Username-->
       </div>
@@ -43,107 +43,12 @@
     </div>
     <!--end::Menu item-->
 
-    <!--begin::Menu item-->
-    <div class="menu-item px-5">
-      <Link href="/pages/profile/overview" class="menu-link px-5">
-        <span class="menu-text">My Projects</span>
-        <span class="menu-badge">
-          <span class="badge badge-light-danger badge-circle fw-bolder fs-7"
-            >3</span
-          >
-        </span>
-      </Link>
-    </div>
-    <!--end::Menu item-->
 
-    <!--begin::Menu item-->
-    <div
-      class="menu-item px-5"
-      data-kt-menu-trigger="hover"
-      data-kt-menu-placement="left-start"
-      data-kt-menu-flip="center, top"
-    >
-      <Link href="/pages/profile/overview" class="menu-link px-5">
-        <span class="menu-title">My Subscription</span>
-        <span class="menu-arrow"></span>
-      </Link>
-
-      <!--begin::Menu sub-->
-      <div class="menu-sub menu-sub-dropdown w-175px py-4">
-        <!--begin::Menu item-->
-        <div class="menu-item px-3">
-          <Link href="/pages/profile/overview" class="menu-link px-5">
-            Referrals
-          </Link>
-        </div>
-        <!--end::Menu item-->
-
-        <!--begin::Menu item-->
-        <div class="menu-item px-3">
-          <Link href="/pages/profile/overview" class="menu-link px-5">
-            Billing
-          </Link>
-        </div>
-        <!--end::Menu item-->
-
-        <!--begin::Menu item-->
-        <div class="menu-item px-3">
-          <Link href="/pages/profile/overview" class="menu-link px-5">
-            Payments
-          </Link>
-        </div>
-        <!--end::Menu item-->
-
-        <!--begin::Menu item-->
-        <div class="menu-item px-3">
-          <Link
-            href="/pages/profile/overview"
-            class="menu-link d-flex flex-stack px-5"
-          >
-            Statements
-
-            <i
-              class="fas fa-exclamation-circle ms-2 fs-7"
-              data-bs-toggle="tooltip"
-              title="View your statements"
-            ></i>
-          </Link>
-        </div>
-        <!--end::Menu item-->
-
-        <!--begin::Menu separator-->
-        <div class="separator my-2"></div>
-        <!--end::Menu separator-->
-
-        <!--begin::Menu item-->
-        <div class="menu-item px-3">
-          <div class="menu-content px-3">
-            <label
-              class="form-check form-switch form-check-custom form-check-solid"
-            >
-              <input
-                class="form-check-input w-30px h-20px"
-                type="checkbox"
-                value="1"
-                checked="checked"
-                name="notifications"
-              />
-              <span class="form-check-label text-muted fs-7">
-                Notifications
-              </span>
-            </label>
-          </div>
-        </div>
-        <!--end::Menu item-->
-      </div>
-      <!--end::Menu sub-->
-    </div>
-    <!--end::Menu item-->
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">
       <Link href="/pages/profile/overview" class="menu-link px-5">
-        My Statements
+          Change Password
       </Link>
     </div>
     <!--end::Menu item-->
@@ -151,143 +56,6 @@
     <!--begin::Menu separator-->
     <div class="separator my-2"></div>
     <!--end::Menu separator-->
-
-    <!--begin::Menu item-->
-    <div
-      class="menu-item px-5"
-      data-kt-menu-trigger="hover"
-      data-kt-menu-placement="left-start"
-      data-kt-menu-flip="center, top"
-    >
-      <Link href="/pages/profile/overview" class="menu-link px-5">
-        <span class="menu-title position-relative">
-          Language
-          <span
-            class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0"
-          >
-            {{ currentLangugeLocale.name }}
-            <img
-              class="w-15px h-15px rounded-1 ms-2"
-              :src="currentLangugeLocale.flag"
-              alt="metronic"
-            />
-          </span>
-        </span>
-      </Link>
-
-      <!--begin::Menu sub-->
-      <div class="menu-sub menu-sub-dropdown w-175px py-4">
-        <!--begin::Menu item-->
-        <div class="menu-item px-3">
-          <a
-            @click="setLang('en')"
-            href="#"
-            class="menu-link d-flex px-5"
-            :class="{ active: currentLanguage('en') }"
-          >
-            <span class="symbol symbol-20px me-4">
-              <img
-                class="rounded-1"
-                src="/media/flags/united-states.svg"
-                alt="metronic"
-              />
-            </span>
-            English
-          </a>
-        </div>
-        <!--end::Menu item-->
-
-        <!--begin::Menu item-->
-        <div class="menu-item px-3">
-          <a
-            @click="setLang('es')"
-            href="#"
-            class="menu-link d-flex px-5"
-            :class="{ active: currentLanguage('es') }"
-          >
-            <span class="symbol symbol-20px me-4">
-              <img
-                class="rounded-1"
-                src="/media/flags/spain.svg"
-                alt="metronic"
-              />
-            </span>
-            Spanish
-          </a>
-        </div>
-        <!--end::Menu item-->
-
-        <!--begin::Menu item-->
-        <div class="menu-item px-3">
-          <a
-            @click="setLang('de')"
-            href="#"
-            class="menu-link d-flex px-5"
-            :class="{ active: currentLanguage('de') }"
-          >
-            <span class="symbol symbol-20px me-4">
-              <img
-                class="rounded-1"
-                src="/media/flags/germany.svg"
-                alt="metronic"
-              />
-            </span>
-            German
-          </a>
-        </div>
-        <!--end::Menu item-->
-
-        <!--begin::Menu item-->
-        <div class="menu-item px-3">
-          <a
-            @click="setLang('ja')"
-            href="#"
-            class="menu-link d-flex px-5"
-            :class="{ active: currentLanguage('ja') }"
-          >
-            <span class="symbol symbol-20px me-4">
-              <img
-                class="rounded-1"
-                src="/media/flags/japan.svg"
-                alt="metronic"
-              />
-            </span>
-            Japanese
-          </a>
-        </div>
-        <!--end::Menu item-->
-
-        <!--begin::Menu item-->
-        <div class="menu-item px-3">
-          <a
-            @click="setLang('fr')"
-            href="#"
-            class="menu-link d-flex px-5"
-            :class="{ active: currentLanguage('fr') }"
-          >
-            <span class="symbol symbol-20px me-4">
-              <img
-                class="rounded-1"
-                src="/media/flags/france.svg"
-                alt="metronic"
-              />
-            </span>
-            French
-          </a>
-        </div>
-        <!--end::Menu item-->
-      </div>
-      <!--end::Menu sub-->
-    </div>
-    <!--end::Menu item-->
-
-    <!--begin::Menu item-->
-    <div class="menu-item px-5 my-1">
-      <Link href="/pages/profile/overview" class="menu-link px-5">
-        Account Settings
-      </Link>
-    </div>
-    <!--end::Menu item-->
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">

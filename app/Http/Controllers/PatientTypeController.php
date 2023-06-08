@@ -21,7 +21,9 @@ class PatientTypeController extends Controller
             PatientType::query()
                 ->when(request()->input('search'), function ($query, $search){
                     $query->where('type_name', 'like', "%{$search}%");
-                })->paginate(request()->input('limit', 30))->withQueryString()
+                })
+                ->orderBy('created_at', 'desc')
+                ->paginate(request()->input('limit', 30))->withQueryString()
         );
         return Inertia::render('PatientTypes/Index', compact('patientTypes', 'filters'));
     }

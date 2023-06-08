@@ -1,11 +1,11 @@
 <template>
-    <Head title="View Role"/>
+    <Head title="View User"/>
     <Toolbar
-        title="View Role"
-        :buttons="[{label: 'Back', link: route('roles.index')}]"
+        title="View User"
+        :buttons="[{label: 'Back', link: route('users.index')}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
-            {label: 'Roles', link: route('roles.index')},
+            {label: 'Users', link: route('users.index')},
             {label: 'View', link: null}
         ]"
     />
@@ -18,12 +18,39 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label class="form-label fw-semibold">Role Name</label>
-                                <span class="form-control form-control-solid">{{ role.name }}</span>
+                                <label class="form-label fw-semibold">Name</label>
+                                <span class="form-control form-control-solid">{{ user.name }}</span>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="form-label fw-semibold">Username</label>
+                                <span class="form-control form-control-solid">{{ user.username }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row mt-10">
+                            <div class="col-lg-6">
+                                <label class="form-label fw-semibold">Email</label>
+                                <span class="form-control form-control-solid">{{ user.email }}</span>
                             </div>
                             <div class="col-lg-6">
                                 <label class="form-label fw-semibold">Status</label>
-                                <span class="form-control form-control-solid">{{ role.status?'Active':'Inactive' }}</span>
+                                <span class="form-control form-control-solid">{{ user.status?'Active':'Inactive' }}</span>
+                            </div>
+                        </div>
+
+                        <div class="row mt-10">
+                            <div class="col-lg-12">
+                                <label class="form-label fw-semibold">User Roles</label>
+                                <span class="form-control form-control-solid" v-if="user.roles.length > 0">{{ user.roles?.map(obj => obj.name).join(', ') }}</span>
+                                <span class="form-control form-control-solid" v-if="user.roles.length === 0">The {{ user.name }} have not any role</span>
+                            </div>
+                        </div>
+
+                        <div class="row mt-10">
+                            <div class="col-lg-12">
+                                <label class="form-label fw-semibold">User Permissions</label>
+                                <span class="form-control form-control-solid" v-if="user.permissions.length > 0">{{ user.permissions?.map(obj => obj.name).join(', ') }}</span>
+                                <span class="form-control form-control-solid" v-if="user.permissions.length === 0">The {{ user.name }} have not any permission</span>
                             </div>
                         </div>
                     </div>
@@ -36,6 +63,8 @@
 </template>
 <script lang="ts" setup>
 defineProps({
-    role: { type: Object, required: true}
+    user: { type: Object, required: true},
+    roles: Array,
+    permissions: Array
 });
 </script>

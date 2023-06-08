@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
+use App\Http\Resources\PermissionResource;
+use App\Http\Resources\RoleResource;
 use App\Http\Resources\UserResource;
+use App\Models\Role;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Spatie\Permission\Models\Permission;
+use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
@@ -19,9 +25,12 @@ class UserController extends Controller
         $filters = request()->only(['search', 'limit']);
         $users = UserResource::collection(
             User::query()
+                ->with('roles')
                 ->when(request()->input('search'), function ($query, $search){
                     $query->where('name', 'like', "%{$search}%");
-                })->paginate(request()->input('limit', 30))->withQueryString()
+                })
+                ->orderBy('created_at', 'desc')
+                ->paginate(request()->input('limit', 30))->onEachSide(3)->withQueryString()
         );
         return Inertia::render('Users/Index', compact('users', 'filters'));
     }
@@ -33,7 +42,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Users/Create');
+        $roles = RoleResource::collection(Role::active()->get());
+        $permissions = PermissionResource::collection(Permission::all());
+        return Inertia::render('Users/Create', compact('roles','permissions'));
 
     }
 
@@ -43,9 +54,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        $user = User::create($request->validated());
+        $user = User::create($request->safe()->except('roles','permissions'));
+        $user->syncRoles($request->input('roles.*.name'));
+        $user->syncPermissions($request->input('permissions.*.name'));
         session()->flash('success', "User has been created successfully.");
         return redirect()->route('users.index');
     }
@@ -58,6 +71,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $user->load(['roles', 'permissions']);
         return Inertia::render('Users/Show', compact('user'));
 
     }
@@ -70,7 +84,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return Inertia::render('Users/Edit', compact('user'));
+        $user->load(['roles', 'permissions']);
+        $roles = RoleResource::collection(Role::active()->get());
+        $permissions = PermissionResource::collection(Permission::all());
+        return Inertia::render('Users/Edit', compact('user', 'roles', 'permissions'));
 
     }
 
@@ -81,9 +98,14 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        $user->update($request->validated());
+        $data = $request->safe()->except('roles','permissions');
+        if(!$request->input('password'))
+            unset($data['password']);
+        $user->update($data);
+        $user->syncRoles($request->input('roles.*.name'));
+        $user->syncPermissions($request->input('permissions.*.name'));
         session()->flash('success', "User has been updated successfully.");
         return redirect()->route('users.index');
     }
@@ -108,4 +130,18 @@ class UserController extends Controller
         session()->flash('success', "User has been ".($user->status?'activated':'deactivated')." successfully.");
         return back();
     }
+
+    public function revokeRoleFromUser(User $user, Role $role): RedirectResponse
+    {
+        $user->removeRole($role);
+        return back();
+    }
+
+    public function revokePermissionFromUser(User $user, Permission $permission): RedirectResponse
+    {
+        $user->revokePermissionTo($permission);
+        return back();
+    }
+
+
 }

@@ -18,7 +18,7 @@
                 <form @submit.prevent="form.post(route('roles.store'))">
                 <!--begin::Card body-->
                 <div class="card-body">
-                     <div class="row">
+                     <div class="row mb-10">
                             <div class="col-lg-6">
                                 <label class="required form-label">Role Name</label>
                                 <input v-model="form.name"  type="text" class="form-control form-control-sm" placeholder="Role Name"/>
@@ -35,6 +35,19 @@
                                 <ServerErrorMessage :error="form.errors.status"/>
                             </div>
                         </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label class="form-label">Permissions</label>
+                            <v-select
+                                v-model="form.permissions"
+                                :options="permissions"
+                                multiple
+                                label="name"
+                                class="v-select-custom"
+                                placeholder="Please Select" />
+                            <ServerErrorMessage :error="form.errors.permissions"/>
+                        </div>
+                    </div>
                 </div>
                 <!--end::Card body-->
                 <div class="card-footer">
@@ -70,8 +83,13 @@
 import {useForm} from "@inertiajs/vue3";
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 
+defineProps({
+    permissions: Array,
+});
+
 const form = useForm({
     name: '',
     status: '',
+    permissions: [],
 });
 </script>

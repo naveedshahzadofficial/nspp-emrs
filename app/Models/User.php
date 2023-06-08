@@ -48,4 +48,9 @@ class User extends Authenticatable
     public function scopeActive($query) {
         return $query->where('status', true);
     }
+
+    public function setPasswordAttribute($value)
+    {
+     $this->attributes['password'] =  bcrypt($value);
+    }
 }

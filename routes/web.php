@@ -23,10 +23,13 @@ Route::group(['middleware' => ['auth']],function() {
     Route::post('/logout', [AuthController::class,'logout'])->name('logout');
 
     Route::delete('/roles/{role}/change-status', [RoleController::class, 'changeStatus'])->name('roles.change-status');
+    Route::delete('/roles/{role}/permissions/{permission}/revoke', [RoleController::class, 'revokePermissionFromRole'])->name('roles.permissions.revoke');
     Route::resource('/roles', RoleController::class);
 
     Route::resource('/permissions', PermissionController::class);
 
+    Route::delete('/users/{user}/roles/{role}/revoke', [UserController::class, 'revokeRoleFromUser'])->name('users.roles.revoke');
+    Route::delete('/users/{user}/permissions/{permission}/revoke', [UserController::class, 'revokePermissionFromUser'])->name('users.permissions.revoke');
     Route::delete('/users/{user}/change-status', [UserController::class, 'changeStatus'])->name('users.change-status');
     Route::resource('/users', UserController::class);
 

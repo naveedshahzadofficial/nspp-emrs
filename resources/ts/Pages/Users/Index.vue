@@ -56,7 +56,9 @@
                         <!--begin::Table head-->
                         <thead>
                         <tr class="fw-semibold fs-6 text-gray-800">
-                            <th>User Name</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Roles</th>
                             <th class="text-center">Status</th>
                             <th class="text-center w-200px">Action</th>
                         </tr>
@@ -65,6 +67,8 @@
                         <template v-for="user in users.data" :key="user.id">
                             <tr>
                                 <td>{{ user.name }}</td>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.roles.map(obj => obj.name).join(', ') }}</td>
                                 <td class="text-center">
                                     <span class="badge font-weight-bold"
                                           :class="[user.status?'badge-success':'badge-danger']">
@@ -141,6 +145,8 @@ const props = defineProps({
 const search: any = ref(props.filters?.search);
 const limit: any = ref(props.filters?.limit || '30');
 
+const sortKey: any = ref(props.filters?.sortKey || 'created_at');
+const sortOrder: any = ref(props.filters?.sortOrder || 'desc');
 
 watch(search, debounce((value: any) =>{
     filterData();
