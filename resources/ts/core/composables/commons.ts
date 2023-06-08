@@ -2,7 +2,16 @@ import {router} from "@inertiajs/vue3";
 import Swal from "sweetalert2/dist/sweetalert2.min.js";
 export function useCommons(){
     const filterData = (routeName: string, _filter: any) => {
-        router.get(route(routeName),{search: _filter?.search, limit:_filter?.limit},{
+
+        _filter = Object.keys(_filter).reduce((acc, key) => {
+            const value = _filter[key];
+            if (value !== '' && value !== null && value !== undefined) {
+                acc[key] = value;
+            }
+            return acc;
+        }, {});
+
+        router.get(route(routeName),_filter,{
             preserveScroll: true,
             preserveState: true,
             replace: true

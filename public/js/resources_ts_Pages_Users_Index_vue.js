@@ -458,10 +458,14 @@ __webpack_require__.r(__webpack_exports__);
 
 function useCommons() {
   var filterData = function filterData(routeName, _filter) {
-    _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router.get(route(routeName), {
-      search: _filter === null || _filter === void 0 ? void 0 : _filter.search,
-      limit: _filter === null || _filter === void 0 ? void 0 : _filter.limit
-    }, {
+    _filter = Object.keys(_filter).reduce(function (acc, key) {
+      var value = _filter[key];
+      if (value !== '' && value !== null && value !== undefined) {
+        acc[key] = value;
+      }
+      return acc;
+    }, {});
+    _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router.get(route(routeName), _filter, {
       preserveScroll: true,
       preserveState: true,
       replace: true

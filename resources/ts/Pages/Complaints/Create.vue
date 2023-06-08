@@ -1,11 +1,11 @@
 <template>
-    <Head title="Add Role"/>
+    <Head title="Add Complaint"/>
     <Toolbar
-        title="Add Role"
-        :buttons="[{label: 'Back', link: route('roles.index')}]"
+        title="Add Complaint"
+        :buttons="[{label: 'Back', link: route('complaints.index')}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
-            {label: 'Roles', link: route('roles.index')},
+            {label: 'Complaints', link: route('complaints.index')},
             {label: 'Add', link: null}
         ]"
     />
@@ -15,14 +15,14 @@
         <div id="kt_content_container" class="container-fluid">
             <div class="card card-custom">
                 <!--begin::Form-->
-                <form @submit.prevent="form.post(route('roles.store'))">
+                <form @submit.prevent="form.post(route('complaints.store'))">
                 <!--begin::Card body-->
                 <div class="card-body">
                      <div class="row mb-10">
                             <div class="col-lg-6">
-                                <label class="required form-label">Role Name</label>
-                                <input v-model="form.name"  type="text" class="form-control form-control-sm" placeholder="Role Name"/>
-                                <ServerErrorMessage :error="form.errors.name"/>
+                                <label class="required form-label">Complaint Name</label>
+                                <input v-model="form.complaint_name"  type="text" class="form-control form-control-sm" placeholder="Complaint Name"/>
+                                <ServerErrorMessage :error="form.errors.complaint_name"/>
                             </div>
                             <div class="col-lg-6">
                                 <label class="required form-label">Status</label>
@@ -35,19 +35,7 @@
                                 <ServerErrorMessage :error="form.errors.status"/>
                             </div>
                         </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <label class="form-label">Permissions</label>
-                            <v-select
-                                v-model="form.permissions"
-                                :options="permissions"
-                                multiple
-                                label="name"
-                                class="v-select-custom"
-                                placeholder="Please Select" />
-                            <ServerErrorMessage :error="form.errors.permissions"/>
-                        </div>
-                    </div>
+
                 </div>
                 <!--end::Card body-->
                 <div class="card-footer">
@@ -67,7 +55,7 @@
                 ></span>
           </span>
                         </button>
-                        <Link :href="route('roles.index')" class="btn btn-secondary">Cancel</Link>
+                        <Link :href="route('complaints.index')" class="btn btn-secondary">Cancel</Link>
                     </div>
                 </form>
                 <!--end::Form-->
@@ -83,13 +71,8 @@
 import {useForm} from "@inertiajs/vue3";
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 
-defineProps({
-    permissions: Array,
-});
-
 const form = useForm({
-    name: '',
+    complaint_name: '',
     status: '',
-    permissions: [],
 });
 </script>
