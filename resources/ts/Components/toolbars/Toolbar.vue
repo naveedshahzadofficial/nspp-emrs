@@ -63,10 +63,28 @@
 <script lang="ts" setup>
 import {computed} from "vue";
 
+interface Breadcrumb {
+    link: string;
+    label: string;
+}
+
+interface Button {
+    link: string | null;
+    label: string;
+    class?: string;
+    click: () => void;
+}
+
 const props = defineProps({
     title: { type: String, required: true },
-    breadcrumbs: { type: Array, required: true },
-    buttons: { type: Array },
+    breadcrumbs: {
+        type: Array as () => Breadcrumb[],
+        required: true,
+    },
+    buttons: {
+        type: Array as () => Button[],
+        required: true,
+    },
 });
 
 const isLastBreadcrumb = computed(() => (index) => index === props.breadcrumbs?.length - 1);

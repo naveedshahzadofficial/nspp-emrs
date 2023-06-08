@@ -3,14 +3,14 @@
     <Head title="Prescription"/>
     <Toolbar
         title="Prescription"
-        :buttons="[
+        :buttons="([
             {label: 'Cancel', link: route('registrations.index'), class:'btn-secondary'},
             {label: 'Checkout', link: null, click: checkout, class:'btn-success'},
-            ]"
-        :breadcrumbs="[
+            ]) as any"
+        :breadcrumbs="([
             {label: 'Registrations', link: route('registrations.index')},
             {label: 'Update', link: null}
-        ]"
+        ])as any"
     />
     <!-- begin:: Content Body -->
     <div class="d-flex flex-column-fluid">
