@@ -78,11 +78,11 @@ interface Button {
 const props = defineProps({
     title: { type: String, required: true },
     breadcrumbs: {
-        type: Array as () => Breadcrumb[],
+        type: Array as () => any,
         required: true,
     },
     buttons: {
-        type: Array as () => Button[],
+        type: Array as () => any,
         required: true,
     },
 });

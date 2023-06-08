@@ -19,10 +19,10 @@ class UserSeeder extends Seeder
             'name'=> 'Admin PITB',
             'username'=> 'admin',
             'email'=> 'admin@gmail.com',
-            'password'=> bcrypt(12345678),
+            'password'=> bcrypt('12345678'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ]);
-        User::factory(1000)->create();
+        User::factory(10)->create();
     }
 }

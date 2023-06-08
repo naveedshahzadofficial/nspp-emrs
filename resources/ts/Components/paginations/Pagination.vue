@@ -1,9 +1,9 @@
 <template>
     <div class="row d-flex align-items-center">
-        <div class="col-sm-12 col-md-5">
+        <div class="col-sm-12 col-md-3">
             <div class="pagination-info">Showing {{ meta?.from || 0 }} to {{ meta?.to || 0 }} of {{ meta?.total }} records</div>
         </div>
-        <div v-if="meta?.total > meta?.per_page" class="col-sm-12 col-md-7">
+        <div v-if="meta?.total > meta?.per_page" class="col-sm-12 col-md-9">
             <ul class="pagination pagination-circle pagination-outline justify-content-end">
                 <li v-for="link in meta?.links" class="page-item m-1"
                     :class="{'active' : link.active, 'disabled' : !link.url}"
