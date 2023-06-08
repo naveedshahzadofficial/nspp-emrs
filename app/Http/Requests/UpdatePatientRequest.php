@@ -25,13 +25,13 @@ class UpdatePatientRequest extends FormRequest
     {
         return [
             'patient_type_id' => 'required',
-            'patient_name' => 'required',
+            'patient_name' => 'required|string|max:255',
             'gender_id' => 'required',
-            'patient_age' => 'required',
-            'relationship_with_employee' => 'required',
-            'designation' => 'required',
+            'patient_age' => 'required|max:25',
+            'relationship_with_employee' => 'required|string|max:100',
+            'designation' => 'required|string|max:100',
             'patient_cnic' => 'required',
-            'patient_mobile' => 'nullable|sometimes'
+            'patient_mobile' => 'nullable|sometimes',
         ];
     }
 }

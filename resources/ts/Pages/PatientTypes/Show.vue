@@ -1,11 +1,11 @@
 <template>
-    <Head title="View Role"/>
+    <Head title="View Patient Type"/>
     <Toolbar
-        title="View Role"
-        :buttons="[{label: 'Back', link: route('roles.index')}]"
+        title="View Patient Type"
+        :buttons="[{label: 'Back', link: route('patient-types.index')}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
-            {label: 'Roles', link: route('roles.index')},
+            {label: 'Patient Types', link: route('patient-types.index')},
             {label: 'View', link: null}
         ]"
     />
@@ -18,12 +18,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label class="form-label fw-semibold">Role Name</label>
-                                <span class="form-control form-control-solid">{{ role.name }}</span>
+                                <label class="form-label fw-semibold">Patient Type</label>
+                                <span class="form-control form-control-solid">{{ patientType.patient_type }}</span>
                             </div>
                             <div class="col-lg-6">
                                 <label class="form-label fw-semibold">Status</label>
-                                <span class="form-control form-control-solid">{{ role.status?'Active':'Inactive' }}</span>
+                                <span class="form-control form-control-solid">{{ patientType.status?'Active':'Inactive' }}</span>
                             </div>
                         </div>
                     </div>
@@ -36,6 +36,6 @@
 </template>
 <script lang="ts" setup>
 defineProps({
-    role: { type: Object, required: true}
+    patientType: { type: Object, required: true}
 });
 </script>

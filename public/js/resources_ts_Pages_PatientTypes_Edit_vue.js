@@ -51,19 +51,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: 'Edit',
   props: {
-    role: {
+    patientType: {
       type: Object,
       required: true
     }
   },
   setup: function setup(__props, _ref) {
-    var _props$role, _props$role2;
+    var _props$patientType, _props$patientType2;
     var __expose = _ref.expose;
     __expose();
     var props = __props;
     var form = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)({
-      name: (_props$role = props.role) === null || _props$role === void 0 ? void 0 : _props$role.name,
-      status: (_props$role2 = props.role) === null || _props$role2 === void 0 ? void 0 : _props$role2.status
+      patient_type: (_props$patientType = props.patientType) === null || _props$patientType === void 0 ? void 0 : _props$patientType.patient_type,
+      status: (_props$patientType2 = props.patientType) === null || _props$patientType2 === void 0 ? void 0 : _props$patientType2.status
     });
     var __returned__ = {
       props: props,
@@ -138,7 +138,7 @@ var _hoisted_6 = {
 };
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "required form-label"
-}, "Role Name", -1 /* HOISTED */);
+}, "Patient Type", -1 /* HOISTED */);
 var _hoisted_8 = {
   "class": "col-lg-6"
 };
@@ -168,37 +168,37 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Toolbar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Toolbar");
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
-    title: "Update Role"
+    title: "Update Patient Type"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Toolbar, {
-    title: "Update Role",
+    title: "Update Patient Type",
     buttons: [{
       label: 'Back',
-      link: _ctx.route('roles.index')
+      link: _ctx.route('patient-types.index')
     }],
     breadcrumbs: [{
       label: 'System Settings',
       link: '#'
     }, {
-      label: 'Roles',
-      link: _ctx.route('roles.index')
+      label: 'Patient Types',
+      link: _ctx.route('patient-types.index')
     }, {
       label: 'Update',
       link: null
     }]
   }, null, 8 /* PROPS */, ["buttons", "breadcrumbs"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin:: Content Body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Container"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Form"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      var _$props$role;
-      return $setup.form.put(_ctx.route('roles.update', (_$props$role = $props.role) === null || _$props$role === void 0 ? void 0 : _$props$role.id));
+      var _$props$patientType;
+      return $setup.form.put(_ctx.route('patient-types.update', (_$props$patientType = $props.patientType) === null || _$props$patientType === void 0 ? void 0 : _$props$patientType.id));
     }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Card body"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $setup.form.name = $event;
+      return $setup.form.patient_type = $event;
     }),
     type: "text",
     "class": "form-control form-control-sm",
-    placeholder: "Role Name"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.name]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
-    error: $setup.form.errors.name
+    placeholder: "Patient Type"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.patient_type]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    error: $setup.form.errors.patient_type
   }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)([{
     id: 1,
     name: 'Active'
@@ -231,7 +231,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     disabled: $setup.form.processing,
     "data-kt-indicator": $setup.form.processing ? 'on' : 'off'
   }, _hoisted_17, 8 /* PROPS */, _hoisted_14), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    href: _ctx.route('roles.index'),
+    href: _ctx.route('patient-types.index'),
     "class": "btn btn-secondary"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {

@@ -1,11 +1,11 @@
 <template>
-    <Head title="Add Role"/>
+    <Head title="Add Patient Type"/>
     <Toolbar
-        title="Add Role"
-        :buttons="[{label: 'Back', link: route('roles.index')}]"
+        title="Add Patient Type"
+        :buttons="[{label: 'Back', link: route('patient-types.index')}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
-            {label: 'Roles', link: route('roles.index')},
+            {label: 'Patient Types', link: route('patient-types.index')},
             {label: 'Add', link: null}
         ]"
     />
@@ -15,14 +15,14 @@
         <div id="kt_content_container" class="container-fluid">
             <div class="card card-custom">
                 <!--begin::Form-->
-                <form @submit.prevent="form.post(route('roles.store'))">
+                <form @submit.prevent="form.post(route('patient-types.store'))">
                 <!--begin::Card body-->
                 <div class="card-body">
                      <div class="row">
                             <div class="col-lg-6">
-                                <label class="required form-label">Role Name</label>
-                                <input v-model="form.name"  type="text" class="form-control form-control-sm" placeholder="Role Name"/>
-                                <ServerErrorMessage :error="form.errors.name"/>
+                                <label class="required form-label">Patient Type</label>
+                                <input v-model="form.patient_type"  type="text" class="form-control form-control-sm" placeholder="Patient Type"/>
+                                <ServerErrorMessage :error="form.errors.patient_type"/>
                             </div>
                             <div class="col-lg-6">
                                 <label class="required form-label">Status</label>
@@ -54,7 +54,7 @@
                 ></span>
           </span>
                         </button>
-                        <Link :href="route('roles.index')" class="btn btn-secondary">Cancel</Link>
+                        <Link :href="route('patient-types.index')" class="btn btn-secondary">Cancel</Link>
                     </div>
                 </form>
                 <!--end::Form-->
@@ -71,7 +71,7 @@ import {useForm} from "@inertiajs/vue3";
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 
 const form = useForm({
-    name: '',
+    patient_type: '',
     status: '',
 });
 </script>

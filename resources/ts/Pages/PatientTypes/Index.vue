@@ -2,7 +2,7 @@
     <Head title="Patient Types"/>
     <Toolbar
         title="Patient Types"
-        :buttons="[{label: 'Add Role', link: route('patient-types.create')}]"
+        :buttons="[{label: 'Add Patient Type', link: route('patient-types.create')}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
         {label: 'Patient Types', link: null}
@@ -64,7 +64,7 @@
                         <tbody>
                         <template v-for="patientType in patientTypes.data" :key="patientType.id">
                             <tr>
-                                <td>{{ patientType.type_name }}</td>
+                                <td>{{ patientType.patient_type }}</td>
                                 <td class="text-center">
                                     <span class="badge font-weight-bold"
                                           :class="[patientType.status?'badge-success':'badge-danger']">
