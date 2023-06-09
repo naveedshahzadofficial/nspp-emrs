@@ -1,3 +1,25 @@
+@font-face {
+    font-family: 'poppinsbold';
+    src: url('../fonts/poppins/poppins-bold-webfont.woff2') format('woff2'),
+    url('../fonts/poppins/poppins-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'poppinsregular';
+    src: url('../fonts/poppins/poppins-regular-webfont.woff2') format('woff2'),
+    url('../fonts/poppins/poppins-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
+
+$system-primary: #d8a43d;
+$system-primary-active: #c08821;
+
 .color-red-700 {
     color: #d32f2f !important;
 }
@@ -57,3 +79,64 @@ div.dt-buttons button{
     color: #5e6278;
     padding: 0.5rem 0;
 }
+
+/* Begin: Auth Layout */
+.auth-bg{
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.auth-logo-title{
+    font-family: Poppins, serif;
+    font-weight: 700;
+    color: $system-primary;
+    font-size: 29px;
+}
+.auth-logo-subtitle{
+    font-size: 20px;
+    color: $system-primary;
+}
+.auth-logo-caption{
+    font-size: 15px;
+    color: $system-primary;
+}
+.auth-btn{
+    background-color: $system-primary;
+    color: #ffffff;
+    span{
+        color: #ffffff;
+    }
+    &:hover, &:active{
+        background-color: $system-primary-active;
+    }
+}
+.auth-link{
+    color: $system-primary;
+    &:hover {
+        color: $system-primary-active !important;
+    }
+}
+.auth-color{
+    color: $system-primary;
+}
+.auth-hover-color{
+    &:hover {
+        color: $system-primary-active !important;
+    }
+}
+.auth-footer{
+    div span{
+        color: $system-primary;
+        a {
+            color: $system-primary;
+            &:hover {
+                color: $system-primary-active;
+            }
+        }
+    }
+}
+/* End: Auth Layout */

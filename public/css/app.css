@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);
 /*!
  * Bootstrap Icons v1.10.5 (https://icons.getbootstrap.com/)
  * Copyright 2019-2023 The Bootstrap Authors
@@ -62369,6 +62370,18 @@ body {
   border: 0;
 }
 
+@font-face {
+  font-family: "poppinsbold";
+  src: url(/fonts/poppins-bold-webfont.woff2?fc7be33b555cbe0f28f5f195351458b1) format("woff2"), url(/fonts/poppins-bold-webfont.woff?a61a425666c1006d51cee0cb3f46443c) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "poppinsregular";
+  src: url(/fonts/poppins-regular-webfont.woff2?a8caf2f09c1b10a6b24eca40bf5a679f) format("woff2"), url(/fonts/poppins-regular-webfont.woff?f74d48ea8a139746fd888cb7e9f30f85) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 .color-red-700 {
   color: #d32f2f !important;
 }
@@ -62434,3 +62447,66 @@ div.dt-buttons button {
   color: #5e6278;
   padding: 0.5rem 0;
 }
+
+/* Begin: Auth Layout */
+.auth-bg {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.auth-logo-title {
+  font-family: Poppins, serif;
+  font-weight: 700;
+  color: #d8a43d;
+  font-size: 29px;
+}
+
+.auth-logo-subtitle {
+  font-size: 20px;
+  color: #d8a43d;
+}
+
+.auth-logo-caption {
+  font-size: 15px;
+  color: #d8a43d;
+}
+
+.auth-btn {
+  background-color: #d8a43d;
+  color: #ffffff;
+}
+.auth-btn span {
+  color: #ffffff;
+}
+.auth-btn:hover, .auth-btn:active {
+  background-color: #c08821;
+}
+
+.auth-link {
+  color: #d8a43d;
+}
+.auth-link:hover {
+  color: #c08821 !important;
+}
+
+.auth-color {
+  color: #d8a43d;
+}
+
+.auth-hover-color:hover {
+  color: #c08821 !important;
+}
+
+.auth-footer div span {
+  color: #d8a43d;
+}
+.auth-footer div span a {
+  color: #d8a43d;
+}
+.auth-footer div span a:hover {
+  color: #c08821;
+}
+
+/* End: Auth Layout */

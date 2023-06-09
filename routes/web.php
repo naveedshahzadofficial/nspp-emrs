@@ -16,10 +16,15 @@ use App\Http\Controllers\{
     DiseaseController,
 };
 
-Route::get('/',[AuthController::class,'showLoginForm']);
-
-Route::get('/login', [AuthController::class,'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class,'submitLoginForm'])->name('login.submit');
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/','showLoginForm');
+    Route::get('/login', 'showLoginForm')->name('login');
+    Route::post('/login', 'submitLoginForm')->name('login.submit');
+    Route::get('/password/forgot', 'showForgotForm')->name('password.forgot');
+    Route::post('/password/forgot', 'submitForgotForm')->name('password.forgot.submit');
+    Route::get('/password/reset', 'showResetForm')->name('password.reset');
+    Route::post('/password/reset', 'submitResetForm')->name('password.reset.submit');
+});
 
 Route::group(['middleware' => ['auth']],function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

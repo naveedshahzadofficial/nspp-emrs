@@ -16,15 +16,15 @@
         <!--begin::Username-->
         <div class="d-flex flex-column">
           <div class="fw-bolder d-flex align-items-center fs-5">
-              {{ $page.props.auth.user.name }}
+              {{ $page.props.auth?.user?.name }}
           </div>
             <span
                 class="badge badge-light-info fw-bolder fs-7 py-1"
-            >Roles: {{ $page.props.auth.user?.roles.map(role => role).join(', ') }}</span>
+            >Roles: {{ $page.props.auth?.user?.roles.map(role => role).join(', ') }}</span>
           <span class="badge badge-light-info fw-bolder fs-7 py-1"
-            >Username: {{ $page.props.auth.user.username }}</span>
+            >Username: {{ $page.props.auth?.user?.username }}</span>
             <span class="badge badge-light-info fw-bolder fs-7 py-1"
-            >Email: {{ $page.props.auth.user.email }}</span>
+            >Email: {{ $page.props.auth?.user?.email }}</span>
         </div>
         <!--end::Username-->
       </div>

@@ -1,38 +1,23 @@
 <template>
     <Head title="Sign In"/>
     <!--begin::Wrapper-->
-    <div class="w-lg-500px bg-white rounded shadow-sm p-10 p-lg-15 mx-auto">
+    <div class="w-lg-500px rounded shadow-sm p-10 p-lg-15 mx-auto">
         <!--begin::Form-->
         <form
             class="form w-100"
             id="kt_login_signin_form"
-            @submit.prevent="submit"
+            @submit.prevent="form.post(route('login.submit'))"
         >
-            <!--begin::Heading-->
-            <div class="text-center mb-10">
-                <!--begin::Title-->
-                <h1 class="text-dark mb-3">Sign In</h1>
-                <!--end::Title-->
-            </div>
-            <!--begin::Heading-->
-
-            <div class="mb-10 bg-light-info p-8 rounded">
-                <div class="text-info">
-                    Use account <strong>admin</strong> and password
-                    <strong>12345678</strong> to continue.
-                </div>
-            </div>
-
             <!--begin::Input group-->
             <div class="fv-row mb-10">
                 <!--begin::Label-->
-                <label class="form-label fs-6 fw-bolder text-dark">Username</label>
+                <label class="form-label fs-6 fw-bolder text-white required">Username</label>
                 <!--end::Label-->
 
                 <!--begin::Input-->
                 <input
                     v-model="form.username"
-                    class="form-control form-control-lg form-control-solid"
+                    class="form-control form-control-sm"
                     type="text"
                     name="username"
                     autocomplete="off"
@@ -43,10 +28,10 @@
             <!--end::Input group-->
 
             <!--begin::Input group-->
-            <div class="fv-row mb-10">
+            <div class="fv-row mb-5">
 
                 <!--begin::Label-->
-                <label class="form-label fw-bolder text-dark fs-6 mb-0"
+                <label class="form-label fw-bolder text-white required fs-6 mb-0"
                 >Password</label
                 >
                 <!--end::Label-->
@@ -54,7 +39,7 @@
                 <!--begin::Input-->
                 <input
                     v-model="form.password"
-                    class="form-control form-control-lg form-control-solid"
+                    class="form-control form-control-sm"
                     type="password"
                     name="password"
                     autocomplete="off"
@@ -63,9 +48,9 @@
                 <ServerErrorMessage :error="form.errors.password"/>
 
                 <!--begin::Wrapper-->
-                <div class="d-flex flex-stack  mt-2">
+                <div class="d-flex flex-stack justify-content-end mt-4">
                     <!--begin::Link-->
-                    <Link href="password-reset" class="link-primary fs-6 fw-bolder">
+                    <Link :href="route('password.forgot')" class="fs-6 fw-bolder auth-link">
                         Forgot Password ?
                     </Link>
                     <!--end::Link-->
@@ -82,7 +67,7 @@
                     type="submit"
                     ref="submitButton"
                     id="kt_sign_in_submit"
-                    class="btn btn-lg btn-primary w-100 mb-5"
+                    class="btn auth-btn w-100 mb-5"
                     :disabled="form.processing"
                     :data-kt-indicator="form.processing?'on':'off'"
 
@@ -125,17 +110,10 @@ import { useForm } from "@inertiajs/vue3";
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 const submitButton = ref<HTMLButtonElement | null>(null);
 
-defineProps({ errors: Object })
-
 let form = useForm({
     username: '',
     password: ''
 });
-
-let submit = () => {
-    form.post(route('login.submit'));
-}
-
 </script>
 
 
