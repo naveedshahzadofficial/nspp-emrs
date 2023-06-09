@@ -20,10 +20,10 @@
             <span>&nbsp;</span>
             <!--begin::Logo-->
             <a href="#" v-if="asideTheme === 'dark'">
-                <img alt="Logo" :src="darkLogo" class="h-60px logo mt-2 me-10" />
+                <img alt="Logo" :src="darkLogo" class="h-60px logo mt-2" />
             </a>
             <a href="#" v-if="asideTheme === 'light'">
-                <img alt="Logo" :src="lightLogo" class="h-60px logo mt-2 me-10" />
+                <img alt="Logo" :src="lightLogo" class="h-60px logo mt-2" />
             </a>
             <!--end::Logo-->
 
