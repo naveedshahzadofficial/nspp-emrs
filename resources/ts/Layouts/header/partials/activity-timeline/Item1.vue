@@ -39,7 +39,7 @@
             data-bs-placement="top"
             title="Nina Nilson"
           >
-            <img src="/media/avatars/300-14.jpg" alt="img" />
+            <img src="/media/avatars/blank.png" alt="img" />
           </div>
           <!--end::User-->
         </div>
@@ -73,13 +73,13 @@
           >
             <!--begin::User-->
             <div class="symbol symbol-circle symbol-25px">
-              <img src="/media/avatars/300-2.jpg" alt="img" />
+              <img src="/media/avatars/blank.png" alt="img" />
             </div>
             <!--end::User-->
 
             <!--begin::User-->
             <div class="symbol symbol-circle symbol-25px">
-              <img src="/media/avatars/300-14.jpg" alt="img" />
+              <img src="/media/avatars/blank.png" alt="img" />
             </div>
             <!--end::User-->
 
@@ -135,7 +135,7 @@
           >
             <!--begin::User-->
             <div class="symbol symbol-circle symbol-25px">
-              <img src="/media/avatars/300-20.jpg" alt="img" />
+              <img src="/media/avatars/blank.png" alt="img" />
             </div>
             <!--end::User-->
 

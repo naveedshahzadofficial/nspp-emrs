@@ -39,7 +39,7 @@
             data-bs-placement="top"
             title="Alan Nilson"
           >
-            <img src="/media/avatars/300-1.jpg" alt="img" />
+            <img src="/media/avatars/blank.png" alt="img" />
           </div>
           <!--end::User-->
         </div>

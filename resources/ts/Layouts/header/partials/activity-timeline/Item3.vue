@@ -39,7 +39,7 @@
             data-bs-placement="top"
             title="Jan Hummer"
           >
-            <img src="/media/avatars/300-23.jpg" alt="img" />
+            <img src="/media/avatars/blank.png" alt="img" />
           </div>
           <!--end::User-->
         </div>

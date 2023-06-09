@@ -2,62 +2,75 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DiseaseRequest;
+use App\Http\Resources\DiseaseResource;
 use App\Models\Disease;
-use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class DiseaseController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function index()
     {
-        //
+        $filters = request()->only(['search', 'limit']);
+        $diseases = DiseaseResource::collection(
+            Disease::query()
+                ->when(request()->input('search'), function ($query, $search){
+                    $query->where('disease_name', 'like', "%{$search}%");
+                })
+                ->orderBy('created_at', 'desc')
+                ->paginate(request()->input('limit', 30))->withQueryString()
+        );
+        return Inertia::render('Diseases/Index', compact('diseases', 'filters'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function create()
     {
-        //
+        return Inertia::render('Diseases/Create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(DiseaseRequest $request)
     {
-        //
+        Disease::create($request->validated());
+        session()->flash('success', "Disease has been created successfully.");
+        return redirect()->route('diseases.index');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Disease  $disease
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function show(Disease $disease)
     {
-        //
+        return Inertia::render('Diseases/Show', compact('disease'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Disease  $disease
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function edit(Disease $disease)
     {
-        //
+        return Inertia::render('Diseases/Edit', compact('disease'));
     }
 
     /**
@@ -65,21 +78,33 @@ class DiseaseController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Disease  $disease
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Disease $disease)
+    public function update(DiseaseRequest $request, Disease $disease): \Illuminate\Http\RedirectResponse
     {
-        //
+        $disease->update($request->validated());
+        session()->flash('success', "Disease has been updated successfully.");
+        return redirect()->route('diseases.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Disease  $disease
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Disease $disease)
     {
-        //
+        $disease->delete();
+        session()->flash('success', "Disease has been deleted successfully.");
+        return back();
+    }
+
+    public function changeStatus(Disease $disease){
+        $disease->update([
+            'status' => !$disease->status
+        ]);
+        session()->flash('success', "Disease has been ".($disease->status?'activated':'deactivated')." successfully.");
+        return back();
     }
 }

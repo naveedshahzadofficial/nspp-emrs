@@ -1,11 +1,11 @@
 <template>
-    <Head title="Patient Types"/>
+    <Head title="Diseases"/>
     <Toolbar
-        title="Patient Types"
-        :buttons="[{label: 'Add Patient Type', link: route('patient-types.create')}]"
+        title="Diseases"
+        :buttons="[{label: 'Add Disease', link: route('diseases.create')}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
-        {label: 'Patient Types', link: null}
+        {label: 'Diseases', link: null}
         ]"
     />
 
@@ -56,24 +56,24 @@
                         <!--begin::Table head-->
                         <thead>
                         <tr class="fw-semibold fs-6 text-gray-800">
-                            <th>Type Name</th>
+                            <th>Disease Name</th>
                             <th class="text-center">Status</th>
                             <th class="text-center w-200px">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <template v-for="patientType in patientTypes.data" :key="patientType.id">
+                        <template v-for="disease in diseases.data" :key="disease.id">
                             <tr>
-                                <td>{{ patientType.patient_type }}</td>
+                                <td>{{ disease.disease_name }}</td>
                                 <td class="text-center">
                                     <span class="badge font-weight-bold"
-                                          :class="[patientType.status?'badge-success':'badge-danger']">
-                                        {{ patientType.status?'Active':'Inactive' }}
+                                          :class="[disease.status?'badge-success':'badge-danger']">
+                                        {{ disease.status?'Active':'Inactive' }}
                                     </span>
                                 </td>
                                 <td class="text-center">
                                     <Link
-                                        :href="route('patient-types.show', patientType.id)"
+                                        :href="route('diseases.show', disease.id)"
                                         class="btn btn-icon btn-primary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -82,7 +82,7 @@
                                     </Link>
 
                                     <Link
-                                        :href="route('patient-types.edit', patientType.id)"
+                                        :href="route('diseases.edit', disease.id)"
                                         class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -90,19 +90,19 @@
                                         <i class="fas fa-edit"></i>
                                     </Link>
 
-                                    <a @click.prevent="changeStatus('patient-types.change-status', patientType)"
+                                    <a @click.prevent="changeStatus('diseases.change-status', disease)"
                                        class="btn btn-icon btn-circle btn-sm me-2"
-                                       :class="[patientType.status?'btn-danger':'btn-success']"
+                                       :class="[disease.status?'btn-danger':'btn-success']"
                                        data-bs-toggle="tooltip"
                                        data-bs-placement="top"
-                                       :title="[patientType.status?'Deactivate':'Activate']">
+                                       :title="[disease.status?'Deactivate':'Activate']">
                                         <i class="icon-xl fas"
-                                           :class="[patientType.status?'fa-toggle-off':'fa-toggle-on']"
+                                           :class="[disease.status?'fa-toggle-off':'fa-toggle-on']"
                                         ></i>
                                     </a>
 
                                     <a
-                                        @click.prevent="destroy('patient-types.destroy', patientType.id)"
+                                        @click.prevent="destroy('diseases.destroy', disease.id)"
                                         class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -116,7 +116,7 @@
                     </table>
                 </div>
 
-                <Pagination :meta="patientTypes?.meta" :links="patientTypes?.links" />
+                <Pagination :meta="diseases?.meta" :links="diseases?.links" />
             </div>
             </div>
 
@@ -136,7 +136,7 @@ const { filterData, destroy, changeStatus } = useCommons();
 
 
 const props = defineProps({
-    patientTypes: { type: Object, required: true },
+    diseases: { type: Object, required: true },
     filters: Object
 });
 
@@ -145,7 +145,7 @@ const limit: any = ref(props.filters?.limit || '30');
 
 
 watch(search, debounce((value: any) =>{
-    filterData('patient-types.index', {search: search.value, limit:limit.value});
+    filterData('diseases.index', {search: search.value, limit:limit.value});
 }, 500 ) as any);
 
 </script>

@@ -7,19 +7,9 @@
         <div id="kt_wrapper" class="d-flex flex-column flex-row-fluid">
             <!-- begin:: Content -->
             <div id="kt_content" class="content d-flex flex-column flex-column-fluid">
-                <!-- begin:: Content Body -->
-                <div class="post d-flex flex-column-fluid">
-                    <div
-                        id="kt_content_container"
-                        :class="{
-              'container-fluid': contentWidthFluid,
-              'container-xxl': !contentWidthFluid,
-            }"
-                    >
-                        <slot />
-                    </div>
-                </div>
-                <!-- end:: Content Body -->
+
+                <slot />
+
             </div>
             <!-- end:: Content -->
             <KTFooter />

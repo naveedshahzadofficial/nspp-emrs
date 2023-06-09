@@ -56,7 +56,7 @@
                         <!--begin::Table head-->
                         <thead>
                         <tr class="fw-semibold fs-6 text-gray-800">
-                            <th>Type Name</th>
+                            <th>Disease Type</th>
                             <th class="text-center">Status</th>
                             <th class="text-center w-200px">Action</th>
                         </tr>
@@ -127,8 +127,6 @@
 </template>
 
 <script lang="ts" setup>
-import { router } from '@inertiajs/vue3'
-import Swal from "sweetalert2/dist/sweetalert2.min.js";
 import AlertMessage from "@/Components/alerts/AlertMessage.vue";
 import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch } from "vue";

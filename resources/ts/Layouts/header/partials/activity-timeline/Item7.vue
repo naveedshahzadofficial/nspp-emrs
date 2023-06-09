@@ -37,7 +37,7 @@
             data-bs-placement="top"
             title="Robert Rich"
           >
-            <img src="/media/avatars/300-4.jpg" alt="img" />
+            <img src="/media/avatars/blank.png" alt="img" />
           </div>
           <!--end::User-->
         </div>

@@ -45,6 +45,9 @@ Route::group(['middleware' => ['auth']],function() {
     Route::delete('/disease-types/{disease_type}/change-status', [DiseaseTypeController::class, 'changeStatus'])->name('disease-types.change-status');
     Route::resource('/disease-types', DiseaseTypeController::class);
 
+    Route::delete('/diseases/{disease}/change-status', [DiseaseController::class, 'changeStatus'])->name('diseases.change-status');
+    Route::resource('/diseases', DiseaseController::class);
+
 
     Route::get('/registrations/{patient_visit}/proceed', [RegistrationController::class, 'proceed'])->name('registrations.proceed');
     Route::post('/registrations/{patient_visit}/checkout', [RegistrationController::class, 'checkout'])->name('registrations.checkout');

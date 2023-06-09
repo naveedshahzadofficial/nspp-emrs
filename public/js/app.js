@@ -636,40 +636,40 @@ __webpack_require__.r(__webpack_exports__);
     var messages = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([{
       type: "in",
       name: "Brian Cox",
-      image: "/media/avatars/300-25.jpg",
+      image: "/media/avatars/blank.png",
       time: "5 Hours",
       text: "How likely are you to recommend our company to your friends and family ?"
     }, {
       type: "out",
-      image: "/media/avatars/300-1.jpg",
+      image: "/media/avatars/blank.png",
       time: "2 Hours",
       text: "Hey there, we’re just writing to let you know that you’ve been subscribed to a repository on GitHub."
     }, {
       type: "in",
       name: "Brian Cox",
-      image: "/media/avatars/300-25.jpg",
+      image: "/media/avatars/blank.png",
       time: "2 Hour",
       text: "Ok, Understood!"
     }, {
       type: "out",
-      image: "/media/avatars/300-1.jpg",
+      image: "/media/avatars/blank.png",
       time: "2 Hours",
       text: "You’ll receive notifications for all issues, pull requests!"
     }, {
       type: "in",
       name: "Brian Cox",
-      image: "/media/avatars/300-25.jpg",
+      image: "/media/avatars/blank.png",
       time: "1 Hour",
       text: "You can unwatch this repository immediately by clicking here: Keenthemes.com"
     }, {
       type: "out",
-      image: "/media/avatars/300-1.jpg",
+      image: "/media/avatars/blank.png",
       time: "4 mins",
       text: "Most purchased Business courses during this sale!"
     }, {
       type: "in",
       name: "Brian Cox",
-      image: "/media/avatars/300-25.jpg",
+      image: "/media/avatars/blank.png",
       time: "2 mins",
       text: "Company BBQ to celebrate the last quater achievements and goals. Food and drinks provided"
     }]);
@@ -680,7 +680,7 @@ __webpack_require__.r(__webpack_exports__);
       }
       messages.value.push({
         type: "out",
-        image: "/media/avatars/300-1.jpg",
+        image: "/media/avatars/blank.png",
         time: "Just now",
         text: newMessageText.value
       });
@@ -694,7 +694,7 @@ __webpack_require__.r(__webpack_exports__);
         messages.value.push({
           type: "in",
           name: "Ja Morant",
-          image: "/media/avatars/300-25.jpg",
+          image: "/media/avatars/blank.png",
           time: "Just now",
           text: "Thank you for your awesome support!"
         });
@@ -3026,7 +3026,7 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "data-kt-menu-placement": "bottom-end",
   "data-kt-menu-flip": "bottom"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "/media/avatars/300-1.jpg",
+  src: "/media/avatars/blank.png",
   alt: "metronic"
 })], -1 /* HOISTED */);
 var _hoisted_4 = {
@@ -3779,7 +3779,7 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "symbol symbol-50px me-5"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   alt: "Logo",
-  src: "/media/avatars/300-1.jpg"
+  src: "/media/avatars/blank.png"
 })], -1 /* HOISTED */);
 var _hoisted_5 = {
   "class": "d-flex flex-column"
@@ -3878,7 +3878,7 @@ var _hoisted_4 = {
 var _hoisted_5 = {
   "class": "svg-icon svg-icon-2 svg-icon-gray-500"
 };
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"timeline-content mb-10 mt-n1\"><!--begin::Timeline heading--><div class=\"pe-3 mb-5\"><!--begin::Title--><div class=\"fs-5 fw-bold mb-2\"> There are 2 new tasks for you in “AirPlus Mobile APp” project: </div><!--end::Title--><!--begin::Description--><div class=\"d-flex align-items-center mt-1 fs-6\"><!--begin::Info--><div class=\"text-muted me-2 fs-7\">Added at 4:23 PM by</div><!--end::Info--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\" data-bs-toggle=\"tooltip\" data-bs-boundary=\"window\" data-bs-placement=\"top\" title=\"Nina Nilson\"><img src=\"/media/avatars/300-14.jpg\" alt=\"img\"></div><!--end::User--></div><!--end::Description--></div><!--end::Timeline heading--><!--begin::Timeline details--><div class=\"overflow-auto pb-5\"><!--begin::Record--><div class=\"d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-5\"><!--begin::Title--><a href=\"#\" class=\"fs-5 text-dark text-hover-primary fw-bold w-375px min-w-200px\">Meeting with customer</a><!--end::Title--><!--begin::Label--><div class=\"min-w-175px pe-2\"><span class=\"badge badge-light text-muted\">Application Design</span></div><!--end::Label--><!--begin::Users--><div class=\"symbol-group symbol-hover flex-nowrap flex-grow-1 min-w-100px pe-2\"><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\"><img src=\"/media/avatars/300-2.jpg\" alt=\"img\"></div><!--end::User--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\"><img src=\"/media/avatars/300-14.jpg\" alt=\"img\"></div><!--end::User--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\"><div class=\"symbol-label fs-8 fw-bold bg-primary text-inverse-primary\"> A </div></div><!--end::User--></div><!--end::Users--><!--begin::Progress--><div class=\"min-w-125px pe-2\"><span class=\"badge badge-light-primary\">In Progress</span></div><!--end::Progress--><!--begin::Action--><a href=\"#\" class=\"btn btn-sm btn-light btn-active-light-primary\">View</a><!--end::Action--></div><!--end::Record--><!--begin::Record--><div class=\"d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-0\"><!--begin::Title--><a href=\"#\" class=\"fs-5 text-dark text-hover-primary fw-bold w-375px min-w-200px\">Project Delivery Preparation</a><!--end::Title--><!--begin::Label--><div class=\"min-w-175px\"><span class=\"badge badge-light text-muted\">CRM System Development</span></div><!--end::Label--><!--begin::Users--><div class=\"symbol-group symbol-hover flex-nowrap flex-grow-1 min-w-100px\"><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\"><img src=\"/media/avatars/300-20.jpg\" alt=\"img\"></div><!--end::User--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\"><div class=\"symbol-label fs-8 fw-bold bg-success text-inverse-primary\"> B </div></div><!--end::User--></div><!--end::Users--><!--begin::Progress--><div class=\"min-w-125px\"><span class=\"badge badge-light-success\">Completed</span></div><!--end::Progress--><!--begin::Action--><a href=\"#\" class=\"btn btn-sm btn-light btn-active-light-primary\">View</a><!--end::Action--></div><!--end::Record--></div><!--end::Timeline details--></div>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"timeline-content mb-10 mt-n1\"><!--begin::Timeline heading--><div class=\"pe-3 mb-5\"><!--begin::Title--><div class=\"fs-5 fw-bold mb-2\"> There are 2 new tasks for you in “AirPlus Mobile APp” project: </div><!--end::Title--><!--begin::Description--><div class=\"d-flex align-items-center mt-1 fs-6\"><!--begin::Info--><div class=\"text-muted me-2 fs-7\">Added at 4:23 PM by</div><!--end::Info--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\" data-bs-toggle=\"tooltip\" data-bs-boundary=\"window\" data-bs-placement=\"top\" title=\"Nina Nilson\"><img src=\"/media/avatars/blank.png\" alt=\"img\"></div><!--end::User--></div><!--end::Description--></div><!--end::Timeline heading--><!--begin::Timeline details--><div class=\"overflow-auto pb-5\"><!--begin::Record--><div class=\"d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-5\"><!--begin::Title--><a href=\"#\" class=\"fs-5 text-dark text-hover-primary fw-bold w-375px min-w-200px\">Meeting with customer</a><!--end::Title--><!--begin::Label--><div class=\"min-w-175px pe-2\"><span class=\"badge badge-light text-muted\">Application Design</span></div><!--end::Label--><!--begin::Users--><div class=\"symbol-group symbol-hover flex-nowrap flex-grow-1 min-w-100px pe-2\"><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\"><img src=\"/media/avatars/blank.png\" alt=\"img\"></div><!--end::User--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\"><img src=\"/media/avatars/blank.png\" alt=\"img\"></div><!--end::User--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\"><div class=\"symbol-label fs-8 fw-bold bg-primary text-inverse-primary\"> A </div></div><!--end::User--></div><!--end::Users--><!--begin::Progress--><div class=\"min-w-125px pe-2\"><span class=\"badge badge-light-primary\">In Progress</span></div><!--end::Progress--><!--begin::Action--><a href=\"#\" class=\"btn btn-sm btn-light btn-active-light-primary\">View</a><!--end::Action--></div><!--end::Record--><!--begin::Record--><div class=\"d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-0\"><!--begin::Title--><a href=\"#\" class=\"fs-5 text-dark text-hover-primary fw-bold w-375px min-w-200px\">Project Delivery Preparation</a><!--end::Title--><!--begin::Label--><div class=\"min-w-175px\"><span class=\"badge badge-light text-muted\">CRM System Development</span></div><!--end::Label--><!--begin::Users--><div class=\"symbol-group symbol-hover flex-nowrap flex-grow-1 min-w-100px\"><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\"><img src=\"/media/avatars/blank.png\" alt=\"img\"></div><!--end::User--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\"><div class=\"symbol-label fs-8 fw-bold bg-success text-inverse-primary\"> B </div></div><!--end::User--></div><!--end::Users--><!--begin::Progress--><div class=\"min-w-125px\"><span class=\"badge badge-light-success\">Completed</span></div><!--end::Progress--><!--begin::Action--><a href=\"#\" class=\"btn btn-sm btn-light btn-active-light-primary\">View</a><!--end::Action--></div><!--end::Record--></div><!--end::Timeline details--></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inline_svg = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inline-svg");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline item"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline line"), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Timeline line"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline icon"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inline_svg, {
@@ -3916,7 +3916,7 @@ var _hoisted_4 = {
 var _hoisted_5 = {
   "class": "svg-icon svg-icon-2 svg-icon-gray-500"
 };
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"timeline-content mb-10 mt-n2\"><!--begin::Timeline heading--><div class=\"overflow-auto pe-3\"><!--begin::Title--><div class=\"fs-5 fw-bold mb-2\"> Invitation for crafting engaging designs that speak human workshop </div><!--end::Title--><!--begin::Description--><div class=\"d-flex align-items-center mt-1 fs-6\"><!--begin::Info--><div class=\"text-muted me-2 fs-7\">Sent at 4:23 PM by</div><!--end::Info--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\" data-bs-toggle=\"tooltip\" data-bs-boundary=\"window\" data-bs-placement=\"top\" title=\"Alan Nilson\"><img src=\"/media/avatars/300-1.jpg\" alt=\"img\"></div><!--end::User--></div><!--end::Description--></div><!--end::Timeline heading--></div>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"timeline-content mb-10 mt-n2\"><!--begin::Timeline heading--><div class=\"overflow-auto pe-3\"><!--begin::Title--><div class=\"fs-5 fw-bold mb-2\"> Invitation for crafting engaging designs that speak human workshop </div><!--end::Title--><!--begin::Description--><div class=\"d-flex align-items-center mt-1 fs-6\"><!--begin::Info--><div class=\"text-muted me-2 fs-7\">Sent at 4:23 PM by</div><!--end::Info--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\" data-bs-toggle=\"tooltip\" data-bs-boundary=\"window\" data-bs-placement=\"top\" title=\"Alan Nilson\"><img src=\"/media/avatars/blank.png\" alt=\"img\"></div><!--end::User--></div><!--end::Description--></div><!--end::Timeline heading--></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inline_svg = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inline-svg");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline item"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline line"), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Timeline line"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline icon"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inline_svg, {
@@ -3954,7 +3954,7 @@ var _hoisted_4 = {
 var _hoisted_5 = {
   "class": "svg-icon svg-icon-2 svg-icon-gray-500"
 };
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"timeline-content mb-10 mt-n1\"><!--begin::Timeline heading--><div class=\"mb-5 pe-3\"><!--begin::Title--><a href=\"#\" class=\"fs-5 fw-bold text-gray-800 text-hover-primary mb-2\">3 New Incoming Project Files:</a><!--end::Title--><!--begin::Description--><div class=\"d-flex align-items-center mt-1 fs-6\"><!--begin::Info--><div class=\"text-muted me-2 fs-7\">Sent at 10:30 PM by</div><!--end::Info--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\" data-bs-toggle=\"tooltip\" data-bs-boundary=\"window\" data-bs-placement=\"top\" title=\"Jan Hummer\"><img src=\"/media/avatars/300-23.jpg\" alt=\"img\"></div><!--end::User--></div><!--end::Description--></div><!--end::Timeline heading--><!--begin::Timeline details--><div class=\"overflow-auto pb-5\"><div class=\"d-flex align-items-center border border-dashed border-gray-300 rounded min-w-700px p-5\"><!--begin::Item--><div class=\"d-flex flex-aligns-center pe-10 pe-lg-20\"><!--begin::Icon--><img alt=\"\" class=\"w-30px me-3\" src=\"/media/svg/files/pdf.svg\"><!--end::Icon--><!--begin::Info--><div class=\"ms-1 fw-bold\"><!--begin::Desc--><a href=\"#\" class=\"fs-6 text-hover-primary fw-bolder\">Finance KPI App Guidelines</a><!--end::Desc--><!--begin::Number--><div class=\"text-gray-400\">1.9mb</div><!--end::Number--></div><!--begin::Info--></div><!--end::Item--><!--begin::Item--><div class=\"d-flex flex-aligns-center pe-10 pe-lg-20\"><!--begin::Icon--><img alt=\"\" class=\"w-30px me-3\" src=\"/media/svg/files/doc.svg\"><!--end::Icon--><!--begin::Info--><div class=\"ms-1 fw-bold\"><!--begin::Desc--><a href=\"#\" class=\"fs-6 text-hover-primary fw-bolder\">Client UAT Testing Results</a><!--end::Desc--><!--begin::Number--><div class=\"text-gray-400\">18kb</div><!--end::Number--></div><!--end::Info--></div><!--end::Item--><!--begin::Item--><div class=\"d-flex flex-aligns-center\"><!--begin::Icon--><img alt=\"\" class=\"w-30px me-3\" src=\"/media/svg/files/css.svg\"><!--end::Icon--><!--begin::Info--><div class=\"ms-1 fw-bold\"><!--begin::Desc--><a href=\"#\" class=\"fs-6 text-hover-primary fw-bolder\">Finance Reports</a><!--end::Desc--><!--begin::Number--><div class=\"text-gray-400\">20mb</div><!--end::Number--></div><!--end::Icon--></div><!--end::Item--></div></div><!--end::Timeline details--></div>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"timeline-content mb-10 mt-n1\"><!--begin::Timeline heading--><div class=\"mb-5 pe-3\"><!--begin::Title--><a href=\"#\" class=\"fs-5 fw-bold text-gray-800 text-hover-primary mb-2\">3 New Incoming Project Files:</a><!--end::Title--><!--begin::Description--><div class=\"d-flex align-items-center mt-1 fs-6\"><!--begin::Info--><div class=\"text-muted me-2 fs-7\">Sent at 10:30 PM by</div><!--end::Info--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\" data-bs-toggle=\"tooltip\" data-bs-boundary=\"window\" data-bs-placement=\"top\" title=\"Jan Hummer\"><img src=\"/media/avatars/blank.png\" alt=\"img\"></div><!--end::User--></div><!--end::Description--></div><!--end::Timeline heading--><!--begin::Timeline details--><div class=\"overflow-auto pb-5\"><div class=\"d-flex align-items-center border border-dashed border-gray-300 rounded min-w-700px p-5\"><!--begin::Item--><div class=\"d-flex flex-aligns-center pe-10 pe-lg-20\"><!--begin::Icon--><img alt=\"\" class=\"w-30px me-3\" src=\"/media/svg/files/pdf.svg\"><!--end::Icon--><!--begin::Info--><div class=\"ms-1 fw-bold\"><!--begin::Desc--><a href=\"#\" class=\"fs-6 text-hover-primary fw-bolder\">Finance KPI App Guidelines</a><!--end::Desc--><!--begin::Number--><div class=\"text-gray-400\">1.9mb</div><!--end::Number--></div><!--begin::Info--></div><!--end::Item--><!--begin::Item--><div class=\"d-flex flex-aligns-center pe-10 pe-lg-20\"><!--begin::Icon--><img alt=\"\" class=\"w-30px me-3\" src=\"/media/svg/files/doc.svg\"><!--end::Icon--><!--begin::Info--><div class=\"ms-1 fw-bold\"><!--begin::Desc--><a href=\"#\" class=\"fs-6 text-hover-primary fw-bolder\">Client UAT Testing Results</a><!--end::Desc--><!--begin::Number--><div class=\"text-gray-400\">18kb</div><!--end::Number--></div><!--end::Info--></div><!--end::Item--><!--begin::Item--><div class=\"d-flex flex-aligns-center\"><!--begin::Icon--><img alt=\"\" class=\"w-30px me-3\" src=\"/media/svg/files/css.svg\"><!--end::Icon--><!--begin::Info--><div class=\"ms-1 fw-bold\"><!--begin::Desc--><a href=\"#\" class=\"fs-6 text-hover-primary fw-bolder\">Finance Reports</a><!--end::Desc--><!--begin::Number--><div class=\"text-gray-400\">20mb</div><!--end::Number--></div><!--end::Icon--></div><!--end::Item--></div></div><!--end::Timeline details--></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inline_svg = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inline-svg");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline item"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline line"), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Timeline line"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline icon"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inline_svg, {
@@ -3992,7 +3992,7 @@ var _hoisted_4 = {
 var _hoisted_5 = {
   "class": "svg-icon svg-icon-2 svg-icon-gray-500"
 };
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"timeline-content mb-10 mt-n1\"><!--begin::Timeline heading--><div class=\"pe-3 mb-5\"><!--begin::Title--><div class=\"fs-5 fw-bold mb-2\"> Task <a href=\"#\" class=\"text-primary fw-bolder me-1\">#45890</a> merged with <a href=\"#\" class=\"text-primary fw-bolder me-1\">#45890</a> in “Ads Pro Admin Dashboard project: </div><!--end::Title--><!--begin::Description--><div class=\"d-flex align-items-center mt-1 fs-6\"><!--begin::Info--><div class=\"text-muted me-2 fs-7\">Initiated at 4:23 PM by</div><!--end::Info--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\" data-bs-toggle=\"tooltip\" data-bs-boundary=\"window\" data-bs-placement=\"top\" title=\"Nina Nilson\"><img src=\"/media/avatars/300-14.jpg\" alt=\"img\"></div><!--end::User--></div><!--end::Description--></div><!--end::Timeline heading--></div>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"timeline-content mb-10 mt-n1\"><!--begin::Timeline heading--><div class=\"pe-3 mb-5\"><!--begin::Title--><div class=\"fs-5 fw-bold mb-2\"> Task <a href=\"#\" class=\"text-primary fw-bolder me-1\">#45890</a> merged with <a href=\"#\" class=\"text-primary fw-bolder me-1\">#45890</a> in “Ads Pro Admin Dashboard project: </div><!--end::Title--><!--begin::Description--><div class=\"d-flex align-items-center mt-1 fs-6\"><!--begin::Info--><div class=\"text-muted me-2 fs-7\">Initiated at 4:23 PM by</div><!--end::Info--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\" data-bs-toggle=\"tooltip\" data-bs-boundary=\"window\" data-bs-placement=\"top\" title=\"Nina Nilson\"><img src=\"/media/avatars/blank.png\" alt=\"img\"></div><!--end::User--></div><!--end::Description--></div><!--end::Timeline heading--></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inline_svg = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inline-svg");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline item"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline line"), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Timeline line"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline icon"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inline_svg, {
@@ -4030,7 +4030,7 @@ var _hoisted_4 = {
 var _hoisted_5 = {
   "class": "svg-icon svg-icon-2 svg-icon-gray-500"
 };
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"timeline-content mb-10 mt-n1\"><!--begin::Timeline heading--><div class=\"pe-3 mb-5\"><!--begin::Title--><div class=\"fs-5 fw-bold mb-2\"> 3 new application design concepts added: </div><!--end::Title--><!--begin::Description--><div class=\"d-flex align-items-center mt-1 fs-6\"><!--begin::Info--><div class=\"text-muted me-2 fs-7\">Created at 4:23 PM by</div><!--end::Info--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\" data-bs-toggle=\"tooltip\" data-bs-boundary=\"window\" data-bs-placement=\"top\" title=\"Marcus Dotson\"><img src=\"/media/avatars/300-2.jpg\" alt=\"img\"></div><!--end::User--></div><!--end::Description--></div><!--end::Timeline heading--><!--begin::Timeline details--><div class=\"overflow-auto pb-5\"><div class=\"d-flex align-items-center border border-dashed border-gray-300 rounded min-w-700px p-7\"><!--begin::Item--><div class=\"overlay me-10\"><!--begin::Image--><div class=\"overlay-wrapper\"><img alt=\"img\" class=\"rounded w-200px\" src=\"/media/demos/demo1.png\"></div><!--end::Image--><!--begin::Link--><div class=\"overlay-layer bg-dark bg-opacity-10 rounded\"><a href=\"#\" class=\"btn btn-sm btn-primary btn-shadow\">Explore</a></div><!--end::Link--></div><!--end::Item--><!--begin::Item--><div class=\"overlay me-10\"><!--begin::Image--><div class=\"overlay-wrapper\"><img alt=\"img\" class=\"rounded w-200px\" src=\"/media/demos/demo2.png\"></div><!--end::Image--><!--begin::Link--><div class=\"overlay-layer bg-dark bg-opacity-10 rounded\"><a href=\"#\" class=\"btn btn-sm btn-primary btn-shadow\">Explore</a></div><!--end::Link--></div><!--end::Item--><!--begin::Item--><div class=\"overlay\"><!--begin::Image--><div class=\"overlay-wrapper\"><img alt=\"img\" class=\"rounded w-200px\" src=\"/media/demos/demo3.png\"></div><!--end::Image--><!--begin::Link--><div class=\"overlay-layer bg-dark bg-opacity-10 rounded\"><a href=\"#\" class=\"btn btn-sm btn-primary btn-shadow\">Explore</a></div><!--end::Link--></div><!--end::Item--></div></div><!--end::Timeline details--></div>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"timeline-content mb-10 mt-n1\"><!--begin::Timeline heading--><div class=\"pe-3 mb-5\"><!--begin::Title--><div class=\"fs-5 fw-bold mb-2\"> 3 new application design concepts added: </div><!--end::Title--><!--begin::Description--><div class=\"d-flex align-items-center mt-1 fs-6\"><!--begin::Info--><div class=\"text-muted me-2 fs-7\">Created at 4:23 PM by</div><!--end::Info--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\" data-bs-toggle=\"tooltip\" data-bs-boundary=\"window\" data-bs-placement=\"top\" title=\"Marcus Dotson\"><img src=\"/media/avatars/blank.png\" alt=\"img\"></div><!--end::User--></div><!--end::Description--></div><!--end::Timeline heading--><!--begin::Timeline details--><div class=\"overflow-auto pb-5\"><div class=\"d-flex align-items-center border border-dashed border-gray-300 rounded min-w-700px p-7\"><!--begin::Item--><div class=\"overlay me-10\"><!--begin::Image--><div class=\"overlay-wrapper\"><img alt=\"img\" class=\"rounded w-200px\" src=\"/media/demos/demo1.png\"></div><!--end::Image--><!--begin::Link--><div class=\"overlay-layer bg-dark bg-opacity-10 rounded\"><a href=\"#\" class=\"btn btn-sm btn-primary btn-shadow\">Explore</a></div><!--end::Link--></div><!--end::Item--><!--begin::Item--><div class=\"overlay me-10\"><!--begin::Image--><div class=\"overlay-wrapper\"><img alt=\"img\" class=\"rounded w-200px\" src=\"/media/demos/demo2.png\"></div><!--end::Image--><!--begin::Link--><div class=\"overlay-layer bg-dark bg-opacity-10 rounded\"><a href=\"#\" class=\"btn btn-sm btn-primary btn-shadow\">Explore</a></div><!--end::Link--></div><!--end::Item--><!--begin::Item--><div class=\"overlay\"><!--begin::Image--><div class=\"overlay-wrapper\"><img alt=\"img\" class=\"rounded w-200px\" src=\"/media/demos/demo3.png\"></div><!--end::Image--><!--begin::Link--><div class=\"overlay-layer bg-dark bg-opacity-10 rounded\"><a href=\"#\" class=\"btn btn-sm btn-primary btn-shadow\">Explore</a></div><!--end::Link--></div><!--end::Item--></div></div><!--end::Timeline details--></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inline_svg = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inline-svg");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline item"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline line"), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Timeline line"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Timeline icon"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inline_svg, {
@@ -4109,7 +4109,7 @@ var _hoisted_5 = {
 var _hoisted_6 = {
   "class": "timeline-content mb-10 mt-n1"
 };
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"pe-3 mb-5\"><!--begin::Title--><div class=\"fs-5 fw-bold mb-2\">You have received a new order:</div><!--end::Title--><!--begin::Description--><div class=\"d-flex align-items-center mt-1 fs-6\"><!--begin::Info--><div class=\"text-muted me-2 fs-7\">Placed at 5:05 AM by</div><!--end::Info--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\" data-bs-toggle=\"tooltip\" data-bs-boundary=\"window\" data-bs-placement=\"top\" title=\"Robert Rich\"><img src=\"/media/avatars/300-4.jpg\" alt=\"img\"></div><!--end::User--></div><!--end::Description--></div>", 1);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"pe-3 mb-5\"><!--begin::Title--><div class=\"fs-5 fw-bold mb-2\">You have received a new order:</div><!--end::Title--><!--begin::Description--><div class=\"d-flex align-items-center mt-1 fs-6\"><!--begin::Info--><div class=\"text-muted me-2 fs-7\">Placed at 5:05 AM by</div><!--end::Info--><!--begin::User--><div class=\"symbol symbol-circle symbol-25px\" data-bs-toggle=\"tooltip\" data-bs-boundary=\"window\" data-bs-placement=\"top\" title=\"Robert Rich\"><img src=\"/media/avatars/blank.png\" alt=\"img\"></div><!--end::User--></div><!--end::Description--></div>", 1);
 var _hoisted_8 = {
   "class": "overflow-auto pb-5"
 };
@@ -4392,11 +4392,11 @@ var _hoisted_1 = {
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
   "class": "fs-5 text-muted m-0 pb-5"
 }, "Users", -1 /* HOISTED */);
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"#\" class=\"d-flex text-dark text-hover-primary align-items-center mb-5\"><!--begin::Symbol--><div class=\"symbol symbol-40px symbol-circle me-4\"><img src=\"/media/avatars/300-6.jpg\" alt=\"\"></div><!--end::Symbol--><!--begin::Title--><div class=\"d-flex flex-column justify-content-start fw-bold\"><span class=\"fs-6 fw-bold\">Karina Clark</span><span class=\"fs-7 fw-bold text-muted\">Marketing Manager</span></div><!--end::Title--></a>", 1);
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"#\" class=\"d-flex text-dark text-hover-primary align-items-center mb-5\"><!--begin::Symbol--><div class=\"symbol symbol-40px symbol-circle me-4\"><img src=\"/media/avatars/300-2.jpg\" alt=\"\"></div><!--end::Symbol--><!--begin::Title--><div class=\"d-flex flex-column justify-content-start fw-bold\"><span class=\"fs-6 fw-bold\">Olivia Bold</span><span class=\"fs-7 fw-bold text-muted\">Software Engineer</span></div><!--end::Title--></a>", 1);
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"#\" class=\"d-flex text-dark text-hover-primary align-items-center mb-5\"><!--begin::Symbol--><div class=\"symbol symbol-40px symbol-circle me-4\"><img src=\"/media/avatars/300-9.jpg\" alt=\"\"></div><!--end::Symbol--><!--begin::Title--><div class=\"d-flex flex-column justify-content-start fw-bold\"><span class=\"fs-6 fw-bold\">Ana Clark</span><span class=\"fs-7 fw-bold text-muted\">UI/UX Designer</span></div><!--end::Title--></a>", 1);
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"#\" class=\"d-flex text-dark text-hover-primary align-items-center mb-5\"><!--begin::Symbol--><div class=\"symbol symbol-40px symbol-circle me-4\"><img src=\"/media/avatars/300-14.jpg\" alt=\"\"></div><!--end::Symbol--><!--begin::Title--><div class=\"d-flex flex-column justify-content-start fw-bold\"><span class=\"fs-6 fw-bold\">Nick Pitola</span><span class=\"fs-7 fw-bold text-muted\">Art Director</span></div><!--end::Title--></a>", 1);
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"#\" class=\"d-flex text-dark text-hover-primary align-items-center mb-5\"><!--begin::Symbol--><div class=\"symbol symbol-40px symbol-circle me-4\"><img src=\"/media/avatars/300-11.jpg\" alt=\"\"></div><!--end::Symbol--><!--begin::Title--><div class=\"d-flex flex-column justify-content-start fw-bold\"><span class=\"fs-6 fw-bold\">Edward Kulnic</span><span class=\"fs-7 fw-bold text-muted\">System Administrator</span></div><!--end::Title--></a>", 1);
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"#\" class=\"d-flex text-dark text-hover-primary align-items-center mb-5\"><!--begin::Symbol--><div class=\"symbol symbol-40px symbol-circle me-4\"><img src=\"/media/avatars/blank.png\" alt=\"\"></div><!--end::Symbol--><!--begin::Title--><div class=\"d-flex flex-column justify-content-start fw-bold\"><span class=\"fs-6 fw-bold\">Karina Clark</span><span class=\"fs-7 fw-bold text-muted\">Marketing Manager</span></div><!--end::Title--></a>", 1);
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"#\" class=\"d-flex text-dark text-hover-primary align-items-center mb-5\"><!--begin::Symbol--><div class=\"symbol symbol-40px symbol-circle me-4\"><img src=\"/media/avatars/blank.png\" alt=\"\"></div><!--end::Symbol--><!--begin::Title--><div class=\"d-flex flex-column justify-content-start fw-bold\"><span class=\"fs-6 fw-bold\">Olivia Bold</span><span class=\"fs-7 fw-bold text-muted\">Software Engineer</span></div><!--end::Title--></a>", 1);
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"#\" class=\"d-flex text-dark text-hover-primary align-items-center mb-5\"><!--begin::Symbol--><div class=\"symbol symbol-40px symbol-circle me-4\"><img src=\"/media/avatars/blank.png\" alt=\"\"></div><!--end::Symbol--><!--begin::Title--><div class=\"d-flex flex-column justify-content-start fw-bold\"><span class=\"fs-6 fw-bold\">Ana Clark</span><span class=\"fs-7 fw-bold text-muted\">UI/UX Designer</span></div><!--end::Title--></a>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"#\" class=\"d-flex text-dark text-hover-primary align-items-center mb-5\"><!--begin::Symbol--><div class=\"symbol symbol-40px symbol-circle me-4\"><img src=\"/media/avatars/blank.png\" alt=\"\"></div><!--end::Symbol--><!--begin::Title--><div class=\"d-flex flex-column justify-content-start fw-bold\"><span class=\"fs-6 fw-bold\">Nick Pitola</span><span class=\"fs-7 fw-bold text-muted\">Art Director</span></div><!--end::Title--></a>", 1);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"#\" class=\"d-flex text-dark text-hover-primary align-items-center mb-5\"><!--begin::Symbol--><div class=\"symbol symbol-40px symbol-circle me-4\"><img src=\"/media/avatars/blank.png\" alt=\"\"></div><!--end::Symbol--><!--begin::Title--><div class=\"d-flex flex-column justify-content-start fw-bold\"><span class=\"fs-6 fw-bold\">Edward Kulnic</span><span class=\"fs-7 fw-bold text-muted\">System Administrator</span></div><!--end::Title--></a>", 1);
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
   "class": "fs-5 text-muted m-0 pt-5 pb-5"
 }, "Customers", -1 /* HOISTED */);
@@ -9575,7 +9575,7 @@ var DocMenuConfig = [{
   pages: [{
     sectionTitle: "System Settings",
     fontIcon: "bi bi-gear",
-    components: ["Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show", "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show", "DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show"],
+    components: ["Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show", "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show", "DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show", "Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show"],
     sub: [{
       heading: "Permissions",
       route: "permissions.index",
@@ -9600,6 +9600,10 @@ var DocMenuConfig = [{
       heading: "DiseaseTypes",
       route: "disease-types.index",
       components: ["DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show"]
+    }, {
+      heading: "Diseases",
+      route: "diseases.index",
+      components: ["Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show"]
     }]
   }, {
     heading: "Registrations",
@@ -14146,6 +14150,38 @@ var map = {
 	"./DiseaseTypes/Show.vue": [
 		"./resources/ts/Pages/DiseaseTypes/Show.vue",
 		"resources_ts_Pages_DiseaseTypes_Show_vue"
+	],
+	"./Diseases/Create": [
+		"./resources/ts/Pages/Diseases/Create.vue",
+		"resources_ts_Pages_Diseases_Create_vue"
+	],
+	"./Diseases/Create.vue": [
+		"./resources/ts/Pages/Diseases/Create.vue",
+		"resources_ts_Pages_Diseases_Create_vue"
+	],
+	"./Diseases/Edit": [
+		"./resources/ts/Pages/Diseases/Edit.vue",
+		"resources_ts_Pages_Diseases_Edit_vue"
+	],
+	"./Diseases/Edit.vue": [
+		"./resources/ts/Pages/Diseases/Edit.vue",
+		"resources_ts_Pages_Diseases_Edit_vue"
+	],
+	"./Diseases/Index": [
+		"./resources/ts/Pages/Diseases/Index.vue",
+		"resources_ts_Pages_Diseases_Index_vue"
+	],
+	"./Diseases/Index.vue": [
+		"./resources/ts/Pages/Diseases/Index.vue",
+		"resources_ts_Pages_Diseases_Index_vue"
+	],
+	"./Diseases/Show": [
+		"./resources/ts/Pages/Diseases/Show.vue",
+		"resources_ts_Pages_Diseases_Show_vue"
+	],
+	"./Diseases/Show.vue": [
+		"./resources/ts/Pages/Diseases/Show.vue",
+		"resources_ts_Pages_Diseases_Show_vue"
 	],
 	"./Home": [
 		"./resources/ts/Pages/Home.vue",

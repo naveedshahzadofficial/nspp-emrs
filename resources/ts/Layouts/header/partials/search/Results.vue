@@ -12,7 +12,7 @@
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
-          <img src="/media/avatars/300-6.jpg" alt="" />
+          <img src="/media/avatars/blank.png" alt="" />
         </div>
         <!--end::Symbol-->
         <!--begin::Title-->
@@ -30,7 +30,7 @@
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
-          <img src="/media/avatars/300-2.jpg" alt="" />
+          <img src="/media/avatars/blank.png" alt="" />
         </div>
         <!--end::Symbol-->
         <!--begin::Title-->
@@ -48,7 +48,7 @@
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
-          <img src="/media/avatars/300-9.jpg" alt="" />
+          <img src="/media/avatars/blank.png" alt="" />
         </div>
         <!--end::Symbol-->
         <!--begin::Title-->
@@ -66,7 +66,7 @@
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
-          <img src="/media/avatars/300-14.jpg" alt="" />
+          <img src="/media/avatars/blank.png" alt="" />
         </div>
         <!--end::Symbol-->
         <!--begin::Title-->
@@ -84,7 +84,7 @@
       >
         <!--begin::Symbol-->
         <div class="symbol symbol-40px symbol-circle me-4">
-          <img src="/media/avatars/300-11.jpg" alt="" />
+          <img src="/media/avatars/blank.png" alt="" />
         </div>
         <!--end::Symbol-->
         <!--begin::Title-->
