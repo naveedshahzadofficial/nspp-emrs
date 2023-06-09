@@ -1,6 +1,7 @@
 <template>
   <!--begin::Header-->
-  <div id="kt_header" style="" class="header align-items-stretch">
+  <div id="kt_header" style="background-image:url('/media/patterns/bg_header.jpg')" class="header align-items-stretch">
+
     <!--begin::Container-->
     <div
       :class="{
@@ -28,7 +29,7 @@
       <!--begin::Mobile logo-->
       <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
         <a href="#" class="d-lg-none">
-          <img alt="Logo" src="/media/logos/logo-2.svg" class="h-30px" />
+          <img alt="Logo" src="/media/logos/nspp-logo.png" class="h-30px" />
         </a>
       </div>
       <!--end::Mobile logo-->
@@ -39,6 +40,10 @@
       >
         <!--begin::Navbar-->
         <div class="d-flex align-items-stretch" id="kt_header_nav">
+            <div>
+                <h1 class="nspp_heading pt-2 text-uppercase" style="color: #d8a43d;font-family: Poppins,serif;font-size: 23px;">Electronic Medical Record System</h1>
+                <h1 style="color: #d8a43d;font-family: Poppins;font-size: 14px;">National School of Public Policy, Government of Pakistan</h1>
+            </div>
 
         </div>
         <!--end::Navbar-->

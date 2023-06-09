@@ -16,7 +16,12 @@
         data-kt-menu-placement="bottom-end"
         data-kt-menu-flip="bottom"
       >
-        <img src="/media/avatars/blank.png" alt="metronic" />
+          <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
+          <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-3">&nbsp;{{ $page.props.auth?.user?.name }}&nbsp;</span>
+          <span v-if="!$page.props.auth?.user?.profile_file" class="symbol symbol-35 bg-light-success" >
+              <span class="symbol-label font-size-h5 font-weight-bold" v-if="$page.props.auth?.user?.name">{{ $page.props.auth?.user?.name.charAt(0) }}</span>
+          </span>
+          <img v-if="$page.props.auth?.user?.profile_file" src="/media/avatars/blank.png" :alt="$page.props.auth?.user?.name" />
       </div>
       <KTUserMenu></KTUserMenu>
       <!--end::Menu-->

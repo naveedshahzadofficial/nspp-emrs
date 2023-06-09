@@ -16,6 +16,7 @@ $gray-700: 										    if(isDarkMode(), #92929F, #5E6278) !default;
 $gray-800: 										    if(isDarkMode(), #CDCDDE, #3F4254) !default;
 $gray-900: 										    if(isDarkMode(), #FFFFFF, #181C32) !default;
 $text-muted:                                        $gray-500 !default;
+$gold: 										        #d8a43d !default;
 
 // Dark Mode
 $dark-mode-page-bg-color:                           #151521 !default;
@@ -186,7 +187,8 @@ $theme-text-colors: (
     "gray-600":   $gray-600,
     "gray-700":   $gray-700,
     "gray-800":   $gray-800,
-    "gray-900":   $gray-900
+    "gray-900":   $gray-900,
+    "gold":   $gold,
 ) !default;  // Custom variable
 
 // Options
@@ -463,7 +465,7 @@ $font-sizes: (
     4qx: $font-size-base * 4.25,    // 55.25px
     4hx: $font-size-base * 4.5,     // 58.5px
     4tx: $font-size-base * 4.75,    // 61.75px
-    
+
     5x: $font-size-base * 5,        // 65px
     5qx: $font-size-base * 5.25,    // 68.25px
     5hx: $font-size-base * 5.5,     // 71.5px
@@ -573,7 +575,7 @@ $form-label-color:                                  $gray-800 !default;
 $form-text-margin-top:                              .5rem !default;
 $form-text-font-size:                               $font-size-sm !default;
 $form-text-color:                                   $text-muted !default;
- 
+
 
 $input-padding-y:                                   $input-btn-padding-y !default;
 $input-padding-x:                                   $input-btn-padding-x !default;

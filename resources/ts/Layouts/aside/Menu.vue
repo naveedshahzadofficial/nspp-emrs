@@ -14,7 +14,7 @@
     <!--begin::Menu-->
     <div
       id="#kt_header_menu"
-      class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
+      class="menu menu-column menu-title-white menu-state-title-gold menu-icon-gold menu-bullet-gold menu-arrow-gold"
       data-kt-menu="true"
     >
       <template v-for="(item, i) in MainMenuConfig" :key="i">

@@ -16,13 +16,14 @@
         data-kt-drawer-toggle="#kt_aside_mobile_toggle"
     >
         <!--begin::Brand-->
-        <div class="aside-logo flex-column-auto" id="kt_aside_logo">
+        <div class="aside-logo flex-column-auto" id="kt_aside_logo" style="background-color: #053C41; height: 120px;">
+            <span>&nbsp;</span>
             <!--begin::Logo-->
             <a href="#" v-if="asideTheme === 'dark'">
-                <img alt="Logo" :src="darkLogo" class="h-25px logo" />
+                <img alt="Logo" :src="darkLogo" class="h-60px logo mt-2 me-10" />
             </a>
             <a href="#" v-if="asideTheme === 'light'">
-                <img alt="Logo" :src="lightLogo" class="h-25px logo" />
+                <img alt="Logo" :src="lightLogo" class="h-60px logo mt-2 me-10" />
             </a>
             <!--end::Logo-->
 

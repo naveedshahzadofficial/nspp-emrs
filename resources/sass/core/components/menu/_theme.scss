@@ -209,6 +209,14 @@
     }
 }
 
+.menu-state-title-gold {
+    .menu-item {
+        @include menu-link-hover-state( $gold, null, null, null, null );
+        @include menu-link-show-state( $gold, null, null, null, null );
+        @include menu-link-active-state( $gold, null, null, null, null );
+    }
+}
+
 // Primary icon color states
 .menu-hover-icon-primary {
     .menu-item {

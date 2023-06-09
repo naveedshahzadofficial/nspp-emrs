@@ -1,6 +1,6 @@
 <template>
     <!--begin::Toolbar-->
-    <div class="toolbar" id="kt_toolbar">
+    <div class="toolbar" id="kt_toolbar" style="background-color: #bed8cb;">
         <!--begin::Container-->
         <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
             <!--begin::Page title-->
