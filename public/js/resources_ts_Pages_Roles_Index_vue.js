@@ -214,14 +214,14 @@ var _hoisted_1 = {
   "class": "row d-flex align-items-center"
 };
 var _hoisted_2 = {
-  "class": "col-sm-12 col-md-5"
+  "class": "col-sm-12 col-md-3"
 };
 var _hoisted_3 = {
   "class": "pagination-info"
 };
 var _hoisted_4 = {
   key: 0,
-  "class": "col-sm-12 col-md-7"
+  "class": "col-sm-12 col-md-9"
 };
 var _hoisted_5 = {
   "class": "pagination pagination-circle pagination-outline justify-content-end"

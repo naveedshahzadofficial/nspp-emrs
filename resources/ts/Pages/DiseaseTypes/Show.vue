@@ -1,11 +1,11 @@
 <template>
-    <Head title="View Complaint"/>
+    <Head title="View Disease Type"/>
     <Toolbar
-        title="View Complaint"
-        :buttons="[{label: 'Back', link: route('complaints.index')}]"
+        title="View Disease Type"
+        :buttons="[{label: 'Back', link: route('disease-types.index')}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
-            {label: 'Complaints', link: route('complaints.index')},
+            {label: 'Disease Types', link: route('disease-types.index')},
             {label: 'View', link: null}
         ]"
     />
@@ -16,14 +16,14 @@
             <div class="card card-custom">
                     <!--begin::Card body-->
                     <div class="card-body">
-                        <div class="row mb-10">
+                        <div class="row">
                             <div class="col-lg-6">
-                                <label class="form-label fw-semibold">Complaint Name</label>
-                                <span class="form-control form-control-solid">{{ complaint.complaint_name }}</span>
+                                <label class="form-label fw-semibold">Disease Type</label>
+                                <span class="form-control form-control-solid">{{ diseaseType.type_name }}</span>
                             </div>
                             <div class="col-lg-6">
                                 <label class="form-label fw-semibold">Status</label>
-                                <span class="form-control form-control-solid">{{ complaint.status?'Active':'Inactive' }}</span>
+                                <span class="form-control form-control-solid">{{ diseaseType.status?'Active':'Inactive' }}</span>
                             </div>
                         </div>
                     </div>
@@ -36,6 +36,6 @@
 </template>
 <script lang="ts" setup>
 defineProps({
-    complaint: { type: Object, required: true}
+    diseaseType: { type: Object, required: true}
 });
 </script>

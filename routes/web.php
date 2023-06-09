@@ -12,6 +12,8 @@ use App\Http\Controllers\{
     UserController,
     PatientTypeController,
     ComplaintController,
+    DiseaseTypeController,
+    DiseaseController,
 };
 
 Route::get('/',[AuthController::class,'showLoginForm']);
@@ -39,6 +41,9 @@ Route::group(['middleware' => ['auth']],function() {
 
     Route::delete('/complaints/{complaint}/change-status', [ComplaintController::class, 'changeStatus'])->name('complaints.change-status');
     Route::resource('/complaints', ComplaintController::class);
+
+    Route::delete('/disease-types/{disease_type}/change-status', [DiseaseTypeController::class, 'changeStatus'])->name('disease-types.change-status');
+    Route::resource('/disease-types', DiseaseTypeController::class);
 
 
     Route::get('/registrations/{patient_visit}/proceed', [RegistrationController::class, 'proceed'])->name('registrations.proceed');

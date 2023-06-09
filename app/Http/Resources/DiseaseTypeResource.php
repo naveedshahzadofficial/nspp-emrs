@@ -17,6 +17,7 @@ class DiseaseTypeResource extends JsonResource
         return [
             'id' => $this->id,
             'type_name'=> $this->type_name,
+            'status'=> $this->status,
         ];
     }
 }
