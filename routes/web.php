@@ -16,6 +16,7 @@ use App\Http\Controllers\{
     DiseaseController,
 };
 
+
 Route::controller(AuthController::class)->group(function () {
     Route::get('/','showLoginForm');
     Route::get('/login', 'showLoginForm')->name('login');
