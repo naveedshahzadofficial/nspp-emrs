@@ -15,7 +15,7 @@
                     </Link>
                 </div>
                 <div class="d-flex flex-column">
-                <span class="auth-logo-title">MESS MANAGEMENT SYSTEM</span>
+                <span class="auth-logo-title">Electronic Medical Record System</span>
                 <span class="auth-logo-subtitle">National School of Public Policy</span>
                 <span class="auth-logo-caption">Government of Pakistan</span>
                 </div>
