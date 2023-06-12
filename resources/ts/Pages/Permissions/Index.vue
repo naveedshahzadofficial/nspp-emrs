@@ -124,7 +124,7 @@ const props = defineProps({
 const search: any = ref(props.filters?.search);
 const limit: any = ref(props.filters?.limit || '30');
 
-watch(search, debounce((value: any) =>{
+watch([search, limit], debounce((value: any) =>{
     filterData('permissions.index', {search: search.value, limit:limit.value});
 }, 500 ) as any);
 

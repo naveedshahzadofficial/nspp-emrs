@@ -149,7 +149,7 @@ const limit: any = ref(props.filters?.limit || '30');
 const sortKey: any = ref(props.filters?.sortKey || 'created_at');
 const sortOrder: any = ref(props.filters?.sortOrder || 'desc');
 
-watch(search, debounce((value: any) =>{
+watch([search, limit], debounce((value: any) =>{
     filterData('users.index', {search: search.value, limit:limit.value});
 }, 500 ) as any);
 

@@ -13,7 +13,7 @@ use App\Http\Resources\GenderResource;
 use App\Http\Resources\HospitalResource;
 use App\Http\Resources\LabResource;
 use App\Http\Resources\MedicineResource;
-use App\Http\Resources\MedicineTypeResource;
+use App\Http\Resources\PatientResource;
 use App\Http\Resources\PatientTypeResource;
 use App\Http\Resources\PatientVisitResource;
 use App\Http\Resources\ProcedureResource;
@@ -30,7 +30,6 @@ use App\Models\Gender;
 use App\Models\Hospital;
 use App\Models\Lab;
 use App\Models\Medicine;
-use App\Models\MedicineType;
 use App\Models\Patient;
 use App\Models\PatientType;
 use App\Models\PatientVisit;
@@ -42,7 +41,6 @@ use App\Models\TestCategory;
 use App\Models\TestType;
 use App\Services\RegistrationService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
@@ -82,7 +80,26 @@ class RegistrationController extends Controller
     {
         $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
         $genders = GenderResource::collection(Gender::active()->get());
-        return Inertia::render('Registrations/Create', compact('patientTypes', 'genders'));
+
+        /* Begin: Search */
+        $patients = Collect([]);
+        $filters = request()->only(['mobile_no', 'cnic_no', 'patient_name']);
+        if(request()->input('mobile_no') || request()->input('cnic_no') || request()->input('patient_name')) {
+            $patients = PatientResource::collection(Patient::query()
+                ->when(request()->input('mobile_no'), function ($query, $search){
+                    $query->where('patient_phone', $search);
+                })
+                ->when(request()->input('cnic_no'), function ($query, $search){
+                    $query->where('patient_cnic', $search);
+                })
+                ->when(request()->input('patient_name'), function ($query, $search){
+                    $query->where('patient_name', 'like', "%{$search}%");
+                })
+                ->get());
+        }
+        /* End: Search */
+
+        return Inertia::render('Registrations/Create', compact('patientTypes', 'genders', 'patients', 'filters'));
     }
 
     /**
@@ -94,7 +111,8 @@ class RegistrationController extends Controller
     public function store(StoreRegistrationRequest $request): \Illuminate\Http\RedirectResponse
     {
         DB::transaction(function() use ($request) {
-        $patient = $this->registrationService->addPatient($request->validated());
+
+        $patient = $this->registrationService->updateOrCreatePatient($request->validated(), $request->patient_id);
             $this->registrationService->addPatientVisit($request->validated(), $patient);
         });
         session()->flash('success', 'Your Registration has been added successfully.');
@@ -195,11 +213,9 @@ class RegistrationController extends Controller
 
     public function checkout(PrescriptionCheckoutRequest $request, PatientVisit $patientVisit)
     {
-        //dd($request->all());
-
         $response = $this->registrationService->moCheckout($request->all(), $patientVisit);
-
         session()->flash('success', 'Your prescription has been saved successfully.');
         return redirect()->route('registrations.index');
     }
+
 }

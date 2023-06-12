@@ -8,8 +8,16 @@
          }"
         class="alert alert-success alert-dismissible d-flex align-items-center p-5"
     >
-     <span class="svg-icon svg-icon-2hx svg-icon-success me-4">
-      <inline-svg src="/media/icons/duotune/general/gen048.svg" />
+     <span
+         class="svg-icon svg-icon-2hx me-4"
+         :class="{
+        'svg-icon-success': title==='Success',
+        'svg-icon-danger': title==='Error',
+        'svg-icon-warning': title==='Warning',
+        'svg-icon-info': title==='Info',
+         }"
+     >
+      <inline-svg :src="iconUrl"/>
     </span>
         <!--begin::Content-->
         <div class="d-flex flex-column">
@@ -37,10 +45,32 @@
 
 </template>
 <script setup lang="ts">
-  defineProps({
+import {onMounted, ref} from "vue";
+
+  const props = defineProps({
       title: { type: String, required: true},
       message: { type: String, required: true},
   });
+
+  const iconUrl = ref('');
+
+  onMounted(() => {
+      switch (props.title){
+          case 'Success':
+              iconUrl.value =  '/media/icons/duotune/general/gen048.svg';
+              break;
+          case 'Error':
+               iconUrl.value =  '/media/icons/duotune/general/gen050.svg';
+              break;
+          case 'Warning':
+               iconUrl.value =  '/media/icons/duotune/general/gen044.svg';
+              break;
+          case 'Info':
+               iconUrl.value =  '/media/icons/duotune/general/gen045.svg';
+              break;
+      }
+  });
+
 </script>
 <style scoped lang="scss">
 

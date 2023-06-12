@@ -1,11 +1,10 @@
 <template>
-    <Head title="Patient Types"/>
+    <Head title="Reimbursements"/>
     <Toolbar
-        title="Patient Types"
-        :buttons="[{label: 'Add Patient Type', link: route('patient-types.create')}]"
+        title="Reimbursements"
+        :buttons="[{label: 'Add Reimbursement', link: route('reimbursements.create')}]"
         :breadcrumbs="[
-            {label: 'System Settings', link: '#'},
-        {label: 'Patient Types', link: null}
+        {label: 'Reimbursements', link: null}
         ]"
     />
 
@@ -56,24 +55,21 @@
                         <!--begin::Table head-->
                         <thead>
                         <tr class="fw-semibold fs-6 text-gray-800">
-                            <th>Type Name</th>
-                            <th class="text-center">Status</th>
+                            <th>Patient Name</th>
+                            <th class="text-start">Actual Amount</th>
+                            <th class="text-start">Approved Amount by MO</th>
                             <th class="text-center w-200px">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <template v-for="patientType in patientTypes.data" :key="patientType.id">
+                        <template v-for="reimbursement in reimbursements.data" :key="reimbursement.id">
                             <tr>
-                                <td>{{ patientType.patient_type }}</td>
-                                <td class="text-center">
-                                    <span class="badge font-weight-bold"
-                                          :class="[patientType.status?'badge-success':'badge-danger']">
-                                        {{ patientType.status?'Active':'Inactive' }}
-                                    </span>
-                                </td>
+                                <td>{{ reimbursement?.patient?.patient_name }}</td>
+                                <td>{{ reimbursement.actual_amount }}</td>
+                                <td>{{ reimbursement.approved_amount }}</td>
                                 <td class="text-center">
                                     <Link
-                                        :href="route('patient-types.show', patientType.id)"
+                                        :href="route('reimbursements.show', reimbursement.id)"
                                         class="btn btn-icon btn-primary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -82,7 +78,7 @@
                                     </Link>
 
                                     <Link
-                                        :href="route('patient-types.edit', patientType.id)"
+                                        :href="route('reimbursements.edit', reimbursement.id)"
                                         class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -90,19 +86,8 @@
                                         <i class="fas fa-edit"></i>
                                     </Link>
 
-                                    <a @click.prevent="changeStatus('patient-types.change-status', patientType)"
-                                       class="btn btn-icon btn-circle btn-sm me-2"
-                                       :class="[patientType.status?'btn-danger':'btn-success']"
-                                       data-bs-toggle="tooltip"
-                                       data-bs-placement="top"
-                                       :title="[patientType.status?'Deactivate':'Activate']">
-                                        <i class="icon-xl fas"
-                                           :class="[patientType.status?'fa-toggle-off':'fa-toggle-on']"
-                                        ></i>
-                                    </a>
-
                                     <a
-                                        @click.prevent="destroy('patient-types.destroy', patientType.id)"
+                                        @click.prevent="destroy('reimbursements.destroy', reimbursement.id)"
                                         class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
                                         data-bs-placement="top"
@@ -116,7 +101,7 @@
                     </table>
                 </div>
 
-                <Pagination :meta="patientTypes?.meta" :links="patientTypes?.links" />
+                <Pagination :meta="reimbursements?.meta" :links="reimbursements?.links" />
             </div>
             </div>
 
@@ -136,7 +121,7 @@ const { filterData, destroy, changeStatus } = useCommons();
 
 
 const props = defineProps({
-    patientTypes: { type: Object, required: true },
+    reimbursements: { type: Object, required: true },
     filters: Object
 });
 
@@ -145,7 +130,7 @@ const limit: any = ref(props.filters?.limit || '30');
 
 
 watch([search, limit], debounce((value: any) =>{
-    filterData('patient-types.index', {search: search.value, limit:limit.value});
+    filterData('reimbursements.index', {search: search.value, limit:limit.value});
 }, 500 ) as any);
 
 </script>

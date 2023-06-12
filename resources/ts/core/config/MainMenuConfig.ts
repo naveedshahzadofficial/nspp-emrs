@@ -70,6 +70,12 @@ const DocMenuConfig = [
             components: ["Registrations/Index", "Registrations/Create", "Registrations/Edit", "Registrations/Show", "Registrations/Proceed"],
             fontIcon: "bi bi-pencil-square",
         },
+        {
+            heading: "Reimbursements",
+            route: "reimbursements.index",
+            components: ["Reimbursements/Index", "Reimbursements/Create", "Reimbursements/Edit", "Reimbursements/Show"],
+            fontIcon: "bi bi-pencil-square",
+        },
     ],
   },
 ];

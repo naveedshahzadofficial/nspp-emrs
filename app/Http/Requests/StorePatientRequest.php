@@ -31,7 +31,7 @@ class StorePatientRequest extends FormRequest
             'relationship_with_employee' => 'required|string|max:100',
             'designation' => 'required|string|max:100',
             'patient_cnic' => 'required',
-            'patient_mobile' => 'nullable|sometimes',
+            'patient_phone' => 'nullable|sometimes',
         ];
     }
 }

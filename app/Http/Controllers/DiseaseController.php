@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\DiseaseRequest;
 use App\Http\Resources\DiseaseResource;
+use App\Http\Resources\DiseaseTypeResource;
 use App\Models\Disease;
+use App\Models\DiseaseType;
 use Inertia\Inertia;
 
 class DiseaseController extends Controller
@@ -19,8 +21,9 @@ class DiseaseController extends Controller
         $filters = request()->only(['search', 'limit']);
         $diseases = DiseaseResource::collection(
             Disease::query()
+                ->with('diseaseType')
                 ->when(request()->input('search'), function ($query, $search){
-                    $query->where('disease_name', 'like', "%{$search}%");
+                    $query->whereRelation('diseaseType', 'type_name', 'like', "%{$search}%")->orWhere('disease_name', 'like', "%{$search}%");
                 })
                 ->orderBy('created_at', 'desc')
                 ->paginate(request()->input('limit', 30))->withQueryString()
@@ -35,7 +38,8 @@ class DiseaseController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Diseases/Create');
+        $diseaseTypes = DiseaseTypeResource::collection(DiseaseType::active()->get());
+        return Inertia::render('Diseases/Create', compact('diseaseTypes'));
     }
 
     /**
@@ -59,6 +63,7 @@ class DiseaseController extends Controller
      */
     public function show(Disease $disease)
     {
+        $disease->load('diseaseType');
         return Inertia::render('Diseases/Show', compact('disease'));
     }
 
@@ -70,7 +75,8 @@ class DiseaseController extends Controller
      */
     public function edit(Disease $disease)
     {
-        return Inertia::render('Diseases/Edit', compact('disease'));
+        $diseaseTypes = DiseaseTypeResource::collection(DiseaseType::active()->get());
+        return Inertia::render('Diseases/Edit', compact('disease', 'diseaseTypes'));
     }
 
     /**

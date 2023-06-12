@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDiseasesTable extends Migration
+class CreateReimbursementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateDiseasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('diseases', function (Blueprint $table) {
+        Schema::create('reimbursements', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('disease_type_id')->constrained();
-            $table->string('disease_name');
-            $table->text('disease_description')->nullable();
-            $table->boolean('status')->default(1);
+            $table->foreignId('patient_id')->constrained();
+            $table->decimal('actual_amount', 20, 0);
+            $table->decimal('approved_amount', 20, 0);
+            $table->foreignId('user_id')->constrained();
+            $table->text('comments')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -31,6 +32,6 @@ class CreateDiseasesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diseases');
+        Schema::dropIfExists('reimbursements');
     }
 }

@@ -18,11 +18,31 @@
                 <form @submit.prevent="form.put(route('diseases.update', disease?.id))">
                     <!--begin::Card body-->
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row mb-10">
+                            <div class="col-lg-6">
+                                <label class="form-label required">Disease Type</label>
+                                <v-select
+                                    v-model="form.disease_type_id"
+                                    :options="diseaseTypes"
+                                    :reduce="(option) => option.id"
+                                    label="type_name"
+                                    class="v-select-custom"
+                                    placeholder="Please Select" />
+                                <ServerErrorMessage :error="form.errors.disease_type_id"/>
+                            </div>
                             <div class="col-lg-6">
                                 <label class="required form-label">Disease Name</label>
                                 <input v-model="form.disease_name"  type="text" class="form-control form-control-sm" placeholder="Disease Name"/>
                                 <ServerErrorMessage :error="form.errors.disease_name"/>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label class="form-label">Description</label>
+                                <textarea v-model="form.disease_description"  class="form-control form-control-sm" rows="4"></textarea>
+                                <ServerErrorMessage :error="form.errors.disease_description"/>
                             </div>
                             <div class="col-lg-6">
                                 <label class="required form-label">Status</label>
@@ -70,10 +90,13 @@
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 import {useForm} from "@inertiajs/vue3";
 const props = defineProps({
+    diseaseTypes: {type: Array ,required: true},
     disease: { type: Object, required: true}
 });
 const form = useForm({
+    disease_type_id: props.disease?.disease_type_id,
     disease_name: props.disease?.disease_name,
+    disease_description: props.disease?.disease_description,
     status: props.disease?.status,
 });
 </script>

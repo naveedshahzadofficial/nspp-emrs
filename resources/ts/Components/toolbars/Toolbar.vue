@@ -9,10 +9,10 @@
                 <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">{{ title }}</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
-                <span class="h-20px border-gray-200 border-start mx-4"></span>
+                <span v-if="breadcrumbs.length > 1" class="h-20px border-gray-200 border-start mx-4"></span>
                 <!--end::Separator-->
                 <!--begin::Breadcrumb-->
-                <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
+                <ul v-if="breadcrumbs.length > 1" class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
                     <template v-for="(breadcrumb, index) in breadcrumbs" :key="index">
                         <li v-if="breadcrumb.link" class="breadcrumb-item"
                             :class="[isLastBreadcrumb(index)?'text-dark':'text-muted']">

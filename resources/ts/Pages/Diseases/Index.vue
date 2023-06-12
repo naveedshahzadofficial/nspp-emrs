@@ -57,6 +57,7 @@
                         <thead>
                         <tr class="fw-semibold fs-6 text-gray-800">
                             <th>Disease Name</th>
+                            <th>Disease Type</th>
                             <th class="text-center">Status</th>
                             <th class="text-center w-200px">Action</th>
                         </tr>
@@ -65,6 +66,7 @@
                         <template v-for="disease in diseases.data" :key="disease.id">
                             <tr>
                                 <td>{{ disease.disease_name }}</td>
+                                <td>{{ disease?.disease_type?.type_name }}</td>
                                 <td class="text-center">
                                     <span class="badge font-weight-bold"
                                           :class="[disease.status?'badge-success':'badge-danger']">
@@ -129,7 +131,7 @@
 <script lang="ts" setup>
 import AlertMessage from "@/Components/alerts/AlertMessage.vue";
 import Pagination from "@/Components/paginations/Pagination.vue";
-import {ref, watch } from "vue";
+import { ref, watch} from "vue";
 import {debounce} from "lodash";
 import {useCommons} from "@/core/composables/commons";
 const { filterData, destroy, changeStatus } = useCommons();
@@ -143,8 +145,7 @@ const props = defineProps({
 const search: any = ref(props.filters?.search);
 const limit: any = ref(props.filters?.limit || '30');
 
-
-watch(search, debounce((value: any) =>{
+watch([search, limit], debounce((value: any) =>{
     filterData('diseases.index', {search: search.value, limit:limit.value});
 }, 500 ) as any);
 

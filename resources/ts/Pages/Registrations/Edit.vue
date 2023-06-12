@@ -70,6 +70,11 @@
 
                 <div class="mb-10 row">
                     <div class="col-lg-4">
+                        <label class="required form-label">Mobile No.</label>
+                        <input v-model="form.patient_phone"  type="text" class="form-control form-control-sm" placeholder="Patient Mobile"/>
+                        <ServerErrorMessage :error="form.errors.patient_phone"/>
+                    </div>
+                    <div class="col-lg-4">
                         <label class="required form-label">CNIC No.</label>
                         <input v-model="form.patient_cnic"  type="text" class="form-control form-control-sm" placeholder="Patient CNIC"/>
                         <ServerErrorMessage :error="form.errors.patient_cnic"/>
@@ -194,6 +199,7 @@ const form = useForm({
     patient_age: props.patientVisit?.patient?.patient_age,
     relationship_with_employee: props.patientVisit?.patient?.relationship_with_employee,
     designation: props.patientVisit?.patient?.designation,
+    patient_phone: props.patientVisit?.patient?.patient_phone,
     patient_cnic: props.patientVisit?.patient?.patient_cnic,
     temperature: props.patientVisit?.temperature,
     bp_systolic: props.patientVisit?.bp_systolic,

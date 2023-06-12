@@ -35,6 +35,14 @@ class RegistrationService
         $patientVisit->update($data);
     }
 
+    public function updateOrCreatePatient($data, $patient_id){
+        return Patient::updateOrCreate(
+            ['id' => $patient_id],
+            $data);
+    }
+
+
+
     private function addPatientRiskFactors($data, PatientVisit  $patientVisit){
         $patient_risk_factors = Collect($data['patient_risk_factors'])->map(function ($row) use ($patientVisit){
            return new PatientRiskFactor($row + ['patient_id' => $patientVisit->patient_id, 'patient_visit_id'=>$patientVisit->id]);
