@@ -15,7 +15,7 @@ class CreatePatientTypesTable extends Migration
     {
         Schema::create('patient_types', function (Blueprint $table) {
             $table->id();
-            $table->string('patient_type');
+            $table->string('type_name');
             $table->boolean('status')->default(1);
             $table->softDeletes();
             $table->timestamps();

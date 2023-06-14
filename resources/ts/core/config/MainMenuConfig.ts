@@ -16,6 +16,7 @@ const DocMenuConfig = [
         sectionTitle: "System Settings",
         fontIcon: "bi bi-gear",
         components: [
+            "Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show",
             "Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show",
             "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show",
             "Users/Index", "Users/Create", "Users/Edit", "Users/Show",
@@ -25,6 +26,11 @@ const DocMenuConfig = [
             "Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show",
         ],
         sub: [
+            {
+                heading: "Institutes",
+                route: "institutes.index",
+                components: ["Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show"],
+            },
             {
                 heading: "Permissions",
                 route: "permissions.index",

@@ -65,6 +65,20 @@
 
                     <div class="row mb-10">
                         <div class="col-lg-12">
+                            <label class="form-label">Institute</label>
+                            <v-select
+                                v-model="form.institute_id"
+                                :options="institutes"
+                                :reduce="(option) => option.id"
+                                label="name"
+                                class="v-select-custom"
+                                placeholder="Please Select" />
+                            <ServerErrorMessage :error="form.errors.institute_id"/>
+                        </div>
+                    </div>
+
+                    <div class="row mb-10">
+                        <div class="col-lg-12">
                             <label class="form-label">Roles</label>
                             <v-select
                                 v-model="form.roles"
@@ -127,6 +141,7 @@ import {useForm} from "@inertiajs/vue3";
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 
 defineProps({
+    institutes: Array,
     roles: Array,
     permissions: Array
 })
@@ -138,6 +153,7 @@ const form = useForm({
     password: '',
     password_confirmation: '',
     status: '',
+    institute_id: '',
     roles: [],
     permissions: []
 });

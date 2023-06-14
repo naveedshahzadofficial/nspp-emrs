@@ -20,6 +20,8 @@ class UserResource extends JsonResource
             'username' => $this->username,
             'email' => $this->email,
             'status' => $this->status,
+            'institute_id' => $this->institute_id,
+            'institute' => new InstituteResource($this->whenLoaded('institute')),
             'roles' => RoleResource::collection($this->whenLoaded('roles')),
             'permissions' => PermissionResource::collection($this->whenLoaded('permissions')),
         ];

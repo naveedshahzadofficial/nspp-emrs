@@ -26,7 +26,7 @@
                     <div class="d-flex">
                         <div v-for="patientType in patientTypes" :key="patientType.id" class="form-check form-check-custom form-check-sm me-10">
                             <input v-model="form.patient_type_id" :value="patientType.id" class="form-check-input" name="patient_type_id" type="radio" :id="`patient_type_id_${patientType.id}`">
-                            <label class="form-check-label" :for="`patient_type_id_${patientType.id}`">{{ patientType.patient_type }}</label>
+                            <label class="form-check-label" :for="`patient_type_id_${patientType.id}`">{{ patientType.type_name }}</label>
                         </div>
                     </div>
                     <ServerErrorMessage :error="form.errors.patient_type_id"/>

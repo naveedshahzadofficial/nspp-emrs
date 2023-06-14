@@ -25,7 +25,7 @@ class PatientTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'patient_type' => ['required','string', 'max:255', Rule::unique('patient_types', 'patient_type')->ignore($this->patient_type)],
+            'type_name' => ['required','string', 'max:255', Rule::unique('patient_types', 'type_name')->ignore($this->patient_type)],
             'status' => 'required'
         ];
     }

@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label class="form-label fw-semibold">Patient Type</label>
-                                <span class="form-control form-control-solid">{{ patientType.patient_type }}</span>
+                                <span class="form-control form-control-solid">{{ patientType.type_name }}</span>
                             </div>
                             <div class="col-lg-6">
                                 <label class="form-label fw-semibold">Status</label>

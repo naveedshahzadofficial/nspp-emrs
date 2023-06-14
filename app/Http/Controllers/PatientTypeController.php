@@ -21,7 +21,7 @@ class PatientTypeController extends Controller
         $patientTypes = PatientTypeResource::collection(
             PatientType::query()
                 ->when(request()->input('search'), function ($query, $search){
-                    $query->where('patient_type', 'like', "%{$search}%");
+                    $query->where('type_name', 'like', "%{$search}%");
                 })
                 ->orderBy('created_at', 'desc')
                 ->paginate(request()->input('limit', 30))->withQueryString()

@@ -66,6 +66,20 @@
 
                         <div class="row mb-10">
                             <div class="col-lg-12">
+                                <label class="form-label">Institute</label>
+                                <v-select
+                                    v-model="form.institute_id"
+                                    :options="institutes"
+                                    :reduce="(option) => option.id"
+                                    label="name"
+                                    class="v-select-custom"
+                                    placeholder="Please Select" />
+                                <ServerErrorMessage :error="form.errors.institute_id"/>
+                            </div>
+                        </div>
+
+                        <div class="row mb-10">
+                            <div class="col-lg-12">
                                 <label class="form-label">Roles</label>
                                 <v-select
                                     v-model="form.roles"
@@ -211,6 +225,7 @@ const { revoke } = useCommons();
 
 const props = defineProps({
     user: { type: Object, required: true},
+    institutes: Array,
     roles: Array,
     permissions: Array
 });
@@ -221,6 +236,7 @@ const form = useForm({
     status: props.user?.status,
     password: '',
     password_confirmation: '',
+    institute_id: props.user?.institute_id,
     roles: [],
     permissions: []
 });

@@ -10,7 +10,7 @@ class PatientType extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['patient_type', 'status' ];
+    protected $fillable = ['type_name', 'status' ];
     public function scopeActive($query) {
         return $query->where('status', true);
     }

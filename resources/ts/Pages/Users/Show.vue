@@ -40,9 +40,17 @@
 
                         <div class="row mt-10">
                             <div class="col-lg-12">
+                                <label class="form-label fw-semibold">Institute</label>
+                                <span class="form-control form-control-solid" v-if="user?.institute?.name">{{ user?.institute?.name }}</span>
+                                <span class="form-control form-control-solid" v-else>The {{ user.name }} have not any institute</span>
+                            </div>
+                        </div>
+
+                        <div class="row mt-10">
+                            <div class="col-lg-12">
                                 <label class="form-label fw-semibold">User Roles</label>
                                 <span class="form-control form-control-solid" v-if="user.roles.length > 0">{{ user.roles?.map(obj => obj.name).join(', ') }}</span>
-                                <span class="form-control form-control-solid" v-if="user.roles.length === 0">The {{ user.name }} have not any role</span>
+                                <span class="form-control form-control-solid" v-else>The {{ user.name }} have not any role</span>
                             </div>
                         </div>
 
@@ -50,7 +58,7 @@
                             <div class="col-lg-12">
                                 <label class="form-label fw-semibold">User Permissions</label>
                                 <span class="form-control form-control-solid" v-if="user.permissions.length > 0">{{ user.permissions?.map(obj => obj.name).join(', ') }}</span>
-                                <span class="form-control form-control-solid" v-if="user.permissions.length === 0">The {{ user.name }} have not any permission</span>
+                                <span class="form-control form-control-solid" v-else>The {{ user.name }} have not any direct permission</span>
                             </div>
                         </div>
                     </div>

@@ -31,6 +31,7 @@ class StoreUserRequest extends FormRequest
             'email' => ['email', 'max:255', Rule::unique('users', 'email')->ignore($this->user)],
             'password' => ['required', 'confirmed', Password::defaults()],
             'status' => 'required',
+            'institute_id' => 'required',
             'roles' => 'sometimes|array',
             'permissions' => 'sometimes|array'
         ];

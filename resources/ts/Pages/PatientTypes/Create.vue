@@ -21,8 +21,8 @@
                      <div class="row">
                             <div class="col-lg-6">
                                 <label class="required form-label">Patient Type</label>
-                                <input v-model="form.patient_type"  type="text" class="form-control form-control-sm" placeholder="Patient Type"/>
-                                <ServerErrorMessage :error="form.errors.patient_type"/>
+                                <input v-model="form.type_name"  type="text" class="form-control form-control-sm" placeholder="Patient Type"/>
+                                <ServerErrorMessage :error="form.errors.type_name"/>
                             </div>
                             <div class="col-lg-6">
                                 <label class="required form-label">Status</label>
@@ -71,7 +71,7 @@ import {useForm} from "@inertiajs/vue3";
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 
 const form = useForm({
-    patient_type: '',
+    type_name: '',
     status: '',
 });
 </script>

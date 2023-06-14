@@ -21,8 +21,8 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <label class="required form-label">Patient Type</label>
-                                <input v-model="form.patient_type"  type="text" class="form-control form-control-sm" placeholder="Patient Type"/>
-                                <ServerErrorMessage :error="form.errors.patient_type"/>
+                                <input v-model="form.type_name"  type="text" class="form-control form-control-sm" placeholder="Patient Type"/>
+                                <ServerErrorMessage :error="form.errors.type_name"/>
                             </div>
                             <div class="col-lg-6">
                                 <label class="required form-label">Status</label>
@@ -73,7 +73,7 @@ const props = defineProps({
     patientType: { type: Object, required: true}
 });
 const form = useForm({
-    patient_type: props.patientType?.patient_type,
+    type_name: props.patientType?.type_name,
     status: props.patientType?.status,
 });
 </script>

@@ -16,7 +16,7 @@ class PatientTypeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'patient_type'=> $this->patient_type,
+            'type_name'=> $this->type_name,
             'status'=> $this->status,
         ];
     }

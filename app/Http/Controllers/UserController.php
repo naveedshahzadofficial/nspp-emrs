@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Resources\InstituteResource;
 use App\Http\Resources\PermissionResource;
 use App\Http\Resources\RoleResource;
 use App\Http\Resources\UserResource;
+use App\Models\Institute;
 use App\Models\Role;
 use App\Models\User;
 use Inertia\Inertia;
@@ -44,7 +46,8 @@ class UserController extends Controller
     {
         $roles = RoleResource::collection(Role::active()->get());
         $permissions = PermissionResource::collection(Permission::all());
-        return Inertia::render('Users/Create', compact('roles','permissions'));
+        $institutes = InstituteResource::collection(Institute::active()->get());
+        return Inertia::render('Users/Create', compact('roles','permissions', 'institutes'));
 
     }
 
@@ -71,7 +74,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $user->load(['roles', 'permissions']);
+        $user->load(['roles', 'permissions', 'institute']);
         return Inertia::render('Users/Show', compact('user'));
 
     }
@@ -87,7 +90,8 @@ class UserController extends Controller
         $user->load(['roles', 'permissions']);
         $roles = RoleResource::collection(Role::active()->get());
         $permissions = PermissionResource::collection(Permission::all());
-        return Inertia::render('Users/Edit', compact('user', 'roles', 'permissions'));
+        $institutes = InstituteResource::collection(Institute::active()->get());
+        return Inertia::render('Users/Edit', compact('user', 'roles', 'permissions', 'institutes'));
 
     }
 

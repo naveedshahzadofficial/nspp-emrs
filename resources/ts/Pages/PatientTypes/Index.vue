@@ -64,7 +64,7 @@
                         <tbody>
                         <template v-for="patientType in patientTypes.data" :key="patientType.id">
                             <tr>
-                                <td>{{ patientType.patient_type }}</td>
+                                <td>{{ patientType.type_name }}</td>
                                 <td class="text-center">
                                     <span class="badge font-weight-bold"
                                           :class="[patientType.status?'badge-success':'badge-danger']">

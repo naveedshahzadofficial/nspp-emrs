@@ -15,6 +15,7 @@ use App\Http\Controllers\{
     DiseaseTypeController,
     DiseaseController,
     ReimbursementController,
+    InstituteController
 };
 
 
@@ -31,6 +32,10 @@ Route::controller(AuthController::class)->group(function () {
 Route::group(['middleware' => ['auth']],function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class,'logout'])->name('logout');
+
+    Route::delete('/institutes/{institute}/change-status', [InstituteController::class, 'changeStatus'])->name('institutes.change-status');
+    Route::resource('/institutes', InstituteController::class);
+
 
     Route::delete('/roles/{role}/change-status', [RoleController::class, 'changeStatus'])->name('roles.change-status');
     Route::delete('/roles/{role}/permissions/{permission}/revoke', [RoleController::class, 'revokePermissionFromRole'])->name('roles.permissions.revoke');

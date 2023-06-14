@@ -14,10 +14,10 @@ class PatientTypeSeeder extends Seeder
      */
     public function run()
     {
-       PatientType::create(['patient_type'=>'Employee']);
-       PatientType::create(['patient_type'=>'Participant']);
-       PatientType::create(['patient_type'=>'Dependent']);
-       PatientType::create(['patient_type'=>'Walk-in']);
-       PatientType::create(['patient_type'=>'Patient']);
+       PatientType::create(['type_name'=>'Employee']);
+       PatientType::create(['type_name'=>'Participant']);
+       PatientType::create(['type_name'=>'Dependent']);
+       PatientType::create(['type_name'=>'Walk-in']);
+       PatientType::create(['type_name'=>'Patient']);
     }
 }
