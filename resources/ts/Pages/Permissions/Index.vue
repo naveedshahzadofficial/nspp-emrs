@@ -2,7 +2,7 @@
     <Head title="Permissions"/>
     <Toolbar
         title="Permissions"
-        :buttons="[{label: 'Add Permission', link: route('permissions.create')}]"
+        :buttons="[{label: 'Add Permission', link: route('permissions.create'), permission: 'create permissions'}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
         {label: 'Permissions', link: null}

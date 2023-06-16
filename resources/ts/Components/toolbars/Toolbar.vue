@@ -38,12 +38,12 @@
             <div class="d-flex align-items-center py-1">
                 <!--begin::Button-->
                 <template v-for="(button, index) in buttons" :key="index">
-                    <Link v-if="button.link"
+                    <Link v-if="button.link && checkPermission(button?.permission)"
                           :href="button.link"
                           class="btn btn-sm ms-2"
                           :class="[button.class?button.class:'btn-primary']"
                           v-html="button.label"/>
-                    <Link v-else
+                    <Link v-if="!button.link && checkPermission(button?.permission)"
                           @click.prevent="button.click"
                           as="button"
                           type="button"
@@ -62,6 +62,9 @@
 
 <script lang="ts" setup>
 import {computed} from "vue";
+import {usePermission} from "@/core/composables/permission";
+const { hasPermission } = usePermission();
+
 
 interface Breadcrumb {
     link: string;
@@ -88,4 +91,9 @@ const props = defineProps({
 });
 
 const isLastBreadcrumb = computed(() => (index) => index === props.breadcrumbs?.length - 1);
+
+const checkPermission = computed(() => (permission) => {
+    if(!permission) return true;
+    return hasPermission(permission);
+});
 </script>

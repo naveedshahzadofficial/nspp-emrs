@@ -371,7 +371,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "Roles",
     buttons: [{
       label: 'Add Role',
-      link: _ctx.route('roles.create')
+      link: _ctx.route('roles.create'),
+      permission: 'create roles'
     }],
     breadcrumbs: [{
       label: 'System Settings',

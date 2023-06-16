@@ -371,7 +371,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "Patient Types",
     buttons: [{
       label: 'Add Patient Type',
-      link: _ctx.route('patient-types.create')
+      link: _ctx.route('patient-types.create'),
+      permission: 'create patient types'
     }],
     breadcrumbs: [{
       label: 'System Settings',

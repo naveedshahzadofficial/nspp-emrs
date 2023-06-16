@@ -2,7 +2,7 @@
     <Head title="Disease Types"/>
     <Toolbar
         title="Disease Types"
-        :buttons="[{label: 'Add Disease Type', link: route('disease-types.create')}]"
+        :buttons="[{label: 'Add Disease Type', link: route('disease-types.create'), permission: 'create disease types'}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
         {label: 'Disease Types', link: null}

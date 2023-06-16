@@ -2,7 +2,7 @@
     <Head title="Reimbursements"/>
     <Toolbar
         title="Reimbursements"
-        :buttons="[{label: 'Add Reimbursement', link: route('reimbursements.create')}]"
+        :buttons="[{label: 'Add Reimbursement', link: route('reimbursements.create'), permission: 'create reimbursements'}]"
         :breadcrumbs="[
         {label: 'Reimbursements', link: null}
         ]"
