@@ -11,6 +11,11 @@ use Inertia\Inertia;
 
 class DiseaseController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Disease::class , 'disease');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -106,7 +111,8 @@ class DiseaseController extends Controller
         return back();
     }
 
-    public function changeStatus(Disease $disease){
+    public function toggleStatus(Disease $disease){
+        $this->authorize('toggleStatus', $disease);
         $disease->update([
             'status' => !$disease->status
         ]);

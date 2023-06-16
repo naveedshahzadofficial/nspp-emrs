@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class PatientVisit extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['user_id','patient_id', 'token_no', 'temperature', 'bp_systolic', 'bp_diastolic', 'pulse', 'sugar',
+    protected $fillable = ['institute_id', 'user_id','patient_id', 'token_no', 'temperature', 'bp_systolic', 'bp_diastolic', 'pulse', 'sugar',
         'weight', 'height', 'notes',];
 
     public function scopeActive($query) {
@@ -72,6 +72,7 @@ class PatientVisit extends Model
         parent::boot();
         static::creating(function ($model){
             $model->user_id = auth()->id();
+            $model->institute_id = auth()->user()->institute_id??null;
             $model->token_no = (PatientVisit::whereDate('created_at', '=', today()->toDateString())->max('token_no'))+1;
         });
     }

@@ -41,8 +41,8 @@
         <!--begin::Navbar-->
         <div class="d-flex align-items-stretch" id="kt_header_nav">
             <div>
-                <h1 class="nspp_heading pt-2 text-uppercase" style="color: #d8a43d;font-family: Poppins,serif;font-size: 23px;">Electronic Medical Record System</h1>
-                <h1 style="color: #d8a43d;font-family: Poppins;font-size: 14px;">National School of Public Policy, Government of Pakistan</h1>
+                <h1 class="header-heading pt-2 text-uppercase">Electronic Medical Record System</h1>
+                <h1 class="header-sub-heading" >National School of Public Policy, Government of Pakistan</h1>
             </div>
 
         </div>

@@ -30,7 +30,7 @@
 
     <!--begin::Heaeder menu toggle-->
     <div
-      class="d-flex align-items-center d-lg-none ms-2 me-n3"
+      class="d-flex align-items-center d-lg-none ms-2 me-n3 d-none"
       title="Show header menu"
     >
       <div
@@ -43,6 +43,8 @@
       </div>
     </div>
     <!--end::Heaeder menu toggle-->
+
+
   </div>
   <!--end::Toolbar wrapper-->
 </template>

@@ -46,9 +46,11 @@ use Inertia\Inertia;
 
 class RegistrationController extends Controller
 {
+
     private $registrationService;
     public function __construct(RegistrationService $registrationService)
     {
+        $this->authorizeResource(PatientVisit::class, 'patientVisit');
         $this->registrationService = $registrationService;
     }
     /**

@@ -373,7 +373,7 @@ function useCommons() {
       }
     });
   };
-  var changeStatus = function changeStatus(routeName, object) {
+  var toggleStatus = function toggleStatus(routeName, object) {
     sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1___default().fire({
       text: "Are you sure?",
       icon: "warning",
@@ -414,7 +414,7 @@ function useCommons() {
   return {
     filterData: filterData,
     destroy: destroy,
-    changeStatus: changeStatus,
+    toggleStatus: toggleStatus,
     revoke: revoke
   };
 }

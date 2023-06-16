@@ -138,7 +138,7 @@ __webpack_require__.r(__webpack_exports__);
     var _useCommons = (0,_core_composables_commons__WEBPACK_IMPORTED_MODULE_4__.useCommons)(),
       filterData = _useCommons.filterData,
       destroy = _useCommons.destroy,
-      changeStatus = _useCommons.changeStatus;
+      toggleStatus = _useCommons.toggleStatus;
     var search = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)((_props$filters = props.filters) === null || _props$filters === void 0 ? void 0 : _props$filters.search);
     var limit = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(((_props$filters2 = props.filters) === null || _props$filters2 === void 0 ? void 0 : _props$filters2.limit) || '30');
     var sortKey = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(((_props$filters3 = props.filters) === null || _props$filters3 === void 0 ? void 0 : _props$filters3.sortKey) || 'created_at');
@@ -152,7 +152,7 @@ __webpack_require__.r(__webpack_exports__);
     var __returned__ = {
       filterData: filterData,
       destroy: destroy,
-      changeStatus: changeStatus,
+      toggleStatus: toggleStatus,
       props: props,
       search: search,
       limit: limit,
@@ -442,7 +442,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       _: 2 /* DYNAMIC */
     }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-        return $setup.changeStatus('users.change-status', user);
+        return $setup.toggleStatus('users.change-status', user);
       }, ["prevent"]),
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["btn btn-icon btn-circle btn-sm me-2", [user.status ? 'btn-danger' : 'btn-success']]),
       "data-bs-toggle": "tooltip",
@@ -516,7 +516,7 @@ function useCommons() {
       }
     });
   };
-  var changeStatus = function changeStatus(routeName, object) {
+  var toggleStatus = function toggleStatus(routeName, object) {
     sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1___default().fire({
       text: "Are you sure?",
       icon: "warning",
@@ -557,7 +557,7 @@ function useCommons() {
   return {
     filterData: filterData,
     destroy: destroy,
-    changeStatus: changeStatus,
+    toggleStatus: toggleStatus,
     revoke: revoke
   };
 }

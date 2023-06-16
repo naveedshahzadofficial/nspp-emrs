@@ -17,6 +17,7 @@ class CreatePatientVisitsTable extends Migration
             $table->id();
             $table->foreignId('patient_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('institute_id')->nullable()->constrained();
             $table->unsignedBigInteger('token_no');
             $table->unsignedFloat('temperature', 4, 1)->nullable();
             $table->unsignedInteger('bp_systolic')->nullable();

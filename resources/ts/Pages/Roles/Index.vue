@@ -90,7 +90,7 @@
                                         <i class="fas fa-edit"></i>
                                     </Link>
 
-                                    <a @click.prevent="changeStatus('roles.change-status', role)"
+                                    <a @click.prevent="toggleStatus('roles.change-status', role)"
                                        class="btn btn-icon btn-circle btn-sm me-2"
                                        :class="[role.status?'btn-danger':'btn-success']"
                                        data-bs-toggle="tooltip"
@@ -131,7 +131,7 @@ import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch } from "vue";
 import {debounce} from "lodash";
 import {useCommons} from "@/core/composables/commons";
-const { filterData, destroy, changeStatus } = useCommons();
+const { filterData, destroy, toggleStatus } = useCommons();
 
 const props = defineProps({
     roles: { type: Object, required: true },

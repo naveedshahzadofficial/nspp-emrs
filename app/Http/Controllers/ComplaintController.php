@@ -9,6 +9,11 @@ use Inertia\Inertia;
 
 class ComplaintController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Complaint::class, 'complaint');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -104,7 +109,9 @@ class ComplaintController extends Controller
         return back();
     }
 
-    public function changeStatus(Complaint $complaint){
+    public function toggleStatus(Complaint $complaint){
+        $this->authorize('toggleStatus', $complaint);
+
         $complaint->update([
             'status' => !$complaint->status
         ]);

@@ -11,6 +11,11 @@ use Inertia\Inertia;
 
 class ReimbursementController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Reimbursement::class, 'reimbursement');
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -92,7 +92,7 @@
                                         <i class="fas fa-edit"></i>
                                     </Link>
 
-                                    <a @click.prevent="changeStatus('diseases.change-status', disease)"
+                                    <a @click.prevent="toggleStatus('diseases.change-status', disease)"
                                        class="btn btn-icon btn-circle btn-sm me-2"
                                        :class="[disease.status?'btn-danger':'btn-success']"
                                        data-bs-toggle="tooltip"
@@ -134,7 +134,7 @@ import Pagination from "@/Components/paginations/Pagination.vue";
 import { ref, watch} from "vue";
 import {debounce} from "lodash";
 import {useCommons} from "@/core/composables/commons";
-const { filterData, destroy, changeStatus } = useCommons();
+const { filterData, destroy, toggleStatus } = useCommons();
 
 
 const props = defineProps({

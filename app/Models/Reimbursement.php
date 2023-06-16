@@ -11,7 +11,7 @@ class Reimbursement extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['patient_id', 'user_id', 'actual_amount', 'approved_amount', 'comments', ];
+    protected $fillable = ['patient_id', 'institute_id', 'user_id', 'actual_amount', 'approved_amount', 'comments', ];
 
     public function patient(): BelongsTo
     {
@@ -27,6 +27,7 @@ class Reimbursement extends Model
     {
         parent::boot();
         static::creating(function ($model){
+            $model->institute_id = auth()->user()->institute_id??null;
             $model->user_id = auth()->id();
         });
     }

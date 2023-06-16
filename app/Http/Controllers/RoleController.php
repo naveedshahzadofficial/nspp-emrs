@@ -11,6 +11,11 @@ use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Role::class, 'role');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -111,7 +116,8 @@ class RoleController extends Controller
         return back();
     }
 
-    public function changeStatus(Role $role){
+    public function toggleStatus(Role $role){
+        $this->authorize('toggleStatus', $role);
         $role->update([
             'status' => !$role->status
         ]);

@@ -33,11 +33,11 @@ Route::group(['middleware' => ['auth']],function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class,'logout'])->name('logout');
 
-    Route::delete('/institutes/{institute}/change-status', [InstituteController::class, 'changeStatus'])->name('institutes.change-status');
+    Route::delete('/institutes/{institute}/toggle-status', [InstituteController::class, 'toggleStatus'])->name('institutes.toggle-status');
     Route::resource('/institutes', InstituteController::class);
 
 
-    Route::delete('/roles/{role}/change-status', [RoleController::class, 'changeStatus'])->name('roles.change-status');
+    Route::delete('/roles/{role}/toggle-status', [RoleController::class, 'toggleStatus'])->name('roles.toggle-status');
     Route::delete('/roles/{role}/permissions/{permission}/revoke', [RoleController::class, 'revokePermissionFromRole'])->name('roles.permissions.revoke');
     Route::resource('/roles', RoleController::class);
 
@@ -45,19 +45,19 @@ Route::group(['middleware' => ['auth']],function() {
 
     Route::delete('/users/{user}/roles/{role}/revoke', [UserController::class, 'revokeRoleFromUser'])->name('users.roles.revoke');
     Route::delete('/users/{user}/permissions/{permission}/revoke', [UserController::class, 'revokePermissionFromUser'])->name('users.permissions.revoke');
-    Route::delete('/users/{user}/change-status', [UserController::class, 'changeStatus'])->name('users.change-status');
+    Route::delete('/users/{user}/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggle-status');
     Route::resource('/users', UserController::class);
 
-    Route::delete('/patient-types/{patient_type}/change-status', [PatientTypeController::class, 'changeStatus'])->name('patient-types.change-status');
+    Route::delete('/patient-types/{patient_type}/toggle-status', [PatientTypeController::class, 'toggleStatus'])->name('patient-types.toggle-status');
     Route::resource('/patient-types', PatientTypeController::class);
 
-    Route::delete('/complaints/{complaint}/change-status', [ComplaintController::class, 'changeStatus'])->name('complaints.change-status');
+    Route::delete('/complaints/{complaint}/toggle-status', [ComplaintController::class, 'toggleStatus'])->name('complaints.toggle-status');
     Route::resource('/complaints', ComplaintController::class);
 
-    Route::delete('/disease-types/{disease_type}/change-status', [DiseaseTypeController::class, 'changeStatus'])->name('disease-types.change-status');
+    Route::delete('/disease-types/{disease_type}/toggle-status', [DiseaseTypeController::class, 'toggleStatus'])->name('disease-types.toggle-status');
     Route::resource('/disease-types', DiseaseTypeController::class);
 
-    Route::delete('/diseases/{disease}/change-status', [DiseaseController::class, 'changeStatus'])->name('diseases.change-status');
+    Route::delete('/diseases/{disease}/toggle-status', [DiseaseController::class, 'toggleStatus'])->name('diseases.toggle-status');
     Route::resource('/diseases', DiseaseController::class);
 
 

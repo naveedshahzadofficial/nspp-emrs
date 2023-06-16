@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class GenderController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Gender::class , 'gender');
+    }
+
     /**
      * Display a listing of the resource.
      *

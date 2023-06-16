@@ -19,6 +19,7 @@ class CreateReimbursementsTable extends Migration
             $table->decimal('actual_amount', 20, 0);
             $table->decimal('approved_amount', 20, 0);
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('institute_id')->nullable()->constrained();
             $table->text('comments')->nullable();
             $table->softDeletes();
             $table->timestamps();

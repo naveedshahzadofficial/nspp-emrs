@@ -145,3 +145,26 @@ div.dt-buttons button{
 }
 
 /* End: Auth Layout */
+
+.header-heading{
+    color: #d8a43d;
+    font-family: Poppins,serif;
+    font-size: 23px;
+}
+.header-sub-heading{
+    color: #d8a43d;
+    font-family: Poppins,serif;
+    font-size: 14px;
+}
+
+@media only screen and (max-width: 576px) {
+    #kt_header_nav{
+        margin-left: 4px;
+    }
+    .header-heading {
+        font-size: 12px;
+    }
+    .header-sub-heading{
+        font-size: 10px;
+    }
+}

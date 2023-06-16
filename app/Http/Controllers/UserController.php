@@ -17,6 +17,11 @@ use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(User::class, 'user');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -127,7 +132,8 @@ class UserController extends Controller
         return back();
     }
 
-    public function changeStatus(User $user){
+    public function toggleStatus(User $user){
+        $this->authorize('toggleStatus', $user);
         $user->update([
             'status' => !$user->status
         ]);

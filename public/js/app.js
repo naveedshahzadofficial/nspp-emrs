@@ -2984,18 +2984,9 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "d-flex align-items-stretch",
   id: "kt_header_nav"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-  "class": "nspp_heading pt-2 text-uppercase",
-  style: {
-    "color": "#d8a43d",
-    "font-family": "Poppins,serif",
-    "font-size": "23px"
-  }
+  "class": "header-heading pt-2 text-uppercase"
 }, "Electronic Medical Record System"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-  style: {
-    "color": "#d8a43d",
-    "font-family": "Poppins",
-    "font-size": "14px"
-  }
+  "class": "header-sub-heading"
 }, "National School of Public Policy, Government of Pakistan")])], -1 /* HOISTED */);
 var _hoisted_8 = {
   "class": "d-flex align-items-stretch flex-shrink-0"
@@ -3058,7 +3049,7 @@ var _hoisted_7 = {
 };
 var _hoisted_8 = ["alt"];
 var _hoisted_9 = {
-  "class": "d-flex align-items-center d-lg-none ms-2 me-n3",
+  "class": "d-flex align-items-center d-lg-none ms-2 me-n3 d-none",
   title: "Show header menu"
 };
 var _hoisted_10 = {

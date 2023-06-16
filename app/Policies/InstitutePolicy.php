@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Patient;
+use App\Models\Institute;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PatientPolicy
+class InstitutePolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class PatientPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('list patients');
+       return $user->can('list institutes');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Institute  $institute
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Patient $patient)
+    public function view(User $user, Institute $institute)
     {
-        return $user->can('view patients');
+        return $user->can('view institutes');
     }
 
     /**
@@ -41,54 +41,66 @@ class PatientPolicy
      */
     public function create(User $user)
     {
-        return $user->can('create patients');
+        return $user->can('create institutes');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Institute  $institute
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Patient $patient)
+    public function update(User $user, Institute $institute)
     {
-        return $user->can('update patients');
+        return $user->can('update institutes');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Institute  $institute
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Patient $patient)
+    public function delete(User $user, Institute $institute)
     {
-        return $user->can('delete patients');
+        return $user->can('delete institutes');
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Institute  $institute
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Patient $patient)
+    public function restore(User $user, Institute $institute)
     {
-        return $user->can('restore patients');
+        return $user->can('restore institutes');
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Institute  $institute
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Patient $patient)
+    public function forceDelete(User $user, Institute $institute)
     {
-        return $user->can('force delete patients');
+        return $user->can('force delete institutes');
+    }
+
+    /**
+     * Determine whether the user can toggle status the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Institute $institute
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function toggleStatus(User $user, Institute $institute)
+    {
+        return $user->can('toggle status institutes');
     }
 }

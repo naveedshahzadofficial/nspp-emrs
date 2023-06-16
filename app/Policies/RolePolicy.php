@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Patient;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PatientPolicy
+class RolePolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,20 @@ class PatientPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('list patients');
+        return $user->can('list roles');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Patient $patient)
+    public function view(User $user, Role $role)
     {
-        return $user->can('view patients');
+        return $user->can('view roles');
+
     }
 
     /**
@@ -41,54 +42,71 @@ class PatientPolicy
      */
     public function create(User $user)
     {
-        return $user->can('create patients');
+        return $user->can('create roles');
+
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Patient $patient)
+    public function update(User $user, Role $role)
     {
-        return $user->can('update patients');
+        return $user->can('update roles');
+
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Patient $patient)
+    public function delete(User $user, Role $role)
     {
-        return $user->can('delete patients');
+        return $user->can('delete roles');
+
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Patient $patient)
+    public function restore(User $user, Role $role)
     {
-        return $user->can('restore patients');
+        return $user->can('restore roles');
+
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Patient $patient)
+    public function forceDelete(User $user, Role $role)
     {
-        return $user->can('force delete patients');
+        return $user->can('force delete roles');
+
+    }
+
+    /**
+     * Determine whether the user can toggle status the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Role $role
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function toggleStatus(User $user, Role $role)
+    {
+        return $user->can('toggle status roles');
     }
 }

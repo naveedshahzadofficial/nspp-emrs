@@ -10,6 +10,11 @@ use Inertia\Inertia;
 
 class InstituteController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Institute::class, 'institute');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -103,7 +108,9 @@ class InstituteController extends Controller
         return back();
     }
 
-    public function changeStatus(Institute $institute){
+    public function toggleStatus(Institute $institute){
+        $this->authorize('toggleStatus', $institute);
+
         $institute->update([
             'status' => !$institute->status
         ]);

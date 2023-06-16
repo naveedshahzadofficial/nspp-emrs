@@ -38,7 +38,7 @@ export function useCommons(){
             }
         });
     }
-    const changeStatus = (routeName: string, object: any) => {
+    const toggleStatus = (routeName: string, object: any) => {
         Swal.fire({
             text: "Are you sure?",
             icon: "warning",
@@ -78,5 +78,5 @@ export function useCommons(){
         });
     }
 
-    return { filterData, destroy, changeStatus, revoke };
+    return { filterData, destroy, toggleStatus, revoke };
 }

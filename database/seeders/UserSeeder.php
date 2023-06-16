@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
+            'institute_id'=>1,
             'name'=> 'Admin PITB',
             'username'=> 'admin',
             'email'=> 'admin@gmail.com',
@@ -23,6 +24,6 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ]);
-        User::factory(10)->create();
+        User::factory(5)->create();
     }
 }

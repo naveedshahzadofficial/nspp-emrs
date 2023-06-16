@@ -117,7 +117,7 @@ import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch } from "vue";
 import {debounce} from "lodash";
 import {useCommons} from "@/core/composables/commons";
-const { filterData, destroy, changeStatus } = useCommons();
+const { filterData, destroy, toggleStatus } = useCommons();
 
 
 const props = defineProps({

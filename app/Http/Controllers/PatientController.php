@@ -8,6 +8,11 @@ use App\Models\Patient;
 
 class PatientController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Patient::class , 'patient');
+    }
+
     /**
      * Display a listing of the resource.
      *
