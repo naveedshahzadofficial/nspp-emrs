@@ -34,11 +34,6 @@ class UserSeeder extends Seeder
         foreach ($institutes as $institute){
            $roles = Role::whereNotIn('name', ['Super Admin'])->get();
             foreach ($roles as $role){
-                $role->syncPermissions([
-                    'dashboard',
-                    'list registrations', 'create registrations', 'view registrations', 'update registrations', 'delete registrations', 'restore registrations', 'force delete registrations', 'proceed registrations',
-                    'list reimbursements', 'create reimbursements', 'view reimbursements', 'update reimbursements', 'delete reimbursements', 'restore reimbursements', 'force delete reimbursements',
-                    ]);
                 $username = strtolower(str_replace('/ Doctor','',$role->name)).'.'.strtolower(str_replace(' ','.', $institute->short_name));
                 $user = User::create([
                     'institute_id'=>$institute->id,

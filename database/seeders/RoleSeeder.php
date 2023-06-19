@@ -21,5 +21,14 @@ class RoleSeeder extends Seeder
         Role::create(['name'=>'Pharmacy',]);
         Role::create(['name'=>'Laboratory',]);
         Role::create(['name'=>'Hospital',]);
+
+        $roles = Role::whereNotIn('name', ['Super Admin'])->get();
+        foreach ($roles as $role) {
+            $role->syncPermissions([
+                'dashboard',
+                'list registrations', 'create registrations', 'view registrations', 'update registrations', 'delete registrations', 'restore registrations', 'force delete registrations', 'proceed registrations',
+                'list reimbursements', 'create reimbursements', 'view reimbursements', 'update reimbursements', 'delete reimbursements', 'restore reimbursements', 'force delete reimbursements',
+            ]);
+        }
     }
 }
