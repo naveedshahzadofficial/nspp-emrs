@@ -6,7 +6,7 @@ use App\Models\PatientVisit;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class RegistrationPolicy
+class PatientVisitPolicy
 {
     use HandlesAuthorization;
 
@@ -18,7 +18,7 @@ class RegistrationPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('list registration');
+        return $user->can('list registrations');
     }
 
     /**
@@ -28,9 +28,9 @@ class RegistrationPolicy
      * @param  \App\Models\PatientVisit  $patientVisit
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, PatientVisit  $patientVisit)
+    public function view(User $user, PatientVisit $patientVisit)
     {
-        return $user->can('view registration');
+        return $user->can('view registrations');
     }
 
     /**
@@ -41,7 +41,7 @@ class RegistrationPolicy
      */
     public function create(User $user)
     {
-        return $user->can('create registration');
+        return $user->can('create registrations');
     }
 
     /**
@@ -51,9 +51,9 @@ class RegistrationPolicy
      * @param  \App\Models\PatientVisit  $patientVisit
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, PatientVisit  $patientVisit)
+    public function update(User $user, PatientVisit $patientVisit)
     {
-        return $user->can('update registration');
+        return $user->can('update registrations');
     }
 
     /**
@@ -63,9 +63,9 @@ class RegistrationPolicy
      * @param  \App\Models\PatientVisit  $patientVisit
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, PatientVisit  $patientVisit)
+    public function delete(User $user, PatientVisit $patientVisit)
     {
-        return $user->can('delete registration');
+        return $user->can('delete registrations');
     }
 
     /**
@@ -75,9 +75,9 @@ class RegistrationPolicy
      * @param  \App\Models\PatientVisit  $patientVisit
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, PatientVisit  $patientVisit)
+    public function restore(User $user, PatientVisit $patientVisit)
     {
-        return $user->can('restore registration');
+        return $user->can('restore registrations');
     }
 
     /**
@@ -87,8 +87,20 @@ class RegistrationPolicy
      * @param  \App\Models\PatientVisit  $patientVisit
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, PatientVisit  $patientVisit)
+    public function forceDelete(User $user, PatientVisit $patientVisit)
     {
-        return $user->can('force delete registration');
+        return $user->can('force delete registrations');
+    }
+
+    /**
+     * Determine whether the user can toggle status the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\PatientVisit $patientVisit
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function proceed(User $user,  PatientVisit $patientVisit)
+    {
+        return $user->can('proceed registrations');
     }
 }

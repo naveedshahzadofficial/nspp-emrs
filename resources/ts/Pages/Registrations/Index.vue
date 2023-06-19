@@ -117,6 +117,7 @@
 
                             <td class="text-center">
                                 <Link
+                                    v-if="hasPermission('view registrations')"
                                     :href="route('registrations.show', patientVisit.id)"
                                     class="btn btn-icon btn-primary btn-circle btn-sm me-2"
                                     data-bs-toggle="tooltip"
@@ -126,6 +127,7 @@
                                 </Link>
 
                                 <Link
+                                    v-if="hasPermission('proceed registrations')"
                                     :href="route('registrations.proceed', patientVisit.id)"
                                     class="btn btn-icon btn-warning btn-circle btn-sm me-2"
                                     data-bs-toggle="tooltip"
@@ -135,6 +137,7 @@
                                 </Link>
 
                                 <Link
+                                    v-if="hasPermission('update registrations')"
                                     :href="route('registrations.edit', patientVisit.id)"
                                     class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
                                     data-bs-toggle="tooltip"
@@ -144,6 +147,7 @@
                                 </Link>
 
                                 <a
+                                    v-if="hasPermission('delete registrations')"
                                     @click.prevent="destroy('registrations.destroy', patientVisit.id)"
                                     class="btn btn-icon  btn-danger btn-circle btn-sm me-2"
                                     data-bs-toggle="tooltip"
@@ -180,7 +184,9 @@ import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch} from "vue";
 import {debounce} from "lodash";
 import {useCommons} from "@/core/composables/commons";
+import {usePermission} from "@/core/composables/permission";
 const { filterData, destroy } = useCommons();
+const { hasPermission } = usePermission()
 
 const props = defineProps({
    patientVisits: { type:Object, required: true},

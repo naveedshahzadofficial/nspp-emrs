@@ -69,6 +69,7 @@
                                 <td>{{ reimbursement.approved_amount }}</td>
                                 <td class="text-center">
                                     <Link
+                                        v-if="hasPermission('view reimbursements')"
                                         :href="route('reimbursements.show', reimbursement.id)"
                                         class="btn btn-icon btn-primary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -78,6 +79,7 @@
                                     </Link>
 
                                     <Link
+                                        v-if="hasPermission('update reimbursements')"
                                         :href="route('reimbursements.edit', reimbursement.id)"
                                         class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -87,6 +89,7 @@
                                     </Link>
 
                                     <a
+                                        v-if="hasPermission('delete reimbursements')"
                                         @click.prevent="destroy('reimbursements.destroy', reimbursement.id)"
                                         class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -117,7 +120,9 @@ import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch } from "vue";
 import {debounce} from "lodash";
 import {useCommons} from "@/core/composables/commons";
+import {usePermission} from "@/core/composables/permission";
 const { filterData, destroy, toggleStatus } = useCommons();
+const { hasPermission } = usePermission()
 
 
 const props = defineProps({

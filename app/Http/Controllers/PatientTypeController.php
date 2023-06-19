@@ -12,7 +12,7 @@ class PatientTypeController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(PatientType::class , 'patientType');
+        $this->authorizeResource(PatientType::class , 'patient_type');
     }
 
     /**

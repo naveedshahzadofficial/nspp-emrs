@@ -11,7 +11,7 @@ class DiseaseTypeController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(DiseaseType::class , 'diseaseType');
+        $this->authorizeResource(DiseaseType::class , 'disease_type');
     }
 
     /**

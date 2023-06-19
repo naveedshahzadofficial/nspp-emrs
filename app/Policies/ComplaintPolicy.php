@@ -18,7 +18,7 @@ class ComplaintPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('list complaint');
+        return $user->can('list complaints');
     }
 
     /**
@@ -30,7 +30,7 @@ class ComplaintPolicy
      */
     public function view(User $user, Complaint $complaint)
     {
-        return $user->can('view complaint');
+        return $user->can('view complaints');
     }
 
     /**
@@ -41,7 +41,7 @@ class ComplaintPolicy
      */
     public function create(User $user)
     {
-        return $user->can('create complaint');
+        return $user->can('create complaints');
     }
 
     /**
@@ -53,7 +53,7 @@ class ComplaintPolicy
      */
     public function update(User $user, Complaint $complaint)
     {
-        return $user->can('update complaint');
+        return $user->can('update complaints');
     }
 
     /**
@@ -65,7 +65,7 @@ class ComplaintPolicy
      */
     public function delete(User $user, Complaint $complaint)
     {
-        return $user->can('delete complaint');
+        return $user->can('delete complaints');
     }
 
     /**
@@ -77,7 +77,7 @@ class ComplaintPolicy
      */
     public function restore(User $user, Complaint $complaint)
     {
-        return $user->can('restore complaint');
+        return $user->can('restore complaints');
     }
 
     /**
@@ -89,7 +89,7 @@ class ComplaintPolicy
      */
     public function forceDelete(User $user, Complaint $complaint)
     {
-        return $user->can('force delete complaint');
+        return $user->can('force delete complaints');
     }
 
     /**

@@ -73,6 +73,7 @@
                                 </td>
                                 <td class="text-center">
                                     <Link
+                                        v-if="hasPermission('view patient types')"
                                         :href="route('patient-types.show', patientType.id)"
                                         class="btn btn-icon btn-primary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -82,6 +83,7 @@
                                     </Link>
 
                                     <Link
+                                        v-if="hasPermission('update patient types')"
                                         :href="route('patient-types.edit', patientType.id)"
                                         class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -90,7 +92,9 @@
                                         <i class="fas fa-edit"></i>
                                     </Link>
 
-                                    <a @click.prevent="toggleStatus('patient-types.change-status', patientType)"
+                                    <a
+                                        v-if="hasPermission('toggle status patient types')"
+                                        @click.prevent="toggleStatus('patient-types.change-status', patientType)"
                                        class="btn btn-icon btn-circle btn-sm me-2"
                                        :class="[patientType.status?'btn-danger':'btn-success']"
                                        data-bs-toggle="tooltip"
@@ -102,6 +106,7 @@
                                     </a>
 
                                     <a
+                                        v-if="hasPermission('delete patient types')"
                                         @click.prevent="destroy('patient-types.destroy', patientType.id)"
                                         class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -132,7 +137,9 @@ import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch } from "vue";
 import {debounce} from "lodash";
 import {useCommons} from "@/core/composables/commons";
+import {usePermission} from "@/core/composables/permission";
 const { filterData, destroy, toggleStatus } = useCommons();
+const { hasPermission } = usePermission()
 
 
 const props = defineProps({

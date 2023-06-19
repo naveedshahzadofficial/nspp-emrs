@@ -115,6 +115,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _core_composables_commons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/core/composables/commons */ "./resources/ts/core/composables/commons.ts");
+/* harmony import */ var _core_composables_permission__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/core/composables/permission */ "./resources/ts/core/composables/permission.ts");
+
 
 
 
@@ -139,6 +141,8 @@ __webpack_require__.r(__webpack_exports__);
       filterData = _useCommons.filterData,
       destroy = _useCommons.destroy,
       toggleStatus = _useCommons.toggleStatus;
+    var _usePermission = (0,_core_composables_permission__WEBPACK_IMPORTED_MODULE_5__.usePermission)(),
+      hasPermission = _usePermission.hasPermission;
     var search = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)((_props$filters = props.filters) === null || _props$filters === void 0 ? void 0 : _props$filters.search);
     var limit = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(((_props$filters2 = props.filters) === null || _props$filters2 === void 0 ? void 0 : _props$filters2.limit) || '30');
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)([search, limit], (0,lodash__WEBPACK_IMPORTED_MODULE_3__.debounce)(function (value) {
@@ -151,6 +155,7 @@ __webpack_require__.r(__webpack_exports__);
       filterData: filterData,
       destroy: destroy,
       toggleStatus: toggleStatus,
+      hasPermission: hasPermission,
       props: props,
       search: search,
       limit: limit,
@@ -407,7 +412,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     var _reimbursement$patien;
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: reimbursement.id
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(reimbursement === null || reimbursement === void 0 ? void 0 : (_reimbursement$patien = reimbursement.patient) === null || _reimbursement$patien === void 0 ? void 0 : _reimbursement$patien.patient_name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(reimbursement.actual_amount), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(reimbursement.approved_amount), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(reimbursement === null || reimbursement === void 0 ? void 0 : (_reimbursement$patien = reimbursement.patient) === null || _reimbursement$patien === void 0 ? void 0 : _reimbursement$patien.patient_name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(reimbursement.actual_amount), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(reimbursement.approved_amount), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_14, [$setup.hasPermission('view reimbursements') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+      key: 0,
       href: _ctx.route('reimbursements.show', reimbursement.id),
       "class": "btn btn-icon btn-primary btn-circle btn-sm me-2",
       "data-bs-toggle": "tooltip",
@@ -418,7 +424,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return [_hoisted_15];
       }),
       _: 2 /* DYNAMIC */
-    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('update reimbursements') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+      key: 1,
       href: _ctx.route('reimbursements.edit', reimbursement.id),
       "class": "btn btn-icon btn-secondary btn-circle btn-sm me-2",
       "data-bs-toggle": "tooltip",
@@ -429,7 +436,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return [_hoisted_16];
       }),
       _: 2 /* DYNAMIC */
-    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('delete reimbursements') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+      key: 2,
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return $setup.destroy('reimbursements.destroy', reimbursement.id);
       }, ["prevent"]),
@@ -437,7 +445,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "data-bs-toggle": "tooltip",
       "data-bs-placement": "top",
       title: "Delete"
-    }, _hoisted_19, 8 /* PROPS */, _hoisted_17)])]);
+    }, _hoisted_19, 8 /* PROPS */, _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
   }), 128 /* KEYED_FRAGMENT */))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Pagination"], {
     meta: (_$props$reimbursement = $props.reimbursements) === null || _$props$reimbursement === void 0 ? void 0 : _$props$reimbursement.meta,
     links: (_$props$reimbursement2 = $props.reimbursements) === null || _$props$reimbursement2 === void 0 ? void 0 : _$props$reimbursement2.links

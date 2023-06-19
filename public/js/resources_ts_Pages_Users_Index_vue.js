@@ -115,6 +115,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _core_composables_commons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/core/composables/commons */ "./resources/ts/core/composables/commons.ts");
+/* harmony import */ var _core_composables_permission__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/core/composables/permission */ "./resources/ts/core/composables/permission.ts");
+
 
 
 
@@ -139,6 +141,8 @@ __webpack_require__.r(__webpack_exports__);
       filterData = _useCommons.filterData,
       destroy = _useCommons.destroy,
       toggleStatus = _useCommons.toggleStatus;
+    var _usePermission = (0,_core_composables_permission__WEBPACK_IMPORTED_MODULE_5__.usePermission)(),
+      hasPermission = _usePermission.hasPermission;
     var search = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)((_props$filters = props.filters) === null || _props$filters === void 0 ? void 0 : _props$filters.search);
     var limit = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(((_props$filters2 = props.filters) === null || _props$filters2 === void 0 ? void 0 : _props$filters2.limit) || '30');
     var sortKey = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(((_props$filters3 = props.filters) === null || _props$filters3 === void 0 ? void 0 : _props$filters3.sortKey) || 'created_at');
@@ -153,6 +157,7 @@ __webpack_require__.r(__webpack_exports__);
       filterData: filterData,
       destroy: destroy,
       toggleStatus: toggleStatus,
+      hasPermission: hasPermission,
       props: props,
       search: search,
       limit: limit,
@@ -419,7 +424,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return obj.name;
     }).join(', ')), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["badge font-weight-bold", [user.status ? 'badge-success' : 'badge-danger']])
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.status ? 'Active' : 'Inactive'), 3 /* TEXT, CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.status ? 'Active' : 'Inactive'), 3 /* TEXT, CLASS */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_15, [$setup.hasPermission('view users') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+      key: 0,
       href: _ctx.route('users.show', user.id),
       "class": "btn btn-icon btn-primary btn-circle btn-sm me-2",
       "data-bs-toggle": "tooltip",
@@ -430,7 +436,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return [_hoisted_16];
       }),
       _: 2 /* DYNAMIC */
-    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('update users') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+      key: 1,
       href: _ctx.route('users.edit', user.id),
       "class": "btn btn-icon btn-secondary btn-circle btn-sm me-2",
       "data-bs-toggle": "tooltip",
@@ -441,7 +448,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return [_hoisted_17];
       }),
       _: 2 /* DYNAMIC */
-    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('toggle status users') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+      key: 2,
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return $setup.toggleStatus('users.change-status', user);
       }, ["prevent"]),
@@ -451,7 +459,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       title: [user.status ? 'Deactivate' : 'Activate']
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["icon-xl fas", [user.status ? 'fa-toggle-off' : 'fa-toggle-on']])
-    }, null, 2 /* CLASS */)], 10 /* CLASS, PROPS */, _hoisted_18), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    }, null, 2 /* CLASS */)], 10 /* CLASS, PROPS */, _hoisted_18)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('delete users') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+      key: 3,
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return $setup.destroy('users.destroy', user.id);
       }, ["prevent"]),
@@ -459,7 +468,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "data-bs-toggle": "tooltip",
       "data-bs-placement": "top",
       title: "Delete"
-    }, _hoisted_21, 8 /* PROPS */, _hoisted_19)])]);
+    }, _hoisted_21, 8 /* PROPS */, _hoisted_19)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
   }), 128 /* KEYED_FRAGMENT */))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Pagination"], {
     meta: (_$props$users = $props.users) === null || _$props$users === void 0 ? void 0 : _$props$users.meta,
     links: (_$props$users2 = $props.users) === null || _$props$users2 === void 0 ? void 0 : _$props$users2.links

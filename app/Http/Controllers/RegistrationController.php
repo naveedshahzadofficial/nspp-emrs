@@ -50,7 +50,7 @@ class RegistrationController extends Controller
     private $registrationService;
     public function __construct(RegistrationService $registrationService)
     {
-        $this->authorizeResource(PatientVisit::class, 'patientVisit');
+        $this->authorizeResource(PatientVisit::class, 'patient_visit');
         $this->registrationService = $registrationService;
     }
     /**
@@ -127,13 +127,10 @@ class RegistrationController extends Controller
      * @param  int  $id
      * @return \Inertia\Response
      */
-    public function show($id): \Inertia\Response
+    public function show(PatientVisit $patientVisit): \Inertia\Response
     {
         //$data = new \stdClass;
-        $patientVisit = PatientVisit::findOrFail($id);
         $patient = Patient::relations()->find($patientVisit->patient_id);
-
-
         return Inertia::render('Registrations/Show',
             compact( 'patient',
                 'patientVisit'));
@@ -145,9 +142,9 @@ class RegistrationController extends Controller
      * @param int $id
      * @return \Inertia\Response
      */
-    public function edit($id): \Inertia\Response
+    public function edit(PatientVisit $patientVisit): \Inertia\Response
     {
-        $patientVisit = PatientVisit::with('patient')->find($id);
+        $patientVisit->load('patient');
         $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
         $genders = GenderResource::collection(Gender::active()->get());
         return Inertia::render('Registrations/Edit', compact('patientTypes', 'genders', 'patientVisit'));
@@ -160,10 +157,10 @@ class RegistrationController extends Controller
      * @param int $id
      * @return RedirectResponse
      */
-    public function update(UpdateRegistrationRequest $request, $id): RedirectResponse
+    public function update(UpdateRegistrationRequest $request, PatientVisit $patientVisit): RedirectResponse
     {
-        DB::transaction(function() use ($request, $id) {
-            $patientVisit = PatientVisit::with('patient')->find($id);
+        $patientVisit->load('patient');
+        DB::transaction(function() use ($request, $patientVisit) {
             $this->registrationService->updatePatient($request->validated(), $patientVisit->patient);
             $this->registrationService->updatePatientVisit($request->validated(), $patientVisit);
         });
@@ -177,17 +174,18 @@ class RegistrationController extends Controller
      * @param  int  $id
      * @return RedirectResponse
      */
-    public function destroy($id): RedirectResponse
+    public function destroy(PatientVisit $patientVisit): RedirectResponse
     {
-        PatientVisit::destroy($id);
+        $patientVisit->delete();
         session()->flash('success', 'Your registration has been deleted successfully.');
         return redirect()->route('registrations.index');
     }
 
-    public function proceed($id): \Inertia\Response
+    public function proceed(PatientVisit $patientVisit): \Inertia\Response
     {
+        $this->authorize('proceed', $patientVisit);
+
         //$data = new \stdClass;
-        $patientVisit = PatientVisit::findOrFail($id);
         $patient = Patient::relations()->find($patientVisit->patient_id);
 
         $patientTypes = PatientTypeResource::collection(PatientType::active()->get());

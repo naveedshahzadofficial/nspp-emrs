@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PermissionRequest;
 use App\Http\Resources\PermissionResource;
 use Inertia\Inertia;
-use Spatie\Permission\Models\Permission;
+use App\Models\Permission;
 
 class PermissionController extends Controller
 {

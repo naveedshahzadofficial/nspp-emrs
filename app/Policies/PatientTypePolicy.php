@@ -18,7 +18,7 @@ class PatientTypePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('list patient type');
+        return $user->can('list patient types');
     }
 
     /**
@@ -30,7 +30,7 @@ class PatientTypePolicy
      */
     public function view(User $user, PatientType $patientType)
     {
-        return $user->can('view patient type');
+        return $user->can('view patient types');
     }
 
     /**
@@ -41,7 +41,7 @@ class PatientTypePolicy
      */
     public function create(User $user)
     {
-        return $user->can('create patient type');
+        return $user->can('create patient types');
     }
 
     /**
@@ -53,7 +53,7 @@ class PatientTypePolicy
      */
     public function update(User $user, PatientType $patientType)
     {
-        return $user->can('update patient type');
+        return $user->can('update patient types');
     }
 
     /**
@@ -65,7 +65,7 @@ class PatientTypePolicy
      */
     public function delete(User $user, PatientType $patientType)
     {
-        return $user->can('delete patient type');
+        return $user->can('delete patient types');
     }
 
     /**
@@ -77,7 +77,7 @@ class PatientTypePolicy
      */
     public function restore(User $user, PatientType $patientType)
     {
-        return $user->can('restore patient type');
+        return $user->can('restore patient types');
     }
 
     /**
@@ -89,7 +89,7 @@ class PatientTypePolicy
      */
     public function forceDelete(User $user, PatientType $patientType)
     {
-        return $user->can('force delete patient type');
+        return $user->can('force delete patient types');
     }
 
     /**

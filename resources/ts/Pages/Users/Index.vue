@@ -77,6 +77,7 @@
                                 </td>
                                 <td class="text-center">
                                     <Link
+                                        v-if="hasPermission('view users')"
                                         :href="route('users.show', user.id)"
                                         class="btn btn-icon btn-primary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -86,6 +87,7 @@
                                     </Link>
 
                                     <Link
+                                        v-if="hasPermission('update users')"
                                         :href="route('users.edit', user.id)"
                                         class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -94,7 +96,9 @@
                                         <i class="fas fa-edit"></i>
                                     </Link>
 
-                                    <a @click.prevent="toggleStatus('users.change-status', user)"
+                                    <a
+                                        v-if="hasPermission('toggle status users')"
+                                        @click.prevent="toggleStatus('users.change-status', user)"
                                        class="btn btn-icon btn-circle btn-sm me-2"
                                        :class="[user.status?'btn-danger':'btn-success']"
                                        data-bs-toggle="tooltip"
@@ -106,6 +110,7 @@
                                     </a>
 
                                     <a
+                                        v-if="hasPermission('delete users')"
                                         @click.prevent="destroy('users.destroy', user.id)"
                                         class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -135,7 +140,9 @@ import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch } from "vue";
 import {debounce} from "lodash";
 import {useCommons} from "@/core/composables/commons";
+import {usePermission} from "@/core/composables/permission";
 const { filterData, destroy, toggleStatus } = useCommons();
+const { hasPermission } = usePermission()
 
 
 const props = defineProps({

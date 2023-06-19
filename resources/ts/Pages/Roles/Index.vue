@@ -72,7 +72,7 @@
                                     </span>
                                 </td>
                                 <td class="text-center">
-                                    <Link
+                                    <Link v-if="hasPermission('view roles')"
                                         :href="route('roles.show', role.id)"
                                         class="btn btn-icon btn-primary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -81,7 +81,7 @@
                                         <i class="fas fa-eye"></i>
                                     </Link>
 
-                                    <Link
+                                    <Link v-if="hasPermission('update roles')"
                                         :href="route('roles.edit', role.id)"
                                         class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -90,7 +90,8 @@
                                         <i class="fas fa-edit"></i>
                                     </Link>
 
-                                    <a @click.prevent="toggleStatus('roles.change-status', role)"
+                                    <a v-if="hasPermission('toggle status roles')"
+                                        @click.prevent="toggleStatus('roles.change-status', role)"
                                        class="btn btn-icon btn-circle btn-sm me-2"
                                        :class="[role.status?'btn-danger':'btn-success']"
                                        data-bs-toggle="tooltip"
@@ -101,7 +102,7 @@
                                         ></i>
                                     </a>
 
-                                    <a
+                                    <a  v-if="hasPermission('delete roles')"
                                         @click.prevent="destroy('roles.destroy', role.id)"
                                         class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -131,7 +132,9 @@ import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch } from "vue";
 import {debounce} from "lodash";
 import {useCommons} from "@/core/composables/commons";
+import {usePermission} from "@/core/composables/permission";
 const { filterData, destroy, toggleStatus } = useCommons();
+const { hasPermission } = usePermission()
 
 const props = defineProps({
     roles: { type: Object, required: true },

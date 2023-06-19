@@ -63,7 +63,7 @@ Route::group(['middleware' => ['auth']],function() {
 
     Route::get('/registrations/{patient_visit}/proceed', [RegistrationController::class, 'proceed'])->name('registrations.proceed');
     Route::post('/registrations/{patient_visit}/checkout', [RegistrationController::class, 'checkout'])->name('registrations.checkout');
-    Route::resource('/registrations', RegistrationController::class);
+    Route::resource('/registrations', RegistrationController::class)->parameters(['registrations' => 'patient_visit']);
     Route::resource('/patients', PatientController::class);
 
     Route::resource('/reimbursements', ReimbursementController::class);

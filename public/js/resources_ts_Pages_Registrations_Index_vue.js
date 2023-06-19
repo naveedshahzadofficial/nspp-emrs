@@ -115,6 +115,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _core_composables_commons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/core/composables/commons */ "./resources/ts/core/composables/commons.ts");
+/* harmony import */ var _core_composables_permission__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/core/composables/permission */ "./resources/ts/core/composables/permission.ts");
+
 
 
 
@@ -138,6 +140,8 @@ __webpack_require__.r(__webpack_exports__);
     var _useCommons = (0,_core_composables_commons__WEBPACK_IMPORTED_MODULE_4__.useCommons)(),
       filterData = _useCommons.filterData,
       destroy = _useCommons.destroy;
+    var _usePermission = (0,_core_composables_permission__WEBPACK_IMPORTED_MODULE_5__.usePermission)(),
+      hasPermission = _usePermission.hasPermission;
     var search = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)((_props$filters = props.filters) === null || _props$filters === void 0 ? void 0 : _props$filters.search);
     var limit = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(((_props$filters2 = props.filters) === null || _props$filters2 === void 0 ? void 0 : _props$filters2.limit) || '30');
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)([search, limit], (0,lodash__WEBPACK_IMPORTED_MODULE_3__.debounce)(function (value) {
@@ -149,6 +153,7 @@ __webpack_require__.r(__webpack_exports__);
     var __returned__ = {
       filterData: filterData,
       destroy: destroy,
+      hasPermission: hasPermission,
       props: props,
       search: search,
       limit: limit,
@@ -445,7 +450,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 8 /* PROPS */, _hoisted_16)) : patientVisit.patient ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
       key: 1,
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["bg-light-primary text-primary", "symbol-label fw-bolder"])
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(patientVisit.patient.patient_name.charAt(0)), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Avatar"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Name"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(patientVisit.patient.patient_name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(": " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(patientVisit.patient.designation), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(": " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(patientVisit.patient.patient_age), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Name")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(patientVisit.token_no), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(patientVisit.patient.patient_name.charAt(0)), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Avatar"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Name"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(patientVisit.patient.patient_name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(": " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(patientVisit.patient.designation), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(": " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(patientVisit.patient.patient_age), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Name")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(patientVisit.token_no), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_24, [$setup.hasPermission('view registrations') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+      key: 0,
       href: _ctx.route('registrations.show', patientVisit.id),
       "class": "btn btn-icon btn-primary btn-circle btn-sm me-2",
       "data-bs-toggle": "tooltip",
@@ -456,7 +462,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return [_hoisted_25];
       }),
       _: 2 /* DYNAMIC */
-    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('proceed registrations') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+      key: 1,
       href: _ctx.route('registrations.proceed', patientVisit.id),
       "class": "btn btn-icon btn-warning btn-circle btn-sm me-2",
       "data-bs-toggle": "tooltip",
@@ -467,7 +474,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return [_hoisted_26];
       }),
       _: 2 /* DYNAMIC */
-    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('update registrations') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+      key: 2,
       href: _ctx.route('registrations.edit', patientVisit.id),
       "class": "btn btn-icon btn-secondary btn-circle btn-sm me-2",
       "data-bs-toggle": "tooltip",
@@ -478,7 +486,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return [_hoisted_27];
       }),
       _: 2 /* DYNAMIC */
-    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('delete registrations') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+      key: 3,
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return $setup.destroy('registrations.destroy', patientVisit.id);
       }, ["prevent"]),
@@ -486,7 +495,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "data-bs-toggle": "tooltip",
       "data-bs-placement": "top",
       title: "Delete"
-    }, _hoisted_30, 8 /* PROPS */, _hoisted_28)])]);
+    }, _hoisted_30, 8 /* PROPS */, _hoisted_28)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
   }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Table body")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Pagination"], {
     meta: (_$props$patientVisits = $props.patientVisits) === null || _$props$patientVisits === void 0 ? void 0 : _$props$patientVisits.meta,
     links: (_$props$patientVisits2 = $props.patientVisits) === null || _$props$patientVisits2 === void 0 ? void 0 : _$props$patientVisits2.links

@@ -27,7 +27,7 @@ class UpdateRegistrationRequest extends FormRequest
             'patient_type_id' => 'required',
             'patient_name' => 'required|string|max:255',
             'gender_id' => 'required',
-            'patient_age' => 'required|string|max:25',
+            'patient_age' => 'required|max:25',
             'relationship_with_employee' => 'required|string|max:100',
             'designation' => 'required|string|max:100',
             'patient_cnic' => 'required',

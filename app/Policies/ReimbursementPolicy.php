@@ -18,7 +18,7 @@ class ReimbursementPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('list reimbursement');
+        return $user->can('list reimbursements');
 
     }
 
@@ -31,7 +31,7 @@ class ReimbursementPolicy
      */
     public function view(User $user, Reimbursement $reimbursement)
     {
-        return $user->can('view reimbursement');
+        return $user->can('view reimbursements');
     }
 
     /**
@@ -42,7 +42,7 @@ class ReimbursementPolicy
      */
     public function create(User $user)
     {
-        return $user->can('create reimbursement');
+        return $user->can('create reimbursements');
     }
 
     /**
@@ -54,7 +54,7 @@ class ReimbursementPolicy
      */
     public function update(User $user, Reimbursement $reimbursement)
     {
-        return $user->can('update reimbursement');
+        return $user->can('update reimbursements');
     }
 
     /**
@@ -66,7 +66,7 @@ class ReimbursementPolicy
      */
     public function delete(User $user, Reimbursement $reimbursement)
     {
-        return $user->can('delete reimbursement');
+        return $user->can('delete reimbursements');
     }
 
     /**
@@ -78,7 +78,7 @@ class ReimbursementPolicy
      */
     public function restore(User $user, Reimbursement $reimbursement)
     {
-        return $user->can('restore reimbursement');
+        return $user->can('restore reimbursements');
     }
 
     /**
@@ -90,7 +90,7 @@ class ReimbursementPolicy
      */
     public function forceDelete(User $user, Reimbursement $reimbursement)
     {
-        return $user->can('force delete reimbursement');
+        return $user->can('force delete reimbursements');
     }
 
     /**

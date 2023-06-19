@@ -66,6 +66,7 @@
                                 <td>{{ permission.name }}</td>
                                 <td class="text-center">
                                     <Link
+                                        v-if="hasPermission('view permissions')"
                                         :href="route('permissions.show', permission.id)"
                                         class="btn btn-icon btn-primary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -75,6 +76,7 @@
                                     </Link>
 
                                     <Link
+                                        v-if="hasPermission('update permissions')"
                                         :href="route('permissions.edit', permission.id)"
                                         class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -85,6 +87,7 @@
 
 
                                     <a
+                                        v-if="hasPermission('delete permissions')"
                                         @click.prevent="destroy('permissions.destroy', permission.id)"
                                         class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -114,7 +117,10 @@ import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch } from "vue";
 import {debounce} from "lodash";
 import {useCommons} from "@/core/composables/commons";
+import {usePermission} from "@/core/composables/permission";
 const { filterData, destroy } = useCommons();
+const { hasPermission } = usePermission()
+
 
 const props = defineProps({
     permissions: { type: Object, required: true },
