@@ -15,6 +15,7 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permissions = [
+            'dashboard',
             'list institutes', 'create institutes', 'view institutes', 'update institutes', 'delete institutes', 'restore institutes', 'force delete institutes', 'toggle status institutes',
             'list permissions', 'create permissions', 'view permissions', 'update permissions', 'delete permissions', 'restore permissions', 'force delete permissions',
             'list roles', 'create roles', 'view roles', 'update roles', 'delete roles', 'restore roles', 'force delete roles', 'toggle status roles',
