@@ -2,10 +2,10 @@
     <Head title="Institutes"/>
     <Toolbar
         title="Institutes"
-        :buttons="[{label: 'Add Institute', link: route('institutes.create')}]"
+        :buttons="[{label: 'Add Institute', link: route('institutes.create'), permission: 'create institutes'}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
-        {label: 'Institutes', link: null}
+            {label: 'Institutes', link: null}
         ]"
     />
 
@@ -77,6 +77,7 @@
                                 </td>
                                 <td class="text-center">
                                     <Link
+                                        v-if="hasPermission('show institutes')"
                                         :href="route('institutes.show', institute.id)"
                                         class="btn btn-icon btn-primary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -86,6 +87,7 @@
                                     </Link>
 
                                     <Link
+                                        v-if="hasPermission('update institutes')"
                                         :href="route('institutes.edit', institute.id)"
                                         class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -94,7 +96,8 @@
                                         <i class="fas fa-edit"></i>
                                     </Link>
 
-                                    <a @click.prevent="toggleStatus('institutes.toggle-status', institute)"
+                                    <a v-if="hasPermission('toggle status institutes')"
+                                        @click.prevent="toggleStatus('institutes.toggle-status', institute)"
                                        class="btn btn-icon btn-circle btn-sm me-2"
                                        :class="[institute.status?'btn-danger':'btn-success']"
                                        data-bs-toggle="tooltip"
@@ -105,7 +108,7 @@
                                         ></i>
                                     </a>
 
-                                    <a
+                                    <a v-if="hasPermission('delete institutes')"
                                         @click.prevent="destroy('institutes.destroy', institute.id)"
                                         class="btn btn-icon btn-danger btn-circle btn-sm me-2"
                                         data-bs-toggle="tooltip"
@@ -136,7 +139,9 @@ import Pagination from "@/Components/paginations/Pagination.vue";
 import {ref, watch } from "vue";
 import {debounce} from "lodash";
 import {useCommons} from "@/core/composables/commons";
+import {usePermission} from "@/core/composables/permission";
 const { filterData, destroy, toggleStatus } = useCommons();
+const { hasPermission } = usePermission();
 
 
 const props = defineProps({

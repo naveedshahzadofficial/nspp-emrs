@@ -361,6 +361,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _core_composables_permission__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/core/composables/permission */ "./resources/ts/core/composables/permission.ts");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
@@ -383,15 +385,25 @@ __webpack_require__.r(__webpack_exports__);
     var __expose = _ref.expose;
     __expose();
     var props = __props;
+    var _usePermission = (0,_core_composables_permission__WEBPACK_IMPORTED_MODULE_1__.usePermission)(),
+      hasPermission = _usePermission.hasPermission;
     var isLastBreadcrumb = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
       return function (index) {
         var _props$breadcrumbs;
         return index === ((_props$breadcrumbs = props.breadcrumbs) === null || _props$breadcrumbs === void 0 ? void 0 : _props$breadcrumbs.length) - 1;
       };
     });
+    var checkPermission = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
+      return function (permission) {
+        if (!permission) return true;
+        return hasPermission(permission);
+      };
+    });
     var __returned__ = {
+      hasPermission: hasPermission,
       props: props,
-      isLastBreadcrumb: isLastBreadcrumb
+      isLastBreadcrumb: isLastBreadcrumb,
+      checkPermission: checkPermission
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -2404,19 +2416,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Breadcrumb")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Page title"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Actions"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Button"), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.buttons, function (button, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: index
-    }, [button.link ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+    }, [button.link && $setup.checkPermission(button === null || button === void 0 ? void 0 : button.permission) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
       key: 0,
       href: button.link,
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["btn btn-sm ms-2", [button["class"] ? button["class"] : 'btn-primary']]),
       innerHTML: button.label
-    }, null, 8 /* PROPS */, ["href", "class", "innerHTML"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+    }, null, 8 /* PROPS */, ["href", "class", "innerHTML"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !button.link && $setup.checkPermission(button === null || button === void 0 ? void 0 : button.permission) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
       key: 1,
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(button.click, ["prevent"]),
       as: "button",
       type: "button",
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["btn btn-sm btn-primary ms-2", [button["class"] ? button["class"] : 'btn-primary']]),
       innerHTML: button.label
-    }, null, 8 /* PROPS */, ["onClick", "class", "innerHTML"]))], 64 /* STABLE_FRAGMENT */);
+    }, null, 8 /* PROPS */, ["onClick", "class", "innerHTML"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
   }), 128 /* KEYED_FRAGMENT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Button")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Actions")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Container")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Toolbar")], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */);
 }
 
@@ -9502,6 +9514,36 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/ts/core/composables/permission.ts":
+/*!*****************************************************!*\
+  !*** ./resources/ts/core/composables/permission.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   usePermission: () => (/* binding */ usePermission)
+/* harmony export */ });
+/* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
+
+function usePermission() {
+  var hasRole = function hasRole(name) {
+    var _usePage$props$auth, _usePage$props$auth$u;
+    return (_usePage$props$auth = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.auth) === null || _usePage$props$auth === void 0 ? void 0 : (_usePage$props$auth$u = _usePage$props$auth.user) === null || _usePage$props$auth$u === void 0 ? void 0 : _usePage$props$auth$u.roles.includes(name);
+  };
+  var hasPermission = function hasPermission(name) {
+    var _usePage$props$auth2, _usePage$props$auth2$;
+    return hasRole('Super Admin') || ((_usePage$props$auth2 = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.auth) === null || _usePage$props$auth2 === void 0 ? void 0 : (_usePage$props$auth2$ = _usePage$props$auth2.user) === null || _usePage$props$auth2$ === void 0 ? void 0 : _usePage$props$auth2$.permissions.includes(name));
+  };
+  return {
+    hasRole: hasRole,
+    hasPermission: hasPermission
+  };
+}
 
 /***/ }),
 

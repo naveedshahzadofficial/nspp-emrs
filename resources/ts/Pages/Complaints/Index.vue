@@ -2,7 +2,7 @@
     <Head title="Complaints"/>
     <Toolbar
         title="Complaints"
-        :buttons="[{label: 'Add Complaint', link: route('complaints.create')}]"
+        :buttons="[{label: 'Add Complaint', link: route('complaints.create'), permission: 'create complaints'}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
         {label: 'Complaints', link: null}

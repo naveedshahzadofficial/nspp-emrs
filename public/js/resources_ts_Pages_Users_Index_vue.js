@@ -375,7 +375,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "Users",
     buttons: [{
       label: 'Add User',
-      link: _ctx.route('users.create')
+      link: _ctx.route('users.create'),
+      permission: 'create users'
     }],
     breadcrumbs: [{
       label: 'System Settings',

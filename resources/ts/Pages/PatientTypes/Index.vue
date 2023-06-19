@@ -2,7 +2,7 @@
     <Head title="Patient Types"/>
     <Toolbar
         title="Patient Types"
-        :buttons="[{label: 'Add Patient Type', link: route('patient-types.create')}]"
+        :buttons="[{label: 'Add Patient Type', link: route('patient-types.create'), permission: 'create patient types'}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
         {label: 'Patient Types', link: null}

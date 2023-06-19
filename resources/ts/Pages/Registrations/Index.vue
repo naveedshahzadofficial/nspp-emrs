@@ -2,7 +2,7 @@
     <Head title="Registrations"/>
     <Toolbar
         title="Registrations"
-        :buttons="[{label: 'Add Registration', link: route('registrations.create')}]"
+        :buttons="[{label: 'Add Registration', link: route('registrations.create'), permission: 'create registrations'}]"
         :breadcrumbs="[
            {label: 'Registrations', link: null}
         ]"

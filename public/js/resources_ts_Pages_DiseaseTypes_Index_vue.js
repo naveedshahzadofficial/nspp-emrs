@@ -376,7 +376,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "Disease Types",
     buttons: [{
       label: 'Add Disease Type',
-      link: _ctx.route('disease-types.create')
+      link: _ctx.route('disease-types.create'),
+      permission: 'create disease types'
     }],
     breadcrumbs: [{
       label: 'System Settings',
@@ -562,35 +563,6 @@ function useCommons() {
     destroy: destroy,
     toggleStatus: toggleStatus,
     revoke: revoke
-  };
-}
-
-/***/ }),
-
-/***/ "./resources/ts/core/composables/permission.ts":
-/*!*****************************************************!*\
-  !*** ./resources/ts/core/composables/permission.ts ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   usePermission: () => (/* binding */ usePermission)
-/* harmony export */ });
-/* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
-
-function usePermission() {
-  var hasRole = function hasRole(name) {
-    var _usePage$props$auth, _usePage$props$auth$u;
-    return (_usePage$props$auth = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.auth) === null || _usePage$props$auth === void 0 ? void 0 : (_usePage$props$auth$u = _usePage$props$auth.user) === null || _usePage$props$auth$u === void 0 ? void 0 : _usePage$props$auth$u.roles.includes(name);
-  };
-  var hasPermission = function hasPermission(name) {
-    var _usePage$props$auth2, _usePage$props$auth2$;
-    return hasRole('Super Admin') || ((_usePage$props$auth2 = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.usePage)().props.auth) === null || _usePage$props$auth2 === void 0 ? void 0 : (_usePage$props$auth2$ = _usePage$props$auth2.user) === null || _usePage$props$auth2$ === void 0 ? void 0 : _usePage$props$auth2$.permissions.includes(name));
-  };
-  return {
-    hasRole: hasRole,
-    hasPermission: hasPermission
   };
 }
 

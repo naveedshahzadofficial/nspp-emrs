@@ -2,7 +2,7 @@
     <Head title="Users"/>
     <Toolbar
         title="Users"
-        :buttons="[{label: 'Add User', link: route('users.create')}]"
+        :buttons="[{label: 'Add User', link: route('users.create'), permission: 'create users'}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
         {label: 'Users', link: null}

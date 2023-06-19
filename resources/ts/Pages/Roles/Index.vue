@@ -2,7 +2,7 @@
     <Head title="Roles"/>
     <Toolbar
         title="Roles"
-        :buttons="[{label: 'Add Role', link: route('roles.create')}]"
+        :buttons="[{label: 'Add Role', link: route('roles.create'), permission: 'create roles'}]"
         :breadcrumbs="[
             {label: 'System Settings', link: '#'},
         {label: 'Roles', link: null}

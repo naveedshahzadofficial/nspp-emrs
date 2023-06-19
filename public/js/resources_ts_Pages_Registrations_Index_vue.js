@@ -401,7 +401,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "Registrations",
     buttons: [{
       label: 'Add Registration',
-      link: _ctx.route('registrations.create')
+      link: _ctx.route('registrations.create'),
+      permission: 'create registrations'
     }],
     breadcrumbs: [{
       label: 'Registrations',
