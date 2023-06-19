@@ -585,6 +585,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _core_helpers_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/core/helpers/config */ "./resources/ts/core/helpers/config.ts");
 /* harmony import */ var _core_config_MainMenuConfig__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/core/config/MainMenuConfig */ "./resources/ts/core/config/MainMenuConfig.ts");
 /* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
+/* harmony import */ var _core_composables_permission__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/core/composables/permission */ "./resources/ts/core/composables/permission.ts");
+
 
 
 
@@ -594,6 +596,8 @@ __webpack_require__.r(__webpack_exports__);
   name: "kt-menu",
   components: {},
   setup: function setup() {
+    var _usePermission = (0,_core_composables_permission__WEBPACK_IMPORTED_MODULE_5__.usePermission)(),
+      hasPermission = _usePermission.hasPermission;
     var scrollElRef = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
       if (scrollElRef.value) {
@@ -604,8 +608,14 @@ __webpack_require__.r(__webpack_exports__);
       var _match$components;
       return ((_match$components = match === null || match === void 0 ? void 0 : match.components) !== null && _match$components !== void 0 ? _match$components : []).includes((0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_4__.usePage)().component);
     };
+    var hasGrant = function hasGrant(permissions) {
+      return permissions.some(function (item) {
+        return hasPermission(item);
+      });
+    };
     return {
       hasActive: hasActive,
+      hasGrant: hasGrant,
       MainMenuConfig: _core_config_MainMenuConfig__WEBPACK_IMPORTED_MODULE_3__["default"],
       asideMenuIcons: _core_helpers_config__WEBPACK_IMPORTED_MODULE_2__.asideMenuIcons,
       version: _core_helpers_documentation__WEBPACK_IMPORTED_MODULE_1__.version
@@ -2676,7 +2686,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       var _menuItem$route;
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         key: j
-      }, [menuItem.heading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+      }, [menuItem.heading && _ctx.hasGrant(menuItem.permissions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["menu-link", {
           'active': _ctx.hasActive(menuItem)
         }]),
@@ -2692,7 +2702,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
 
         _: 2 /* DYNAMIC */
-      }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["class", "href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), menuItem.sectionTitle ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["class", "href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), menuItem.sectionTitle && _ctx.hasGrant(menuItem.permissions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
         key: 1,
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
           show: _ctx.hasActive(menuItem)
@@ -2712,7 +2722,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         var _item2$route;
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
           key: k
-        }, [item2.heading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+        }, [item2.heading && _ctx.hasGrant(item2.permissions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
           "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["menu-link", {
             'active': _ctx.hasActive(item2)
           }]),
@@ -2723,7 +2733,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }),
 
           _: 2 /* DYNAMIC */
-        }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["class", "href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), item2.sectionTitle ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+        }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["class", "href"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), item2.sectionTitle && _ctx.hasGrant(item2.permissions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
           key: 1,
           "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
             show: _ctx.hasActive(item2)
@@ -2738,7 +2748,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           var _item3$route;
           return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
             key: k
-          }, [item3.heading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+          }, [item3.heading && _ctx.hasGrant(item3.permissions) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
             "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["menu-link", {
               'active': _ctx.hasActive(item3)
             }]),
@@ -9634,6 +9644,7 @@ var DocMenuConfig = [{
     heading: "Dashboard",
     route: "dashboard",
     components: ["Dashboard"],
+    permissions: ['dashboard'],
     fontIcon: "bi bi-house-door"
   }]
 }, {
@@ -9642,48 +9653,59 @@ var DocMenuConfig = [{
     sectionTitle: "System Settings",
     fontIcon: "bi bi-gear",
     components: ["Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show", "Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show", "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show", "DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show", "Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show"],
+    permissions: ['list institutes', 'list roles', 'list permissions', 'list users', "list patient types", "list complaints", "list disease types", "list diseases"],
     sub: [{
       heading: "Institutes",
       route: "institutes.index",
-      components: ["Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show"]
+      components: ["Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show"],
+      permissions: ['list institutes']
     }, {
       heading: "Permissions",
       route: "permissions.index",
-      components: ["Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show"]
+      components: ["Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show"],
+      permissions: ['list permissions']
     }, {
       heading: "Roles",
       route: "roles.index",
-      components: ["Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show"]
+      components: ["Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show"],
+      permissions: ['list roles']
     }, {
       heading: "Users",
       route: "users.index",
-      components: ["Users/Index", "Users/Create", "Users/Edit", "Users/Show"]
+      components: ["Users/Index", "Users/Create", "Users/Edit", "Users/Show"],
+      permissions: ['list users']
     }, {
       heading: "Patient Types",
       route: "patient-types.index",
-      components: ["PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show"]
+      components: ["PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show"],
+      permissions: ['list patient types']
     }, {
       heading: "Complaints",
       route: "complaints.index",
-      components: ["Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show"]
+      components: ["Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show"],
+      permissions: ['list complaints']
     }, {
       heading: "DiseaseTypes",
       route: "disease-types.index",
-      components: ["DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show"]
+      components: ["DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show"],
+      permissions: ['list disease types']
     }, {
       heading: "Diseases",
       route: "diseases.index",
-      components: ["Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show"]
+      components: ["Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show"],
+      permissions: ['list diseases']
     }]
   }, {
     heading: "Registrations",
     route: "registrations.index",
     components: ["Registrations/Index", "Registrations/Create", "Registrations/Edit", "Registrations/Show", "Registrations/Proceed"],
+    permissions: ['list registrations'],
     fontIcon: "bi bi-pencil-square"
   }, {
     heading: "Reimbursements",
     route: "reimbursements.index",
     components: ["Reimbursements/Index", "Reimbursements/Create", "Reimbursements/Edit", "Reimbursements/Show"],
+    permissions: ['list reimbursements'],
     fontIcon: "bi bi-pencil-square"
   }]
 }];

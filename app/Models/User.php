@@ -61,4 +61,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Institute::class);
     }
+
+    public function isSuperAdmin(): bool
+    {
+        return $this->hasRole('Super Admin');
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->hasRole('Admin');
+    }
 }

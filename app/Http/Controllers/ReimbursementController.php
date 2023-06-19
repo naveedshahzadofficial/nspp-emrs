@@ -30,6 +30,9 @@ class ReimbursementController extends Controller
                 ->when(request()->input('search'), function ($query, $search){
                     $query->whereRelation('patient', 'patient_name', 'like', "%{$search}%")->orWhere('actual_amount', 'like', "%{$search}%")->orWhere('approved_amount', 'like', "%{$search}%");
                 })
+                ->when(!auth()->user()->isSuperAdmin(), function ($query){
+                    $query->where('institute_id', auth()->user()->institute_id);
+                })
                 ->orderBy('created_at', 'desc')
                 ->paginate(request()->input('limit', 30))->withQueryString()
         );

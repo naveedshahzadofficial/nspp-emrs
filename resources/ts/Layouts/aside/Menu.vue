@@ -26,7 +26,7 @@
           </div>
         </div>
         <template v-for="(menuItem, j) in item.pages" :key="j">
-          <template v-if="menuItem.heading">
+          <template v-if="menuItem.heading && hasGrant(menuItem.permissions)">
             <div class="menu-item">
               <Link
                 class="menu-link"
@@ -56,7 +56,7 @@
             </div>
           </template>
           <div
-            v-if="menuItem.sectionTitle"
+            v-if="menuItem.sectionTitle && hasGrant(menuItem.permissions)"
             :class="{ show: hasActive(menuItem) }"
             class="menu-item menu-accordion"
             data-kt-menu-sub="accordion"
@@ -89,7 +89,7 @@
               class="menu-sub menu-sub-accordion"
             >
               <template v-for="(item2, k) in menuItem.sub" :key="k">
-                <div v-if="item2.heading" class="menu-item">
+                <div v-if="item2.heading  && hasGrant(item2.permissions)" class="menu-item">
                     <Link
                         class="menu-link"
                         :class="{ 'active': hasActive(item2) }"
@@ -104,7 +104,7 @@
                   </Link>
                 </div>
                 <div
-                  v-if="item2.sectionTitle"
+                  v-if="item2.sectionTitle  && hasGrant(item2.permissions)"
                   :class="{ show: hasActive(item2) }"
                   class="menu-item menu-accordion"
                   data-kt-menu-sub="accordion"
@@ -122,7 +122,7 @@
                     class="menu-sub menu-sub-accordion"
                   >
                     <template v-for="(item3, k) in item2.sub" :key="k">
-                      <div v-if="item3.heading" class="menu-item">
+                      <div v-if="item3.heading && hasGrant(item3.permissions)" class="menu-item">
                           <Link
                               class="menu-link"
                               :class="{ 'active': hasActive(item3) }"
@@ -156,15 +156,17 @@ import { version } from "@/core/helpers/documentation";
 import { asideMenuIcons } from "@/core/helpers/config";
 import MainMenuConfig from "@/core/config/MainMenuConfig";
 import {usePage} from "@inertiajs/vue3";
+import {usePermission} from "@/core/composables/permission";
+
 
 export default defineComponent({
   name: "kt-menu",
   components: {},
   setup() {
+    const { hasPermission } = usePermission()
     const scrollElRef = ref<null | HTMLElement>(null);
 
     onMounted(() => {
-
         if (scrollElRef.value) {
         //scrollElRef.value.scrollTop = 0;
       }
@@ -174,8 +176,11 @@ export default defineComponent({
       return (match?.components??[] as any).includes(usePage().component)
     };
 
+    const hasGrant = (permissions) => permissions.some(item => hasPermission(item));
+
     return {
       hasActive,
+      hasGrant,
       MainMenuConfig,
       asideMenuIcons,
       version,

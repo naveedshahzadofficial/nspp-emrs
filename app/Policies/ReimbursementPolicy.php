@@ -31,7 +31,7 @@ class ReimbursementPolicy
      */
     public function view(User $user, Reimbursement $reimbursement)
     {
-        return $user->can('view reimbursements');
+        return $user->can('view reimbursements') && $user->institute_id === $reimbursement->institute_id;
     }
 
     /**
@@ -54,7 +54,7 @@ class ReimbursementPolicy
      */
     public function update(User $user, Reimbursement $reimbursement)
     {
-        return $user->can('update reimbursements');
+        return $user->can('update reimbursements') && $user->institute_id === $reimbursement->institute_id;
     }
 
     /**
@@ -66,7 +66,7 @@ class ReimbursementPolicy
      */
     public function delete(User $user, Reimbursement $reimbursement)
     {
-        return $user->can('delete reimbursements');
+        return $user->can('delete reimbursements') && $user->institute_id === $reimbursement->institute_id;
     }
 
     /**
@@ -78,7 +78,7 @@ class ReimbursementPolicy
      */
     public function restore(User $user, Reimbursement $reimbursement)
     {
-        return $user->can('restore reimbursements');
+        return $user->can('restore reimbursements') && $user->institute_id === $reimbursement->institute_id;
     }
 
     /**
@@ -90,7 +90,7 @@ class ReimbursementPolicy
      */
     public function forceDelete(User $user, Reimbursement $reimbursement)
     {
-        return $user->can('force delete reimbursements');
+        return $user->can('force delete reimbursements') && $user->institute_id === $reimbursement->institute_id;
     }
 
     /**
@@ -102,6 +102,6 @@ class ReimbursementPolicy
      */
     public function toggleStatus(User $user, Reimbursement $reimbursement)
     {
-        return $user->can('toggle status reimbursements');
+        return $user->can('toggle status reimbursements')  && $user->institute_id === $reimbursement->institute_id;
     }
 }

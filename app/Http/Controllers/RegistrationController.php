@@ -67,6 +67,9 @@ class RegistrationController extends Controller
                 ->when(request()->input('search'), function ($query, $search){
                     $query->where('token_no', 'like', "%{$search}%");
                 })
+                ->when(!auth()->user()->isSuperAdmin(), function ($query){
+                    $query->where('institute_id', auth()->user()->institute_id);
+                })
                 ->orderBy('created_at', 'desc')
                 ->paginate(request()->input('limit', 30))->withQueryString()
         );

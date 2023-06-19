@@ -30,7 +30,7 @@ class PatientVisitPolicy
      */
     public function view(User $user, PatientVisit $patientVisit)
     {
-        return $user->can('view registrations');
+        return $user->can('view registrations') && $user->institute_id === $patientVisit->institute_id;
     }
 
     /**
@@ -53,7 +53,7 @@ class PatientVisitPolicy
      */
     public function update(User $user, PatientVisit $patientVisit)
     {
-        return $user->can('update registrations');
+        return $user->can('update registrations') && $user->institute_id === $patientVisit->institute_id;
     }
 
     /**
@@ -65,7 +65,7 @@ class PatientVisitPolicy
      */
     public function delete(User $user, PatientVisit $patientVisit)
     {
-        return $user->can('delete registrations');
+        return $user->can('delete registrations') && $user->institute_id === $patientVisit->institute_id;
     }
 
     /**
@@ -77,7 +77,7 @@ class PatientVisitPolicy
      */
     public function restore(User $user, PatientVisit $patientVisit)
     {
-        return $user->can('restore registrations');
+        return $user->can('restore registrations') && $user->institute_id === $patientVisit->institute_id;
     }
 
     /**
@@ -89,7 +89,7 @@ class PatientVisitPolicy
      */
     public function forceDelete(User $user, PatientVisit $patientVisit)
     {
-        return $user->can('force delete registrations');
+        return $user->can('force delete registrations') && $user->institute_id === $patientVisit->institute_id;
     }
 
     /**
@@ -101,6 +101,6 @@ class PatientVisitPolicy
      */
     public function proceed(User $user,  PatientVisit $patientVisit)
     {
-        return $user->can('proceed registrations');
+        return $user->can('proceed registrations') && $user->institute_id === $patientVisit->institute_id;
     }
 }
