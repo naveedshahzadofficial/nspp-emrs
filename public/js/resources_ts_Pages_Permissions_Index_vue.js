@@ -363,7 +363,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "Permissions",
     buttons: [{
       label: 'Add Permission',
-      link: _ctx.route('permissions.create')
+      link: _ctx.route('permissions.create'),
+      permission: 'create permissions'
     }],
     breadcrumbs: [{
       label: 'System Settings',

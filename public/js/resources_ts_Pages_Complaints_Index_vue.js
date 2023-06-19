@@ -371,7 +371,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "Complaints",
     buttons: [{
       label: 'Add Complaint',
-      link: _ctx.route('complaints.create')
+      link: _ctx.route('complaints.create'),
+      permission: 'create complaints'
     }],
     breadcrumbs: [{
       label: 'System Settings',

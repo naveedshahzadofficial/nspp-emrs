@@ -371,7 +371,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "Diseases",
     buttons: [{
       label: 'Add Disease',
-      link: _ctx.route('diseases.create')
+      link: _ctx.route('diseases.create'),
+      permission: 'create diseases'
     }],
     breadcrumbs: [{
       label: 'System Settings',

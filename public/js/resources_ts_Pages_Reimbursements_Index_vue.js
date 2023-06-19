@@ -369,7 +369,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "Reimbursements",
     buttons: [{
       label: 'Add Reimbursement',
-      link: _ctx.route('reimbursements.create')
+      link: _ctx.route('reimbursements.create'),
+      permission: 'create reimbursements'
     }],
     breadcrumbs: [{
       label: 'Reimbursements',
