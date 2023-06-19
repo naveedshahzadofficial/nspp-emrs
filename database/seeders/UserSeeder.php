@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Institute;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -29,6 +30,22 @@ class UserSeeder extends Seeder
         $role = Role::where('name', 'Super Admin')->first();
         $user->roles()->attach($role);
 
-        User::factory(5)->create();
+        $institutes = Institute::all();
+        foreach ($institutes as $institute){
+           $roles = Role::whereNotIn('name', ['Super Admin'])->get();
+            foreach ($roles as $role){
+                $username = strtolower(str_replace('/ Doctor','',$role->name)).'.'.strtolower(str_replace(' ','.', $institute->short_name));
+                $user = User::create([
+                    'institute_id'=>$institute->id,
+                    'name'=> $role->name.' '.$institute->short_name,
+                    'username'=> $username,
+                    'email'=> $username.'@gmail.com',
+                    'password'=> '12345678',
+                    'email_verified_at' => now(),
+                    'remember_token' => Str::random(10),
+                ]);
+            }
+        }
+        //User::factory(5)->create();
     }
 }
