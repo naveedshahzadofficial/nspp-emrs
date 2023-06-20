@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 import {useForm} from "@inertiajs/vue3";
+import AlertMessage from "@/Components/alerts/AlertMessage.vue";
 
 let form = useForm({
     email: ''
@@ -16,14 +17,16 @@ export default {
 </script>
 
 <template>
-    <Head title="Sign In"/>
+    <Head title="Forgot Password"/>
     <!--begin::Wrapper-->
     <div class="w-lg-500px rounded shadow-sm p-10 p-lg-15 mx-auto">
+        <AlertMessage v-if="$page.props.flash.title" :title="$page.props.flash.title" :message="$page.props.flash.message"/>
+
         <!--begin::Form-->
         <form
             class="form w-100"
             id="kt_login_signin_form"
-            @submit.prevent="form.post(route('password.forgot.submit'))"
+            @submit.prevent="form.post(route('password.email'), { preserveScroll: true, onSuccess: (): any => form.reset('email'), })"
         >
             <!--begin::Input group-->
             <div class="fv-row mb-10">

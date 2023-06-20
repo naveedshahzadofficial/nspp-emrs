@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\{
-    AuthController,
     DashboardController,
     RoleController,
     PermissionController,
@@ -18,20 +17,10 @@ use App\Http\Controllers\{
     InstituteController
 };
 
-
-Route::controller(AuthController::class)->group(function () {
-    Route::get('/','showLoginForm');
-    Route::get('/login', 'showLoginForm')->name('login');
-    Route::post('/login', 'submitLoginForm')->name('login.submit');
-    Route::get('/password/forgot', 'showForgotForm')->name('password.forgot');
-    Route::post('/password/forgot', 'submitForgotForm')->name('password.forgot.submit');
-    Route::get('/password/reset', 'showResetForm')->name('password.reset');
-    Route::post('/password/reset', 'submitResetForm')->name('password.reset.submit');
-});
+Route::get('/', [DashboardController::class, 'index']);
 
 Route::group(['middleware' => ['auth']],function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::post('/logout', [AuthController::class,'logout'])->name('logout');
 
     Route::delete('/institutes/{institute}/toggle-status', [InstituteController::class, 'toggleStatus'])->name('institutes.toggle-status');
     Route::resource('/institutes', InstituteController::class);

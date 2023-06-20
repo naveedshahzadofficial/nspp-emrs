@@ -86,7 +86,7 @@ const props = defineProps({
     },
     buttons: {
         type: Array as () => any,
-        required: true,
+        required: false,
     },
 });
 
