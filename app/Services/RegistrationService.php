@@ -36,9 +36,12 @@ class RegistrationService
     }
 
     public function updateOrCreatePatient($data, $patient_id){
-        return Patient::updateOrCreate(
-            ['id' => $patient_id],
-            $data);
+        if(!empty($patient_id))
+        $checked = ['id' => $patient_id];
+        else
+        $checked =  ['patient_cnic' => $data['patient_cnic']];
+
+        return Patient::updateOrCreate($checked, $data);
     }
 
 

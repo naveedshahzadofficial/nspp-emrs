@@ -26,34 +26,41 @@ const form = useForm({
             <AlertMessage v-if="$page.props.flash.title" :title="$page.props.flash.title" :message="$page.props.flash.message"/>
             <div class="card card-custom">
                 <!--begin::Form-->
-                <form @submit.prevent="form.put(route('user-password.update'))">
+                <form @submit.prevent="form.put(route('user-password.update'), { preserveScroll: true, onSuccess: (): any => form.reset(), })">
                     <!--begin::Card body-->
                     <div class="card-body">
-                        <div class="row mb-10">
-                            <div class="col-lg-6">
-                                <label class="required form-label">Current Password</label>
-                                <input v-model="form.current_password"  type="password" class="form-control form-control-sm" placeholder="Current Password"/>
-                                <ServerErrorMessage :error="form.errors.current_password"/>
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-3"></div>
+                            <div class="col-sm-12 col-lg-7">
+                                <div class="row mb-10">
+                                    <div class="col-sm-12 col-lg-9">
+                                        <label class="required form-label">Current Password</label>
+                                        <input v-model="form.current_password"  type="password" class="form-control form-control-sm" placeholder="Current Password"/>
+                                        <ServerErrorMessage :error="form.errors.current_password"/>
+                                    </div>
+                                </div>
+                                <div class="row mb-10">
+                                    <div class="col-sm-12 col-lg-9">
+                                        <label class="required form-label">New Password</label>
+                                        <input v-model="form.password"  type="password" class="form-control form-control-sm" placeholder="New Password"/>
+                                        <ServerErrorMessage :error="form.errors.password"/>
+                                    </div>
+                                </div>
+                                <div class="row mb-10">
+                                    <div class="col-sm-12 col-lg-9">
+                                        <label class="required form-label">Confirm Password</label>
+                                        <input v-model="form.password_confirmation"  type="password" class="form-control form-control-sm" placeholder="Confirm Password"/>
+                                        <ServerErrorMessage :error="form.errors.password_confirmation"/>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="row mb-10">
-                            <div class="col-lg-6">
-                                <label class="required form-label">New Password</label>
-                                <input v-model="form.password"  type="password" class="form-control form-control-sm" placeholder="Current Password"/>
-                                <ServerErrorMessage :error="form.errors.password"/>
-                            </div>
-                        </div>
-                        <div class="row mb-10">
-                            <div class="col-lg-6">
-                                <label class="required form-label">Confirm Password</label>
-                                <input v-model="form.password_confirmation"  type="password" class="form-control form-control-sm" placeholder="Current Password"/>
-                                <ServerErrorMessage :error="form.errors.password_confirmation"/>
-                            </div>
-                        </div>
-
                     </div>
                     <!--end::Card body-->
                     <div class="card-footer">
+                        <div class="row">
+                        <div class="col-sm-12 col-lg-3 "></div>
+                            <div class="col-sm-12 col-lg-9">
                         <button
                             type="submit"
                             ref="submitButton"
@@ -70,6 +77,8 @@ const form = useForm({
                 ></span>
           </span>
                         </button>
+                            </div>
+                        </div>
                     </div>
                 </form>
                 <!--end::Form-->

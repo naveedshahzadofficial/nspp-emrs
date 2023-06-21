@@ -37,7 +37,7 @@
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-      <Link href="/pages/profile/overview" class="menu-link px-5">
+      <Link :href="route('users.profile')" class="menu-link px-5">
         My Profile
       </Link>
     </div>
@@ -47,7 +47,7 @@
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-      <Link href="/pages/profile/overview" class="menu-link px-5">
+      <Link :href="route('users.change-password')" class="menu-link px-5">
           Change Password
       </Link>
     </div>

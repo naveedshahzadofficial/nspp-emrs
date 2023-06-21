@@ -12,6 +12,7 @@ use App\Models\Institute;
 use App\Models\Role;
 use App\Models\User;
 use Inertia\Inertia;
+use Inertia\Response;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Http\RedirectResponse;
 
@@ -25,9 +26,9 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         $filters = request()->only(['search', 'limit']);
         $users = UserResource::collection(
@@ -45,9 +46,9 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Inertia\Response
+     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         $roles = RoleResource::collection(Role::active()->get());
         $permissions = PermissionResource::collection(Permission::all());
@@ -59,10 +60,10 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param StoreUserRequest $request
+     * @return RedirectResponse
      */
-    public function store(StoreUserRequest $request)
+    public function store(StoreUserRequest $request): RedirectResponse
     {
         $user = User::create($request->safe()->except('roles','permissions'));
         $user->syncRoles($request->input('roles.*.name'));
@@ -74,10 +75,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
-     * @return \Inertia\Response
+     * @param User $user
+     * @return Response
      */
-    public function show(User $user)
+    public function show(User $user): Response
     {
         $user->load(['roles', 'permissions', 'institute']);
         return Inertia::render('Users/Show', compact('user'));
@@ -87,10 +88,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
-     * @return \Inertia\Response
+     * @param User $user
+     * @return Response
      */
-    public function edit(User $user)
+    public function edit(User $user): Response
     {
         $user->load(['roles', 'permissions']);
         $roles = RoleResource::collection(Role::active()->get());
@@ -103,11 +104,11 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\RedirectResponse
+     * @param UpdateUserRequest $request
+     * @param User $user
+     * @return RedirectResponse
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
         $data = $request->safe()->except('roles','permissions');
         if(!$request->input('password'))
@@ -122,17 +123,18 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\RedirectResponse
+     * @param User $user
+     * @return RedirectResponse
      */
-    public function destroy(User $user)
+    public function destroy(User $user): RedirectResponse
     {
         $user->delete();
         session()->flash('success', "Role has been deleted successfully.");
         return back();
     }
 
-    public function toggleStatus(User $user){
+    public function toggleStatus(User $user): RedirectResponse
+    {
         $this->authorize('toggleStatus', $user);
         $user->update([
             'status' => !$user->status
@@ -153,5 +155,13 @@ class UserController extends Controller
         return back();
     }
 
+    public function changePasswordView(): Response
+    {
+        return Inertia::render('Auth/ChangePassword');
+    }
 
+    public function profileView(): Response
+    {
+        return Inertia::render('Auth/Profile');
+    }
 }

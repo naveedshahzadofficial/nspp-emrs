@@ -35,6 +35,8 @@ Route::group(['middleware' => ['auth']],function() {
     Route::delete('/users/{user}/roles/{role}/revoke', [UserController::class, 'revokeRoleFromUser'])->name('users.roles.revoke');
     Route::delete('/users/{user}/permissions/{permission}/revoke', [UserController::class, 'revokePermissionFromUser'])->name('users.permissions.revoke');
     Route::delete('/users/{user}/toggle-status', [UserController::class, 'toggleStatus'])->name('users.toggle-status');
+    Route::get('/users/change-password', [UserController::class, 'changePasswordView'])->name('users.change-password');
+    Route::get('/users/profile', [UserController::class, 'profileView'])->name('users.profile');
     Route::resource('/users', UserController::class);
 
     Route::delete('/patient-types/{patient_type}/toggle-status', [PatientTypeController::class, 'toggleStatus'])->name('patient-types.toggle-status');
