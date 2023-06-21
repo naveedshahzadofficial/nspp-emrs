@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,6 +20,16 @@ class Patient extends Model
     ];
     public function scopeActive($query) {
         return $query->where('status', true);
+    }
+
+    public function patientType(): BelongsTo
+    {
+        return $this->belongsTo(PatientType::class);
+    }
+
+    public function gender(): BelongsTo
+    {
+        return $this->belongsTo(Gender::class);
     }
 
     public function scopeRelations($query) {

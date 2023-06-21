@@ -42,3 +42,4 @@ https://adocasts.com/lessons/creating-layouts-and-defining-default-layouts
   /*output: { chunkFilename: 'js/[name].js?id=[chunkhash]', publicPath: '/' }, */
 
 
+composer install --no-dev

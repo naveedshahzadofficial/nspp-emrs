@@ -26,6 +26,8 @@ class PatientResource extends JsonResource
             'patient_cnic' => $this->patient_cnic,
             'patient_phone' => $this->patient_phone,
             'status' => $this->status,
+            'patient_type' => new PatientTypeResource($this->whenLoaded('patientType')),
+            'gender' => new GenderResource($this->whenLoaded('gender')),
             ];
     }
 }

@@ -98,7 +98,7 @@
 
                                     <a
                                         v-if="hasPermission('toggle status users')"
-                                        @click.prevent="toggleStatus('users.change-status', user)"
+                                        @click.prevent="toggleStatus('users.toggle-status', user)"
                                        class="btn btn-icon btn-circle btn-sm me-2"
                                        :class="[user.status?'btn-danger':'btn-success']"
                                        data-bs-toggle="tooltip"

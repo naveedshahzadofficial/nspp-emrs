@@ -72,9 +72,9 @@
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-45px me-5">
                                         <img
-                                            v-if="patientVisit.patient_image"
+                                            v-if="patientVisit.patient.patient_image"
                                             alt="Pic"
-                                            :src="patientVisit.patient_image"
+                                            :src="patientVisit.patient.patient_image"
                                         />
                                         <span
                                             v-else-if="patientVisit.patient"

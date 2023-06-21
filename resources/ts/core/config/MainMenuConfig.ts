@@ -83,6 +83,13 @@ const DocMenuConfig = [
         ],
       },
         {
+            heading: "Patients",
+            route: "patients.index",
+            components: ["Patients/Index", "Patients/Create", "Patients/Edit", "Patients/Show" ],
+            permissions: ['list patients' ],
+            fontIcon: "bi bi-person-plus",
+        },
+        {
             heading: "Registrations",
             route: "registrations.index",
             components: ["Registrations/Index", "Registrations/Create", "Registrations/Edit", "Registrations/Show", "Registrations/Proceed"],

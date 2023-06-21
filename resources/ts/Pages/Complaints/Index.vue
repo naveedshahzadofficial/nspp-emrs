@@ -94,7 +94,7 @@
 
                                     <a
                                         v-if="hasPermission('toggle status complaints')"
-                                        @click.prevent="toggleStatus('complaints.change-status',complaint)"
+                                        @click.prevent="toggleStatus('complaints.toggle-status',complaint)"
                                        class="btn btn-icon btn-circle btn-sm me-2"
                                        :class="[complaint.status?'btn-danger':'btn-success']"
                                        data-bs-toggle="tooltip"

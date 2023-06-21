@@ -445,7 +445,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('toggle status roles') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
       key: 2,
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-        return $setup.toggleStatus('roles.change-status', role);
+        return $setup.toggleStatus('roles.toggle-status', role);
       }, ["prevent"]),
       "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["btn btn-icon btn-circle btn-sm me-2", [role.status ? 'btn-danger' : 'btn-success']]),
       "data-bs-toggle": "tooltip",

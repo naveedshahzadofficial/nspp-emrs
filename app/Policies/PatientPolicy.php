@@ -91,4 +91,16 @@ class PatientPolicy
     {
         return $user->can('force delete patients');
     }
+
+    /**
+     * Determine whether the user can toggle status the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Institute $institute
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function toggleStatus(User $user, Patient $patient)
+    {
+        return $user->can('toggle status patients');
+    }
 }

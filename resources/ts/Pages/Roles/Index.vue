@@ -91,7 +91,7 @@
                                     </Link>
 
                                     <a v-if="hasPermission('toggle status roles')"
-                                        @click.prevent="toggleStatus('roles.change-status', role)"
+                                        @click.prevent="toggleStatus('roles.toggle-status', role)"
                                        class="btn btn-icon btn-circle btn-sm me-2"
                                        :class="[role.status?'btn-danger':'btn-success']"
                                        data-bs-toggle="tooltip"

@@ -94,7 +94,7 @@
 
                                     <a
                                         v-if="hasPermission('toggle status disease types')"
-                                        @click.prevent="toggleStatus('disease-types.change-status', diseaseType)"
+                                        @click.prevent="toggleStatus('disease-types.toggle-status', diseaseType)"
                                        class="btn btn-icon btn-circle btn-sm me-2"
                                        :class="[diseaseType.status?'btn-danger':'btn-success']"
                                        data-bs-toggle="tooltip"
