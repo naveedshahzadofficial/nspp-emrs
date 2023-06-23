@@ -52,11 +52,11 @@ __webpack_require__.r(__webpack_exports__);
   __name: 'Create',
   props: {
     patientTypes: {
-      type: Array,
+      type: Object,
       required: true
     },
     genders: {
-      type: Array,
+      type: Object,
       required: true
     }
   },

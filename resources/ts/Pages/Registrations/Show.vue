@@ -79,6 +79,315 @@
                     </div>
                     <!--end::Header vitals-->
 
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Vitals</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-start">Date</th>
+                                    <th class="text-center">Pulse</th>
+                                    <th class="text-center">Temperature</th>
+                                    <th class="text-center">BP</th>
+                                    <th class="text-center">Height</th>
+                                    <th class="text-center">Weight</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_visits" :key="history.id">
+                                    <tr>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td class="text-center">{{ history.pulse }}</td>
+                                        <td class="text-center">{{ history.temperature }}</td>
+                                        <td class="text-center">{{ history.bp_systolic }}/{{ history.bp_diastolic }}</td>
+                                        <td class="text-center">{{ history.height }}</td>
+                                        <td class="text-center">{{ history.weight }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Risk Factors</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive"
+                             v-if="patient?.patient_risk_factors.length">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-start">Date</th>
+                                    <th class="text-start">Risk Factor</th>
+                                    <th class="text-start">Notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_risk_factors" :key="history.id">
+                                    <tr>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td class="text-start">{{ history?.risk_factor?.factor_name }}</td>
+                                        <td class="text-start">{{ history.risk_factor_notes }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <p v-else>No Risk Factors Found</p>
+                    </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Complaints</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive"
+                             v-if="patient?.patient_complaints.length">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-start">Date</th>
+                                    <th class="text-start">Complaint</th>
+                                    <th class="text-start">Notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_complaints" :key="history.id">
+                                    <tr>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td class="text-start">{{ history?.complaint?.complaint_name }}</td>
+                                        <td class="text-start">{{ history?.complaint_notes }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <p v-else>No Complaint Found</p>
+                    </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Diseases</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive"
+                             v-if="patient?.patient_diseases.length">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-start">Date</th>
+                                    <th class="text-start">Disease</th>
+                                    <th class="text-start">Disease Notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_diseases" :key="history.id">
+                                    <tr>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td class="text-start">{{ history?.disease?.disease_name }}</td>
+                                        <td class="text-start">{{ history.disease_notes }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <p v-else>No Disease Found</p>
+                    </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Diagnosis</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive"
+                             v-if="patient?.patient_diagnoses.length">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-start">Date</th>
+                                    <th class="text-start">Category</th>
+                                    <th class="text-start">Diagnosis</th>
+                                    <th class="text-start">Procedure</th>
+                                    <th class="text-start">Advise</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_diagnoses" :key="history.id">
+                                    <tr>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td class="text-start">{{ history?.disease_type?.type_name }}</td>
+                                        <td class="text-start">{{ history?.disease?.disease_name }}</td>
+                                        <td class="text-start">{{ history?.procedure?.procedure_name }}</td>
+                                        <td class="text-start">{{ history.diagnosis_notes }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <p v-else>No Diagnosis Found</p>
+                    </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Medicine</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive"
+                             v-if="patient?.patient_medicines.length">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-start">Date</th>
+                                    <th>Name</th>
+                                    <th>Generic</th>
+                                    <th>Route</th>
+                                    <th>Dosage</th>
+                                    <th>Frequency</th>
+                                    <th>Days</th>
+                                    <th>Acquire From</th>
+                                    <th>Instructions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_medicines" :key="history.id">
+                                    <tr>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td>{{ history?.medicine?.medicine_name }}</td>
+                                        <td>{{ history?.medicine?.medicine_generic.generic_name }}</td>
+                                        <td>{{ history?.route?.route_name }}</td>
+                                        <td>{{ history.dosage }}</td>
+                                        <td>{{ history?.frequency?.frequency_name }}</td>
+                                        <td>{{ history.duration_value }}</td>
+                                        <td>{{ history.acquire_from }}</td>
+                                        <td>{{ history.medicine_instructions }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <p v-else>No Medicine Found</p>
+                    </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Other Items</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive"
+                             v-if="patient?.patient_other_medicines.length">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-start">Date</th>
+                                    <th>Name</th>
+                                    <th>Generic</th>
+                                    <th>Acquire From</th>
+                                    <th>Instructions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_other_medicines" :key="history.id">
+                                    <tr>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td>{{ history?.medicine?.medicine_name }}</td>
+                                        <td>{{ history?.medicine?.medicine_generic.generic_name }}</td>
+                                        <td>{{ history.acquire_from }}</td>
+                                        <td>{{ history.medicine_instructions }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <p v-else>No Other Item Found</p>
+                    </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Referral – Labs</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive"
+                             v-if="patient?.patient_labs.length">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-start">Date</th>
+                                    <th class="text-start">Test Category</th>
+                                    <th class="text-start">Test Type</th>
+                                    <th class="text-start">Test Name</th>
+                                    <th class="text-start">Further Instructions</th>
+                                    <th class="text-start">Refer to Lab</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_labs" :key="history.id">
+                                    <tr>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td>{{ history?.test_category?.category_name }}</td>
+                                        <td>{{ history?.test_type?.type_name }}</td>
+                                        <td>{{ history?.test?.test_name }}</td>
+                                        <td>{{ history.test_instructions }}</td>
+                                        <td>{{ history?.lab?.lab_name }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <p v-else>No Lab Found</p>
+                    </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Referral – Hospitals</span></h4>
+                    <div class="section_box">
+                        <div class="table-responsive"
+                             v-if="patient?.patient_hospitals.length">
+                            <table
+                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
+                            >
+                                <!--begin::Table head-->
+                                <thead>
+                                <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th class="text-start">Date</th>
+                                    <th class="text-start"> Hospital</th>
+                                    <th class="text-center">Priority</th>
+                                    <th class="text-start"> Remarks</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <template v-for="history in patient?.patient_hospitals" :key="history.id">
+                                    <tr>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td>{{ history?.hospital?.hospital_name }}</td>
+                                        <td class="text-center">{{ history.priority }}</td>
+                                        <td>{{ history.remarks }}</td>
+                                    </tr>
+                                </template>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <p v-else>No Hospital Found</p>
+                    </div>
+
+                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Advice</span></h4>
+                    <div class="section_box">
+                        <p>{{ patientVisit?.diagnosis_notes }}</p>
+                    </div>
+
+
+
                 </div>
                 <!--end::Card body-->
             </div>

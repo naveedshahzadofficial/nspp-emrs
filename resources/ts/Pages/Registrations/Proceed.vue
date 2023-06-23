@@ -199,7 +199,7 @@
                                 <!--begin::Table head-->
                                 <thead>
                                 <tr class="fw-semibold fs-6 text-gray-800">
-                                    <th class="text-center">Vital Date</th>
+                                    <th class="text-start">Vital Date</th>
                                     <th class="text-center">Pulse</th>
                                     <th class="text-center">Temperature</th>
                                     <th class="text-center">BP</th>
@@ -210,7 +210,7 @@
                                 <tbody>
                                 <template v-for="history in patient?.patient_visits" :key="history.id">
                                     <tr>
-                                        <td class="text-center">{{ history.created_at }}</td>
+                                        <td class="text-start">{{ history.created_at }}</td>
                                         <td class="text-center">{{ history.pulse }}</td>
                                         <td class="text-center">{{ history.temperature }}</td>
                                         <td class="text-center">{{ history.bp_systolic }}/{{ history.bp_diastolic }}</td>
