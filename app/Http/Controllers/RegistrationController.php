@@ -67,7 +67,7 @@ class RegistrationController extends Controller
             PatientVisit::query()
                 ->with('patient')
                 ->when(request()->input('search'), function ($query, $search){
-                    $query->where('token_no', 'like', "%{$search}%");
+                    $query->where('token_no', 'like', "%{$search}%")->orWhere(DB::raw("DATE_FORMAT(created_at,'%d-%m-%Y')"),'like', "{$search}%");
                 })
                 ->when(!auth()->user()->isSuperAdmin(), function ($query){
                     $query->where('institute_id', auth()->user()->institute_id);
