@@ -33,6 +33,7 @@ const medicineForm = useForm({
     medicine_instructions: null,
     acquire_from: null,
 });
+
 const otherMedicineForm = useForm({
     medicine_id: null,
     qty: null,
@@ -441,78 +442,6 @@ const submit = () => {
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                    </div>
-
-                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Medicine History</span></h4>
-                    <div class="section_box">
-                        <div class="table-responsive">
-                            <table
-                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
-                            >
-                                <!--begin::Table head-->
-                                <thead>
-                                <tr class="fw-semibold fs-6 text-gray-800">
-                                    <th class="text-start">Date</th>
-                                    <th>Name</th>
-                                    <th>Generic</th>
-                                    <th>Route</th>
-                                    <th>Dosage</th>
-                                    <th>Frequency</th>
-                                    <th>Days</th>
-                                    <th>Acquire From</th>
-                                    <th>Instructions</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <template v-for="history in patient?.patient_medicines" :key="history.id">
-                                    <tr>
-                                        <td class="text-start">{{ history.created_at }}</td>
-                                        <td>{{ history?.medicine?.medicine_name }}</td>
-                                        <td>{{ history?.medicine?.medicine_generic.generic_name }}</td>
-                                        <td>{{ history?.route?.route_name }}</td>
-                                        <td>{{ history.dosage }}</td>
-                                        <td>{{ history?.frequency?.frequency_name }}</td>
-                                        <td>{{ history.duration_value }}</td>
-                                        <td>{{ history.acquire_from }}</td>
-                                        <td>{{ history.medicine_instructions }}</td>
-                                    </tr>
-                                </template>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Other Item History</span></h4>
-                    <div class="section_box">
-                        <div class="table-responsive">
-                            <table
-                                class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
-                            >
-                                <!--begin::Table head-->
-                                <thead>
-                                <tr class="fw-semibold fs-6 text-gray-800">
-                                    <th class="text-start">Date</th>
-                                    <th>Name</th>
-                                    <th>Generic</th>
-                                    <th>Acquire From</th>
-                                    <th>Instructions</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <template v-for="history in patient?.patient_other_medicines" :key="history.id">
-                                    <tr>
-                                        <td class="text-start">{{ history.created_at }}</td>
-                                        <td>{{ history?.medicine?.medicine_name }}</td>
-                                        <td>{{ history?.medicine?.medicine_generic.generic_name }}</td>
-                                        <td>{{ history.acquire_from }}</td>
-                                        <td>{{ history.medicine_instructions }}</td>
-                                    </tr>
-                                </template>
-
-                                </tbody>
-                            </table>
                         </div>
                     </div>
 

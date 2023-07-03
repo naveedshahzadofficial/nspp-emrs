@@ -229,7 +229,7 @@ class RegistrationController extends Controller
 
         $data = array();
         $data['patientVisit'] = $patientVisit;
-        $data['patient'] =  Patient::pharmacyRelations()->find($patientVisit->patient_id);
+        $data['patient'] =  Patient::find($patientVisit->patient_id);
         $data['medicines'] = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')->active()->get());
         $data['routes'] = RouteResource::collection(Route::active()->get());
         $data['frequencies'] = FrequencyResource::collection(Frequency::active()->get());
