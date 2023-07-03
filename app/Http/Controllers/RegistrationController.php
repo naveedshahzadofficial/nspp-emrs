@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PharmacyRequest;
 use App\Http\Requests\PrescriptionCheckoutRequest;
 use App\Http\Requests\StoreRegistrationRequest;
 use App\Http\Requests\UpdateRegistrationRequest;
@@ -43,6 +44,7 @@ use App\Services\RegistrationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class RegistrationController extends Controller
 {
@@ -56,7 +58,7 @@ class RegistrationController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Inertia\Response
+     * @return Response
      */
     public function index()
     {
@@ -79,9 +81,9 @@ class RegistrationController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Inertia\Response
+     * @return Response
      */
-    public function create(): \Inertia\Response
+    public function create(): Response
     {
         $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
         $genders = GenderResource::collection(Gender::active()->get());
@@ -128,9 +130,9 @@ class RegistrationController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Inertia\Response
+     * @return Response
      */
-    public function show(PatientVisit $patientVisit): \Inertia\Response
+    public function show(PatientVisit $patientVisit): Response
     {
         //$data = new \stdClass;
         $patient = Patient::relations()->find($patientVisit->patient_id);
@@ -143,9 +145,9 @@ class RegistrationController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Inertia\Response
+     * @return Response
      */
-    public function edit(PatientVisit $patientVisit): \Inertia\Response
+    public function edit(PatientVisit $patientVisit): Response
     {
         $patientVisit->load('patient');
         $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
@@ -184,7 +186,7 @@ class RegistrationController extends Controller
         return redirect()->route('registrations.index');
     }
 
-    public function proceed(PatientVisit $patientVisit): \Inertia\Response
+    public function proceed(PatientVisit $patientVisit): Response
     {
         $this->authorize('proceed', $patientVisit);
 
@@ -221,4 +223,24 @@ class RegistrationController extends Controller
         return redirect()->route('registrations.index');
     }
 
+    public function pharmacyView(PatientVisit $patientVisit): Response
+    {
+        $this->authorize('pharmacy', $patientVisit);
+
+        $data = array();
+        $data['patientVisit'] = $patientVisit;
+        $data['patient'] =  Patient::pharmacyRelations()->find($patientVisit->patient_id);
+        $data['medicines'] = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')->active()->get());
+        $data['routes'] = RouteResource::collection(Route::active()->get());
+        $data['frequencies'] = FrequencyResource::collection(Frequency::active()->get());
+
+        return Inertia::render('Registrations/Pharmacy',$data);
+    }
+
+    public function pharmacySubmit(PharmacyRequest $request, PatientVisit $patientVisit)
+    {
+        $response = $this->registrationService->pharmacy($request->all(), $patientVisit);
+        session()->flash('success', 'Your medicine has been added successfully.');
+        return redirect()->route('registrations.index');
+    }
 }

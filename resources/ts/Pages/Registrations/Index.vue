@@ -57,6 +57,7 @@
                         <tr class="fw-semibold fs-6 text-gray-800">
                             <th class="p-0 min-w-150px">Patient</th>
                             <th class="p-0 min-w-200px text-center">Token No.</th>
+                            <th class="p-0 min-w-200px text-center">Date</th>
                             <th class="p-0 min-w-100px text-center">Action</th>
                         </tr>
                         </thead>
@@ -114,6 +115,7 @@
                             </td>
 
                             <td class="fw-semibold text-center">{{ patientVisit.token_no }}</td>
+                            <td class="fw-semibold text-center">{{ patientVisit.created_at }}</td>
 
                             <td class="text-center">
                                 <Link
@@ -135,6 +137,17 @@
                                     title="Proceed">
                                     <i class="fas fa-step-forward"></i>
                                 </Link>
+
+                                <Link
+                                    v-if="hasPermission('pharmacy registrations')"
+                                    :href="route('registrations.pharmacy.view', patientVisit.id)"
+                                    class="btn btn-icon btn-warning btn-circle btn-sm me-2"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Dispense Medicine">
+                                    <i class="fas fa-book-medical"></i>
+                                </Link>
+
 
                                 <Link
                                     v-if="hasPermission('update registrations')"

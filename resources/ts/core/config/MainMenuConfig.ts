@@ -92,7 +92,7 @@ const DocMenuConfig = [
         {
             heading: "Registrations",
             route: "registrations.index",
-            components: ["Registrations/Index", "Registrations/Create", "Registrations/Edit", "Registrations/Show", "Registrations/Proceed"],
+            components: ["Registrations/Index", "Registrations/Create", "Registrations/Edit", "Registrations/Show", "Registrations/Proceed", "Registrations/Pharmacy"],
             permissions: ['list registrations' ],
             fontIcon: "bi bi-pencil-square",
         },

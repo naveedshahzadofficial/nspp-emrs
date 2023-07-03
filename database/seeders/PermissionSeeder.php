@@ -24,7 +24,7 @@ class PermissionSeeder extends Seeder
             'list complaints', 'create complaints', 'view complaints', 'update complaints', 'delete complaints', 'toggle status complaints',
             'list disease types', 'create disease types', 'view disease types', 'update disease types', 'delete disease types', 'restore disease types', 'force delete disease types', 'toggle status disease types',
             'list diseases', 'create diseases', 'view diseases', 'update diseases', 'delete diseases', 'restore diseases', 'force delete diseases', 'toggle status diseases',
-            'list registrations', 'create registrations', 'view registrations', 'update registrations', 'delete registrations', 'restore registrations', 'force delete registrations', 'proceed registrations',
+            'list registrations', 'create registrations', 'view registrations', 'update registrations', 'delete registrations', 'restore registrations', 'force delete registrations', 'proceed registrations', 'pharmacy registrations',
             'list reimbursements', 'create reimbursements', 'view reimbursements', 'update reimbursements', 'delete reimbursements', 'restore reimbursements', 'force delete reimbursements',
         ];
 

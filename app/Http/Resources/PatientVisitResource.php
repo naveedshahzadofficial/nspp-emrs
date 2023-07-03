@@ -17,6 +17,7 @@ class PatientVisitResource extends JsonResource
         return [
             'id' => $this->id,
             'token_no' => $this->token_no,
+            'created_at' => $this->created_at,
             'patient' => new PatientResource($this->whenLoaded('patient')),
         ];
     }

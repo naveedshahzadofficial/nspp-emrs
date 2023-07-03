@@ -41,6 +41,11 @@ class Patient extends Model
             'patientLabs.test', 'patientLabs.lab',);
     }
 
+    public function scopePharmacyRelations($query){
+        return $query->with('patientMedicines.medicine.medicineGeneric', 'patientMedicines.medicineType',
+            'patientMedicines.route', 'patientMedicines.frequency', 'patientOtherMedicines.medicine.medicineGeneric',);
+    }
+
     public function patientVisits(): HasMany
     {
         return $this->hasMany(PatientVisit::class)->latest();

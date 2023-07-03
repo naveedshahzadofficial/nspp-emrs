@@ -103,4 +103,16 @@ class PatientVisitPolicy
     {
         return $user->can('proceed registrations') && $user->institute_id === $patientVisit->institute_id;
     }
+
+    /**
+     * Determine whether the user can toggle status the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\PatientVisit $patientVisit
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function pharmacy(User $user,  PatientVisit $patientVisit)
+    {
+        return $user->can('pharmacy registrations') && $user->institute_id === $patientVisit->institute_id;
+    }
 }

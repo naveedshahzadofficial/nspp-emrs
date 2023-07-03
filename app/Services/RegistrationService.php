@@ -142,4 +142,25 @@ class RegistrationService
         }
         return $response;
     }
+
+
+    public function pharmacy($data, PatientVisit  $patientVisit): \stdClass
+    {
+        $response = new \stdClass;
+        DB::beginTransaction();
+        try{
+            // Add Patient Medicines
+            $this->addPatientMedicines($data, $patientVisit);
+            // Add Patient Other Medicines
+            $this->addPatientOtherMedicines($data, $patientVisit);
+            DB::Commit();
+            $response->error = false;
+            $response->message = "Your record has been saved successfully.";
+        } catch (Exception $ex) {
+            DB::rollback();
+            $response->error = true;
+            $response->message = $ex->getMessage();
+        }
+        return $response;
+    }
 }

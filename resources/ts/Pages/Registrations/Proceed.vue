@@ -1,6 +1,5 @@
 <template>
     <Head title="Prescription"/>
-    <Head title="Prescription"/>
     <Toolbar
         title="Prescription"
         :buttons="[
