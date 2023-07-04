@@ -19,7 +19,8 @@ class CreatePatientOtherMedicinesTable extends Migration
             $table->foreignId('patient_id')->constrained();
             $table->foreignId('patient_visit_id')->constrained();
             $table->foreignId('medicine_id')->constrained();
-            $table->unsignedBigInteger('qty')->nullable();
+            $table->unsignedBigInteger('qty')->default(0)->nullable();
+            $table->unsignedBigInteger('acquire_qty')->default(0)->nullable();
             $table->string('acquire_from')->nullable();
             $table->text('medicine_instructions')->nullable();
             $table->softDeletes();

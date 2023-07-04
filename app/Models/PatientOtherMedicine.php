@@ -12,12 +12,27 @@ class PatientOtherMedicine extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['user_id', 'patient_id', 'patient_visit_id', 'medicine_id',
+    protected $fillable = ['user_id', 'patient_id', 'patient_visit_id', 'medicine_id', 'qty', 'acquire_qty',
         'acquire_from', 'medicine_instructions',];
 
     public function getCreatedAtAttribute($value): string
     {
         return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function patient(): BelongsTo
+    {
+        return $this->belongsTo(Patient::class);
+    }
+
+    public function patientVisit(): BelongsTo
+    {
+        return $this->belongsTo(PatientVisit::class);
     }
 
     public function medicine(): BelongsTo

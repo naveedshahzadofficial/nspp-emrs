@@ -16,9 +16,24 @@ class PatientVisitResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'institute_id' => $this->institute_id,
+            'user_id' => $this->user_id,
+            'patient_id' => $this->patient_id,
             'token_no' => $this->token_no,
+            'temperature' => $this->temperature,
+            'bp_systolic' => $this->bp_systolic,
+            'bp_diastolic' => $this->bp_diastolic,
+            'pulse' => $this->pulse,
+            'sugar' => $this->sugar,
+            'weight' => $this->weight,
+            'height' => $this->height,
+            'notes' => $this->notes,
             'created_at' => $this->created_at,
             'patient' => new PatientResource($this->whenLoaded('patient')),
+            'institute' => new InstituteResource($this->whenLoaded('institute')),
+            'patient_medicines' => PatientMedicineResource::collection($this->whenLoaded('patientMedicines')),
+            'patient_other_medicines' => PatientOtherMedicineResource::collection($this->whenLoaded('patientOtherMedicines')),
+
         ];
     }
 }

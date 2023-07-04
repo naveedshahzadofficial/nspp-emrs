@@ -219,6 +219,10 @@ class RegistrationController extends Controller
     public function checkout(PrescriptionCheckoutRequest $request, PatientVisit $patientVisit)
     {
         $response = $this->registrationService->moCheckout($request->all(), $patientVisit);
+        if($response->error){
+            session()->flash('error', $response->message);
+            return redirect()->route('registrations.proceed', $patientVisit);
+        }
         session()->flash('success', 'Your prescription has been saved successfully.');
         return redirect()->route('registrations.index');
     }
@@ -228,8 +232,7 @@ class RegistrationController extends Controller
         $this->authorize('pharmacy', $patientVisit);
         $patientVisit->load('patient', 'patientMedicines', 'patientOtherMedicines');
         $data = array();
-        $data['patientVisit'] = $patientVisit;
-        $data['patient'] =  $patientVisit->patient;
+        $data['patientVisit'] = new PatientVisitResource($patientVisit);
         $data['medicines'] = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')->active()->get());
         $data['routes'] = RouteResource::collection(Route::active()->get());
         $data['frequencies'] = FrequencyResource::collection(Frequency::active()->get());
@@ -240,6 +243,10 @@ class RegistrationController extends Controller
     public function pharmacySubmit(PharmacyRequest $request, PatientVisit $patientVisit)
     {
         $response = $this->registrationService->pharmacy($request->all(), $patientVisit);
+        if($response->error){
+            session()->flash('error', $response->message);
+            return redirect()->route('registrations.pharmacy.view', $patientVisit);
+        }
         session()->flash('success', 'Your medicine has been added successfully.');
         return redirect()->route('registrations.index');
     }

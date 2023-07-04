@@ -19,6 +19,10 @@ class PatientVisit extends Model
         return $query->where('status', true);
     }
 
+    public function institute(): BelongsTo
+    {
+        return $this->belongsTo(Institute::class);
+    }
     public function patient(): BelongsTo
     {
         return $this->belongsTo(Patient::class);

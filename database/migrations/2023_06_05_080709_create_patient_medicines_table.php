@@ -25,7 +25,8 @@ class CreatePatientMedicinesTable extends Migration
             $table->foreignId('frequency_id')->nullable()->constrained();
             $table->string('duration_unit')->nullable();
             $table->string('duration_value')->nullable();
-            $table->unsignedBigInteger('qty')->nullable();
+            $table->unsignedBigInteger('qty')->default(0)->nullable();
+            $table->unsignedBigInteger('acquire_qty')->default(0)->nullable();
             $table->string('taken_meal')->nullable();
             $table->string('acquire_from')->nullable();
             $table->text('medicine_instructions')->nullable();

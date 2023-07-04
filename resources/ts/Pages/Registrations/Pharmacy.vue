@@ -4,16 +4,15 @@ import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 import {useForm} from "@inertiajs/vue3";
 import {ref, watch, onMounted} from "vue";
 import AlertMessage from "@/Components/alerts/AlertMessage.vue";
-import {method} from "lodash";
 
 const props = defineProps({
-    patient: { type: Object, required: true},
     patientVisit: { type: Object, required: true},
     medicines: { type: Array, required: true},
     routes: { type: Array, required: true},
     frequencies: { type: Array, required: true},
 });
 
+const patient = ref(props.patientVisit?.patient);
 const filterMedicines = ref();
 const filterOtherMedicines = ref();
 const medicineOption = ref();
@@ -21,6 +20,7 @@ const optionsTakenMeals = ref(["Before Meal", "After Meal", "During Meal"]);
 const optionsAcquireFrom = ref(["In-House", "External"]);
 
 const medicineForm = useForm({
+    id: null,
     medicine_id: null,
     medicine_type_id: null,
     medicine_type: null,
@@ -30,21 +30,24 @@ const medicineForm = useForm({
     duration_unit: "Days",
     duration_value: 1,
     qty: 1,
+    acquire_qty: 0,
     taken_meal: null,
     medicine_instructions: null,
     acquire_from: null,
 });
 
 const otherMedicineForm = useForm({
+    id: null,
     medicine_id: null,
     qty: null,
+    acquire_qty: 0,
     medicine_instructions: null,
     acquire_from: null,
 });
 
 const preForm = useForm({
-        patient_medicines: <any>[],
-        patient_other_medicines: <any>[],
+        patient_medicines: props.patientVisit.patient_medicines,
+        patient_other_medicines: props.patientVisit.patient_other_medicines,
     }
 );
 onMounted(() => {
@@ -146,6 +149,7 @@ const deleteOtherMedicine = (pmed: Object) => preForm.patient_other_medicines = 
         <!--begin::Container-->
         <div id="kt_content_container" class="container-fluid">
             <AlertMessage v-if="preForm.errors.patient_medicines" title="Error" :message="preForm.errors.patient_medicines"/>
+            <AlertMessage v-if="$page.props.flash.title" :title="$page.props.flash.title" :message="$page.props.flash.message"/>
 
             <div class="card">
                 <!--begin::Card body-->
@@ -341,12 +345,13 @@ const deleteOtherMedicine = (pmed: Object) => preForm.patient_other_medicines = 
                                         <th class="text-start"> Frequency</th>
                                         <th class="text-center"> Duration</th>
                                         <th class="text-center"> Qty</th>
+                                        <th class="text-center"> Acquire Qty</th>
                                         <th class="text-center"> Acquire From</th>
                                         <th class="text-center"> Action </th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <template v-for="pmed in preForm.patient_medicines">
+                                    <template v-for="(pmed, index) in preForm.patient_medicines">
                                         <tr>
                                             <td class="text-start">{{ getMedicineName(pmed.medicine_id) }}</td>
                                             <td class="text-start">{{ getRouteName(pmed.route_id) }}</td>
@@ -354,9 +359,14 @@ const deleteOtherMedicine = (pmed: Object) => preForm.patient_other_medicines = 
                                             <td class="text-start">{{ getFrequencyName(pmed.frequency_id) }}</td>
                                             <td class="text-center">{{ pmed.duration_value }}</td>
                                             <td class="text-center">{{ pmed.qty }}</td>
+                                            <td class="text-center">
+                                                <input v-if="pmed.acquire_from==='In-House'" type="number" min="0" maxlength="11" v-model="pmed.acquire_qty" class="form-control form-control-sm text-center" placeholder="Acquire Qty"/>
+                                                <span v-else>-</span>
+                                                <ServerErrorMessage :error="preForm.errors[`patient_medicines.${index}.acquire_qty`]"/>
+                                            </td>
                                             <td class="text-center">{{ pmed.acquire_from }}</td>
                                             <td class="text-center">
-                                                <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteMedicine(pmed)"><i class="las la-trash fs-1"></i></button>
+                                                <button v-if="!pmed?.user_id || $page.props.auth?.user?.id === pmed.user_id" class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteMedicine(pmed)"><i class="las la-trash fs-1"></i></button>
                                             </td>
                                         </tr>
                                     </template>
@@ -422,20 +432,26 @@ const deleteOtherMedicine = (pmed: Object) => preForm.patient_other_medicines = 
                                     <tr class="fw-semibold fs-6 text-gray-800">
                                         <th class="text-start"> Medicine</th>
                                         <th class="text-center"> Qty</th>
+                                        <th class="text-center"> Acquire Qty</th>
                                         <th class="text-center"> Acquire From</th>
                                         <th class="text-start"> Instructions</th>
                                         <th class="text-center"> Action </th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <template v-for="pmed in preForm.patient_other_medicines">
+                                    <template v-for="(pmed, index) in preForm.patient_other_medicines">
                                         <tr>
                                             <td class="text-start">{{ getMedicineName(pmed.medicine_id) }}</td>
                                             <td class="text-center">{{ pmed.qty }}</td>
+                                            <td class="text-center">
+                                                <input v-if="pmed.acquire_from==='In-House'" type="number" min="0" maxlength="11" v-model="pmed.acquire_qty" class="form-control form-control-sm text-center" placeholder="Acquire Qty"/>
+                                                <span v-else>-</span>
+                                                <ServerErrorMessage :error="preForm.errors[`patient_other_medicines.${index}.acquire_qty`]"/>
+                                            </td>
                                             <td class="text-center">{{ pmed.acquire_from }}</td>
                                             <td class="text-start">{{ pmed.medicine_instructions }}</td>
                                             <td class="text-center">
-                                                <button class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteOtherMedicine(pmed)"><i class="las la-trash fs-1"></i></button>
+                                                <button v-if="!pmed?.user_id || $page.props.auth?.user?.id === pmed.user_id" class="btn btn-icon btn-sm btn-danger" @click.prevent="deleteOtherMedicine(pmed)"><i class="las la-trash fs-1"></i></button>
                                             </td>
                                         </tr>
                                     </template>

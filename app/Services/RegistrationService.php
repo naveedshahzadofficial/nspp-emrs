@@ -86,12 +86,26 @@ class RegistrationService
             $patientVisit->patientMedicines()->saveMany($patient_medicines);
     }
 
+    private function updateOrCreatePatientMedicines($data, PatientVisit  $patientVisit){
+        Collect($data['patient_medicines'])->map(function ($row) use ($patientVisit){
+            PatientMedicine::updateOrCreate(['id'=>$row['id']??null, 'patient_visit_id'=>$patientVisit->id, 'patient_id' => $patientVisit->patient_id], $row);
+            return true;
+        });
+    }
+
     private function addPatientOtherMedicines($data, PatientVisit  $patientVisit){
         $patient_other_medicines = Collect($data['patient_other_medicines'])->map(function ($row) use ($patientVisit){
             return new PatientOtherMedicine($row + ['patient_id' => $patientVisit->patient_id, 'patient_visit_id'=>$patientVisit->id]);
         });
         if(count($patient_other_medicines)>0)
             $patientVisit->patientOtherMedicines()->saveMany($patient_other_medicines);
+    }
+
+    private function updateOrCreatePatientOtherMedicines($data, PatientVisit  $patientVisit){
+        Collect($data['patient_other_medicines'])->map(function ($row) use ($patientVisit){
+            PatientOtherMedicine::updateOrCreate(['id'=>$row['id']??null, 'patient_id' => $patientVisit->patient_id, 'patient_visit_id'=>$patientVisit->id], $row);
+            return true;
+        });
     }
     private function addPatientHospitals($data, PatientVisit  $patientVisit){
         $patient_hospitals = Collect($data['patient_hospitals'])->map(function ($row) use ($patientVisit){
@@ -149,10 +163,10 @@ class RegistrationService
         $response = new \stdClass;
         DB::beginTransaction();
         try{
-            // Add Patient Medicines
-            $this->addPatientMedicines($data, $patientVisit);
-            // Add Patient Other Medicines
-            $this->addPatientOtherMedicines($data, $patientVisit);
+            // updateOrCreate Patient Medicines
+            $this->updateOrCreatePatientMedicines($data, $patientVisit);
+            // updateOrCreate Other Medicines
+            $this->updateOrCreatePatientOtherMedicines($data, $patientVisit);
             DB::Commit();
             $response->error = false;
             $response->message = "Your record has been saved successfully.";
