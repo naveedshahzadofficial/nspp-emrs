@@ -226,10 +226,10 @@ class RegistrationController extends Controller
     public function pharmacyView(PatientVisit $patientVisit): Response
     {
         $this->authorize('pharmacy', $patientVisit);
-
+        $patientVisit->load('patient', 'patientMedicines', 'patientOtherMedicines');
         $data = array();
         $data['patientVisit'] = $patientVisit;
-        $data['patient'] =  Patient::find($patientVisit->patient_id);
+        $data['patient'] =  $patientVisit->patient;
         $data['medicines'] = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')->active()->get());
         $data['routes'] = RouteResource::collection(Route::active()->get());
         $data['frequencies'] = FrequencyResource::collection(Frequency::active()->get());

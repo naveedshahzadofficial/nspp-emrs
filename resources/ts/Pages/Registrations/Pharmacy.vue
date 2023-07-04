@@ -4,6 +4,7 @@ import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 import {useForm} from "@inertiajs/vue3";
 import {ref, watch, onMounted} from "vue";
 import AlertMessage from "@/Components/alerts/AlertMessage.vue";
+import {method} from "lodash";
 
 const props = defineProps({
     patient: { type: Object, required: true},
@@ -47,6 +48,7 @@ const preForm = useForm({
     }
 );
 onMounted(() => {
+    //preForm.patient_medicines = props.patientVisit.patient_medicines
     filterMedicines.value = props.medicines?.filter((medicine: any) => medicine.medicine_category_id === 1);
     filterOtherMedicines.value = props.medicines?.filter((medicine: any) => medicine.medicine_category_id !== 1);
 })
@@ -121,19 +123,18 @@ const addOtherMedicine = () => {
 }
 const deleteOtherMedicine = (pmed: Object) => preForm.patient_other_medicines = preForm.patient_other_medicines.filter(obj => obj !== pmed);
 
-const submit = () => {
-    preForm.post(route('registrations.pharmacy.submit', props.patientVisit?.id));
-}
-
 </script>
 
 <template>
     <Head title="Dispense Medicine"/>
+    <!--begin::Form-->
+    <form @submit.prevent="preForm.post(route('registrations.pharmacy.submit', patientVisit?.id));" >
+
     <Toolbar
         title="Dispense Medicine"
         :buttons="[
             {label: 'Cancel', link: route('registrations.index'), class:'btn-secondary'},
-            {label: 'Submit', link: null, click: submit, class:'btn-success'},
+            {label: 'Submit', link: null, type: 'submit', class:'btn-success', processing: preForm.processing},
             ]"
         :breadcrumbs="[
             {label: 'Registrations', link: route('registrations.index')},
@@ -448,10 +449,13 @@ const submit = () => {
 
                 </div>
                     <!--end::Card body-->
+
             </div>
             <!--end::Card-->
         </div>
         <!--end::Container-->
     </div>
     <!-- end:: Content Body -->
+    </form>
+    <!--end::Form-->
 </template>

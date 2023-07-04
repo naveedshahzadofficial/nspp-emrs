@@ -12,7 +12,7 @@ class PatientOtherMedicine extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['patient_id', 'patient_visit_id', 'medicine_id',
+    protected $fillable = ['user_id', 'patient_id', 'patient_visit_id', 'medicine_id',
         'acquire_from', 'medicine_instructions',];
 
     public function getCreatedAtAttribute($value): string
@@ -23,5 +23,13 @@ class PatientOtherMedicine extends Model
     public function medicine(): BelongsTo
     {
         return $this->belongsTo(Medicine::class);
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model){
+            $model->user_id = auth()->id();
+        });
     }
 }

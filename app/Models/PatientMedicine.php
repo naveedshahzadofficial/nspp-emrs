@@ -12,7 +12,7 @@ class PatientMedicine extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['patient_id', 'patient_visit_id', 'medicine_id',
+    protected $fillable = ['user_id', 'patient_id', 'patient_visit_id', 'medicine_id',
         'medicine_type_id', 'route_id', 'dosage', 'frequency_id', 'duration_unit',
         'duration_value', 'qty', 'taken_meal', 'acquire_from',
         'medicine_instructions',];
@@ -39,6 +39,14 @@ class PatientMedicine extends Model
     public function frequency(): BelongsTo
     {
         return $this->belongsTo(Frequency::class);
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model){
+            $model->user_id = auth()->id();
+        });
     }
 
 }

@@ -1,10 +1,13 @@
 <template>
     <Head title="Prescription"/>
+    <!--begin::Form-->
+    <form @submit.prevent="preForm.post(route('registrations.checkout', patientVisit?.id));" >
+
     <Toolbar
         title="Prescription"
         :buttons="[
             {label: 'Cancel', link: route('registrations.index'), class:'btn-secondary'},
-            {label: 'Checkout', link: null, click: checkout, class:'btn-success'},
+            {label: 'Checkout', link: null, type: 'submit' , class:'btn-success', processing: preForm.processing},
             ]"
         :breadcrumbs="[
             {label: 'Registrations', link: route('registrations.index')},
@@ -1136,7 +1139,8 @@
         <!--end::Container-->
     </div>
     <!-- end:: Content Body -->
-
+    </form>
+    <!--end::Form-->
 </template>
 
 <script setup lang="ts">
@@ -1460,9 +1464,5 @@ const addLab = () => {
     labForm.reset();
 }
 const deleteLab = (lab: Object) => preForm.patient_labs = preForm.patient_labs.filter(obj => obj !== lab);
-
-const checkout = () => {
-    preForm.post(route('registrations.checkout', props.patientVisit?.id));
-}
 
 </script>

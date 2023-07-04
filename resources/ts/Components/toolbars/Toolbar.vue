@@ -43,11 +43,22 @@
                           class="btn btn-sm ms-2"
                           :class="[button.class?button.class:'btn-primary']"
                           v-html="button.label"/>
-                    <Link v-if="!button.link && checkPermission(button?.permission)"
+                    <button v-else-if="button?.type==='submit' && checkPermission(button?.permission)"
+                            type="submit"
+                            class="btn btn-sm ms-2"
+                            :class="[button.class?button.class:'btn-primary']"
+                            :disabled="button?.processing"
+                            :data-kt-indicator="button?.processing?'on':'off'"
+                    >
+                        <span class="indicator-label"> {{ button?.label }} </span>
+                        <span class="indicator-progress">Please wait...
+                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                    </span>
+                    </button>
+                    <button v-else-if="button?.type==='button' && checkPermission(button?.permission)"
                           @click.prevent="button.click"
-                          as="button"
                           type="button"
-                          class="btn btn-sm btn-primary ms-2"
+                          class="btn btn-sm ms-2"
                           :class="[button.class?button.class:'btn-primary']"
                           v-html="button.label"/>
                 </template>
