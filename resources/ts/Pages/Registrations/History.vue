@@ -1,21 +1,18 @@
 <script lang="ts" setup>
-import {ref} from "vue";
-
-const props = defineProps({
+defineProps({
+    patient: { type: Object, required: true},
     patientVisit: { type: Object, required: true},
 });
-
-const patient = ref<any>(props.patientVisit?.patient);
 </script>
 
 <template>
-    <Head title="View Patient"/>
+    <Head title="History Patient"/>
     <Toolbar
-        title="View Patient"
+        title="History Patient"
         :buttons="[{label: 'Back', link: route('registrations.index')}]"
         :breadcrumbs="[
             {label: 'Registrations', link: route('registrations.index')},
-            {label: 'View', link: null}
+            {label: 'History', link: null}
         ]"
     />
     <!-- begin:: Content Body -->
@@ -34,16 +31,16 @@ const patient = ref<any>(props.patientVisit?.patient);
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-125px me-5">
                                         <img
-                                            v-if="patient?.patient_image"
+                                            v-if="patient.patient_image"
                                             alt="Pic"
-                                            :src="patient?.patient_image"
+                                            :src="patient.patient_image"
                                         />
                                         <span
-                                            v-else-if="patient?.patient_name"
+                                            v-else-if="patient.patient_name"
                                             :class="`bg-light-primary text-primary`"
                                             class="symbol-label fw-bolder fa-10x"
                                         >
-                                        {{ patient?.patient_name.charAt(0) }}
+                                        {{ patient.patient_name.charAt(0) }}
                                         </span>
                                     </div>
                                     <!--end::Avatar-->
@@ -53,26 +50,27 @@ const patient = ref<any>(props.patientVisit?.patient);
                                         <a
                                             href="#"
                                             class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                                        >{{ patient?.patient_name }}</a
+                                        >{{ patient.patient_name }}</a
                                         >
                                         <a
                                             href="#"
                                             class="text-muted text-hover-primary fw-bold text-muted d-block fs-7"
                                         >
                                             <span class="text-dark">Designation</span>:
-                                            {{ patient?.designation }}
+                                            {{ patient.designation }}
                                         </a>
                                         <a
                                             href="#"
                                             class="text-muted text-hover-primary fw-bold text-muted d-block fs-7"
                                         >
                                             <span class="text-dark">Age</span>:
-                                            {{ patient?.patient_age }}
+                                            {{ patient.patient_age }}
                                         </a>
 
                                     </div>
                                     <!--end::Name-->
                                 </div>
+
                                 <div class="flex-grow-1 align-items-center flex-column p-4">
                                     <h3> Vitals &nbsp;</h3>
                                     <div class="separator border-primary my-2"></div>
@@ -107,14 +105,17 @@ const patient = ref<any>(props.patientVisit?.patient);
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td class="text-start">{{ patientVisit?.created_at }}</td>
-                                    <td class="text-center">{{ patientVisit?.pulse }}</td>
-                                    <td class="text-center">{{ patientVisit?.temperature }}</td>
-                                    <td class="text-center">{{ patientVisit?.bp_systolic }}/{{ patientVisit?.bp_diastolic }}</td>
-                                    <td class="text-center">{{ patientVisit?.height }}</td>
-                                    <td class="text-center">{{ patientVisit?.weight }}</td>
-                                </tr>
+                                <template v-for="history in patient?.patient_visits" :key="history.id">
+                                    <tr>
+                                        <td class="text-start">{{ history.created_at }}</td>
+                                        <td class="text-center">{{ history.pulse }}</td>
+                                        <td class="text-center">{{ history.temperature }}</td>
+                                        <td class="text-center">{{ history.bp_systolic }}/{{ history.bp_diastolic }}</td>
+                                        <td class="text-center">{{ history.height }}</td>
+                                        <td class="text-center">{{ history.weight }}</td>
+                                    </tr>
+                                </template>
+
                                 </tbody>
                             </table>
                         </div>
@@ -123,7 +124,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                     <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Risk Factors</span></h4>
                     <div class="section_box">
                         <div class="table-responsive"
-                             v-if="patientVisit?.patient_risk_factors.length">
+                             v-if="patient?.patient_risk_factors.length">
                             <table
                                 class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
                             >
@@ -136,7 +137,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <template v-for="history in patientVisit?.patient_risk_factors" :key="history.id">
+                                <template v-for="history in patient?.patient_risk_factors" :key="history.id">
                                     <tr>
                                         <td class="text-start">{{ history.created_at }}</td>
                                         <td class="text-start">{{ history?.risk_factor?.factor_name }}</td>
@@ -153,7 +154,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                     <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Complaints</span></h4>
                     <div class="section_box">
                         <div class="table-responsive"
-                             v-if="patientVisit?.patient_complaints.length">
+                             v-if="patient?.patient_complaints.length">
                             <table
                                 class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
                             >
@@ -166,7 +167,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <template v-for="history in patientVisit?.patient_complaints" :key="history.id">
+                                <template v-for="history in patient?.patient_complaints" :key="history.id">
                                     <tr>
                                         <td class="text-start">{{ history.created_at }}</td>
                                         <td class="text-start">{{ history?.complaint?.complaint_name }}</td>
@@ -183,7 +184,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                     <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Diseases</span></h4>
                     <div class="section_box">
                         <div class="table-responsive"
-                             v-if="patientVisit?.patient_diseases.length">
+                             v-if="patient?.patient_diseases.length">
                             <table
                                 class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
                             >
@@ -196,7 +197,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <template v-for="history in patientVisit?.patient_diseases" :key="history.id">
+                                <template v-for="history in patient?.patient_diseases" :key="history.id">
                                     <tr>
                                         <td class="text-start">{{ history.created_at }}</td>
                                         <td class="text-start">{{ history?.disease?.disease_name }}</td>
@@ -213,7 +214,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                     <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Diagnosis</span></h4>
                     <div class="section_box">
                         <div class="table-responsive"
-                             v-if="patientVisit?.patient_diagnoses.length">
+                             v-if="patient?.patient_diagnoses.length">
                             <table
                                 class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
                             >
@@ -228,7 +229,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <template v-for="history in patientVisit?.patient_diagnoses" :key="history.id">
+                                <template v-for="history in patient?.patient_diagnoses" :key="history.id">
                                     <tr>
                                         <td class="text-start">{{ history.created_at }}</td>
                                         <td class="text-start">{{ history?.disease_type?.type_name }}</td>
@@ -247,7 +248,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                     <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Medicine</span></h4>
                     <div class="section_box">
                         <div class="table-responsive"
-                             v-if="patientVisit?.patient_medicines.length">
+                             v-if="patient?.patient_medicines.length">
                             <table
                                 class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
                             >
@@ -268,7 +269,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <template v-for="history in patientVisit?.patient_medicines" :key="history.id">
+                                <template v-for="history in patient?.patient_medicines" :key="history.id">
                                     <tr>
                                         <td class="text-start">{{ history.created_at }}</td>
                                         <td>{{ history?.medicine?.medicine_name }}</td>
@@ -293,7 +294,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                     <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Other Items</span></h4>
                     <div class="section_box">
                         <div class="table-responsive"
-                             v-if="patientVisit?.patient_other_medicines.length">
+                             v-if="patient?.patient_other_medicines.length">
                             <table
                                 class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
                             >
@@ -310,7 +311,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <template v-for="history in patientVisit?.patient_other_medicines" :key="history.id">
+                                <template v-for="history in patient?.patient_other_medicines" :key="history.id">
                                     <tr>
                                         <td class="text-start">{{ history.created_at }}</td>
                                         <td>{{ history?.medicine?.medicine_name }}</td>
@@ -331,7 +332,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                     <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Referral – Labs</span></h4>
                     <div class="section_box">
                         <div class="table-responsive"
-                             v-if="patientVisit?.patient_labs.length">
+                             v-if="patient?.patient_labs.length">
                             <table
                                 class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
                             >
@@ -347,7 +348,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <template v-for="history in patientVisit?.patient_labs" :key="history.id">
+                                <template v-for="history in patient?.patient_labs" :key="history.id">
                                     <tr>
                                         <td class="text-start">{{ history.created_at }}</td>
                                         <td>{{ history?.test_category?.category_name }}</td>
@@ -367,7 +368,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                     <h4 class="font-weight-bold main_section_heading"><span class="text-uppercase">Referral – Hospitals</span></h4>
                     <div class="section_box">
                         <div class="table-responsive"
-                             v-if="patientVisit?.patient_hospitals.length">
+                             v-if="patient?.patient_hospitals.length">
                             <table
                                 class="table table-row-bordered table-row-gray-300 align-middle gs-0 gy-4"
                             >
@@ -381,7 +382,7 @@ const patient = ref<any>(props.patientVisit?.patient);
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <template v-for="history in patientVisit?.patient_hospitals" :key="history.id">
+                                <template v-for="history in patient?.patient_hospitals" :key="history.id">
                                     <tr>
                                         <td class="text-start">{{ history.created_at }}</td>
                                         <td>{{ history?.hospital?.hospital_name }}</td>
@@ -411,3 +412,4 @@ const patient = ref<any>(props.patientVisit?.patient);
     </div>
     <!-- end:: Content Body -->
 </template>
+

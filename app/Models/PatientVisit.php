@@ -34,7 +34,7 @@ class PatientVisit extends Model
 
     public function getCreatedAtAttribute($value): string
     {
-        return Carbon::parse($value)->format('d-m-Y');
+        return Carbon::parse($value)->format('d-m-Y h:i A');
     }
 
    public function patientRiskFactors(): HasMany
@@ -69,6 +69,15 @@ class PatientVisit extends Model
     public function patientLabs(): HasMany
     {
         return $this->hasMany(PatientLab::class);
+    }
+
+    public function scopeRelations($query) {
+        return $query->with('patient', 'patientRiskFactors.riskFactor', 'patientComplaints.complaint',
+            'patientDiseases.disease', 'patientDiagnoses.diseaseType', 'patientDiagnoses.disease',
+            'patientDiagnoses.procedure', 'patientMedicines.medicine.medicineGeneric', 'patientMedicines.medicineType',
+            'patientMedicines.route', 'patientMedicines.frequency', 'patientOtherMedicines.medicine.medicineGeneric',
+            'patientHospitals.hospital', 'patientLabs.testCategory', 'patientLabs.testType',
+            'patientLabs.test', 'patientLabs.lab',);
     }
 
     public static function boot()

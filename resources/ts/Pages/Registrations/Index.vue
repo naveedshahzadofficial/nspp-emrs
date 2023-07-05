@@ -58,6 +58,7 @@
                             <th class="p-0 min-w-150px">Patient</th>
                             <th class="p-0 min-w-200px text-center">Token No.</th>
                             <th class="p-0 min-w-200px text-center">Date</th>
+                            <th class="p-0 min-w-200px text-center">Time</th>
                             <th class="p-0 min-w-100px text-center">Action</th>
                         </tr>
                         </thead>
@@ -115,13 +116,14 @@
                             </td>
 
                             <td class="fw-semibold text-center">{{ patientVisit.token_no }}</td>
-                            <td class="fw-semibold text-center">{{ patientVisit.created_at }}</td>
+                            <td class="fw-semibold text-center">{{ patientVisit.date }}</td>
+                            <td class="fw-semibold text-center">{{ patientVisit.time }}</td>
 
                             <td class="text-center">
                                 <Link
                                     v-if="hasPermission('view registrations')"
                                     :href="route('registrations.show', patientVisit.id)"
-                                    class="btn btn-icon btn-primary btn-circle btn-sm me-2"
+                                    class="btn btn-icon btn-primary btn-circle btn-sm me-2 mb-2"
                                     data-bs-toggle="tooltip"
                                     data-bs-placement="top"
                                     title="View">
@@ -129,9 +131,19 @@
                                 </Link>
 
                                 <Link
+                                    v-if="hasPermission('history registrations')"
+                                    :href="route('registrations.history', patientVisit.id)"
+                                    class="btn btn-icon btn-primary btn-circle btn-sm me-2 mb-2"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="History">
+                                    <i class="fas fa-history"></i>
+                                </Link>
+
+                                <Link
                                     v-if="hasPermission('proceed registrations')"
                                     :href="route('registrations.proceed', patientVisit.id)"
-                                    class="btn btn-icon btn-warning btn-circle btn-sm me-2"
+                                    class="btn btn-icon btn-warning btn-circle btn-sm me-2 mb-2"
                                     data-bs-toggle="tooltip"
                                     data-bs-placement="top"
                                     title="Proceed">
@@ -141,7 +153,7 @@
                                 <Link
                                     v-if="hasPermission('pharmacy registrations')"
                                     :href="route('registrations.pharmacy.view', patientVisit.id)"
-                                    class="btn btn-icon btn-warning btn-circle btn-sm me-2"
+                                    class="btn btn-icon btn-warning btn-circle btn-sm me-2 mb-2"
                                     data-bs-toggle="tooltip"
                                     data-bs-placement="top"
                                     title="Dispense Medicine">
@@ -152,7 +164,7 @@
                                 <Link
                                     v-if="hasPermission('update registrations')"
                                     :href="route('registrations.edit', patientVisit.id)"
-                                    class="btn btn-icon btn-secondary btn-circle btn-sm me-2"
+                                    class="btn btn-icon btn-secondary btn-circle btn-sm me-2 mb-2"
                                     data-bs-toggle="tooltip"
                                     data-bs-placement="top"
                                     title="Edit">
@@ -162,7 +174,7 @@
                                 <a
                                     v-if="hasPermission('delete registrations')"
                                     @click.prevent="destroy('registrations.destroy', patientVisit.id)"
-                                    class="btn btn-icon  btn-danger btn-circle btn-sm me-2"
+                                    class="btn btn-icon  btn-danger btn-circle btn-sm me-2 mb-2"
                                     data-bs-toggle="tooltip"
                                     data-bs-placement="top"
                                     title="Delete">

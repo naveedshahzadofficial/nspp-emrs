@@ -51,7 +51,8 @@ Route::group(['middleware' => ['auth']],function() {
     Route::delete('/diseases/{disease}/toggle-status', [DiseaseController::class, 'toggleStatus'])->name('diseases.toggle-status');
     Route::resource('/diseases', DiseaseController::class);
 
-
+    Route::get('/registrations/{patient_visit}/receipt', [RegistrationController::class, 'receipt'])->name('registrations.receipt');
+    Route::get('/registrations/{patient_visit}/history', [RegistrationController::class, 'history'])->name('registrations.history');
     Route::get('/registrations/{patient_visit}/pharmacy', [RegistrationController::class, 'pharmacyView'])->name('registrations.pharmacy.view');
     Route::post('/registrations/{patient_visit}/pharmacy', [RegistrationController::class, 'pharmacySubmit'])->name('registrations.pharmacy.submit');
     Route::get('/registrations/{patient_visit}/proceed', [RegistrationController::class, 'proceed'])->name('registrations.proceed');

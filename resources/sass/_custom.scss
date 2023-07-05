@@ -156,6 +156,16 @@ div.dt-buttons button{
     font-family: Poppins,serif;
     font-size: 14px;
 }
+.border-frame{
+    border: 2px #bb782d solid;
+    margin-top: 2%;
+    padding-bottom: 2%;
+}
+.border-frame-vitals{
+    border: 2px #d8e0cb solid;
+    padding: 1%;
+    margin-bottom: 1%;
+}
 
 @media only screen and (max-width: 576px) {
     #kt_header_nav{

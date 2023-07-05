@@ -129,16 +129,14 @@ class RegistrationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param $id
      * @return Response
      */
-    public function show(PatientVisit $patientVisit): Response
+    public function show($id): Response
     {
-        //$data = new \stdClass;
-        $patient = Patient::relations()->find($patientVisit->patient_id);
+        $patientVisit = PatientVisit::relations()->findOrFail($id);
         return Inertia::render('Registrations/Show',
-            compact( 'patient',
-                'patientVisit'));
+            compact( 'patientVisit'));
     }
 
     /**
@@ -159,7 +157,7 @@ class RegistrationController extends Controller
      * Update the specified resource in storage.
      *
      * @param UpdateRegistrationRequest $request
-     * @param int $id
+     * @param PatientVisit $patientVisit
      * @return RedirectResponse
      */
     public function update(UpdateRegistrationRequest $request, PatientVisit $patientVisit): RedirectResponse
@@ -176,7 +174,7 @@ class RegistrationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param PatientVisit $patientVisit
      * @return RedirectResponse
      */
     public function destroy(PatientVisit $patientVisit): RedirectResponse
@@ -249,5 +247,19 @@ class RegistrationController extends Controller
         }
         session()->flash('success', 'Your medicine has been added successfully.');
         return redirect()->route('registrations.index');
+    }
+
+    public function history(PatientVisit $patientVisit): Response
+    {
+        $patient = Patient::relations()->find($patientVisit->patient_id);
+        return Inertia::render('Registrations/History',
+            compact( 'patient',
+                'patientVisit'));
+    }
+
+    public function receipt(PatientVisit $patientVisit): Response
+    {
+        $patientVisit->load('patient.gender');
+        return Inertia::render('Registrations/Receipt',['patientVisit' => new PatientVisitResource($patientVisit)]);
     }
 }

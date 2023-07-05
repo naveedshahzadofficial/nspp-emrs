@@ -12,7 +12,6 @@ import vSelect from 'vue-select'
 import globalFunctions from '@/core/functions/global-functions';
 import Toolbar from "@/Components/toolbars/Toolbar.vue";
 
-
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'EMRS';
 
 createInertiaApp({

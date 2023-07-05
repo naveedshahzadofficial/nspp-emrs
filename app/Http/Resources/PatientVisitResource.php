@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PatientVisitResource extends JsonResource
@@ -29,6 +30,8 @@ class PatientVisitResource extends JsonResource
             'height' => $this->height,
             'notes' => $this->notes,
             'created_at' => $this->created_at,
+            'date' => Carbon::parse($this->created_at)->format('d-m-Y'),
+            'time' => Carbon::parse($this->created_at)->format('h:i A'),
             'patient' => new PatientResource($this->whenLoaded('patient')),
             'institute' => new InstituteResource($this->whenLoaded('institute')),
             'patient_medicines' => PatientMedicineResource::collection($this->whenLoaded('patientMedicines')),

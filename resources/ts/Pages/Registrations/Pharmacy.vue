@@ -342,7 +342,7 @@ const deleteOtherMedicine = (pmed: Object) => preForm.patient_other_medicines = 
                                         <th class="text-start"> Route</th>
                                         <th class="text-center"> Dosage</th>
                                         <th class="text-start"> Frequency</th>
-                                        <th class="text-center"> Duration</th>
+                                        <th class="text-center"> Duration (Days)</th>
                                         <th class="text-center"> Qty</th>
                                         <th class="text-center"> Acquire Qty</th>
                                         <th class="text-center"> Acquire From</th>
