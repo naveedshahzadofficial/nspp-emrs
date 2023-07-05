@@ -12,7 +12,7 @@ const props = defineProps({
     frequencies: { type: Array, required: true},
 });
 
-const patient = ref(props.patientVisit?.patient);
+const patient = ref<any>(props.patientVisit?.patient);
 const filterMedicines = ref();
 const filterOtherMedicines = ref();
 const medicineOption = ref();
@@ -46,12 +46,11 @@ const otherMedicineForm = useForm({
 });
 
 const preForm = useForm({
-        patient_medicines: props.patientVisit.patient_medicines,
-        patient_other_medicines: props.patientVisit.patient_other_medicines,
+        patient_medicines: props.patientVisit?.patient_medicines || <any>[],
+        patient_other_medicines: props.patientVisit?.patient_other_medicines || <any>[],
     }
 );
 onMounted(() => {
-    //preForm.patient_medicines = props.patientVisit.patient_medicines
     filterMedicines.value = props.medicines?.filter((medicine: any) => medicine.medicine_category_id === 1);
     filterOtherMedicines.value = props.medicines?.filter((medicine: any) => medicine.medicine_category_id !== 1);
 })
@@ -362,7 +361,7 @@ const deleteOtherMedicine = (pmed: Object) => preForm.patient_other_medicines = 
                                             <td class="text-center">
                                                 <input v-if="pmed.acquire_from==='In-House'" type="number" min="0" maxlength="11" v-model="pmed.acquire_qty" class="form-control form-control-sm text-center" placeholder="Acquire Qty"/>
                                                 <span v-else>-</span>
-                                                <ServerErrorMessage :error="preForm.errors[`patient_medicines.${index}.acquire_qty`]"/>
+                                                <ServerErrorMessage :error="preForm.errors['patient_medicines.' + String(index) + '.acquire_qty']"/>
                                             </td>
                                             <td class="text-center">{{ pmed.acquire_from }}</td>
                                             <td class="text-center">
@@ -446,7 +445,7 @@ const deleteOtherMedicine = (pmed: Object) => preForm.patient_other_medicines = 
                                             <td class="text-center">
                                                 <input v-if="pmed.acquire_from==='In-House'" type="number" min="0" maxlength="11" v-model="pmed.acquire_qty" class="form-control form-control-sm text-center" placeholder="Acquire Qty"/>
                                                 <span v-else>-</span>
-                                                <ServerErrorMessage :error="preForm.errors[`patient_other_medicines.${index}.acquire_qty`]"/>
+                                                <ServerErrorMessage :error="preForm.errors['patient_other_medicines.' + String(index) + '.acquire_qty']" />
                                             </td>
                                             <td class="text-center">{{ pmed.acquire_from }}</td>
                                             <td class="text-start">{{ pmed.medicine_instructions }}</td>

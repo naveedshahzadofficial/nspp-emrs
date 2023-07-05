@@ -1,3 +1,11 @@
+<script lang="ts" setup>
+
+defineProps<{
+    test?: string;
+}>();
+
+</script>
+
 <template>
     <Head title="Home" />
     <div>
@@ -6,11 +14,3 @@
         <Link :href="route('about-us')">Go to about us</Link>
     </div>
 </template>
-
-<script lang="ts" setup>
-
-defineProps<{
-    test?: string;
-}>();
-
-</script>

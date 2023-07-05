@@ -1,3 +1,328 @@
+
+<script setup lang="ts">
+import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
+import {useForm} from "@inertiajs/vue3";
+import {ref, watch, onMounted} from "vue";
+import {IDisease} from "@/interfaces/disease.interface";
+import {IDiagnosis} from "@/interfaces/diagnosis.interface";
+import {IDiseaseType} from "@/interfaces/diseaseType.interface";
+
+const props = defineProps({
+    patient: { type: Object, required: true},
+    patientVisit: { type: Object, required: true},
+    complaints: { type: Array, required: true},
+    diseases: { type: Array, required: true},
+    diseaseTypes: { type: Array, required: true},
+    procedures: { type: Array, required: true},
+    riskFactors: { type: Array, required: true},
+    medicines: { type: Array, required: true},
+    routes: { type: Array, required: true},
+    frequencies: { type: Array, required: true},
+    hospitals: { type: Array, required: true},
+    testCategories: { type: Array, required: true},
+    testTypes: { type: Array, required: true},
+    tests: { type: Array, required: true},
+    labs: { type: Array, required: true},
+});
+
+const filterDiseases = ref();
+const filterProcedures = ref();
+const filterMedicines = ref();
+const filterOtherMedicines = ref();
+const filterTestTypes = ref();
+const filterTests = ref();
+const medicineOption = ref();
+const optionsTakenMeals = ref(["Before Meal", "After Meal", "During Meal"]);
+const optionsAcquireFrom = ref(["In-House", "External"]);
+
+const riskFactorForm = useForm({
+    risk_factor_id: null,
+    risk_factor_notes: null
+});
+
+const complaintForm = useForm({
+    complaint_id: null,
+    complaint_notes: null
+});
+
+const diseaseForm = useForm({
+    disease_id: null,
+    disease_notes: null
+});
+
+const diagForm = useForm({
+    disease_type_id: null,
+    disease_id: null,
+    procedure_id: null,
+    diagnosis_notes: null,
+});
+
+const medicineForm = useForm({
+    medicine_id: null,
+    medicine_type_id: null,
+    medicine_type: null,
+    route_id: 1,
+    dosage: null,
+    frequency_id: null,
+    duration_unit: "Days",
+    duration_value: 1,
+    qty: 1,
+    taken_meal: null,
+    medicine_instructions: null,
+    acquire_from: null,
+});
+
+const otherMedicineForm = useForm({
+    medicine_id: null,
+    qty: null,
+    medicine_instructions: null,
+    acquire_from: null,
+});
+
+const hospitalForm = useForm({
+    hospital_id: null,
+    priority: 1,
+    remarks: null,
+});
+
+const labForm = useForm({
+    test_category_id: null,
+    test_type_id: null,
+    test_id: null,
+    test_instructions: null,
+    lab_id: null,
+});
+
+const preForm = useForm({
+        temperature: props.patientVisit?.temperature,
+        bp_systolic: props.patientVisit?.bp_systolic,
+        bp_diastolic: props.patientVisit?.bp_diastolic,
+        pulse: props.patientVisit?.pulse,
+        sugar: props.patientVisit?.sugar,
+        weight: props.patientVisit?.weight,
+        height: props.patientVisit?.height,
+        notes: props.patientVisit?.notes,
+
+        patient_risk_factors: <any>[],
+        patient_complaints: <any>[],
+        patient_diseases: <any>[],
+        patient_diagnoses: <any>[],
+        patient_medicines: <any>[],
+        patient_other_medicines: <any>[],
+        patient_hospitals: <any>[],
+        patient_labs: <any>[],
+
+    }
+);
+
+onMounted(() => {
+    filterMedicines.value = props.medicines?.filter((medicine: any) => medicine.medicine_category_id === 1);
+    filterOtherMedicines.value = props.medicines?.filter((medicine: any) => medicine.medicine_category_id !== 1);
+})
+
+watch(() => diagForm.disease_type_id, value => {
+    diagForm.reset( "disease_id", "procedure_id");
+    filterDiseases.value = props.diseases?.filter((disease: any) => disease.disease_type_id === value);
+    filterProcedures.value = props.procedures?.filter((procedure: any) => procedure.disease_type_id === value);
+});
+
+watch(() => medicineOption.value, option => {
+    medicineForm.reset( );
+    if(option?.id){
+        medicineForm.medicine_id = option.id;
+        medicineForm.medicine_type_id = option.medicine_type_id;
+        medicineForm.medicine_type = option.medicine_type?.type_name;
+    }else{
+        medicineForm.medicine_id = null;
+        medicineForm.medicine_type_id = null;
+        medicineForm.medicine_type = null;
+    }
+});
+
+watch(() => [medicineForm.dosage, medicineForm.frequency_id, medicineForm.duration_value], ([dosage, frequency_id, duration_value]) => {
+    let total = 1;
+    let isMultiply = medicineOption.value?.medicine_type?.is_multiply;
+    if(isMultiply){
+        let dosage = medicineForm.dosage || 1;
+        let multiplyFactor = 1;
+        if(frequency_id !== null) {
+            let frequency = props.frequencies?.find((freq: any) => freq.id === frequency_id) as any;
+            multiplyFactor = frequency?.multiply_factor || 1;
+        }
+        total = Math.ceil(eval(String(dosage)) * multiplyFactor * (duration_value || 1));
+    }
+
+    medicineForm.qty = total;
+});
+
+watch(() => labForm.test_category_id, value => {
+    labForm.reset( "test_type_id");
+    filterTestTypes.value = props.testTypes?.filter((testType: any) => testType.test_category_id === value);
+});
+
+watch(() => labForm.test_type_id, value => {
+    labForm.reset("test_id");
+    filterTests.value = props.tests?.filter((test: any) => test.test_type_id === value);
+});
+
+const getRiskFactorName = (id: number) => (props.riskFactors?.find((riskFactor: any) => riskFactor.id === id) as any)?.factor_name;
+const getComplaintName = (id: number) => (props.complaints?.find((complaint: any) => complaint.id === id) as any)?.complaint_name;
+const getDiseaseTypeName = (id: number) => (props.diseaseTypes?.find((diseaseType: any) => diseaseType.id === id) as any)?.type_name;
+const getDiseaseName = (id: number) => (props.diseases.find((disease: any) => disease.id === id) as any)?.disease_name;
+const getProcedureName = (id: number) => (props.procedures.find((procedure: any) => procedure.id === id) as any)?.procedure_name || 'Not Available';
+const getMedicineName = (id: number) => (props.medicines?.find((medicine: any) => medicine.id === id) as any)?.medicine_name;
+const getRouteName = (id: number) => (props.routes?.find((route: any) => route.id === id) as any)?.route_name;
+const getFrequencyName = (id: number) => (props.frequencies?.find((frequency: any) => frequency.id === id) as any)?.frequency_name;
+const getHospitalName = (id: number) => (props.hospitals?.find((hospital: any) => hospital.id === id) as any)?.hospital_name;
+const getTestCategoryName = (id: number) => (props.testCategories?.find((category: any) => category.id === id) as any)?.category_name;
+const getTestTypeName = (id: number) => (props.testTypes?.find((type: any) => type.id === id) as any)?.type_name;
+const getTestName = (id: number) => (props.tests?.find((test: any) => test.id === id) as any)?.test_name;
+const getLabName = (id: number) => (props.labs?.find((lab: any) => lab.id === id) as any)?.lab_name;
+
+const addRiskFactor = () => {
+    riskFactorForm.clearErrors();
+    const row = riskFactorForm.data();
+    if(row.risk_factor_id === null)
+        riskFactorForm.setError("risk_factor_id", "Risk Factor is required.");
+
+    if(row.risk_factor_id === null)
+        return;
+
+    preForm.patient_risk_factors.push(riskFactorForm.data())
+
+    riskFactorForm.reset();
+}
+const deleteRiskFactor = (_obj: Object) => preForm.patient_risk_factors = preForm.patient_risk_factors.filter(obj => obj !== _obj);
+
+const addComplaint = () => {
+    complaintForm.clearErrors();
+    const row = complaintForm.data();
+    if(row.complaint_id === null)
+        complaintForm.setError("complaint_id", "Complaint is required.");
+
+    if(row.complaint_id === null)
+        return;
+
+    preForm.patient_complaints.push(complaintForm.data())
+
+    complaintForm.reset();
+}
+const deleteComplaint = (_obj: Object) => preForm.patient_complaints = preForm.patient_complaints.filter(obj => obj !== _obj);
+
+const addDisease = () => {
+    diseaseForm.clearErrors();
+    const row = diseaseForm.data();
+    if(row.disease_id === null)
+        diseaseForm.setError("disease_id", "Disease is required.");
+
+    if(row.disease_id === null)
+        return;
+
+    preForm.patient_diseases.push(diseaseForm.data())
+
+    diseaseForm.reset();
+}
+const deleteDisease = (_obj: Object) => preForm.patient_diseases = preForm.patient_diseases.filter(obj => obj !== _obj);
+
+const addDiagnosis = () => {
+    diagForm.clearErrors();
+    const row = diagForm.data();
+    if(row.disease_type_id === null){
+        diagForm.setError("disease_type_id", "Category is required.");
+    }
+    if(row.disease_id === null){
+        diagForm.setError("disease_id", "Diagnosis is required.");
+    }
+    if(row.disease_type_id === null || row.disease_id === null)
+        return;
+
+    preForm.patient_diagnoses.push(diagForm.data())
+    diagForm.reset()
+}
+const deleteDiagnosis = (dig: Object) => preForm.patient_diagnoses = preForm.patient_diagnoses.filter(obj => obj !== dig);
+
+const addMedicine = () => {
+    medicineForm.clearErrors();
+    const row = medicineForm.data();
+    if(row.medicine_id === null)
+        medicineForm.setError("medicine_id", "Medicine is required.");
+    if(row.route_id === null)
+        medicineForm.setError("route_id", "Route is required.");
+    if(row.acquire_from === null)
+        medicineForm.setError("acquire_from", "Acquire From is required.");
+
+    if(row.medicine_id === null || row.route_id === null || row.acquire_from === null)
+        return;
+
+    preForm.patient_medicines.push(medicineForm.data())
+    medicineOption.value = null;
+    medicineForm.reset();
+}
+const deleteMedicine = (pmed: Object) => preForm.patient_medicines = preForm.patient_medicines.filter(obj => obj !== pmed);
+
+
+const addOtherMedicine = () => {
+    otherMedicineForm.clearErrors();
+    const row = otherMedicineForm.data();
+    if(row.medicine_id === null)
+        otherMedicineForm.setError("medicine_id", "Medicine is required.");
+    if(row.qty === null)
+        otherMedicineForm.setError("qty", "Qty is required.");
+    if(row.acquire_from === null)
+        otherMedicineForm.setError("acquire_from", "Acquire Form is required.");
+
+    if(row.medicine_id === null || row.qty === null || row.acquire_from === null)
+        return;
+
+    preForm.patient_other_medicines.push(otherMedicineForm.data())
+
+    otherMedicineForm.reset();
+}
+const deleteOtherMedicine = (pmed: Object) => preForm.patient_other_medicines = preForm.patient_other_medicines.filter(obj => obj !== pmed);
+
+const addHospital = () => {
+    hospitalForm.clearErrors();
+    const row = hospitalForm.data();
+    if(row.hospital_id === null)
+        hospitalForm.setError("hospital_id", "Hospital is required.");
+    if(row.priority === null)
+        hospitalForm.setError("priority", "Qty is required.");
+
+    if(row.hospital_id === null || row.priority === null)
+        return;
+
+    preForm.patient_hospitals.push(hospitalForm.data())
+
+    hospitalForm.reset();
+}
+const deleteHospital = (hospital: Object) => preForm.patient_hospitals = preForm.patient_hospitals.filter(obj => obj !== hospital);
+
+const addLab = () => {
+    labForm.clearErrors();
+    const row = labForm.data();
+    if(row.test_category_id === null)
+        labForm.setError("test_category_id", "Test Category is required.");
+
+    if(row.test_type_id === null)
+        labForm.setError("test_type_id", "Test Type is required.");
+
+    if(row.test_id === null)
+        labForm.setError("test_id", "Test is required.");
+
+    if(row.lab_id === null)
+        labForm.setError("lab_id", "Test Lab is required.");
+
+    if(row.test_category_id === null || row.test_type_id === null || row.test_id === null || row.lab_id === null)
+        return;
+
+    preForm.patient_labs.push(labForm.data())
+
+    labForm.reset();
+}
+const deleteLab = (lab: Object) => preForm.patient_labs = preForm.patient_labs.filter(obj => obj !== lab);
+
+</script>
+
 <template>
     <Head title="Prescription"/>
     <!--begin::Form-->
@@ -1142,327 +1467,3 @@
     </form>
     <!--end::Form-->
 </template>
-
-<script setup lang="ts">
-import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
-import {useForm} from "@inertiajs/vue3";
-import {ref, watch, onMounted} from "vue";
-import {IDisease} from "@/interfaces/disease.interface";
-import {IDiagnosis} from "@/interfaces/diagnosis.interface";
-import {IDiseaseType} from "@/interfaces/diseaseType.interface";
-
-const props = defineProps({
-    patient: { type: Object, required: true},
-    patientVisit: { type: Object, required: true},
-    complaints: { type: Array, required: true},
-    diseases: { type: Array, required: true},
-    diseaseTypes: { type: Array, required: true},
-    procedures: { type: Array, required: true},
-    riskFactors: { type: Array, required: true},
-    medicines: { type: Array, required: true},
-    routes: { type: Array, required: true},
-    frequencies: { type: Array, required: true},
-    hospitals: { type: Array, required: true},
-    testCategories: { type: Array, required: true},
-    testTypes: { type: Array, required: true},
-    tests: { type: Array, required: true},
-    labs: { type: Array, required: true},
-});
-
-const filterDiseases = ref();
-const filterProcedures = ref();
-const filterMedicines = ref();
-const filterOtherMedicines = ref();
-const filterTestTypes = ref();
-const filterTests = ref();
-const medicineOption = ref();
-const optionsTakenMeals = ref(["Before Meal", "After Meal", "During Meal"]);
-const optionsAcquireFrom = ref(["In-House", "External"]);
-
-const riskFactorForm = useForm({
-    risk_factor_id: null,
-    risk_factor_notes: null
-});
-
-const complaintForm = useForm({
-    complaint_id: null,
-    complaint_notes: null
-});
-
-const diseaseForm = useForm({
-    disease_id: null,
-    disease_notes: null
-});
-
-const diagForm = useForm({
-    disease_type_id: null,
-    disease_id: null,
-    procedure_id: null,
-    diagnosis_notes: null,
-});
-
-const medicineForm = useForm({
-    medicine_id: null,
-    medicine_type_id: null,
-    medicine_type: null,
-    route_id: 1,
-    dosage: null,
-    frequency_id: null,
-    duration_unit: "Days",
-    duration_value: 1,
-    qty: 1,
-    taken_meal: null,
-    medicine_instructions: null,
-    acquire_from: null,
-});
-
-const otherMedicineForm = useForm({
-    medicine_id: null,
-    qty: null,
-    medicine_instructions: null,
-    acquire_from: null,
-});
-
-const hospitalForm = useForm({
-    hospital_id: null,
-    priority: 1,
-    remarks: null,
-});
-
-const labForm = useForm({
-    test_category_id: null,
-    test_type_id: null,
-    test_id: null,
-    test_instructions: null,
-    lab_id: null,
-});
-
-const preForm = useForm({
-        temperature: props.patientVisit?.temperature,
-        bp_systolic: props.patientVisit?.bp_systolic,
-        bp_diastolic: props.patientVisit?.bp_diastolic,
-        pulse: props.patientVisit?.pulse,
-        sugar: props.patientVisit?.sugar,
-        weight: props.patientVisit?.weight,
-        height: props.patientVisit?.height,
-        notes: props.patientVisit?.notes,
-
-        patient_risk_factors: <any>[],
-        patient_complaints: <any>[],
-        patient_diseases: <any>[],
-        patient_diagnoses: <any>[],
-        patient_medicines: <any>[],
-        patient_other_medicines: <any>[],
-        patient_hospitals: <any>[],
-        patient_labs: <any>[],
-
-    }
-);
-
-onMounted(() => {
-    filterMedicines.value = props.medicines?.filter((medicine: any) => medicine.medicine_category_id === 1);
-    filterOtherMedicines.value = props.medicines?.filter((medicine: any) => medicine.medicine_category_id !== 1);
-})
-
-watch(() => diagForm.disease_type_id, value => {
-    diagForm.reset( "disease_id", "procedure_id");
-    filterDiseases.value = props.diseases?.filter((disease: any) => disease.disease_type_id === value);
-    filterProcedures.value = props.procedures?.filter((procedure: any) => procedure.disease_type_id === value);
-});
-
-watch(() => medicineOption.value, option => {
-    medicineForm.reset( );
-    if(option?.id){
-        medicineForm.medicine_id = option.id;
-        medicineForm.medicine_type_id = option.medicine_type_id;
-        medicineForm.medicine_type = option.medicine_type?.type_name;
-    }else{
-        medicineForm.medicine_id = null;
-        medicineForm.medicine_type_id = null;
-        medicineForm.medicine_type = null;
-    }
-});
-
-watch(() => [medicineForm.dosage, medicineForm.frequency_id, medicineForm.duration_value], ([dosage, frequency_id, duration_value]) => {
-    let total = 1;
-    let isMultiply = medicineOption.value?.medicine_type?.is_multiply;
-    if(isMultiply){
-        let dosage = medicineForm.dosage || 1;
-        let multiplyFactor = 1;
-        if(frequency_id !== null) {
-            let frequency = props.frequencies?.find((freq: any) => freq.id === frequency_id) as any;
-            multiplyFactor = frequency?.multiply_factor || 1;
-        }
-        total = Math.ceil(eval(String(dosage)) * multiplyFactor * (duration_value || 1));
-    }
-
-    medicineForm.qty = total;
-});
-
-watch(() => labForm.test_category_id, value => {
-    labForm.reset( "test_type_id");
-    filterTestTypes.value = props.testTypes?.filter((testType: any) => testType.test_category_id === value);
-});
-
-watch(() => labForm.test_type_id, value => {
-    labForm.reset("test_id");
-    filterTests.value = props.tests?.filter((test: any) => test.test_type_id === value);
-});
-
-const getRiskFactorName = (id: number) => (props.riskFactors?.find((riskFactor: any) => riskFactor.id === id) as any)?.factor_name;
-const getComplaintName = (id: number) => (props.complaints?.find((complaint: any) => complaint.id === id) as any)?.complaint_name;
-const getDiseaseTypeName = (id: number) => (props.diseaseTypes?.find((diseaseType: any) => diseaseType.id === id) as any)?.type_name;
-const getDiseaseName = (id: number) => (props.diseases.find((disease: any) => disease.id === id) as any)?.disease_name;
-const getProcedureName = (id: number) => (props.procedures.find((procedure: any) => procedure.id === id) as any)?.procedure_name || 'Not Available';
-const getMedicineName = (id: number) => (props.medicines?.find((medicine: any) => medicine.id === id) as any)?.medicine_name;
-const getRouteName = (id: number) => (props.routes?.find((route: any) => route.id === id) as any)?.route_name;
-const getFrequencyName = (id: number) => (props.frequencies?.find((frequency: any) => frequency.id === id) as any)?.frequency_name;
-const getHospitalName = (id: number) => (props.hospitals?.find((hospital: any) => hospital.id === id) as any)?.hospital_name;
-const getTestCategoryName = (id: number) => (props.testCategories?.find((category: any) => category.id === id) as any)?.category_name;
-const getTestTypeName = (id: number) => (props.testTypes?.find((type: any) => type.id === id) as any)?.type_name;
-const getTestName = (id: number) => (props.tests?.find((test: any) => test.id === id) as any)?.test_name;
-const getLabName = (id: number) => (props.labs?.find((lab: any) => lab.id === id) as any)?.lab_name;
-
-const addRiskFactor = () => {
-    riskFactorForm.clearErrors();
-    const row = riskFactorForm.data();
-    if(row.risk_factor_id === null)
-        riskFactorForm.setError("risk_factor_id", "Risk Factor is required.");
-
-    if(row.risk_factor_id === null)
-        return;
-
-    preForm.patient_risk_factors.push(riskFactorForm.data())
-
-    riskFactorForm.reset();
-}
-const deleteRiskFactor = (_obj: Object) => preForm.patient_risk_factors = preForm.patient_risk_factors.filter(obj => obj !== _obj);
-
-const addComplaint = () => {
-    complaintForm.clearErrors();
-    const row = complaintForm.data();
-    if(row.complaint_id === null)
-        complaintForm.setError("complaint_id", "Complaint is required.");
-
-    if(row.complaint_id === null)
-        return;
-
-    preForm.patient_complaints.push(complaintForm.data())
-
-    complaintForm.reset();
-}
-const deleteComplaint = (_obj: Object) => preForm.patient_complaints = preForm.patient_complaints.filter(obj => obj !== _obj);
-
-const addDisease = () => {
-    diseaseForm.clearErrors();
-    const row = diseaseForm.data();
-    if(row.disease_id === null)
-        diseaseForm.setError("disease_id", "Disease is required.");
-
-    if(row.disease_id === null)
-        return;
-
-    preForm.patient_diseases.push(diseaseForm.data())
-
-    diseaseForm.reset();
-}
-const deleteDisease = (_obj: Object) => preForm.patient_diseases = preForm.patient_diseases.filter(obj => obj !== _obj);
-
-const addDiagnosis = () => {
-    diagForm.clearErrors();
-    const row = diagForm.data();
-    if(row.disease_type_id === null){
-        diagForm.setError("disease_type_id", "Category is required.");
-    }
-    if(row.disease_id === null){
-        diagForm.setError("disease_id", "Diagnosis is required.");
-    }
-    if(row.disease_type_id === null || row.disease_id === null)
-        return;
-
-    preForm.patient_diagnoses.push(diagForm.data())
-    diagForm.reset()
-}
-const deleteDiagnosis = (dig: Object) => preForm.patient_diagnoses = preForm.patient_diagnoses.filter(obj => obj !== dig);
-
-const addMedicine = () => {
-    medicineForm.clearErrors();
-    const row = medicineForm.data();
-    if(row.medicine_id === null)
-        medicineForm.setError("medicine_id", "Medicine is required.");
-    if(row.route_id === null)
-        medicineForm.setError("route_id", "Route is required.");
-    if(row.acquire_from === null)
-        medicineForm.setError("acquire_from", "Acquire From is required.");
-
-    if(row.medicine_id === null || row.route_id === null || row.acquire_from === null)
-        return;
-
-    preForm.patient_medicines.push(medicineForm.data())
-    medicineOption.value = null;
-    medicineForm.reset();
-}
-const deleteMedicine = (pmed: Object) => preForm.patient_medicines = preForm.patient_medicines.filter(obj => obj !== pmed);
-
-
-const addOtherMedicine = () => {
-    otherMedicineForm.clearErrors();
-    const row = otherMedicineForm.data();
-    if(row.medicine_id === null)
-        otherMedicineForm.setError("medicine_id", "Medicine is required.");
-    if(row.qty === null)
-        otherMedicineForm.setError("qty", "Qty is required.");
-    if(row.acquire_from === null)
-        otherMedicineForm.setError("acquire_from", "Acquire Form is required.");
-
-    if(row.medicine_id === null || row.qty === null || row.acquire_from === null)
-        return;
-
-    preForm.patient_other_medicines.push(otherMedicineForm.data())
-
-    otherMedicineForm.reset();
-}
-const deleteOtherMedicine = (pmed: Object) => preForm.patient_other_medicines = preForm.patient_other_medicines.filter(obj => obj !== pmed);
-
-const addHospital = () => {
-    hospitalForm.clearErrors();
-    const row = hospitalForm.data();
-    if(row.hospital_id === null)
-        hospitalForm.setError("hospital_id", "Hospital is required.");
-    if(row.priority === null)
-        hospitalForm.setError("priority", "Qty is required.");
-
-    if(row.hospital_id === null || row.priority === null)
-        return;
-
-    preForm.patient_hospitals.push(hospitalForm.data())
-
-    hospitalForm.reset();
-}
-const deleteHospital = (hospital: Object) => preForm.patient_hospitals = preForm.patient_hospitals.filter(obj => obj !== hospital);
-
-const addLab = () => {
-    labForm.clearErrors();
-    const row = labForm.data();
-    if(row.test_category_id === null)
-        labForm.setError("test_category_id", "Test Category is required.");
-
-    if(row.test_type_id === null)
-        labForm.setError("test_type_id", "Test Type is required.");
-
-    if(row.test_id === null)
-        labForm.setError("test_id", "Test is required.");
-
-    if(row.lab_id === null)
-        labForm.setError("lab_id", "Test Lab is required.");
-
-    if(row.test_category_id === null || row.test_type_id === null || row.test_id === null || row.lab_id === null)
-        return;
-
-    preForm.patient_labs.push(labForm.data())
-
-    labForm.reset();
-}
-const deleteLab = (lab: Object) => preForm.patient_labs = preForm.patient_labs.filter(obj => obj !== lab);
-
-</script>
