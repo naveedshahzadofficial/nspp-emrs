@@ -129,12 +129,12 @@ class RegistrationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param $id
+     * @param PatientVisit $patientVisit
      * @return Response
      */
-    public function show($id): Response
+    public function show(PatientVisit $patientVisit): Response
     {
-        $patientVisit = PatientVisit::relations()->findOrFail($id);
+        $patientVisit = PatientVisit::relations()->find($patientVisit->id);
         return Inertia::render('Registrations/Show',
             compact( 'patientVisit'));
     }
