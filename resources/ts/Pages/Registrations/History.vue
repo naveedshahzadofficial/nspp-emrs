@@ -7,6 +7,12 @@ defineProps({
     patientVisit: { type: Object, required: true},
 });
 </script>
+<style scoped>
+@media print {
+    @page { margin: 0 15px; }
+    body { margin: 1.6cm; }
+}
+</style>
 
 <template>
     <Head title="History Patient"/>

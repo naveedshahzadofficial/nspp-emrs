@@ -9,7 +9,12 @@ const props = defineProps({
 
 const patient = ref<any>(props.patientVisit?.patient);
 </script>
-
+<style scoped>
+@media print {
+    @page { margin: 0 15px; }
+    body { margin: 1.6cm; }
+}
+</style>
 <template>
     <Head title="View Patient"/>
     <Toolbar
