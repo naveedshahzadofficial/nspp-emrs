@@ -78,5 +78,26 @@ export function useCommons(){
         });
     }
 
-    return { filterData, destroy, toggleStatus, revoke };
+
+    const printReceipt = () => {
+        const kt_wrapper = document.querySelector('#kt_wrapper') as HTMLElement;
+        const kt_aside = document.querySelector('#kt_aside') as HTMLElement;
+        const kt_header = document.querySelector('#kt_header') as HTMLElement;
+        const kt_toolbar = document.querySelector('#kt_toolbar') as HTMLElement;
+        const kt_footer = document.querySelector('#kt_footer') as HTMLElement;
+
+        kt_aside?.style?.setProperty('display', 'none');
+        kt_header?.style?.setProperty('display', 'none');
+        kt_toolbar?.style?.setProperty('display', 'none');
+        kt_footer?.style?.setProperty('display', 'none');
+        kt_wrapper?.style?.setProperty('padding-top', '0');
+        window.print();
+        kt_aside?.style?.removeProperty('display');
+        kt_header?.style?.removeProperty('display');
+        kt_toolbar?.style?.removeProperty('display');
+        kt_footer?.style?.removeProperty('display');
+        kt_wrapper?.style?.removeProperty('padding-top');
+    }
+
+    return { filterData, destroy, toggleStatus, revoke, printReceipt };
 }

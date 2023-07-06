@@ -259,7 +259,7 @@ class RegistrationController extends Controller
 
     public function receipt(PatientVisit $patientVisit): Response
     {
-        $patientVisit->load('patient.gender');
+        $patientVisit->load('patient.gender', 'institute', 'user.roles', 'patient.patientVisit','patient.patientVisits',);
         return Inertia::render('Registrations/Receipt',['patientVisit' => new PatientVisitResource($patientVisit)]);
     }
 }

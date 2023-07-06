@@ -12,6 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _core_composables_commons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/core/composables/commons */ "./resources/ts/core/composables/commons.ts");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: 'History',
@@ -28,7 +30,11 @@ __webpack_require__.r(__webpack_exports__);
   setup: function setup(__props, _ref) {
     var __expose = _ref.expose;
     __expose();
-    var __returned__ = {};
+    var _useCommons = (0,_core_composables_commons__WEBPACK_IMPORTED_MODULE_1__.useCommons)(),
+      printReceipt = _useCommons.printReceipt;
+    var __returned__ = {
+      printReceipt: printReceipt
+    };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
       value: true
@@ -506,6 +512,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     buttons: [{
       label: 'Back',
       link: _ctx.route('registrations.index')
+    }, {
+      label: "<i class='fas fa-print'></i>",
+      link: null,
+      type: 'button',
+      click: $setup.printReceipt,
+      "class": 'btn-info'
     }],
     breadcrumbs: [{
       label: 'Registrations',
@@ -566,6 +578,123 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: history.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_114, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.created_at), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history === null || history === void 0 ? void 0 : (_history$hospital = history.hospital) === null || _history$hospital === void 0 ? void 0 : _history$hospital.hospital_name), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_115, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.priority), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(history.remarks), 1 /* TEXT */)]);
   }), 128 /* KEYED_FRAGMENT */))])])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_116, "No Hospital Found"))]), _hoisted_117, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_118, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$patientVisit7 = $props.patientVisit) === null || _$props$patientVisit7 === void 0 ? void 0 : _$props$patientVisit7.diagnosis_notes), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Container")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end:: Content Body ")], 64 /* STABLE_FRAGMENT */);
+}
+
+/***/ }),
+
+/***/ "./resources/ts/core/composables/commons.ts":
+/*!**************************************************!*\
+  !*** ./resources/ts/core/composables/commons.ts ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useCommons: () => (/* binding */ useCommons)
+/* harmony export */ });
+/* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.js */ "./node_modules/sweetalert2/dist/sweetalert2.min.js");
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function useCommons() {
+  var filterData = function filterData(routeName, _filter) {
+    _filter = Object.keys(_filter).reduce(function (acc, key) {
+      var value = _filter[key];
+      if (value !== '' && value !== null && value !== undefined) {
+        acc[key] = value;
+      }
+      return acc;
+    }, {});
+    _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router.get(route(routeName), _filter, {
+      preserveScroll: true,
+      preserveState: true,
+      replace: true
+    });
+  };
+  var destroy = function destroy(routeName, _id) {
+    sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1___default().fire({
+      text: "Are you sure you want to delete this?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      buttonsStyling: false,
+      customClass: {
+        confirmButton: "btn fw-bold btn-danger",
+        cancelButton: "btn fw-bold btn-secondary"
+      }
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router["delete"](route(routeName, _id), {
+          preserveScroll: true
+        });
+      }
+    });
+  };
+  var toggleStatus = function toggleStatus(routeName, object) {
+    sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1___default().fire({
+      text: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: object !== null && object !== void 0 && object.status ? 'Deactivate' : 'Activate',
+      buttonsStyling: false,
+      customClass: {
+        confirmButton: object !== null && object !== void 0 && object.status ? 'btn fw-bold btn-danger' : 'btn fw-bold btn-success',
+        cancelButton: "btn fw-bold btn-secondary"
+      }
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router["delete"](route(routeName, object === null || object === void 0 ? void 0 : object.id), {
+          preserveScroll: true
+        });
+      }
+    });
+  };
+  var revoke = function revoke(routeName, _idFrom, _idTo) {
+    sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1___default().fire({
+      text: "Are you sure you want to revoke this?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: 'Revoke',
+      buttonsStyling: false,
+      customClass: {
+        confirmButton: "btn fw-bold btn-danger",
+        cancelButton: "btn fw-bold btn-secondary"
+      }
+    }).then(function (result) {
+      if (result.isConfirmed) {
+        _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router["delete"](route(routeName, [_idFrom, _idTo]), {
+          preserveScroll: true
+        });
+      }
+    });
+  };
+  var printReceipt = function printReceipt() {
+    var _kt_aside$style, _kt_header$style, _kt_toolbar$style, _kt_footer$style, _kt_wrapper$style, _kt_aside$style2, _kt_header$style2, _kt_toolbar$style2, _kt_footer$style2, _kt_wrapper$style2;
+    var kt_wrapper = document.querySelector('#kt_wrapper');
+    var kt_aside = document.querySelector('#kt_aside');
+    var kt_header = document.querySelector('#kt_header');
+    var kt_toolbar = document.querySelector('#kt_toolbar');
+    var kt_footer = document.querySelector('#kt_footer');
+    kt_aside === null || kt_aside === void 0 ? void 0 : (_kt_aside$style = kt_aside.style) === null || _kt_aside$style === void 0 ? void 0 : _kt_aside$style.setProperty('display', 'none');
+    kt_header === null || kt_header === void 0 ? void 0 : (_kt_header$style = kt_header.style) === null || _kt_header$style === void 0 ? void 0 : _kt_header$style.setProperty('display', 'none');
+    kt_toolbar === null || kt_toolbar === void 0 ? void 0 : (_kt_toolbar$style = kt_toolbar.style) === null || _kt_toolbar$style === void 0 ? void 0 : _kt_toolbar$style.setProperty('display', 'none');
+    kt_footer === null || kt_footer === void 0 ? void 0 : (_kt_footer$style = kt_footer.style) === null || _kt_footer$style === void 0 ? void 0 : _kt_footer$style.setProperty('display', 'none');
+    kt_wrapper === null || kt_wrapper === void 0 ? void 0 : (_kt_wrapper$style = kt_wrapper.style) === null || _kt_wrapper$style === void 0 ? void 0 : _kt_wrapper$style.setProperty('padding-top', '0');
+    window.print();
+    kt_aside === null || kt_aside === void 0 ? void 0 : (_kt_aside$style2 = kt_aside.style) === null || _kt_aside$style2 === void 0 ? void 0 : _kt_aside$style2.removeProperty('display');
+    kt_header === null || kt_header === void 0 ? void 0 : (_kt_header$style2 = kt_header.style) === null || _kt_header$style2 === void 0 ? void 0 : _kt_header$style2.removeProperty('display');
+    kt_toolbar === null || kt_toolbar === void 0 ? void 0 : (_kt_toolbar$style2 = kt_toolbar.style) === null || _kt_toolbar$style2 === void 0 ? void 0 : _kt_toolbar$style2.removeProperty('display');
+    kt_footer === null || kt_footer === void 0 ? void 0 : (_kt_footer$style2 = kt_footer.style) === null || _kt_footer$style2 === void 0 ? void 0 : _kt_footer$style2.removeProperty('display');
+    kt_wrapper === null || kt_wrapper === void 0 ? void 0 : (_kt_wrapper$style2 = kt_wrapper.style) === null || _kt_wrapper$style2 === void 0 ? void 0 : _kt_wrapper$style2.removeProperty('padding-top');
+  };
+  return {
+    filterData: filterData,
+    destroy: destroy,
+    toggleStatus: toggleStatus,
+    revoke: revoke,
+    printReceipt: printReceipt
+  };
 }
 
 /***/ }),

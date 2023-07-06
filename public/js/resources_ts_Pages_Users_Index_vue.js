@@ -564,11 +564,31 @@ function useCommons() {
       }
     });
   };
+  var printReceipt = function printReceipt() {
+    var _kt_aside$style, _kt_header$style, _kt_toolbar$style, _kt_footer$style, _kt_wrapper$style, _kt_aside$style2, _kt_header$style2, _kt_toolbar$style2, _kt_footer$style2, _kt_wrapper$style2;
+    var kt_wrapper = document.querySelector('#kt_wrapper');
+    var kt_aside = document.querySelector('#kt_aside');
+    var kt_header = document.querySelector('#kt_header');
+    var kt_toolbar = document.querySelector('#kt_toolbar');
+    var kt_footer = document.querySelector('#kt_footer');
+    kt_aside === null || kt_aside === void 0 ? void 0 : (_kt_aside$style = kt_aside.style) === null || _kt_aside$style === void 0 ? void 0 : _kt_aside$style.setProperty('display', 'none');
+    kt_header === null || kt_header === void 0 ? void 0 : (_kt_header$style = kt_header.style) === null || _kt_header$style === void 0 ? void 0 : _kt_header$style.setProperty('display', 'none');
+    kt_toolbar === null || kt_toolbar === void 0 ? void 0 : (_kt_toolbar$style = kt_toolbar.style) === null || _kt_toolbar$style === void 0 ? void 0 : _kt_toolbar$style.setProperty('display', 'none');
+    kt_footer === null || kt_footer === void 0 ? void 0 : (_kt_footer$style = kt_footer.style) === null || _kt_footer$style === void 0 ? void 0 : _kt_footer$style.setProperty('display', 'none');
+    kt_wrapper === null || kt_wrapper === void 0 ? void 0 : (_kt_wrapper$style = kt_wrapper.style) === null || _kt_wrapper$style === void 0 ? void 0 : _kt_wrapper$style.setProperty('padding-top', '0');
+    window.print();
+    kt_aside === null || kt_aside === void 0 ? void 0 : (_kt_aside$style2 = kt_aside.style) === null || _kt_aside$style2 === void 0 ? void 0 : _kt_aside$style2.removeProperty('display');
+    kt_header === null || kt_header === void 0 ? void 0 : (_kt_header$style2 = kt_header.style) === null || _kt_header$style2 === void 0 ? void 0 : _kt_header$style2.removeProperty('display');
+    kt_toolbar === null || kt_toolbar === void 0 ? void 0 : (_kt_toolbar$style2 = kt_toolbar.style) === null || _kt_toolbar$style2 === void 0 ? void 0 : _kt_toolbar$style2.removeProperty('display');
+    kt_footer === null || kt_footer === void 0 ? void 0 : (_kt_footer$style2 = kt_footer.style) === null || _kt_footer$style2 === void 0 ? void 0 : _kt_footer$style2.removeProperty('display');
+    kt_wrapper === null || kt_wrapper === void 0 ? void 0 : (_kt_wrapper$style2 = kt_wrapper.style) === null || _kt_wrapper$style2 === void 0 ? void 0 : _kt_wrapper$style2.removeProperty('padding-top');
+  };
   return {
     filterData: filterData,
     destroy: destroy,
     toggleStatus: toggleStatus,
-    revoke: revoke
+    revoke: revoke,
+    printReceipt: printReceipt
   };
 }
 

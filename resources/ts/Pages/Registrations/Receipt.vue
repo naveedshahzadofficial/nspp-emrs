@@ -1,32 +1,25 @@
 <script lang="ts" setup>
-import {ref} from "vue";
-
+import {onMounted, ref} from "vue";
+import {useCommons} from "@/core/composables/commons";
+const { printReceipt } = useCommons();
 
 const props = defineProps({
     patientVisit: { type: Object, required: true},
 });
 
 const patient = ref<any>(props.patientVisit?.patient);
+const currentDate= ref<string>("");
 
-const printReceipt = () => {
-    const kt_wrapper = document.querySelector('#kt_wrapper') as HTMLElement;
-    const kt_aside = document.querySelector('#kt_aside') as HTMLElement;
-    const kt_header = document.querySelector('#kt_header') as HTMLElement;
-    const kt_toolbar = document.querySelector('#kt_toolbar') as HTMLElement;
-    const kt_footer = document.querySelector('#kt_footer') as HTMLElement;
+onMounted(() => {
+    const date = new Date();
+    const options: Intl.DateTimeFormatOptions = {
+        month: 'short',
+        day: '2-digit',
+        year: 'numeric'
+    };
+    currentDate.value = date.toLocaleDateString('en-US', options);
+})
 
-    kt_aside?.style?.setProperty('display', 'none');
-    kt_header?.style?.setProperty('display', 'none');
-    kt_toolbar?.style?.setProperty('display', 'none');
-    kt_footer?.style?.setProperty('display', 'none');
-    kt_wrapper?.style?.setProperty('padding-top', '0');
-    window.print();
-    kt_aside?.style?.removeProperty('display');
-    kt_header?.style?.removeProperty('display');
-    kt_toolbar?.style?.removeProperty('display');
-    kt_footer?.style?.removeProperty('display');
-    kt_wrapper?.style?.removeProperty('padding-top');
-}
 </script>
 
 <style scoped>
@@ -40,8 +33,8 @@ const printReceipt = () => {
     <Toolbar
         title="Receipt Patient"
         :buttons="[
-            {label: 'Print', link: null, type: 'button', click:printReceipt },
-            {label: 'Back', link: route('registrations.index')}
+            {label: 'Back', link: route('registrations.index')},
+            {label: `<i class='fas fa-print'></i>`, link: null, type: 'button', click:printReceipt, class: 'btn-info' },
         ]"
         :breadcrumbs="[
             {label: 'Registrations', link: route('registrations.index')},
@@ -142,9 +135,10 @@ const printReceipt = () => {
 
                     <div class="row mt-5">
                             <div class="col-md-7">
-                                <p>Total Visits: 0</p>
-                                <p>Last Visit: 2023-07-05 8:00 PM</p>
-                                <p>PITB TEST / Medical Officer / CW1831551 <br/> Jul 05, 2023</p>
+                                <p>Total Visits: {{ patient?.patient_visit_count }}</p>
+                                <p>Last Visit: {{ patient?.patient_visit?.created_at }}</p>
+                                <p>{{ patientVisit?.institute?.short_name }} / {{ patientVisit?.user?.roles.map(role => role.name).join(', ') }} <br/>
+                                    {{ currentDate }}</p>
                             </div>
                             <div class="col-md-5 text-end mt-15">
                                 <span style="border-top:1px solid;"> Stamp / Signature </span>

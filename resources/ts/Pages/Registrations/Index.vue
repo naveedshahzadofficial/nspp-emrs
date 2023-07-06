@@ -120,6 +120,7 @@
                             <td class="fw-semibold text-center">{{ patientVisit.time }}</td>
 
                             <td class="text-center">
+
                                 <Link
                                     v-if="hasPermission('view registrations')"
                                     :href="route('registrations.show', patientVisit.id)"
@@ -128,6 +129,16 @@
                                     data-bs-placement="top"
                                     title="View">
                                     <i class="fas fa-eye"></i>
+                                </Link>
+
+                                <Link
+                                    v-if="hasPermission('receipt registrations')"
+                                    :href="route('registrations.receipt', patientVisit.id)"
+                                    class="btn btn-icon btn-primary btn-circle btn-sm me-2 mb-2"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Receipt">
+                                    <i class="fas fa-receipt"></i>
                                 </Link>
 
                                 <Link

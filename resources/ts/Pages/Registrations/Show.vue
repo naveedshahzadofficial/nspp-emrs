@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import {ref} from "vue";
+import {useCommons} from "@/core/composables/commons";
+const { printReceipt } = useCommons();
 
 const props = defineProps({
     patientVisit: { type: Object, required: true},
@@ -12,7 +14,11 @@ const patient = ref<any>(props.patientVisit?.patient);
     <Head title="View Patient"/>
     <Toolbar
         title="View Patient"
-        :buttons="[{label: 'Back', link: route('registrations.index')}]"
+        :buttons="[
+            {label: 'Back', link: route('registrations.index')},
+            {label: `<i class='fas fa-print'></i>`, link: null, type: 'button', click:printReceipt, class: 'btn-info' },
+
+        ]"
         :breadcrumbs="[
             {label: 'Registrations', link: route('registrations.index')},
             {label: 'View', link: null}

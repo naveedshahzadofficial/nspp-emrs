@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import {useCommons} from "@/core/composables/commons";
+const { printReceipt } = useCommons();
+
 defineProps({
     patient: { type: Object, required: true},
     patientVisit: { type: Object, required: true},
@@ -9,7 +12,10 @@ defineProps({
     <Head title="History Patient"/>
     <Toolbar
         title="History Patient"
-        :buttons="[{label: 'Back', link: route('registrations.index')}]"
+        :buttons="[
+            {label: 'Back', link: route('registrations.index')},
+            {label: `<i class='fas fa-print'></i>`, link: null, type: 'button', click:printReceipt, class: 'btn-info' },
+            ]"
         :breadcrumbs="[
             {label: 'Registrations', link: route('registrations.index')},
             {label: 'History', link: null}

@@ -394,22 +394,25 @@ var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "fas fa-eye"
 }, null, -1 /* HOISTED */);
 var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fas fa-history"
+  "class": "fas fa-receipt"
 }, null, -1 /* HOISTED */);
 var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fas fa-step-forward"
+  "class": "fas fa-history"
 }, null, -1 /* HOISTED */);
 var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "fas fa-book-medical"
+  "class": "fas fa-step-forward"
 }, null, -1 /* HOISTED */);
 var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fas fa-book-medical"
+}, null, -1 /* HOISTED */);
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-edit"
 }, null, -1 /* HOISTED */);
-var _hoisted_32 = ["onClick"];
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_33 = ["onClick"];
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "fas fa-trash"
 }, null, -1 /* HOISTED */);
-var _hoisted_34 = [_hoisted_33];
+var _hoisted_35 = [_hoisted_34];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _$props$patientVisits, _$props$patientVisits2;
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
@@ -478,8 +481,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return [_hoisted_27];
       }),
       _: 2 /* DYNAMIC */
-    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('history registrations') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('receipt registrations') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
       key: 1,
+      href: _ctx.route('registrations.receipt', patientVisit.id),
+      "class": "btn btn-icon btn-primary btn-circle btn-sm me-2 mb-2",
+      "data-bs-toggle": "tooltip",
+      "data-bs-placement": "top",
+      title: "Receipt"
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [_hoisted_28];
+      }),
+      _: 2 /* DYNAMIC */
+    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('history registrations') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+      key: 2,
       href: _ctx.route('registrations.history', patientVisit.id),
       "class": "btn btn-icon btn-primary btn-circle btn-sm me-2 mb-2",
       "data-bs-toggle": "tooltip",
@@ -487,11 +502,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       title: "History"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [_hoisted_28];
+        return [_hoisted_29];
       }),
       _: 2 /* DYNAMIC */
     }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('proceed registrations') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
-      key: 2,
+      key: 3,
       href: _ctx.route('registrations.proceed', patientVisit.id),
       "class": "btn btn-icon btn-warning btn-circle btn-sm me-2 mb-2",
       "data-bs-toggle": "tooltip",
@@ -499,11 +514,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       title: "Proceed"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [_hoisted_29];
+        return [_hoisted_30];
       }),
       _: 2 /* DYNAMIC */
     }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('pharmacy registrations') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
-      key: 3,
+      key: 4,
       href: _ctx.route('registrations.pharmacy.view', patientVisit.id),
       "class": "btn btn-icon btn-warning btn-circle btn-sm me-2 mb-2",
       "data-bs-toggle": "tooltip",
@@ -511,11 +526,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       title: "Dispense Medicine"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [_hoisted_30];
+        return [_hoisted_31];
       }),
       _: 2 /* DYNAMIC */
     }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('update registrations') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
-      key: 4,
+      key: 5,
       href: _ctx.route('registrations.edit', patientVisit.id),
       "class": "btn btn-icon btn-secondary btn-circle btn-sm me-2 mb-2",
       "data-bs-toggle": "tooltip",
@@ -523,11 +538,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       title: "Edit"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [_hoisted_31];
+        return [_hoisted_32];
       }),
       _: 2 /* DYNAMIC */
     }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.hasPermission('delete registrations') ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
-      key: 5,
+      key: 6,
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return $setup.destroy('registrations.destroy', patientVisit.id);
       }, ["prevent"]),
@@ -535,7 +550,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "data-bs-toggle": "tooltip",
       "data-bs-placement": "top",
       title: "Delete"
-    }, _hoisted_34, 8 /* PROPS */, _hoisted_32)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
+    }, _hoisted_35, 8 /* PROPS */, _hoisted_33)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
   }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Table body")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Pagination"], {
     meta: (_$props$patientVisits = $props.patientVisits) === null || _$props$patientVisits === void 0 ? void 0 : _$props$patientVisits.meta,
     links: (_$props$patientVisits2 = $props.patientVisits) === null || _$props$patientVisits2 === void 0 ? void 0 : _$props$patientVisits2.links
@@ -631,11 +646,31 @@ function useCommons() {
       }
     });
   };
+  var printReceipt = function printReceipt() {
+    var _kt_aside$style, _kt_header$style, _kt_toolbar$style, _kt_footer$style, _kt_wrapper$style, _kt_aside$style2, _kt_header$style2, _kt_toolbar$style2, _kt_footer$style2, _kt_wrapper$style2;
+    var kt_wrapper = document.querySelector('#kt_wrapper');
+    var kt_aside = document.querySelector('#kt_aside');
+    var kt_header = document.querySelector('#kt_header');
+    var kt_toolbar = document.querySelector('#kt_toolbar');
+    var kt_footer = document.querySelector('#kt_footer');
+    kt_aside === null || kt_aside === void 0 ? void 0 : (_kt_aside$style = kt_aside.style) === null || _kt_aside$style === void 0 ? void 0 : _kt_aside$style.setProperty('display', 'none');
+    kt_header === null || kt_header === void 0 ? void 0 : (_kt_header$style = kt_header.style) === null || _kt_header$style === void 0 ? void 0 : _kt_header$style.setProperty('display', 'none');
+    kt_toolbar === null || kt_toolbar === void 0 ? void 0 : (_kt_toolbar$style = kt_toolbar.style) === null || _kt_toolbar$style === void 0 ? void 0 : _kt_toolbar$style.setProperty('display', 'none');
+    kt_footer === null || kt_footer === void 0 ? void 0 : (_kt_footer$style = kt_footer.style) === null || _kt_footer$style === void 0 ? void 0 : _kt_footer$style.setProperty('display', 'none');
+    kt_wrapper === null || kt_wrapper === void 0 ? void 0 : (_kt_wrapper$style = kt_wrapper.style) === null || _kt_wrapper$style === void 0 ? void 0 : _kt_wrapper$style.setProperty('padding-top', '0');
+    window.print();
+    kt_aside === null || kt_aside === void 0 ? void 0 : (_kt_aside$style2 = kt_aside.style) === null || _kt_aside$style2 === void 0 ? void 0 : _kt_aside$style2.removeProperty('display');
+    kt_header === null || kt_header === void 0 ? void 0 : (_kt_header$style2 = kt_header.style) === null || _kt_header$style2 === void 0 ? void 0 : _kt_header$style2.removeProperty('display');
+    kt_toolbar === null || kt_toolbar === void 0 ? void 0 : (_kt_toolbar$style2 = kt_toolbar.style) === null || _kt_toolbar$style2 === void 0 ? void 0 : _kt_toolbar$style2.removeProperty('display');
+    kt_footer === null || kt_footer === void 0 ? void 0 : (_kt_footer$style2 = kt_footer.style) === null || _kt_footer$style2 === void 0 ? void 0 : _kt_footer$style2.removeProperty('display');
+    kt_wrapper === null || kt_wrapper === void 0 ? void 0 : (_kt_wrapper$style2 = kt_wrapper.style) === null || _kt_wrapper$style2 === void 0 ? void 0 : _kt_wrapper$style2.removeProperty('padding-top');
+  };
   return {
     filterData: filterData,
     destroy: destroy,
     toggleStatus: toggleStatus,
-    revoke: revoke
+    revoke: revoke,
+    printReceipt: printReceipt
   };
 }
 

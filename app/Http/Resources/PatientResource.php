@@ -28,6 +28,10 @@ class PatientResource extends JsonResource
             'status' => $this->status,
             'patient_type' => new PatientTypeResource($this->whenLoaded('patientType')),
             'gender' => new GenderResource($this->whenLoaded('gender')),
+            'patient_visit' => new PatientVisitResource($this->whenLoaded('patientVisit')),
+            'patient_visit_count' => $this->whenLoaded('patientVisits', function () {
+                return $this->patientVisits->count();
+            }),
             ];
     }
 }

@@ -34,6 +34,7 @@ class PatientVisitResource extends JsonResource
             'time' => Carbon::parse($this->created_at)->format('h:i A'),
             'patient' => new PatientResource($this->whenLoaded('patient')),
             'institute' => new InstituteResource($this->whenLoaded('institute')),
+            'user' => new UserResource($this->whenLoaded('user')),
             'patient_medicines' => PatientMedicineResource::collection($this->whenLoaded('patientMedicines')),
             'patient_other_medicines' => PatientOtherMedicineResource::collection($this->whenLoaded('patientOtherMedicines')),
 
