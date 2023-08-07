@@ -14,7 +14,7 @@ const webpackConfig = require('./webpack.config');
  */
 
 mix.ts('resources/ts/app.ts', 'public/js')
-    //.extract()
+    .extract()
     .vue({ version: 3 })
     .sass('resources/sass/app.scss', 'public/css')
     .webpackConfig(webpackConfig);

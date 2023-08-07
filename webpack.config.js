@@ -25,6 +25,9 @@ module.exports = {
     stats: {
         children: true,
     },
+    output: {
+    publicPath: "/nspp_emrs",
+     },
     plugins: [new CleanupMiniCssExtractPlugin({
         children: true,
         warnings: false
