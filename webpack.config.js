@@ -26,7 +26,7 @@ module.exports = {
         children: true,
     },
     output: {
-    path: path.resolve(__dirname, './nspp_emrs'),
+    path: path.resolve('./nspp_emrs'),
     publicPath: "/nspp_emrs/",
      },
     plugins: [new CleanupMiniCssExtractPlugin({
