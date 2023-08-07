@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
       <title inertia>{{ config('app.name', 'EMRS') }}</title>
 
-    <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
-    <script src="{{ mix('/js/manifest.js') }}" defer></script>
-    <script src="{{ mix('/js/vendor.js') }}" defer></script>
-    <script src="{{ mix('/js/app.js') }}" defer></script>
+    <link href="{{ asset(mix('/css/app.css')) }}" rel="stylesheet" />
+    <script src="{{ asset(mix('/js/manifest.js')) }}" defer></script>
+    <script src="{{ asset(mix('/js/vendor.js')) }}" defer></script>
+    <script src="{{ asset(mix('/js/app.js')) }}" defer></script>
     <link rel="shortcut icon" href="{{ asset('/media/logos/favicon.ico') }}" />
   </head>
   <body style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
