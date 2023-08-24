@@ -13,7 +13,7 @@ class PatientVisit extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = ['institute_id', 'user_id','patient_id', 'token_no', 'temperature', 'bp_systolic', 'bp_diastolic', 'pulse', 'sugar',
-        'weight', 'height', 'notes',];
+        'weight', 'height', 'height_unit', 'notes',];
 
     public function scopeActive($query) {
         return $query->where('status', true);

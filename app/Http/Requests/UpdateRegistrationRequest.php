@@ -39,6 +39,7 @@ class UpdateRegistrationRequest extends FormRequest
             'sugar' => 'nullable|sometimes',
             'weight' => 'nullable|sometimes',
             'height' => 'nullable|sometimes',
+            'height_unit' => 'nullable|sometimes',
             'notes' => 'nullable|sometimes',
         ];
     }

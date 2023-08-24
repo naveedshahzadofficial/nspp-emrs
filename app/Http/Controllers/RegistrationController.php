@@ -88,6 +88,7 @@ class RegistrationController extends Controller
         $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
         $genders = GenderResource::collection(Gender::active()->get());
 
+        $heightUnits = ["Feet", "Inches"];
         /* Begin: Search */
         $patients = Collect([]);
         $filters = request()->only(['mobile_no', 'cnic_no', 'patient_name']);
@@ -106,7 +107,7 @@ class RegistrationController extends Controller
         }
         /* End: Search */
 
-        return Inertia::render('Registrations/Create', compact('patientTypes', 'genders', 'patients', 'filters'));
+        return Inertia::render('Registrations/Create', compact('patientTypes', 'genders', 'heightUnits' , 'patients', 'filters'));
     }
 
     /**
@@ -150,7 +151,8 @@ class RegistrationController extends Controller
         $patientVisit->load('patient');
         $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
         $genders = GenderResource::collection(Gender::active()->get());
-        return Inertia::render('Registrations/Edit', compact('patientTypes', 'genders', 'patientVisit'));
+        $heightUnits = ["Feet", "Inches"];
+        return Inertia::render('Registrations/Edit', compact('patientTypes', 'genders','heightUnits', 'patientVisit'));
     }
 
     /**
@@ -206,9 +208,10 @@ class RegistrationController extends Controller
         $testTypes = TestTypeResource::collection(TestType::active()->get());
         $tests = TestResource::collection(Test::active()->get());
         $labs = LabResource::collection(Lab::active()->get());
+        $heightUnits = ["Feet", "Inches"];
 
         return Inertia::render('Registrations/Proceed',
-            compact('patientTypes', 'genders', 'patient',
+            compact('patientTypes', 'genders', 'patient', 'heightUnits',
                 'patientVisit', 'complaints', 'diseases', 'diseaseTypes', 'procedures',
                 'riskFactors', 'medicines', 'routes', 'frequencies', 'hospitals', 'testCategories', 'testTypes', 'tests', 'labs'));
     }

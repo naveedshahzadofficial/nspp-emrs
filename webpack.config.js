@@ -25,10 +25,10 @@ module.exports = {
     stats: {
         children: true,
     },
-    output: {
+   /* output: {
     path: path.resolve('./nspp_emrs'),
     publicPath: "/nspp_emrs/",
-     },
+     },*/
     plugins: [new CleanupMiniCssExtractPlugin({
         children: true,
         warnings: false

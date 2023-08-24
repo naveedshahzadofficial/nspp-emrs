@@ -28,6 +28,7 @@ class PatientVisitResource extends JsonResource
             'sugar' => $this->sugar,
             'weight' => $this->weight,
             'height' => $this->height,
+            'height_unit' => $this->height_unit,
             'notes' => $this->notes,
             'created_at' => $this->created_at,
             'date' => Carbon::parse($this->created_at)->format('d-m-Y'),
