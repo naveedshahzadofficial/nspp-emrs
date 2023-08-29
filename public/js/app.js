@@ -9667,7 +9667,7 @@ var DocMenuConfig = [{
   pages: [{
     sectionTitle: "System Settings",
     fontIcon: "bi bi-gear",
-    components: ["Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show", "Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show", "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show", "DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show", "Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show"],
+    components: ["Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show", "Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show", "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show", "DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show", "Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show", "Labs/Index", "Labs/Create", "Labs/Edit", "Labs/Show"],
     permissions: ['list institutes', 'list roles', 'list permissions', 'list users', "list patient types", "list complaints", "list disease types", "list diseases"],
     sub: [{
       heading: "Institutes",
@@ -9709,6 +9709,11 @@ var DocMenuConfig = [{
       route: "diseases.index",
       components: ["Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show"],
       permissions: ['list diseases']
+    }, {
+      heading: "Labs",
+      route: "labs.index",
+      components: ["Labs/Index", "Labs/Create", "Labs/Edit", "Labs/Show"],
+      permissions: ['list labs']
     }]
   }, {
     heading: "Patients",
@@ -14372,6 +14377,38 @@ var map = {
 	"./Institutes/Show.vue": [
 		"./resources/ts/Pages/Institutes/Show.vue",
 		"resources_ts_Pages_Institutes_Show_vue"
+	],
+	"./Labs/Create": [
+		"./resources/ts/Pages/Labs/Create.vue",
+		"resources_ts_Pages_Labs_Create_vue"
+	],
+	"./Labs/Create.vue": [
+		"./resources/ts/Pages/Labs/Create.vue",
+		"resources_ts_Pages_Labs_Create_vue"
+	],
+	"./Labs/Edit": [
+		"./resources/ts/Pages/Labs/Edit.vue",
+		"resources_ts_Pages_Labs_Edit_vue"
+	],
+	"./Labs/Edit.vue": [
+		"./resources/ts/Pages/Labs/Edit.vue",
+		"resources_ts_Pages_Labs_Edit_vue"
+	],
+	"./Labs/Index": [
+		"./resources/ts/Pages/Labs/Index.vue",
+		"resources_ts_Pages_Labs_Index_vue"
+	],
+	"./Labs/Index.vue": [
+		"./resources/ts/Pages/Labs/Index.vue",
+		"resources_ts_Pages_Labs_Index_vue"
+	],
+	"./Labs/Show": [
+		"./resources/ts/Pages/Labs/Show.vue",
+		"resources_ts_Pages_Labs_Show_vue"
+	],
+	"./Labs/Show.vue": [
+		"./resources/ts/Pages/Labs/Show.vue",
+		"resources_ts_Pages_Labs_Show_vue"
 	],
 	"./PatientTypes/Create": [
 		"./resources/ts/Pages/PatientTypes/Create.vue",

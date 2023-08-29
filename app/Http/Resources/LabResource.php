@@ -20,6 +20,7 @@ class LabResource extends JsonResource
             'speciality' => $this->speciality,
             'address' => $this->address,
             'contact' => $this->contact,
+            'status' => $this->status,
         ];
     }
 }
