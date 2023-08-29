@@ -9667,7 +9667,7 @@ var DocMenuConfig = [{
   pages: [{
     sectionTitle: "System Settings",
     fontIcon: "bi bi-gear",
-    components: ["Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show", "Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show", "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show", "DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show", "Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show", "Labs/Index", "Labs/Create", "Labs/Edit", "Labs/Show"],
+    components: ["Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show", "Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show", "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show", "DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show", "Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show", "Labs/Index", "Labs/Create", "Labs/Edit", "Labs/Show", "Hospitals/Index", "Hospitals/Create", "Hospitals/Edit", "Hospitals/Show"],
     permissions: ['list institutes', 'list roles', 'list permissions', 'list users', "list patient types", "list complaints", "list disease types", "list diseases"],
     sub: [{
       heading: "Institutes",
@@ -9714,6 +9714,11 @@ var DocMenuConfig = [{
       route: "labs.index",
       components: ["Labs/Index", "Labs/Create", "Labs/Edit", "Labs/Show"],
       permissions: ['list labs']
+    }, {
+      heading: "Hospitals",
+      route: "hospitals.index",
+      components: ["Hospitals/Index", "Hospitals/Create", "Hospitals/Edit", "Hospitals/Show"],
+      permissions: ['list hospitals']
     }]
   }, {
     heading: "Patients",
@@ -14345,6 +14350,38 @@ var map = {
 	"./Home.vue": [
 		"./resources/ts/Pages/Home.vue",
 		"resources_ts_Pages_Home_vue"
+	],
+	"./Hospitals/Create": [
+		"./resources/ts/Pages/Hospitals/Create.vue",
+		"resources_ts_Pages_Hospitals_Create_vue"
+	],
+	"./Hospitals/Create.vue": [
+		"./resources/ts/Pages/Hospitals/Create.vue",
+		"resources_ts_Pages_Hospitals_Create_vue"
+	],
+	"./Hospitals/Edit": [
+		"./resources/ts/Pages/Hospitals/Edit.vue",
+		"resources_ts_Pages_Hospitals_Edit_vue"
+	],
+	"./Hospitals/Edit.vue": [
+		"./resources/ts/Pages/Hospitals/Edit.vue",
+		"resources_ts_Pages_Hospitals_Edit_vue"
+	],
+	"./Hospitals/Index": [
+		"./resources/ts/Pages/Hospitals/Index.vue",
+		"resources_ts_Pages_Hospitals_Index_vue"
+	],
+	"./Hospitals/Index.vue": [
+		"./resources/ts/Pages/Hospitals/Index.vue",
+		"resources_ts_Pages_Hospitals_Index_vue"
+	],
+	"./Hospitals/Show": [
+		"./resources/ts/Pages/Hospitals/Show.vue",
+		"resources_ts_Pages_Hospitals_Show_vue"
+	],
+	"./Hospitals/Show.vue": [
+		"./resources/ts/Pages/Hospitals/Show.vue",
+		"resources_ts_Pages_Hospitals_Show_vue"
 	],
 	"./Institutes/Create": [
 		"./resources/ts/Pages/Institutes/Create.vue",

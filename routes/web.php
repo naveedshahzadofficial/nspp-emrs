@@ -15,7 +15,8 @@ use App\Http\Controllers\{
     DiseaseController,
     ReimbursementController,
     InstituteController,
-    LabController
+    LabController,
+    HospitalController
 };
 
 Route::get('/', [DashboardController::class, 'index']);
@@ -54,6 +55,9 @@ Route::group(['middleware' => ['auth']],function() {
 
     Route::delete('/labs/{lab}/toggle-status', [LabController::class, 'toggleStatus'])->name('labs.toggle-status');
     Route::resource('/labs', LabController::class);
+
+    Route::delete('/hospitals/{hospital}/toggle-status', [HospitalController::class, 'toggleStatus'])->name('hospitals.toggle-status');
+    Route::resource('/hospitals', HospitalController::class);
 
     Route::get('/registrations/{patient_visit}/receipt', [RegistrationController::class, 'receipt'])->name('registrations.receipt');
     Route::get('/registrations/{patient_visit}/history', [RegistrationController::class, 'history'])->name('registrations.history');
