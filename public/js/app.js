@@ -9667,7 +9667,7 @@ var DocMenuConfig = [{
   pages: [{
     sectionTitle: "System Settings",
     fontIcon: "bi bi-gear",
-    components: ["Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show", "Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show", "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show", "DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show", "Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show", "Labs/Index", "Labs/Create", "Labs/Edit", "Labs/Show", "Hospitals/Index", "Hospitals/Create", "Hospitals/Edit", "Hospitals/Show"],
+    components: ["Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show", "Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show", "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show", "DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show", "Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show", "Labs/Index", "Labs/Create", "Labs/Edit", "Labs/Show", "Hospitals/Index", "Hospitals/Create", "Hospitals/Edit", "Hospitals/Show", "MedicineCategories/Index", "MedicineCategories/Create", "MedicineCategories/Edit", "MedicineCategories/Show"],
     permissions: ['list institutes', 'list roles', 'list permissions', 'list users', "list patient types", "list complaints", "list disease types", "list diseases"],
     sub: [{
       heading: "Institutes",
@@ -9700,7 +9700,7 @@ var DocMenuConfig = [{
       components: ["Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show"],
       permissions: ['list complaints']
     }, {
-      heading: "DiseaseTypes",
+      heading: "Disease Types",
       route: "disease-types.index",
       components: ["DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show"],
       permissions: ['list disease types']
@@ -9719,6 +9719,11 @@ var DocMenuConfig = [{
       route: "hospitals.index",
       components: ["Hospitals/Index", "Hospitals/Create", "Hospitals/Edit", "Hospitals/Show"],
       permissions: ['list hospitals']
+    }, {
+      heading: "Medicine Categories",
+      route: "medicine-categories.index",
+      components: ["MedicineCategories/Index", "MedicineCategories/Create", "MedicineCategories/Edit", "MedicineCategories/Show"],
+      permissions: ['list medicine categories']
     }]
   }, {
     heading: "Patients",
@@ -14446,6 +14451,38 @@ var map = {
 	"./Labs/Show.vue": [
 		"./resources/ts/Pages/Labs/Show.vue",
 		"resources_ts_Pages_Labs_Show_vue"
+	],
+	"./MedicineCategories/Create": [
+		"./resources/ts/Pages/MedicineCategories/Create.vue",
+		"resources_ts_Pages_MedicineCategories_Create_vue"
+	],
+	"./MedicineCategories/Create.vue": [
+		"./resources/ts/Pages/MedicineCategories/Create.vue",
+		"resources_ts_Pages_MedicineCategories_Create_vue"
+	],
+	"./MedicineCategories/Edit": [
+		"./resources/ts/Pages/MedicineCategories/Edit.vue",
+		"resources_ts_Pages_MedicineCategories_Edit_vue"
+	],
+	"./MedicineCategories/Edit.vue": [
+		"./resources/ts/Pages/MedicineCategories/Edit.vue",
+		"resources_ts_Pages_MedicineCategories_Edit_vue"
+	],
+	"./MedicineCategories/Index": [
+		"./resources/ts/Pages/MedicineCategories/Index.vue",
+		"resources_ts_Pages_MedicineCategories_Index_vue"
+	],
+	"./MedicineCategories/Index.vue": [
+		"./resources/ts/Pages/MedicineCategories/Index.vue",
+		"resources_ts_Pages_MedicineCategories_Index_vue"
+	],
+	"./MedicineCategories/Show": [
+		"./resources/ts/Pages/MedicineCategories/Show.vue",
+		"resources_ts_Pages_MedicineCategories_Show_vue"
+	],
+	"./MedicineCategories/Show.vue": [
+		"./resources/ts/Pages/MedicineCategories/Show.vue",
+		"resources_ts_Pages_MedicineCategories_Show_vue"
 	],
 	"./PatientTypes/Create": [
 		"./resources/ts/Pages/PatientTypes/Create.vue",

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class MedicineCategoryRequest extends FormRequest
 {
@@ -24,7 +25,8 @@ class MedicineCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'category_name' => ['required','string', 'max:255', Rule::unique('medicine_categories', 'category_name')->ignore($this->medicine_category)],
+            'status' => 'required',
         ];
     }
 }

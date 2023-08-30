@@ -25,12 +25,12 @@ class MedicineCategoryController extends Controller
         $medicineCategories = MedicineCategoryResource::collection(
             MedicineCategory::query()
                 ->when(request()->input('search'), function ($query, $search){
-                    $query->where('type_name', 'like', "%{$search}%");
+                    $query->where('category_name', 'like', "%{$search}%");
                 })
                 ->orderBy('created_at', 'desc')
                 ->paginate(request()->input('limit', 30))->withQueryString()
         );
-        return Inertia::render('medicineCategories/Index', compact('medicineCategories', 'filters'));
+        return Inertia::render('MedicineCategories/Index', compact('medicineCategories', 'filters'));
     }
 
     /**
@@ -40,7 +40,7 @@ class MedicineCategoryController extends Controller
      */
     public function create()
     {
-        return Inertia::render('medicineCategories/Create');
+        return Inertia::render('MedicineCategories/Create');
     }
 
     /**
@@ -64,7 +64,7 @@ class MedicineCategoryController extends Controller
      */
     public function show(MedicineCategory $medicineCategory)
     {
-        return Inertia::render('medicineCategories/Show', compact('diseaseType'));
+        return Inertia::render('MedicineCategories/Show', compact('medicineCategory'));
     }
 
     /**
@@ -75,7 +75,7 @@ class MedicineCategoryController extends Controller
      */
     public function edit(MedicineCategory $medicineCategory)
     {
-        return Inertia::render('medicineCategories/Edit', compact('diseaseType'));
+        return Inertia::render('MedicineCategories/Edit', compact('medicineCategory'));
     }
 
     /**
