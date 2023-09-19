@@ -18,6 +18,7 @@ class MedicineTypeResource extends JsonResource
             'id' => $this->id,
             'type_name' => $this->type_name,
             'is_multiply' => $this->is_multiply,
+            'status' => $this->status,
         ];
     }
 }

@@ -9667,7 +9667,7 @@ var DocMenuConfig = [{
   pages: [{
     sectionTitle: "System Settings",
     fontIcon: "bi bi-gear",
-    components: ["Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show", "Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show", "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show", "DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show", "Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show", "Labs/Index", "Labs/Create", "Labs/Edit", "Labs/Show", "Hospitals/Index", "Hospitals/Create", "Hospitals/Edit", "Hospitals/Show", "MedicineCategories/Index", "MedicineCategories/Create", "MedicineCategories/Edit", "MedicineCategories/Show"],
+    components: ["Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show", "Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show", "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show", "DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show", "Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show", "Labs/Index", "Labs/Create", "Labs/Edit", "Labs/Show", "Hospitals/Index", "Hospitals/Create", "Hospitals/Edit", "Hospitals/Show", "MedicineCategories/Index", "MedicineCategories/Create", "MedicineCategories/Edit", "MedicineCategories/Show", "MedicineTypes/Index", "MedicineTypes/Create", "MedicineTypes/Edit", "MedicineTypes/Show", "MedicineGenerics/Index", "MedicineGenerics/Create", "MedicineGenerics/Edit", "MedicineGenerics/Show"],
     permissions: ['list institutes', 'list roles', 'list permissions', 'list users', "list patient types", "list complaints", "list disease types", "list diseases"],
     sub: [{
       heading: "Institutes",
@@ -9724,6 +9724,16 @@ var DocMenuConfig = [{
       route: "medicine-categories.index",
       components: ["MedicineCategories/Index", "MedicineCategories/Create", "MedicineCategories/Edit", "MedicineCategories/Show"],
       permissions: ['list medicine categories']
+    }, {
+      heading: "Medicine Types",
+      route: "medicine-types.index",
+      components: ["MedicineTypes/Index", "MedicineTypes/Create", "MedicineTypes/Edit", "MedicineTypes/Show"],
+      permissions: ['list medicine types']
+    }, {
+      heading: "Medicine Generics",
+      route: "medicine-generics.index",
+      components: ["MedicineGenerics/Index", "MedicineGenerics/Create", "MedicineGenerics/Edit", "MedicineGenerics/Show"],
+      permissions: ['list medicine generics']
     }]
   }, {
     heading: "Patients",
@@ -14483,6 +14493,70 @@ var map = {
 	"./MedicineCategories/Show.vue": [
 		"./resources/ts/Pages/MedicineCategories/Show.vue",
 		"resources_ts_Pages_MedicineCategories_Show_vue"
+	],
+	"./MedicineGenerics/Create": [
+		"./resources/ts/Pages/MedicineGenerics/Create.vue",
+		"resources_ts_Pages_MedicineGenerics_Create_vue"
+	],
+	"./MedicineGenerics/Create.vue": [
+		"./resources/ts/Pages/MedicineGenerics/Create.vue",
+		"resources_ts_Pages_MedicineGenerics_Create_vue"
+	],
+	"./MedicineGenerics/Edit": [
+		"./resources/ts/Pages/MedicineGenerics/Edit.vue",
+		"resources_ts_Pages_MedicineGenerics_Edit_vue"
+	],
+	"./MedicineGenerics/Edit.vue": [
+		"./resources/ts/Pages/MedicineGenerics/Edit.vue",
+		"resources_ts_Pages_MedicineGenerics_Edit_vue"
+	],
+	"./MedicineGenerics/Index": [
+		"./resources/ts/Pages/MedicineGenerics/Index.vue",
+		"resources_ts_Pages_MedicineGenerics_Index_vue"
+	],
+	"./MedicineGenerics/Index.vue": [
+		"./resources/ts/Pages/MedicineGenerics/Index.vue",
+		"resources_ts_Pages_MedicineGenerics_Index_vue"
+	],
+	"./MedicineGenerics/Show": [
+		"./resources/ts/Pages/MedicineGenerics/Show.vue",
+		"resources_ts_Pages_MedicineGenerics_Show_vue"
+	],
+	"./MedicineGenerics/Show.vue": [
+		"./resources/ts/Pages/MedicineGenerics/Show.vue",
+		"resources_ts_Pages_MedicineGenerics_Show_vue"
+	],
+	"./MedicineTypes/Create": [
+		"./resources/ts/Pages/MedicineTypes/Create.vue",
+		"resources_ts_Pages_MedicineTypes_Create_vue"
+	],
+	"./MedicineTypes/Create.vue": [
+		"./resources/ts/Pages/MedicineTypes/Create.vue",
+		"resources_ts_Pages_MedicineTypes_Create_vue"
+	],
+	"./MedicineTypes/Edit": [
+		"./resources/ts/Pages/MedicineTypes/Edit.vue",
+		"resources_ts_Pages_MedicineTypes_Edit_vue"
+	],
+	"./MedicineTypes/Edit.vue": [
+		"./resources/ts/Pages/MedicineTypes/Edit.vue",
+		"resources_ts_Pages_MedicineTypes_Edit_vue"
+	],
+	"./MedicineTypes/Index": [
+		"./resources/ts/Pages/MedicineTypes/Index.vue",
+		"resources_ts_Pages_MedicineTypes_Index_vue"
+	],
+	"./MedicineTypes/Index.vue": [
+		"./resources/ts/Pages/MedicineTypes/Index.vue",
+		"resources_ts_Pages_MedicineTypes_Index_vue"
+	],
+	"./MedicineTypes/Show": [
+		"./resources/ts/Pages/MedicineTypes/Show.vue",
+		"resources_ts_Pages_MedicineTypes_Show_vue"
+	],
+	"./MedicineTypes/Show.vue": [
+		"./resources/ts/Pages/MedicineTypes/Show.vue",
+		"resources_ts_Pages_MedicineTypes_Show_vue"
 	],
 	"./PatientTypes/Create": [
 		"./resources/ts/Pages/PatientTypes/Create.vue",

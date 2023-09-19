@@ -18,6 +18,8 @@ use App\Http\Controllers\{
     LabController,
     HospitalController,
     MedicineCategoryController,
+    MedicineTypeController,
+    MedicineGenericController,
 };
 
 Route::get('/', [DashboardController::class, 'index']);
@@ -62,6 +64,13 @@ Route::group(['middleware' => ['auth']],function() {
 
     Route::delete('/medicine-categories/{medicine_category}/toggle-status', [MedicineCategoryController::class, 'toggleStatus'])->name('medicine-categories.toggle-status');
     Route::resource('medicine-categories', MedicineCategoryController::class);
+
+    Route::delete('/medicine-types/{medicine_type}/toggle-status', [MedicineTypeController::class, 'toggleStatus'])->name('medicine-types.toggle-status');
+    Route::resource('medicine-types', MedicineTypeController::class);
+
+    Route::delete('/medicine-generics/{medicine_generic}/toggle-status', [MedicineGenericController::class, 'toggleStatus'])->name('medicine-generics.toggle-status');
+    Route::resource('medicine-generics', MedicineGenericController::class);
+
 
     Route::get('/registrations/{patient_visit}/receipt', [RegistrationController::class, 'receipt'])->name('registrations.receipt');
     Route::get('/registrations/{patient_visit}/history', [RegistrationController::class, 'history'])->name('registrations.history');

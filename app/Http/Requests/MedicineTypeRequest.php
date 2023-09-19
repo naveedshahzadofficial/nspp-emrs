@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class MedicineTypeRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class MedicineTypeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,9 @@ class MedicineTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'type_name' => ['required','string', 'max:255', Rule::unique('medicine_types', 'type_name')->ignore($this->medicine_type)],
+            'is_multiply' => 'required',
+            'status' => 'required',
         ];
     }
 }
