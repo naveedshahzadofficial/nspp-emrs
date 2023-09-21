@@ -9667,8 +9667,8 @@ var DocMenuConfig = [{
   pages: [{
     sectionTitle: "System Settings",
     fontIcon: "bi bi-gear",
-    components: ["Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show", "Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show", "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show", "DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show", "Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show", "Labs/Index", "Labs/Create", "Labs/Edit", "Labs/Show", "Hospitals/Index", "Hospitals/Create", "Hospitals/Edit", "Hospitals/Show", "MedicineCategories/Index", "MedicineCategories/Create", "MedicineCategories/Edit", "MedicineCategories/Show", "MedicineTypes/Index", "MedicineTypes/Create", "MedicineTypes/Edit", "MedicineTypes/Show", "MedicineGenerics/Index", "MedicineGenerics/Create", "MedicineGenerics/Edit", "MedicineGenerics/Show"],
-    permissions: ['list institutes', 'list roles', 'list permissions', 'list users', "list patient types", "list complaints", "list disease types", "list diseases"],
+    components: ["Institutes/Index", "Institutes/Create", "Institutes/Edit", "Institutes/Show", "Roles/Index", "Roles/Create", "Roles/Edit", "Roles/Show", "Permissions/Index", "Permissions/Create", "Permissions/Edit", "Permissions/Show", "Users/Index", "Users/Create", "Users/Edit", "Users/Show", "PatientTypes/Index", "PatientTypes/Create", "PatientTypes/Edit", "PatientTypes/Show", "Complaints/Index", "Complaints/Create", "Complaints/Edit", "Complaints/Show", "DiseaseTypes/Index", "DiseaseTypes/Create", "DiseaseTypes/Edit", "DiseaseTypes/Show", "Diseases/Index", "Diseases/Create", "Diseases/Edit", "Diseases/Show", "Labs/Index", "Labs/Create", "Labs/Edit", "Labs/Show", "Hospitals/Index", "Hospitals/Create", "Hospitals/Edit", "Hospitals/Show", "MedicineCategories/Index", "MedicineCategories/Create", "MedicineCategories/Edit", "MedicineCategories/Show", "MedicineTypes/Index", "MedicineTypes/Create", "MedicineTypes/Edit", "MedicineTypes/Show", "MedicineGenerics/Index", "MedicineGenerics/Create", "MedicineGenerics/Edit", "MedicineGenerics/Show", "Medicines/Index", "Medicines/Create", "Medicines/Edit", "Medicines/Show"],
+    permissions: ['list institutes', 'list roles', 'list permissions', 'list users', "list patient types", "list complaints", "list disease types", "list diseases", "list labs", "list hospitals", "list medicine categories", "list medicine types", "list medicine generics", "list medicines"],
     sub: [{
       heading: "Institutes",
       route: "institutes.index",
@@ -9734,6 +9734,11 @@ var DocMenuConfig = [{
       route: "medicine-generics.index",
       components: ["MedicineGenerics/Index", "MedicineGenerics/Create", "MedicineGenerics/Edit", "MedicineGenerics/Show"],
       permissions: ['list medicine generics']
+    }, {
+      heading: "Medicines",
+      route: "medicines.index",
+      components: ["Medicines/Index", "Medicines/Create", "Medicines/Edit", "Medicines/Show"],
+      permissions: ['list medicines']
     }]
   }, {
     heading: "Patients",
@@ -14557,6 +14562,38 @@ var map = {
 	"./MedicineTypes/Show.vue": [
 		"./resources/ts/Pages/MedicineTypes/Show.vue",
 		"resources_ts_Pages_MedicineTypes_Show_vue"
+	],
+	"./Medicines/Create": [
+		"./resources/ts/Pages/Medicines/Create.vue",
+		"resources_ts_Pages_Medicines_Create_vue"
+	],
+	"./Medicines/Create.vue": [
+		"./resources/ts/Pages/Medicines/Create.vue",
+		"resources_ts_Pages_Medicines_Create_vue"
+	],
+	"./Medicines/Edit": [
+		"./resources/ts/Pages/Medicines/Edit.vue",
+		"resources_ts_Pages_Medicines_Edit_vue"
+	],
+	"./Medicines/Edit.vue": [
+		"./resources/ts/Pages/Medicines/Edit.vue",
+		"resources_ts_Pages_Medicines_Edit_vue"
+	],
+	"./Medicines/Index": [
+		"./resources/ts/Pages/Medicines/Index.vue",
+		"resources_ts_Pages_Medicines_Index_vue"
+	],
+	"./Medicines/Index.vue": [
+		"./resources/ts/Pages/Medicines/Index.vue",
+		"resources_ts_Pages_Medicines_Index_vue"
+	],
+	"./Medicines/Show": [
+		"./resources/ts/Pages/Medicines/Show.vue",
+		"resources_ts_Pages_Medicines_Show_vue"
+	],
+	"./Medicines/Show.vue": [
+		"./resources/ts/Pages/Medicines/Show.vue",
+		"resources_ts_Pages_Medicines_Show_vue"
 	],
 	"./PatientTypes/Create": [
 		"./resources/ts/Pages/PatientTypes/Create.vue",

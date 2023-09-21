@@ -27,6 +27,7 @@ class MedicineResource extends JsonResource
             'is_multiply' => $this->is_multiply,
             'is_over_counter' => $this->is_over_counter,
             'is_frequently_used' => $this->is_frequently_used,
+            'status' => $this->status,
             'medicine_category' => new MedicineCategoryResource($this->whenLoaded('medicineCategory')),
             'medicine_generic' => new MedicineGenericResource($this->whenLoaded('medicineGeneric')),
             'medicine_type' => new MedicineTypeResource($this->whenLoaded('medicineType')),

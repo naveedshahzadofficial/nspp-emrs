@@ -20,6 +20,7 @@ use App\Http\Controllers\{
     MedicineCategoryController,
     MedicineTypeController,
     MedicineGenericController,
+    MedicineController,
 };
 
 Route::get('/', [DashboardController::class, 'index']);
@@ -70,6 +71,9 @@ Route::group(['middleware' => ['auth']],function() {
 
     Route::delete('/medicine-generics/{medicine_generic}/toggle-status', [MedicineGenericController::class, 'toggleStatus'])->name('medicine-generics.toggle-status');
     Route::resource('medicine-generics', MedicineGenericController::class);
+
+    Route::delete('/medicines/{medicine}/toggle-status', [MedicineController::class, 'toggleStatus'])->name('medicines.toggle-status');
+    Route::resource('medicines', MedicineController::class);
 
 
     Route::get('/registrations/{patient_visit}/receipt', [RegistrationController::class, 'receipt'])->name('registrations.receipt');

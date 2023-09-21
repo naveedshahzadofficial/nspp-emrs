@@ -30,9 +30,11 @@ const DocMenuConfig = [
                     "MedicineCategories/Index", "MedicineCategories/Create", "MedicineCategories/Edit", "MedicineCategories/Show",
                     "MedicineTypes/Index", "MedicineTypes/Create", "MedicineTypes/Edit", "MedicineTypes/Show",
                     "MedicineGenerics/Index", "MedicineGenerics/Create", "MedicineGenerics/Edit", "MedicineGenerics/Show",
+                    "Medicines/Index", "Medicines/Create", "Medicines/Edit", "Medicines/Show",
                 ],
                 permissions: ['list institutes', 'list roles', 'list permissions', 'list users',
                     "list patient types", "list complaints", "list disease types", "list diseases",
+                    "list labs", "list hospitals", "list medicine categories", "list medicine types", "list medicine generics", "list medicines"
                 ],
                 sub: [
                     {
@@ -114,6 +116,12 @@ const DocMenuConfig = [
                         route: "medicine-generics.index",
                         components: ["MedicineGenerics/Index", "MedicineGenerics/Create", "MedicineGenerics/Edit", "MedicineGenerics/Show",],
                         permissions: ['list medicine generics'],
+                    },
+                    {
+                        heading: "Medicines",
+                        route: "medicines.index",
+                        components: ["Medicines/Index", "Medicines/Create", "Medicines/Edit", "Medicines/Show",],
+                        permissions: ['list medicines'],
                     },
                 ],
             },
