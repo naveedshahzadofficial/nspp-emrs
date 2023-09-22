@@ -9741,6 +9741,12 @@ var DocMenuConfig = [{
       permissions: ['list medicines']
     }]
   }, {
+    heading: "Stocks",
+    route: "stocks.index",
+    components: ["Stocks/Index", "Stocks/Create", "Stocks/Edit", "Stocks/Show"],
+    permissions: ['list stocks'],
+    fontIcon: "bi bi-bar-chart-line-fill"
+  }, {
     heading: "Patients",
     route: "patients.index",
     components: ["Patients/Index", "Patients/Create", "Patients/Edit", "Patients/Show"],
@@ -14818,6 +14824,38 @@ var map = {
 	"./Roles/Show.vue": [
 		"./resources/ts/Pages/Roles/Show.vue",
 		"resources_ts_Pages_Roles_Show_vue"
+	],
+	"./Stocks/Create": [
+		"./resources/ts/Pages/Stocks/Create.vue",
+		"resources_ts_Pages_Stocks_Create_vue"
+	],
+	"./Stocks/Create.vue": [
+		"./resources/ts/Pages/Stocks/Create.vue",
+		"resources_ts_Pages_Stocks_Create_vue"
+	],
+	"./Stocks/Edit": [
+		"./resources/ts/Pages/Stocks/Edit.vue",
+		"resources_ts_Pages_Stocks_Edit_vue"
+	],
+	"./Stocks/Edit.vue": [
+		"./resources/ts/Pages/Stocks/Edit.vue",
+		"resources_ts_Pages_Stocks_Edit_vue"
+	],
+	"./Stocks/Index": [
+		"./resources/ts/Pages/Stocks/Index.vue",
+		"resources_ts_Pages_Stocks_Index_vue"
+	],
+	"./Stocks/Index.vue": [
+		"./resources/ts/Pages/Stocks/Index.vue",
+		"resources_ts_Pages_Stocks_Index_vue"
+	],
+	"./Stocks/Show": [
+		"./resources/ts/Pages/Stocks/Show.vue",
+		"resources_ts_Pages_Stocks_Show_vue"
+	],
+	"./Stocks/Show.vue": [
+		"./resources/ts/Pages/Stocks/Show.vue",
+		"resources_ts_Pages_Stocks_Show_vue"
 	],
 	"./Users/Create": [
 		"./resources/ts/Pages/Users/Create.vue",

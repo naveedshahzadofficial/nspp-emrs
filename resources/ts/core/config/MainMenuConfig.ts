@@ -126,6 +126,13 @@ const DocMenuConfig = [
                 ],
             },
             {
+                heading: "Stocks",
+                route: "stocks.index",
+                components: ["Stocks/Index", "Stocks/Create", "Stocks/Edit", "Stocks/Show"],
+                permissions: ['list stocks'],
+                fontIcon: "bi bi-bar-chart-line-fill",
+            },
+            {
                 heading: "Patients",
                 route: "patients.index",
                 components: ["Patients/Index", "Patients/Create", "Patients/Edit", "Patients/Show"],

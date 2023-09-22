@@ -30,6 +30,7 @@ class PermissionSeeder extends Seeder
             'list medicine types', 'create medicine types', 'view medicine types', 'update medicine types', 'delete medicine types', 'restore medicine types', 'force delete medicine types', 'toggle status medicine types',
             'list medicine generics', 'create medicine generics', 'view medicine generics', 'update medicine generics', 'delete medicine generics', 'restore medicine generics', 'force delete medicine generics', 'toggle status medicine generics',
             'list medicines', 'create medicines', 'view medicines', 'update medicines', 'delete medicines', 'restore medicines', 'force delete medicines', 'toggle status medicines',
+            'list stocks', 'create stocks', 'view stocks', 'update stocks', 'delete stocks', 'restore stocks', 'force delete stocks',
             'list registrations', 'create registrations', 'view registrations', 'update registrations', 'delete registrations', 'restore registrations', 'force delete registrations', 'proceed registrations', 'pharmacy registrations', 'history registrations',
             'list reimbursements', 'create reimbursements', 'view reimbursements', 'update reimbursements', 'delete reimbursements', 'restore reimbursements', 'force delete reimbursements',
         ];
