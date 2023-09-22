@@ -12,8 +12,7 @@ class Medicine extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['medicine_category_id', 'medicine_generic_id', 'medicine_type_id', 'medicine_name',
-        'specification', 'strength', 'uom', 'is_controlled', 'is_multiply', 'is_over_counter',
-        'is_frequently_used', 'status',];
+         'strength', 'is_controlled', 'is_multiply', 'is_over_counter', 'is_frequently_used', 'status',];
 
     public function scopeActive($query) {
         return $query->where('status', true);

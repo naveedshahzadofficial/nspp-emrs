@@ -19,9 +19,7 @@ class CreateMedicinesTable extends Migration
             $table->foreignId('medicine_generic_id')->nullable()->constrained();
             $table->foreignId('medicine_type_id')->nullable()->constrained();
             $table->string('medicine_name');
-            $table->string('specification')->nullable();
             $table->string('strength')->nullable();
-            $table->string('uom')->nullable();
             $table->boolean('is_controlled')->default(0);
             $table->boolean('is_multiply')->default(1);
             $table->boolean('is_over_counter')->default(0);

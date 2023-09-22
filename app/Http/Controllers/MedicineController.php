@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MedicineRequest;
+use App\Http\Resources\MedicineCategoryResource;
+use App\Http\Resources\MedicineGenericResource;
 use App\Http\Resources\MedicineResource;
+use App\Http\Resources\MedicineTypeResource;
 use App\Models\Medicine;
+use App\Models\MedicineCategory;
+use App\Models\MedicineGeneric;
+use App\Models\MedicineType;
 use Inertia\Inertia;
 
 class MedicineController extends Controller
@@ -24,6 +30,7 @@ class MedicineController extends Controller
         $filters = request()->only(['search', 'limit']);
         $medicines = MedicineResource::collection(
             Medicine::query()
+                ->with('medicineCategory','medicineGeneric','medicineType')
                 ->when(request()->input('search'), function ($query, $search){
                     $query->where('medicine_name', 'like', "%{$search}%");
                 })
@@ -40,7 +47,11 @@ class MedicineController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Medicines/Create');
+        $medicineCategories = MedicineCategoryResource::collection(MedicineCategory::active()->get());
+        $medicineGenerics = MedicineGenericResource::collection(MedicineGeneric::active()->get());
+        $medicineTypes = MedicineTypeResource::collection(MedicineType::active()->get());
+
+        return Inertia::render('Medicines/Create', compact('medicineCategories', 'medicineGenerics', 'medicineTypes'));
     }
 
     /**
@@ -64,7 +75,9 @@ class MedicineController extends Controller
      */
     public function show(Medicine $medicine)
     {
-        return Inertia::render('Medicines/Show', compact('medicine'));
+        $medicine->load('medicineCategory','medicineGeneric','medicineType');
+
+        return Inertia::render('Medicines/Show', ['medicine' => new MedicineResource($medicine)]);
     }
 
     /**
@@ -75,7 +88,11 @@ class MedicineController extends Controller
      */
     public function edit(Medicine $medicine)
     {
-        return Inertia::render('Medicines/Edit', compact('medicine'));
+        $medicineCategories = MedicineCategoryResource::collection(MedicineCategory::active()->get());
+        $medicineGenerics = MedicineGenericResource::collection(MedicineGeneric::active()->get());
+        $medicineTypes = MedicineTypeResource::collection(MedicineType::active()->get());
+        $medicine = new MedicineResource($medicine);
+        return Inertia::render('Medicines/Edit', compact('medicine', 'medicineCategories', 'medicineGenerics' , 'medicineTypes'));
     }
 
     /**

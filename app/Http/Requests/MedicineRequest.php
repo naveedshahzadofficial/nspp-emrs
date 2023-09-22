@@ -27,14 +27,12 @@ class MedicineRequest extends FormRequest
         return [
             'medicine_category_id' => 'required',
             'medicine_generic_id' => 'required',
-            'medicine_type_id' => 'required',
+            'medicine_type_id' => 'sometimes|nullable',
             'medicine_name' => ['required','string', 'max:255', Rule::unique('medicines', 'medicine_name')->ignore($this->medicine)],
-            'specification' => 'sometimes|nullable',
             'strength' => 'sometimes|nullable',
-            'uom' => 'sometimes|nullable',
-            'is_controlled' => 'sometimes|nullable',
+            'is_controlled' => 'required',
             'is_multiply' => 'required',
-            'is_over_counter' => 'sometimes|nullable',
+            'is_over_counter' => 'required',
             'is_frequently_used' => 'required',
             'status' => 'required',
         ];

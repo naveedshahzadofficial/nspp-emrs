@@ -54,7 +54,7 @@ const form = useForm({
 
                             <div class="col-lg-6">
                                 <label class="required form-label"
-                                >Is Multiply</label
+                                >Multiply</label
                                 >
                                 <div class="d-flex">
                                     <div

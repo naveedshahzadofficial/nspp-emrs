@@ -145,7 +145,7 @@ var _hoisted_8 = {
 };
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "required form-label"
-}, "Is Multiply", -1 /* HOISTED */);
+}, "Multiply", -1 /* HOISTED */);
 var _hoisted_10 = {
   "class": "d-flex"
 };

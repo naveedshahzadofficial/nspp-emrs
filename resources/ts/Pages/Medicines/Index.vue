@@ -108,7 +108,10 @@ watch(
                             <!--begin::Table head-->
                             <thead>
                                 <tr class="fw-semibold fs-6 text-gray-800">
-                                    <th>Medicine Name</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Generic</th>
+                                    <th>Type</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center w-200px">Action</th>
                                 </tr>
@@ -121,6 +124,15 @@ watch(
                                     <tr>
                                         <td>
                                             {{ medicine.medicine_name }}
+                                        </td>
+                                        <td>
+                                            {{ medicine.medicine_category?.category_name }}
+                                        </td>
+                                        <td>
+                                            {{ medicine.medicine_generic?.generic_name }}
+                                        </td>
+                                        <td>
+                                            {{ medicine.medicine_type?.type_name }}
                                         </td>
                                         <td class="text-center">
                                             <span
