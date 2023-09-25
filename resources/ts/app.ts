@@ -11,6 +11,9 @@ import { initializeComponents } from "@/core/plugins/keenthemes";
 import vSelect from 'vue-select'
 import globalFunctions from '@/core/functions/global-functions';
 import Toolbar from "@/Components/toolbars/Toolbar.vue";
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
+
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'EMRS';
 
@@ -36,6 +39,7 @@ createInertiaApp({
       .component('Link', Link)
       .component('Toolbar', Toolbar)
       .component('v-select', vSelect)
+      .component('v-date-picker', VueDatePicker)
       .mount(el)
   },
 

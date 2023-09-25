@@ -23,6 +23,9 @@ class CreateStocksTable extends Migration
             $table->decimal('amount')->nullable()->default(0);
             $table->date('manufacturing_date')->nullable();
             $table->date('expiry_date')->nullable();
+            $table->unsignedBigInteger('pack_size')->nullable()->default(1);
+            $table->string('manufacturer')->nullable();
+            $table->string('supplier')->nullable();
             $table->boolean('status')->default(1);
             $table->softDeletes();
             $table->timestamps();

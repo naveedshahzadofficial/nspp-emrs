@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StockRequest;
+use App\Http\Resources\MedicineCategoryResource;
+use App\Http\Resources\MedicineResource;
 use App\Http\Resources\StockResource;
+use App\Models\Medicine;
+use App\Models\MedicineCategory;
 use App\Models\Stock;
 use Inertia\Inertia;
 
@@ -40,7 +44,10 @@ class StockController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Stocks/Create');
+        $medicineCategories = MedicineCategoryResource::collection(MedicineCategory::active()->get());
+        $medicines = MedicineResource::collection(Medicine::active()->get());
+
+        return Inertia::render('Stocks/Create', compact('medicineCategories', 'medicines'));
     }
 
     /**
