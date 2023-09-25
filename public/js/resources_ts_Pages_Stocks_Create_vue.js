@@ -351,9 +351,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "enable-time-picker": false,
     clearable: true,
     "auto-apply": "",
+    "preview-format": function previewFormat(date) {
+      return date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+    },
     "class": "form-control form-control-sm",
     placeholder: "Manufacturing Date"
-  }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+  }, null, 8 /* PROPS */, ["modelValue", "preview-format"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.manufacturing_date
   }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_date_picker, {
     modelValue: $setup.form.expiry_date,
@@ -363,9 +366,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "enable-time-picker": false,
     clearable: true,
     "auto-apply": "",
+    "preview-format": function previewFormat(date) {
+      return date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+    },
     "class": "form-control form-control-sm",
     placeholder: "Expiry Date"
-  }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+  }, null, 8 /* PROPS */, ["modelValue", "preview-format"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.expiry_date
   }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
