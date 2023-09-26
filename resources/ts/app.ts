@@ -13,6 +13,7 @@ import globalFunctions from '@/core/functions/global-functions';
 import Toolbar from "@/Components/toolbars/Toolbar.vue";
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
+import VueTheMask from 'vue-the-mask'
 
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'EMRS';
@@ -32,6 +33,7 @@ createInertiaApp({
       .use<any>(plugin)
       .use<any>(store)
       .use<any>(i18n)
+      .use(VueTheMask)
       .use(ZiggyVue)
       .use(initInlineSvg)
       .use(globalFunctions)

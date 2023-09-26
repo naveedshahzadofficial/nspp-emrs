@@ -45,12 +45,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
 /* harmony import */ var _Components_alerts_ServerErrorMessage_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/alerts/ServerErrorMessage.vue */ "./resources/ts/Components/alerts/ServerErrorMessage.vue");
+/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-the-mask */ "./node_modules/vue-the-mask/dist/vue-the-mask.js");
+/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_the_mask__WEBPACK_IMPORTED_MODULE_3__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -85,6 +88,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       status: 1
     });
     var filterMedicines = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)();
+    var format = function format(date) {
+      var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+      var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
+      var year = date.getFullYear();
+      return "".concat(day, "-").concat(month, "-").concat(year);
+    };
+    var numberMask = {
+      F: {
+        pattern: /[0-9a-fA-F]/,
+        transform: function transform(v) {
+          return v.toLocaleUpperCase();
+        }
+      }
+    };
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
       return form.medicine_category_id;
     }, function (value) {
@@ -109,7 +126,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       props: props,
       form: form,
       filterMedicines: filterMedicines,
-      ServerErrorMessage: _Components_alerts_ServerErrorMessage_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+      format: format,
+      numberMask: numberMask,
+      ServerErrorMessage: _Components_alerts_ServerErrorMessage_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+      get TheMask() {
+        return vue_the_mask__WEBPACK_IMPORTED_MODULE_3__.TheMask;
+      }
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -235,13 +257,13 @@ var _hoisted_25 = {
   "class": "col-lg-4"
 };
 var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "required form-label"
+  "class": "form-label"
 }, "Manufacturer", -1 /* HOISTED */);
 var _hoisted_27 = {
   "class": "col-lg-4"
 };
 var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "required form-label"
+  "class": "form-label"
 }, "Supplier", -1 /* HOISTED */);
 var _hoisted_29 = {
   "class": "card-footer"
@@ -312,7 +334,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Please Select"
   }, null, 8 /* PROPS */, ["modelValue", "options", "reduce"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.medicine_id
-  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TheMask"], {
+    mask: "FFFFFF",
+    tokens: $setup.numberMask
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $setup.form.qty = $event;
     }),
@@ -351,12 +376,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "enable-time-picker": false,
     clearable: true,
     "auto-apply": "",
-    "preview-format": function previewFormat(date) {
-      return date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
-    },
-    "class": "form-control form-control-sm",
+    format: $setup.format,
+    "preview-format": $setup.format,
     placeholder: "Manufacturing Date"
-  }, null, 8 /* PROPS */, ["modelValue", "preview-format"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+  }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.manufacturing_date
   }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_date_picker, {
     modelValue: $setup.form.expiry_date,
@@ -366,12 +389,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "enable-time-picker": false,
     clearable: true,
     "auto-apply": "",
-    "preview-format": function previewFormat(date) {
-      return date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
-    },
-    "class": "form-control form-control-sm",
+    format: $setup.format,
+    "preview-format": $setup.format,
     placeholder: "Expiry Date"
-  }, null, 8 /* PROPS */, ["modelValue", "preview-format"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+  }, null, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.expiry_date
   }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {

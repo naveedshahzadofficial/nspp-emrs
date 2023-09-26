@@ -23,7 +23,13 @@ const form = useForm({
     status: 1,
 });
 const filterMedicines = ref();
-
+const format = (date) =>{
+    const day = date.getDate()<10?'0'+date.getDate():date.getDate();
+    const month = (date.getMonth() + 1)<10?'0'+(date.getMonth() + 1):(date.getMonth() + 1);
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+}
+const numberMask = ;
 watch(
     () => form.medicine_category_id,
     (value) => {
@@ -165,8 +171,8 @@ watch(
                                     :enable-time-picker="false"
                                     :clearable="true"
                                     auto-apply
-                                    :preview-format="(date)=> date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear()"
-                                    class="form-control form-control-sm"
+                                    :format="format"
+                                    :preview-format="format"
                                     placeholder="Manufacturing Date"
                                 />
                                 <ServerErrorMessage
@@ -183,8 +189,8 @@ watch(
                                     :enable-time-picker="false"
                                     :clearable="true"
                                     auto-apply
-                                    :preview-format="(date)=> date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear()"
-                                    class="form-control form-control-sm"
+                                    :format="format"
+                                    :preview-format="format"
                                     placeholder="Expiry Date"
                                 />
                                 <ServerErrorMessage
@@ -211,7 +217,7 @@ watch(
 
                         <div class="row mb-10">
                             <div class="col-lg-4">
-                                <label class="required form-label"
+                                <label class="form-label"
                                 >Manufacturer</label
                                 >
                                 <input
@@ -225,7 +231,7 @@ watch(
                                 />
                             </div>
                             <div class="col-lg-4">
-                                <label class="required form-label"
+                                <label class="form-label"
                                 >Supplier</label
                                 >
                                 <input
