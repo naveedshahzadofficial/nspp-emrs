@@ -1,3 +1,54 @@
+<script lang="ts" setup>
+import { useForm } from "@inertiajs/vue3";
+import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
+import {watch} from "vue";
+
+const props = defineProps({
+    patientTypes: { type: Object, required: true },
+    genders: { type: Object, required: true },
+    heightUnits: { type: Array, required: true },
+    patientVisit: { type: Object, required: true },
+    employees: Object,
+});
+
+const form = useForm({
+    _method: "put",
+    employee: props.patientVisit?.patient_employee,
+    patient_type_id: props.patientVisit?.patient?.patient_type_id,
+    patient_name: props.patientVisit?.patient?.patient_name,
+    gender_id: props.patientVisit?.patient?.gender_id,
+    patient_age: props.patientVisit?.patient?.patient_age,
+    relationship_with_employee:props.patientVisit?.patient?.relationship_with_employee,
+    designation: props.patientVisit?.patient?.designation,
+    patient_phone: props.patientVisit?.patient?.patient_phone,
+    patient_cnic: props.patientVisit?.patient?.patient_cnic,
+    patient_email: props.patientVisit?.patient?.patient_email,
+    temperature: props.patientVisit?.temperature,
+    bp_systolic: props.patientVisit?.bp_systolic,
+    bp_diastolic: props.patientVisit?.bp_diastolic,
+    pulse: props.patientVisit?.pulse,
+    sugar: props.patientVisit?.sugar,
+    weight: props.patientVisit?.weight,
+    height: props.patientVisit?.height,
+    height_unit: props.patientVisit?.height_unit,
+    notes: props.patientVisit?.notes,
+});
+
+watch(
+    () => form.employee,
+    (employee: any) => {
+        const gender = props.genders?.find(gender => gender.gender_name === employee?.gender);
+        form.patient_name = employee?.officer_name;
+        form.gender_id = gender?.id;
+        form.patient_age  = employee?.age;
+        form.designation = employee?.designation;
+        form.patient_cnic = employee?.cnic;
+        form.patient_phone = employee?.offical_contact;
+        form.patient_email = employee?.offical_email;
+    });
+
+</script>
+
 <template>
     <Head title="Update Registration" />
     <Toolbar
@@ -55,6 +106,27 @@
                             <ServerErrorMessage
                                 :error="form.errors.patient_type_id"
                             />
+                        </div>
+
+                        <div class="mb-10 row" v-show="form.patient_type_id===1">
+
+                            <div class="col-lg-4">
+                                <label class="required form-label"
+                                >Employees</label
+                                >
+                                <v-select
+                                    label="officer_name"
+                                    v-model="form.employee"
+                                    :options="employees"
+                                    :reduce="(option) => option"
+                                    class="v-select-custom"
+                                    placeholder="Please Select"
+                                />
+                                <ServerErrorMessage
+                                    :error="form.errors.employee"
+                                />
+                            </div>
+
                         </div>
 
                         <div class="mb-10 row">
@@ -117,7 +189,7 @@
                                 />
                             </div>
                             <div class="col-lg-4">
-                                <label class="required form-label"
+                                <label class="form-label"
                                     >Relationship with Employee</label
                                 >
                                 <input
@@ -177,6 +249,22 @@
                                     :error="form.errors.patient_cnic"
                                 />
                             </div>
+
+                            <div class="col-lg-4">
+                                <label class="form-label"
+                                >Email</label
+                                >
+                                <input
+                                    v-model="form.patient_email"
+                                    type="email"
+                                    class="form-control form-control-sm"
+                                    placeholder="Patient Email"
+                                />
+                                <ServerErrorMessage
+                                    :error="form.errors.patient_email"
+                                />
+                            </div>
+
                         </div>
 
                         <div class="separator my-10"></div>
@@ -349,36 +437,3 @@
     <!-- end:: Content Body -->
 </template>
 
-<script lang="ts" setup>
-import { useForm } from "@inertiajs/vue3";
-import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
-
-const props = defineProps({
-    patientTypes: { type: Object, required: true },
-    genders: { type: Object, required: true },
-    heightUnits: { type: Array, required: true },
-    patientVisit: { type: Object, required: true },
-});
-
-const form = useForm({
-    _method: "put",
-    patient_type_id: props.patientVisit?.patient?.patient_type_id,
-    patient_name: props.patientVisit?.patient?.patient_name,
-    gender_id: props.patientVisit?.patient?.gender_id,
-    patient_age: props.patientVisit?.patient?.patient_age,
-    relationship_with_employee:
-        props.patientVisit?.patient?.relationship_with_employee,
-    designation: props.patientVisit?.patient?.designation,
-    patient_phone: props.patientVisit?.patient?.patient_phone,
-    patient_cnic: props.patientVisit?.patient?.patient_cnic,
-    temperature: props.patientVisit?.temperature,
-    bp_systolic: props.patientVisit?.bp_systolic,
-    bp_diastolic: props.patientVisit?.bp_diastolic,
-    pulse: props.patientVisit?.pulse,
-    sugar: props.patientVisit?.sugar,
-    weight: props.patientVisit?.weight,
-    height: props.patientVisit?.height,
-    height_unit: props.patientVisit?.height_unit,
-    notes: props.patientVisit?.notes,
-});
-</script>

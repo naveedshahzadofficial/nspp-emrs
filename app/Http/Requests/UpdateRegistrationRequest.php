@@ -25,13 +25,15 @@ class UpdateRegistrationRequest extends FormRequest
     {
         return [
             'patient_type_id' => 'required',
+            'employee' => 'required_if:patient_type_id,1',
             'patient_name' => 'required|string|max:255',
             'gender_id' => 'required',
             'patient_age' => 'required|max:25',
-            'relationship_with_employee' => 'required|string|max:100',
+            'relationship_with_employee' => 'nullable|sometimes|string|max:100',
             'designation' => 'required|string|max:100',
             'patient_cnic' => 'required',
-            'patient_mobile' => 'nullable|sometimes',
+            'patient_phone' => 'required',
+            'patient_email' => 'nullable|sometimes',
             'temperature' => 'nullable|sometimes',
             'bp_systolic' => 'nullable|sometimes',
             'bp_diastolic' => 'nullable|sometimes',
@@ -41,6 +43,14 @@ class UpdateRegistrationRequest extends FormRequest
             'height' => 'nullable|sometimes',
             'height_unit' => 'nullable|sometimes',
             'notes' => 'nullable|sometimes',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'employee.required_if'=> 'Please choose an employee.',
+            'gender_id.required'=> 'Please choose a gender.'
         ];
     }
 }

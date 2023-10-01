@@ -19,7 +19,10 @@ use Illuminate\Support\Facades\DB;
 
 class RegistrationService
 {
-    public function addPatientEmployee($data, Patient $patient, PatientVisit  $patientVisit){
+    public function addOrUpdatePatientEmployee($data, Patient $patient, PatientVisit  $patientVisit){
+        PatientEmployee::updateOrCreate(['patient_id'=> $patient->id, 'patient_visit_id'=>$patientVisit->id],$data);
+    }
+    public function updatePatientEmployee($data, Patient $patient, PatientVisit  $patientVisit){
         $data['patient_id'] = $patient->id;
         $data['patient_visit_id'] = $patientVisit->id;
         PatientEmployee::create($data);
@@ -31,7 +34,7 @@ class RegistrationService
     public function addPatientVisit($data, Patient $patient){
         $patientVisit = $patient->patientVisits()->create($data);
         if($patient->patient_type_id == 1){
-            $this->addPatientEmployee($data['employee'], $patient, $patientVisit);
+            $this->addOrUpdatePatientEmployee($data['employee'], $patient, $patientVisit);
         }
     }
 
@@ -39,11 +42,15 @@ class RegistrationService
         $patient->update($data);
     }
 
-    public function updatePatientVisit($data, PatientVisit  $patientVisit){
+    public function updatePatientVisit($data, Patient $patient, PatientVisit  $patientVisit){
+        $data['patient_id'] = $patient->id;
         $patientVisit->update($data);
+        if($patient->patient_type_id == 1){
+            $this->addOrUpdatePatientEmployee($data['employee'], $patient, $patientVisit);
+        }
     }
 
-    public function updateOrCreatePatient($data, $patient_id){
+    public function updateOrCreatePatient($data, $patient_id=null){
         if(!empty($patient_id))
         $checked = ['id' => $patient_id];
         else

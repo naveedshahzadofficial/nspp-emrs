@@ -155,11 +155,13 @@ class RegistrationController extends Controller
      */
     public function edit(PatientVisit $patientVisit): Response
     {
-        $patientVisit->load('patient');
+        $patientVisit->load('patient', 'patientEmployee');
+        $patientVisit = new PatientVisitResource($patientVisit);
         $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
         $genders = GenderResource::collection(Gender::active()->get());
         $heightUnits = ["Feet", "Inches"];
-        return Inertia::render('Registrations/Edit', compact('patientTypes', 'genders','heightUnits', 'patientVisit'));
+        $employees = EmployeeResource::collection(Collect($this->employeeService->getOfficers(1)));
+        return Inertia::render('Registrations/Edit', compact('patientTypes', 'genders','heightUnits', 'patientVisit', 'employees'));
     }
 
     /**
@@ -173,8 +175,8 @@ class RegistrationController extends Controller
     {
         $patientVisit->load('patient');
         DB::transaction(function() use ($request, $patientVisit) {
-            $this->registrationService->updatePatient($request->validated(), $patientVisit->patient);
-            $this->registrationService->updatePatientVisit($request->validated(), $patientVisit);
+            $patient = $this->registrationService->updateOrCreatePatient($request->validated());
+            $this->registrationService->updatePatientVisit($request->validated(), $patient, $patientVisit);
         });
         session()->flash('success', 'Your Registration has been updated successfully.');
         return redirect()->route('registrations.index');

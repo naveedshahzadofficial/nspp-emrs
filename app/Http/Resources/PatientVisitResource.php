@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\PatientEmployee;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -38,7 +39,7 @@ class PatientVisitResource extends JsonResource
             'user' => new UserResource($this->whenLoaded('user')),
             'patient_medicines' => PatientMedicineResource::collection($this->whenLoaded('patientMedicines')),
             'patient_other_medicines' => PatientOtherMedicineResource::collection($this->whenLoaded('patientOtherMedicines')),
-
+            'patient_employee' => new PatientEmployeeResource($this->whenLoaded('patientEmployee')),
         ];
     }
 }

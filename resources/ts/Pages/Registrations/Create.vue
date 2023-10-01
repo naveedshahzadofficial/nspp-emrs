@@ -61,6 +61,7 @@ const fillForm = (patient: any) => {
 };
 
 const resetForm = () => {
+    form.employee = "";
     form.patient_id = "";
     form.patient_type_id = "";
     form.patient_name = "";
@@ -70,6 +71,7 @@ const resetForm = () => {
     form.designation = "";
     form.patient_cnic = "";
     form.patient_phone = "";
+    form.patient_email = "";
 };
 
 const resetSearchForm = () => {

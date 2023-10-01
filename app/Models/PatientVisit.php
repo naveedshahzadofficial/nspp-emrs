@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PatientVisit extends Model
@@ -26,6 +27,10 @@ class PatientVisit extends Model
     public function patient(): BelongsTo
     {
         return $this->belongsTo(Patient::class);
+    }
+    public function patientEmployee(): HasOne
+    {
+        return $this->hasOne(PatientEmployee::class)->latest();
     }
     public function user(): BelongsTo
     {

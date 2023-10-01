@@ -48,6 +48,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: 'Edit',
   props: {
@@ -66,32 +67,50 @@ __webpack_require__.r(__webpack_exports__);
     patientVisit: {
       type: Object,
       required: true
-    }
+    },
+    employees: Object
   },
   setup: function setup(__props, _ref) {
-    var _props$patientVisit, _props$patientVisit$p, _props$patientVisit2, _props$patientVisit2$, _props$patientVisit3, _props$patientVisit3$, _props$patientVisit4, _props$patientVisit4$, _props$patientVisit5, _props$patientVisit5$, _props$patientVisit6, _props$patientVisit6$, _props$patientVisit7, _props$patientVisit7$, _props$patientVisit8, _props$patientVisit8$, _props$patientVisit9, _props$patientVisit10, _props$patientVisit11, _props$patientVisit12, _props$patientVisit13, _props$patientVisit14, _props$patientVisit15, _props$patientVisit16, _props$patientVisit17;
+    var _props$patientVisit, _props$patientVisit2, _props$patientVisit2$, _props$patientVisit3, _props$patientVisit3$, _props$patientVisit4, _props$patientVisit4$, _props$patientVisit5, _props$patientVisit5$, _props$patientVisit6, _props$patientVisit6$, _props$patientVisit7, _props$patientVisit7$, _props$patientVisit8, _props$patientVisit8$, _props$patientVisit9, _props$patientVisit9$, _props$patientVisit10, _props$patientVisit11, _props$patientVisit12, _props$patientVisit13, _props$patientVisit14, _props$patientVisit15, _props$patientVisit16, _props$patientVisit17, _props$patientVisit18, _props$patientVisit19, _props$patientVisit20;
     var __expose = _ref.expose;
     __expose();
     var props = __props;
     var form = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
       _method: "put",
-      patient_type_id: (_props$patientVisit = props.patientVisit) === null || _props$patientVisit === void 0 ? void 0 : (_props$patientVisit$p = _props$patientVisit.patient) === null || _props$patientVisit$p === void 0 ? void 0 : _props$patientVisit$p.patient_type_id,
-      patient_name: (_props$patientVisit2 = props.patientVisit) === null || _props$patientVisit2 === void 0 ? void 0 : (_props$patientVisit2$ = _props$patientVisit2.patient) === null || _props$patientVisit2$ === void 0 ? void 0 : _props$patientVisit2$.patient_name,
-      gender_id: (_props$patientVisit3 = props.patientVisit) === null || _props$patientVisit3 === void 0 ? void 0 : (_props$patientVisit3$ = _props$patientVisit3.patient) === null || _props$patientVisit3$ === void 0 ? void 0 : _props$patientVisit3$.gender_id,
-      patient_age: (_props$patientVisit4 = props.patientVisit) === null || _props$patientVisit4 === void 0 ? void 0 : (_props$patientVisit4$ = _props$patientVisit4.patient) === null || _props$patientVisit4$ === void 0 ? void 0 : _props$patientVisit4$.patient_age,
-      relationship_with_employee: (_props$patientVisit5 = props.patientVisit) === null || _props$patientVisit5 === void 0 ? void 0 : (_props$patientVisit5$ = _props$patientVisit5.patient) === null || _props$patientVisit5$ === void 0 ? void 0 : _props$patientVisit5$.relationship_with_employee,
-      designation: (_props$patientVisit6 = props.patientVisit) === null || _props$patientVisit6 === void 0 ? void 0 : (_props$patientVisit6$ = _props$patientVisit6.patient) === null || _props$patientVisit6$ === void 0 ? void 0 : _props$patientVisit6$.designation,
-      patient_phone: (_props$patientVisit7 = props.patientVisit) === null || _props$patientVisit7 === void 0 ? void 0 : (_props$patientVisit7$ = _props$patientVisit7.patient) === null || _props$patientVisit7$ === void 0 ? void 0 : _props$patientVisit7$.patient_phone,
-      patient_cnic: (_props$patientVisit8 = props.patientVisit) === null || _props$patientVisit8 === void 0 ? void 0 : (_props$patientVisit8$ = _props$patientVisit8.patient) === null || _props$patientVisit8$ === void 0 ? void 0 : _props$patientVisit8$.patient_cnic,
-      temperature: (_props$patientVisit9 = props.patientVisit) === null || _props$patientVisit9 === void 0 ? void 0 : _props$patientVisit9.temperature,
-      bp_systolic: (_props$patientVisit10 = props.patientVisit) === null || _props$patientVisit10 === void 0 ? void 0 : _props$patientVisit10.bp_systolic,
-      bp_diastolic: (_props$patientVisit11 = props.patientVisit) === null || _props$patientVisit11 === void 0 ? void 0 : _props$patientVisit11.bp_diastolic,
-      pulse: (_props$patientVisit12 = props.patientVisit) === null || _props$patientVisit12 === void 0 ? void 0 : _props$patientVisit12.pulse,
-      sugar: (_props$patientVisit13 = props.patientVisit) === null || _props$patientVisit13 === void 0 ? void 0 : _props$patientVisit13.sugar,
-      weight: (_props$patientVisit14 = props.patientVisit) === null || _props$patientVisit14 === void 0 ? void 0 : _props$patientVisit14.weight,
-      height: (_props$patientVisit15 = props.patientVisit) === null || _props$patientVisit15 === void 0 ? void 0 : _props$patientVisit15.height,
-      height_unit: (_props$patientVisit16 = props.patientVisit) === null || _props$patientVisit16 === void 0 ? void 0 : _props$patientVisit16.height_unit,
-      notes: (_props$patientVisit17 = props.patientVisit) === null || _props$patientVisit17 === void 0 ? void 0 : _props$patientVisit17.notes
+      employee: (_props$patientVisit = props.patientVisit) === null || _props$patientVisit === void 0 ? void 0 : _props$patientVisit.patient_employee,
+      patient_type_id: (_props$patientVisit2 = props.patientVisit) === null || _props$patientVisit2 === void 0 ? void 0 : (_props$patientVisit2$ = _props$patientVisit2.patient) === null || _props$patientVisit2$ === void 0 ? void 0 : _props$patientVisit2$.patient_type_id,
+      patient_name: (_props$patientVisit3 = props.patientVisit) === null || _props$patientVisit3 === void 0 ? void 0 : (_props$patientVisit3$ = _props$patientVisit3.patient) === null || _props$patientVisit3$ === void 0 ? void 0 : _props$patientVisit3$.patient_name,
+      gender_id: (_props$patientVisit4 = props.patientVisit) === null || _props$patientVisit4 === void 0 ? void 0 : (_props$patientVisit4$ = _props$patientVisit4.patient) === null || _props$patientVisit4$ === void 0 ? void 0 : _props$patientVisit4$.gender_id,
+      patient_age: (_props$patientVisit5 = props.patientVisit) === null || _props$patientVisit5 === void 0 ? void 0 : (_props$patientVisit5$ = _props$patientVisit5.patient) === null || _props$patientVisit5$ === void 0 ? void 0 : _props$patientVisit5$.patient_age,
+      relationship_with_employee: (_props$patientVisit6 = props.patientVisit) === null || _props$patientVisit6 === void 0 ? void 0 : (_props$patientVisit6$ = _props$patientVisit6.patient) === null || _props$patientVisit6$ === void 0 ? void 0 : _props$patientVisit6$.relationship_with_employee,
+      designation: (_props$patientVisit7 = props.patientVisit) === null || _props$patientVisit7 === void 0 ? void 0 : (_props$patientVisit7$ = _props$patientVisit7.patient) === null || _props$patientVisit7$ === void 0 ? void 0 : _props$patientVisit7$.designation,
+      patient_phone: (_props$patientVisit8 = props.patientVisit) === null || _props$patientVisit8 === void 0 ? void 0 : (_props$patientVisit8$ = _props$patientVisit8.patient) === null || _props$patientVisit8$ === void 0 ? void 0 : _props$patientVisit8$.patient_phone,
+      patient_cnic: (_props$patientVisit9 = props.patientVisit) === null || _props$patientVisit9 === void 0 ? void 0 : (_props$patientVisit9$ = _props$patientVisit9.patient) === null || _props$patientVisit9$ === void 0 ? void 0 : _props$patientVisit9$.patient_cnic,
+      patient_email: (_props$patientVisit10 = props.patientVisit) === null || _props$patientVisit10 === void 0 ? void 0 : (_props$patientVisit11 = _props$patientVisit10.patient) === null || _props$patientVisit11 === void 0 ? void 0 : _props$patientVisit11.patient_email,
+      temperature: (_props$patientVisit12 = props.patientVisit) === null || _props$patientVisit12 === void 0 ? void 0 : _props$patientVisit12.temperature,
+      bp_systolic: (_props$patientVisit13 = props.patientVisit) === null || _props$patientVisit13 === void 0 ? void 0 : _props$patientVisit13.bp_systolic,
+      bp_diastolic: (_props$patientVisit14 = props.patientVisit) === null || _props$patientVisit14 === void 0 ? void 0 : _props$patientVisit14.bp_diastolic,
+      pulse: (_props$patientVisit15 = props.patientVisit) === null || _props$patientVisit15 === void 0 ? void 0 : _props$patientVisit15.pulse,
+      sugar: (_props$patientVisit16 = props.patientVisit) === null || _props$patientVisit16 === void 0 ? void 0 : _props$patientVisit16.sugar,
+      weight: (_props$patientVisit17 = props.patientVisit) === null || _props$patientVisit17 === void 0 ? void 0 : _props$patientVisit17.weight,
+      height: (_props$patientVisit18 = props.patientVisit) === null || _props$patientVisit18 === void 0 ? void 0 : _props$patientVisit18.height,
+      height_unit: (_props$patientVisit19 = props.patientVisit) === null || _props$patientVisit19 === void 0 ? void 0 : _props$patientVisit19.height_unit,
+      notes: (_props$patientVisit20 = props.patientVisit) === null || _props$patientVisit20 === void 0 ? void 0 : _props$patientVisit20.notes
+    });
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
+      return form.employee;
+    }, function (employee) {
+      var _props$genders;
+      var gender = (_props$genders = props.genders) === null || _props$genders === void 0 ? void 0 : _props$genders.find(function (gender) {
+        return gender.gender_name === (employee === null || employee === void 0 ? void 0 : employee.gender);
+      });
+      form.patient_name = employee === null || employee === void 0 ? void 0 : employee.officer_name;
+      form.gender_id = gender === null || gender === void 0 ? void 0 : gender.id;
+      form.patient_age = employee === null || employee === void 0 ? void 0 : employee.age;
+      form.designation = employee === null || employee === void 0 ? void 0 : employee.designation;
+      form.patient_cnic = employee === null || employee === void 0 ? void 0 : employee.cnic;
+      form.patient_phone = employee === null || employee === void 0 ? void 0 : employee.offical_contact;
+      form.patient_email = employee === null || employee === void 0 ? void 0 : employee.offical_email;
     });
     var __returned__ = {
       props: props,
@@ -182,147 +201,162 @@ var _hoisted_12 = {
 };
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "required form-label"
-}, "Name of Patient", -1 /* HOISTED */);
+}, "Employees", -1 /* HOISTED */);
 var _hoisted_14 = {
+  "class": "mb-10 row"
+};
+var _hoisted_15 = {
+  "class": "col-lg-4"
+};
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "required form-label"
+}, "Name of Patient", -1 /* HOISTED */);
+var _hoisted_17 = {
   "class": "col-lg-8"
 };
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "required form-label"
 }, "Gender", -1 /* HOISTED */);
-var _hoisted_16 = {
+var _hoisted_19 = {
   "class": "d-flex"
 };
-var _hoisted_17 = ["value", "id"];
-var _hoisted_18 = ["for"];
-var _hoisted_19 = {
+var _hoisted_20 = ["value", "id"];
+var _hoisted_21 = ["for"];
+var _hoisted_22 = {
   "class": "mb-10 row"
 };
-var _hoisted_20 = {
+var _hoisted_23 = {
   "class": "col-lg-4"
 };
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "required form-label"
 }, "Age", -1 /* HOISTED */);
-var _hoisted_22 = {
+var _hoisted_25 = {
   "class": "col-lg-4"
 };
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "required form-label"
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
 }, "Relationship with Employee", -1 /* HOISTED */);
-var _hoisted_24 = {
-  "class": "col-lg-4"
-};
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "required form-label"
-}, "Designation", -1 /* HOISTED */);
-var _hoisted_26 = {
-  "class": "mb-10 row"
-};
 var _hoisted_27 = {
   "class": "col-lg-4"
 };
 var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "required form-label"
-}, "Mobile No.", -1 /* HOISTED */);
+}, "Designation", -1 /* HOISTED */);
 var _hoisted_29 = {
-  "class": "col-lg-4"
-};
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "required form-label"
-}, "CNIC No.", -1 /* HOISTED */);
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "separator my-10"
-}, null, -1 /* HOISTED */);
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "pb-5 pb-lg-5"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
-  "class": "fw-bold text-dark"
-}, "Vitals")], -1 /* HOISTED */);
-var _hoisted_33 = {
   "class": "mb-10 row"
 };
+var _hoisted_30 = {
+  "class": "col-lg-4"
+};
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "required form-label"
+}, "Mobile No.", -1 /* HOISTED */);
+var _hoisted_32 = {
+  "class": "col-lg-4"
+};
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "required form-label"
+}, "CNIC No.", -1 /* HOISTED */);
 var _hoisted_34 = {
   "class": "col-lg-4"
 };
 var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label"
-}, "Temperature (°F)", -1 /* HOISTED */);
-var _hoisted_36 = {
-  "class": "col-lg-4"
-};
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "form-label"
-}, "B.P. Systolic (mmHg)", -1 /* HOISTED */);
+}, "Email", -1 /* HOISTED */);
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "separator my-10"
+}, null, -1 /* HOISTED */);
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "pb-5 pb-lg-5"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+  "class": "fw-bold text-dark"
+}, "Vitals")], -1 /* HOISTED */);
 var _hoisted_38 = {
-  "class": "col-lg-4"
-};
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "form-label"
-}, "B.P. Diastolic (mmHg)", -1 /* HOISTED */);
-var _hoisted_40 = {
   "class": "mb-10 row"
 };
+var _hoisted_39 = {
+  "class": "col-lg-4"
+};
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Temperature (°F)", -1 /* HOISTED */);
 var _hoisted_41 = {
   "class": "col-lg-4"
 };
 var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label"
-}, "Pulse (bpm)", -1 /* HOISTED */);
+}, "B.P. Systolic (mmHg)", -1 /* HOISTED */);
 var _hoisted_43 = {
   "class": "col-lg-4"
 };
 var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label"
-}, "Sugar (mg/dL)", -1 /* HOISTED */);
+}, "B.P. Diastolic (mmHg)", -1 /* HOISTED */);
 var _hoisted_45 = {
-  "class": "col-lg-4"
-};
-var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "form-label"
-}, "Weight (kg)", -1 /* HOISTED */);
-var _hoisted_47 = {
   "class": "mb-10 row"
 };
+var _hoisted_46 = {
+  "class": "col-lg-4"
+};
+var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Pulse (bpm)", -1 /* HOISTED */);
 var _hoisted_48 = {
   "class": "col-lg-4"
 };
-var _hoisted_49 = {
-  "class": "row"
-};
+var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Sugar (mg/dL)", -1 /* HOISTED */);
 var _hoisted_50 = {
-  "class": "col-lg-6"
+  "class": "col-lg-4"
 };
 var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label"
-}, "Height", -1 /* HOISTED */);
+}, "Weight (kg)", -1 /* HOISTED */);
 var _hoisted_52 = {
-  "class": "col-lg-6 ps-0"
-};
-var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "form-label"
-}, " ", -1 /* HOISTED */);
-var _hoisted_54 = {
   "class": "mb-10 row"
 };
+var _hoisted_53 = {
+  "class": "col-lg-4"
+};
+var _hoisted_54 = {
+  "class": "row"
+};
 var _hoisted_55 = {
-  "class": "col-lg-12"
+  "class": "col-lg-6"
 };
 var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label"
-}, "Notes", -1 /* HOISTED */);
+}, "Height", -1 /* HOISTED */);
 var _hoisted_57 = {
+  "class": "col-lg-6 ps-0"
+};
+var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, " ", -1 /* HOISTED */);
+var _hoisted_59 = {
+  "class": "mb-10 row"
+};
+var _hoisted_60 = {
+  "class": "col-lg-12"
+};
+var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label"
+}, "Notes", -1 /* HOISTED */);
+var _hoisted_62 = {
   "class": "card-footer"
 };
-var _hoisted_58 = ["disabled", "data-kt-indicator"];
-var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_63 = ["disabled", "data-kt-indicator"];
+var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "indicator-label"
 }, " Submit ", -1 /* HOISTED */);
-var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "indicator-progress"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Please wait... "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "spinner-border spinner-border-sm align-middle ms-2"
 })], -1 /* HOISTED */);
-var _hoisted_61 = [_hoisted_59, _hoisted_60];
+var _hoisted_66 = [_hoisted_64, _hoisted_65];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
   var _component_Toolbar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Toolbar");
@@ -344,7 +378,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       link: null
     }]
   }, null, 8 /* PROPS */, ["buttons", "breadcrumbs"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin:: Content Body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Container"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Card"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Form"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[17] || (_cache[17] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+    onSubmit: _cache[19] || (_cache[19] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       var _$props$patientVisit;
       return $setup.form.put(_ctx.route('registrations.update', (_$props$patientVisit = $props.patientVisit) === null || _$props$patientVisit === void 0 ? void 0 : _$props$patientVisit.id));
     }, ["prevent"]))
@@ -367,8 +401,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(patientType.type_name), 9 /* TEXT, PROPS */, _hoisted_10)]);
   }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.patient_type_id
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+    label: "officer_name",
+    modelValue: $setup.form.employee,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $setup.form.employee = $event;
+    }),
+    options: $props.employees,
+    reduce: function reduce(option) {
+      return option;
+    },
+    "class": "v-select-custom",
+    placeholder: "Please Select"
+  }, null, 8 /* PROPS */, ["modelValue", "options", "reduce"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    error: $setup.form.errors.employee
+  }, null, 8 /* PROPS */, ["error"])])], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.form.patient_type_id === 1]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $setup.form.patient_name = $event;
     }),
     type: "text",
@@ -376,12 +424,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Patient Name"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.patient_name]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.patient_name
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.genders, function (gender) {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.genders, function (gender) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: gender.id,
       "class": "form-check form-check-custom form-check-sm me-10"
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-      "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
         return $setup.form.gender_id = $event;
       }),
       value: gender.id,
@@ -389,14 +437,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       name: "gender_id",
       type: "radio",
       id: "gender_id_".concat(gender.id)
-    }, null, 8 /* PROPS */, _hoisted_17), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $setup.form.gender_id]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+    }, null, 8 /* PROPS */, _hoisted_20), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $setup.form.gender_id]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
       "class": "form-check-label",
       "for": "gender_id_".concat(gender.id)
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gender.gender_name), 9 /* TEXT, PROPS */, _hoisted_18)]);
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gender.gender_name), 9 /* TEXT, PROPS */, _hoisted_21)]);
   }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.gender_id
-  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $setup.form.patient_age = $event;
     }),
     type: "text",
@@ -404,8 +452,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Patient Age"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.patient_age]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.patient_age
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
       return $setup.form.relationship_with_employee = $event;
     }),
     type: "text",
@@ -413,8 +461,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Relationship with Employee"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.relationship_with_employee]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.relationship_with_employee
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return $setup.form.designation = $event;
     }),
     type: "text",
@@ -422,8 +470,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Designation"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.designation]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.designation
-  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return $setup.form.patient_phone = $event;
     }),
     type: "text",
@@ -431,8 +479,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Patient Mobile"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.patient_phone]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.patient_phone
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [_hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [_hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
       return $setup.form.patient_cnic = $event;
     }),
     type: "text",
@@ -440,9 +488,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Patient CNIC"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.patient_cnic]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.patient_cnic
-  }, null, 8 /* PROPS */, ["error"])])]), _hoisted_31, _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+      return $setup.form.patient_email = $event;
+    }),
+    type: "email",
+    "class": "form-control form-control-sm",
+    placeholder: "Patient Email"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.patient_email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    error: $setup.form.errors.patient_email
+  }, null, 8 /* PROPS */, ["error"])])]), _hoisted_36, _hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [_hoisted_40, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
     modelValue: $setup.form.temperature,
-    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+    "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
       return $setup.form.temperature = $event;
     }),
     options: _ctx.range(97.0, 106.0, 0.1).reverse(),
@@ -450,9 +507,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Please Select"
   }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.temperature
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [_hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [_hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
     modelValue: $setup.form.bp_systolic,
-    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+    "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
       return $setup.form.bp_systolic = $event;
     }),
     options: _ctx.range(40, 300, 5, 0),
@@ -460,9 +517,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Please Select"
   }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.bp_systolic
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [_hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [_hoisted_44, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
     modelValue: $setup.form.bp_diastolic,
-    "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+    "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
       return $setup.form.bp_diastolic = $event;
     }),
     options: _ctx.range(40, 300, 5, 0),
@@ -470,9 +527,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Please Select"
   }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.bp_diastolic
-  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [_hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_45, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, [_hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
     modelValue: $setup.form.pulse,
-    "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+    "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
       return $setup.form.pulse = $event;
     }),
     options: _ctx.range(50, 120, 1, 0),
@@ -480,8 +537,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Please Select"
   }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.pulse
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [_hoisted_44, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [_hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
       return $setup.form.sugar = $event;
     }),
     type: "text",
@@ -489,9 +546,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Sugar (mg/dL)"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.sugar]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.sugar
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_45, [_hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [_hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
     modelValue: $setup.form.weight,
-    "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+    "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
       return $setup.form.weight = $event;
     }),
     options: _ctx.range(1.0, 200.0, 0.1),
@@ -499,8 +556,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Please Select"
   }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.weight
-  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [_hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
+  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [_hoisted_56, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
       return $setup.form.height = $event;
     }),
     type: "text",
@@ -508,9 +565,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Height"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.height]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.height
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [_hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [_hoisted_58, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
     modelValue: $setup.form.height_unit,
-    "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
+    "onUpdate:modelValue": _cache[17] || (_cache[17] = function ($event) {
       return $setup.form.height_unit = $event;
     }),
     options: $props.heightUnits,
@@ -518,21 +575,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Unit"
   }, null, 8 /* PROPS */, ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.height_unit
-  }, null, 8 /* PROPS */, ["error"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [_hoisted_56, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
-    "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
+  }, null, 8 /* PROPS */, ["error"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [_hoisted_61, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+    "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
       return $setup.form.notes = $event;
     }),
     "class": "form-control form-control-sm",
     rows: "4"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.notes]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.notes
-  }, null, 8 /* PROPS */, ["error"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 8 /* PROPS */, ["error"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_62, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "submit",
     ref: "submitButton",
     "class": "btn btn-primary me-2",
     disabled: $setup.form.processing,
     "data-kt-indicator": $setup.form.processing ? 'on' : 'off'
-  }, _hoisted_61, 8 /* PROPS */, _hoisted_58), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  }, _hoisted_66, 8 /* PROPS */, _hoisted_63), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('registrations.index'),
     "class": "btn btn-secondary"
   }, {

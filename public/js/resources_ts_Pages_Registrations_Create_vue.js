@@ -179,6 +179,7 @@ __webpack_require__.r(__webpack_exports__);
       form.employee = patient === null || patient === void 0 ? void 0 : patient.patient_employee;
     };
     var resetForm = function resetForm() {
+      form.employee = "";
       form.patient_id = "";
       form.patient_type_id = "";
       form.patient_name = "";
@@ -188,6 +189,7 @@ __webpack_require__.r(__webpack_exports__);
       form.designation = "";
       form.patient_cnic = "";
       form.patient_phone = "";
+      form.patient_email = "";
     };
     var resetSearchForm = function resetSearchForm() {
       searchForm.mobile_no = "";
