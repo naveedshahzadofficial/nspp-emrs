@@ -29,7 +29,7 @@ const format = (date) =>{
     const year = date.getFullYear();
     return `${day}-${month}-${year}`;
 }
-const numberMask = ;
+const numberMask = '';
 watch(
     () => form.medicine_category_id,
     (value) => {

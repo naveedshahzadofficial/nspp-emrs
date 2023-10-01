@@ -25,6 +25,7 @@ class PatientResource extends JsonResource
             'designation' => $this->designation,
             'patient_cnic' => $this->patient_cnic,
             'patient_phone' => $this->patient_phone,
+            'patient_email' => $this->patient_email,
             'status' => $this->status,
             'patient_type' => new PatientTypeResource($this->whenLoaded('patientType')),
             'gender' => new GenderResource($this->whenLoaded('gender')),
@@ -32,6 +33,7 @@ class PatientResource extends JsonResource
             'patient_visit_count' => $this->whenLoaded('patientVisits', function () {
                 return $this->patientVisits->count();
             }),
-            ];
+            'patient_employee' => new PatientEmployeeResource($this->whenLoaded('patientEmployee')),
+        ];
     }
 }

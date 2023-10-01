@@ -7,6 +7,7 @@ use App\Models\Patient;
 use App\Models\PatientComplaint;
 use App\Models\PatientDiagnosis;
 use App\Models\PatientDisease;
+use App\Models\PatientEmployee;
 use App\Models\PatientHospital;
 use App\Models\PatientLab;
 use App\Models\PatientMedicine;
@@ -18,13 +19,20 @@ use Illuminate\Support\Facades\DB;
 
 class RegistrationService
 {
-
+    public function addPatientEmployee($data, Patient $patient, PatientVisit  $patientVisit){
+        $data['patient_id'] = $patient->id;
+        $data['patient_visit_id'] = $patientVisit->id;
+        PatientEmployee::create($data);
+    }
     public function addPatient($data){
         return Patient::create($data);
     }
 
     public function addPatientVisit($data, Patient $patient){
-        $patient->patientVisits()->create($data);
+        $patientVisit = $patient->patientVisits()->create($data);
+        if($patient->patient_type_id == 1){
+            $this->addPatientEmployee($data['employee'], $patient, $patientVisit);
+        }
     }
 
     public function updatePatient($data, Patient $patient){

@@ -16,7 +16,7 @@ class Patient extends Model
 
     protected $fillable = ['patient_no',
         'patient_type_id', 'patient_name', 'gender_id', 'patient_age',
-        'relationship_with_employee', 'designation', 'patient_cnic', 'patient_phone', 'status'
+        'relationship_with_employee', 'designation', 'patient_cnic', 'patient_phone', 'patient_email', 'status'
     ];
     public function scopeActive($query) {
         return $query->where('status', true);
@@ -54,6 +54,11 @@ class Patient extends Model
     public function patientVisit(): HasOne
     {
         return $this->hasOne(PatientVisit::class)->latest();
+    }
+
+    public function patientEmployee(): HasOne
+    {
+        return $this->hasOne(PatientEmployee::class)->latest();
     }
 
     public function getCreatedAtAttribute($value): string

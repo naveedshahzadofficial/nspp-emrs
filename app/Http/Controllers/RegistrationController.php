@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateRegistrationRequest;
 use App\Http\Resources\ComplaintResource;
 use App\Http\Resources\DiseaseResource;
 use App\Http\Resources\DiseaseTypeResource;
+use App\Http\Resources\EmployeeResource;
 use App\Http\Resources\FrequencyResource;
 use App\Http\Resources\GenderResource;
 use App\Http\Resources\HospitalResource;
@@ -40,6 +41,7 @@ use App\Models\Route;
 use App\Models\Test;
 use App\Models\TestCategory;
 use App\Models\TestType;
+use App\Services\EmployeeService;
 use App\Services\RegistrationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -50,10 +52,12 @@ class RegistrationController extends Controller
 {
 
     private $registrationService;
-    public function __construct(RegistrationService $registrationService)
+    private $employeeService;
+    public function __construct(RegistrationService $registrationService, EmployeeService $employeeService)
     {
         $this->authorizeResource(PatientVisit::class, 'patient_visit');
         $this->registrationService = $registrationService;
+        $this->employeeService = $employeeService;
     }
     /**
      * Display a listing of the resource.
@@ -83,7 +87,7 @@ class RegistrationController extends Controller
      *
      * @return Response
      */
-    public function create(): Response
+    public function create(EmployeeService $employeeService): Response
     {
         $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
         $genders = GenderResource::collection(Gender::active()->get());
@@ -94,6 +98,7 @@ class RegistrationController extends Controller
         $filters = request()->only(['mobile_no', 'cnic_no', 'patient_name']);
         if(request()->input('mobile_no') || request()->input('cnic_no') || request()->input('patient_name')) {
             $patients = PatientResource::collection(Patient::query()
+                ->with('patientEmployee')
                 ->when(request()->input('mobile_no'), function ($query, $search){
                     $query->where('patient_phone', $search);
                 })
@@ -107,7 +112,9 @@ class RegistrationController extends Controller
         }
         /* End: Search */
 
-        return Inertia::render('Registrations/Create', compact('patientTypes', 'genders', 'heightUnits' , 'patients', 'filters'));
+        $employees = EmployeeResource::collection(Collect($this->employeeService->getOfficers(1)));
+
+        return Inertia::render('Registrations/Create', compact('patientTypes', 'genders', 'heightUnits' , 'patients', 'filters', 'employees'));
     }
 
     /**

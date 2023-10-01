@@ -1554,13 +1554,6 @@
   dependencies:
     vue "^2.0.0"
 
-"@types/vue-the-mask@^0.11.1":
-  version "0.11.1"
-  resolved "https://registry.npmjs.org/@types/vue-the-mask/-/vue-the-mask-0.11.1.tgz"
-  integrity sha512-QoXwt8gc35YW+a5kbQar57aA5ozbnHBUxFxl2CiRj4WnqbnCxMijJ8JpxdSqYvqSa3+wiuRE/w4Qpx05Sfo2zA==
-  dependencies:
-    vue "^2.6.10"
-
 "@types/ws@^8.5.1":
   version "8.5.4"
   resolved "https://registry.npmjs.org/@types/ws/-/ws-8.5.4.tgz"
@@ -8327,7 +8320,7 @@ vue3-apexcharts@^1.4.1:
   resolved "https://registry.npmjs.org/vue3-apexcharts/-/vue3-apexcharts-1.4.1.tgz"
   integrity sha512-96qP8JDqB9vwU7bkG5nVU+E0UGQn7yYQVqUUCLQMYWDuQyu2vE77H/UFZ1yI+hwzlSTBKT9BqnNG8JsFegB3eg==
 
-vue@^2.0.0, vue@^2.6.10:
+vue@^2.0.0:
   version "2.7.14"
   resolved "https://registry.npmjs.org/vue/-/vue-2.7.14.tgz"
   integrity sha512-b2qkFyOM0kwqWFuQmgd4o+uHGU7T+2z3T+WQp8UBjADfEv2n4FEMffzBmCKNP0IGzOEEfYjvtcC62xaSKeQDrQ==

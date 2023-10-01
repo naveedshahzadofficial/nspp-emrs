@@ -24,6 +24,7 @@ class CreatePatientsTable extends Migration
             $table->string('designation')->nullable();
             $table->string('patient_cnic')->nullable()->unique();
             $table->string('patient_phone')->nullable();
+            $table->string('patient_email')->nullable();
             $table->boolean('status')->default(1);
             $table->softDeletes();
             $table->timestamps();

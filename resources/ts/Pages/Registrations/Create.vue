@@ -1,3 +1,100 @@
+
+<script lang="ts" setup>
+import { router, useForm } from "@inertiajs/vue3";
+import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
+import AlertMessage from "@/Components/alerts/AlertMessage.vue";
+import { computed, watch } from "vue";
+
+const props = defineProps({
+    patientTypes: { type: Object, required: true },
+    genders: { type: Object, required: true },
+    heightUnits: { type: Array, required: true },
+    patients: Object,
+    employees: Object,
+    filters: Object,
+});
+
+const filterPatients = computed(() => props.patients);
+
+const form = useForm({
+    employee: "",
+    patient_id: "",
+    patient_type_id: "",
+    patient_name: "",
+    gender_id: "",
+    patient_age: "",
+    relationship_with_employee: "",
+    designation: "",
+    patient_cnic: "",
+    patient_email: "",
+    patient_phone: "",
+    temperature: "",
+    bp_systolic: "",
+    bp_diastolic: "",
+    pulse: "",
+    sugar: "",
+    weight: "",
+    height: "",
+    height_unit: "",
+    notes: "",
+});
+
+const searchForm = useForm({
+    mobile_no: props.filters?.mobile_no,
+    cnic_no: props.filters?.cnic_no,
+    patient_name: props.filters?.patient_name,
+});
+
+const fillForm = (patient: any) => {
+    form.patient_id = patient?.id;
+    form.patient_type_id = patient?.patient_type_id;
+    form.patient_name = patient?.patient_name;
+    form.gender_id = patient?.gender_id;
+    form.patient_age = patient?.patient_age;
+    form.relationship_with_employee = patient?.relationship_with_employee;
+    form.designation = patient?.designation;
+    form.patient_cnic = patient?.patient_cnic;
+    form.patient_phone = patient?.patient_phone;
+    form.patient_email = patient?.patient_email;
+    form.employee = patient?.patient_employee;
+
+};
+
+const resetForm = () => {
+    form.patient_id = "";
+    form.patient_type_id = "";
+    form.patient_name = "";
+    form.gender_id = "";
+    form.patient_age = "";
+    form.relationship_with_employee = "";
+    form.designation = "";
+    form.patient_cnic = "";
+    form.patient_phone = "";
+};
+
+const resetSearchForm = () => {
+    searchForm.mobile_no = "";
+    searchForm.cnic_no = "";
+    searchForm.patient_name = "";
+    router.get(route("registrations.create"), searchForm.data(), {
+        preserveScroll: true,
+        replace: true,
+    });
+};
+watch(
+    () => form.employee,
+    (employee: any) => {
+        const gender = props.genders?.find(gender => gender.gender_name === employee?.gender);
+        form.patient_name = employee?.officer_name;
+        form.gender_id = gender?.id;
+        form.patient_age  = employee?.age;
+        form.designation = employee?.designation;
+        form.patient_cnic = employee?.cnic;
+        form.patient_phone = employee?.offical_contact;
+        form.patient_email = employee?.offical_email;
+    });
+</script>
+
 <template>
     <Head title="Add Registration" />
     <Toolbar
@@ -185,6 +282,27 @@
                             />
                         </div>
 
+                        <div class="mb-10 row" v-show="form.patient_type_id===1">
+
+                            <div class="col-lg-4">
+                                <label class="required form-label"
+                                >Employees</label
+                                >
+                                <v-select
+                                    label="officer_name"
+                                    v-model="form.employee"
+                                    :options="employees"
+                                    :reduce="(option) => option"
+                                    class="v-select-custom"
+                                    placeholder="Please Select"
+                                />
+                                <ServerErrorMessage
+                                    :error="form.errors.employee"
+                                />
+                            </div>
+
+                        </div>
+
                         <div class="mb-10 row">
                             <div class="col-lg-4">
                                 <label class="required form-label"
@@ -245,7 +363,7 @@
                                 />
                             </div>
                             <div class="col-lg-4">
-                                <label class="required form-label"
+                                <label class="form-label"
                                     >Relationship with Employee</label
                                 >
                                 <input
@@ -304,6 +422,21 @@
                                 />
                                 <ServerErrorMessage
                                     :error="form.errors.patient_cnic"
+                                />
+                            </div>
+
+                            <div class="col-lg-4">
+                                <label class="form-label"
+                                >Email</label
+                                >
+                                <input
+                                    v-model="form.patient_email"
+                                    type="email"
+                                    class="form-control form-control-sm"
+                                    placeholder="Patient Email"
+                                />
+                                <ServerErrorMessage
+                                    :error="form.errors.patient_email"
                                 />
                             </div>
                         </div>
@@ -477,80 +610,3 @@
     <!-- end:: Content Body -->
 </template>
 
-<script lang="ts" setup>
-import { router, useForm } from "@inertiajs/vue3";
-import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
-import AlertMessage from "@/Components/alerts/AlertMessage.vue";
-import { computed } from "vue";
-
-const props = defineProps({
-    patientTypes: { type: Object, required: true },
-    genders: { type: Object, required: true },
-    heightUnits: { type: Array, required: true },
-    patients: Object,
-    filters: Object,
-});
-
-const filterPatients = computed(() => props.patients);
-
-const form = useForm({
-    patient_id: "",
-    patient_type_id: "",
-    patient_name: "",
-    gender_id: "",
-    patient_age: "",
-    relationship_with_employee: "",
-    designation: "",
-    patient_cnic: "",
-    patient_phone: "",
-    temperature: "",
-    bp_systolic: "",
-    bp_diastolic: "",
-    pulse: "",
-    sugar: "",
-    weight: "",
-    height: "",
-    height_unit: "",
-    notes: "",
-});
-
-const searchForm = useForm({
-    mobile_no: props.filters?.mobile_no,
-    cnic_no: props.filters?.cnic_no,
-    patient_name: props.filters?.patient_name,
-});
-
-const fillForm = (patient: any) => {
-    form.patient_id = patient?.id;
-    form.patient_type_id = patient?.patient_type_id;
-    form.patient_name = patient?.patient_name;
-    form.gender_id = patient?.gender_id;
-    form.patient_age = patient?.patient_age;
-    form.relationship_with_employee = patient?.relationship_with_employee;
-    form.designation = patient?.designation;
-    form.patient_cnic = patient?.patient_cnic;
-    form.patient_phone = patient?.patient_phone;
-};
-
-const resetForm = () => {
-    form.patient_id = "";
-    form.patient_type_id = "";
-    form.patient_name = "";
-    form.gender_id = "";
-    form.patient_age = "";
-    form.relationship_with_employee = "";
-    form.designation = "";
-    form.patient_cnic = "";
-    form.patient_phone = "";
-};
-
-const resetSearchForm = () => {
-    searchForm.mobile_no = "";
-    searchForm.cnic_no = "";
-    searchForm.patient_name = "";
-    router.get(route("registrations.create"), searchForm.data(), {
-        preserveScroll: true,
-        replace: true,
-    });
-};
-</script>
