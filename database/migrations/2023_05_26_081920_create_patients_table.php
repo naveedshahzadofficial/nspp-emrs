@@ -15,6 +15,8 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('institute_id')->nullable()->constrained();
             $table->foreignId('patient_type_id')->constrained();
             $table->foreignId('gender_id')->constrained();
             $table->string('patient_no')->nullable()->unique();
@@ -22,7 +24,7 @@ class CreatePatientsTable extends Migration
             $table->unsignedInteger('patient_age')->nullable();
             $table->string('relationship_with_employee')->nullable();
             $table->string('designation')->nullable();
-            $table->string('patient_cnic')->nullable()->unique();
+            $table->string('patient_cnic')->nullable();
             $table->string('patient_phone')->nullable();
             $table->string('patient_email')->nullable();
             $table->boolean('status')->default(1);

@@ -127,7 +127,7 @@ class RegistrationController extends Controller
     {
         DB::transaction(function() use ($request) {
 
-        $patient = $this->registrationService->updateOrCreatePatient($request->validated(), $request->patient_id);
+        $patient = $this->registrationService->updateOrCreatePatient(auth()->user()->institute_id, $request->validated());
             $this->registrationService->addPatientVisit($request->validated(), $patient);
         });
         session()->flash('success', 'Your Registration has been added successfully.');
@@ -175,7 +175,7 @@ class RegistrationController extends Controller
     {
         $patientVisit->load('patient');
         DB::transaction(function() use ($request, $patientVisit) {
-            $patient = $this->registrationService->updateOrCreatePatient($request->validated());
+            $patient = $this->registrationService->updateOrCreatePatient(auth()->user()->institute_id, $request->validated());
             $this->registrationService->updatePatientVisit($request->validated(), $patient, $patientVisit);
         });
         session()->flash('success', 'Your Registration has been updated successfully.');

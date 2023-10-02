@@ -14,7 +14,7 @@ class Patient extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['patient_no',
+    protected $fillable = ['user_id', 'institute_id', 'patient_no',
         'patient_type_id', 'patient_name', 'gender_id', 'patient_age',
         'relationship_with_employee', 'designation', 'patient_cnic', 'patient_phone', 'patient_email', 'status'
     ];
@@ -110,6 +110,8 @@ class Patient extends Model
     {
         parent::boot();
         static::creating(function ($model){
+            $model->user_id = auth()->id();
+            $model->institute_id = auth()->user()->institute_id??null;
             $max_number = Patient::max('id')+1;
             $model->patient_no = str_pad($max_number.today()->year, 7,'0',STR_PAD_LEFT);
         });
