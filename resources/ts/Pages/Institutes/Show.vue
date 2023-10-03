@@ -16,6 +16,13 @@
             <div class="card card-custom">
                     <!--begin::Card body-->
                     <div class="card-body">
+                        <div class="row mt-10">
+                            <div class="col-lg-6">
+                                <label class="form-label fw-semibold">Head</label>
+                                <span class="form-control form-control-solid" v-if="institute?.head?.name">{{ institute?.head?.name }}</span>
+                                <span class="form-control form-control-solid" v-else>The {{ institute.name }} have not any head</span>
+                            </div>
+                        </div>
                         <div class="row mb-10">
                             <div class="col-lg-6">
                                 <label class="form-label fw-semibold">Institute Name</label>

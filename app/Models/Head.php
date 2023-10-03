@@ -11,4 +11,8 @@ class Head extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['name', 'sort_id', 'status'];
+
+    public function scopeActive($query) {
+        return $query->where('status', true);
+    }
 }

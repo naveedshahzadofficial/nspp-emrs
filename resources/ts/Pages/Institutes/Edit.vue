@@ -1,3 +1,19 @@
+<script lang="ts" setup>
+import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
+import {useForm} from "@inertiajs/vue3";
+const props = defineProps({
+    heads: Array,
+    institute: { type: Object, required: true}
+});
+const form = useForm({
+    head_id: props.institute?.head_id,
+    mapping_id: props.institute?.mapping_id,
+    name: props.institute?.name,
+    short_name: props.institute?.short_name,
+    order: props.institute?.order,
+    status: props.institute?.status,
+});
+</script>
 <template>
     <Head title="Update Institute"/>
     <Toolbar
@@ -18,6 +34,25 @@
                 <form @submit.prevent="form.put(route('institutes.update', institute?.id))">
                     <!--begin::Card body-->
                     <div class="card-body">
+                        <div class="row mb-10">
+                            <div class="col-lg-6">
+                                <label class="form-label">Head</label>
+                                <v-select
+                                    v-model="form.head_id"
+                                    :options="heads"
+                                    :reduce="(option) => option.id"
+                                    label="name"
+                                    class="v-select-custom"
+                                    placeholder="Please Select" />
+                                <ServerErrorMessage :error="form.errors.head_id"/>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="form-label">HR System (Mapping Id)</label>
+                                <input v-model="form.mapping_id"  type="text" class="form-control form-control-sm" placeholder="HR System ID"/>
+                                <ServerErrorMessage :error="form.errors.mapping_id"/>
+                            </div>
+                        </div>
+
                         <div class="row mb-10">
                             <div class="col-lg-6">
                                 <label class="required form-label">Institute Name</label>
@@ -78,16 +113,4 @@
 
 </template>
 
-<script lang="ts" setup>
-import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
-import {useForm} from "@inertiajs/vue3";
-const props = defineProps({
-    institute: { type: Object, required: true}
-});
-const form = useForm({
-    name: props.institute?.name,
-    short_name: props.institute?.short_name,
-    order: props.institute?.order,
-    status: props.institute?.status,
-});
-</script>
+

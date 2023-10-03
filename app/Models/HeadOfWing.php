@@ -10,5 +10,5 @@ class HeadOfWing extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'name_abbreviation', 'category_id', 'status'];
+    protected $fillable = ['name', 'name_abbreviation', 'head_id', 'status'];
 }

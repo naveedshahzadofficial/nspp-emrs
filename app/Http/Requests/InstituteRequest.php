@@ -25,6 +25,8 @@ class InstituteRequest extends FormRequest
     public function rules()
     {
         return [
+            'head_id' => 'required',
+            'mapping_id' => 'sometimes|nullable',
             'name' => ['required','string', 'max:255', Rule::unique('institutes', 'name')->ignore($this->institute)],
             'short_name' => 'required',
             'order' => 'required',

@@ -15,9 +15,9 @@ class CreateHeadOfWingsTable extends Migration
     {
         Schema::create('head_of_wings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('head_id')->nullable()->constrained();
             $table->string('name');
             $table->string('name_abbreviation')->nullable();
-            $table->unsignedBigInteger('category_id');
             $table->unsignedTinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
