@@ -111,8 +111,8 @@ class RegistrationController extends Controller
                 ->get());
         }
         /* End: Search */
-
-        $employees = EmployeeResource::collection(Collect($this->employeeService->getOfficers(1)));
+        $institute = auth()->user()->institute;
+        $employees = EmployeeResource::collection(Collect($this->employeeService->getOfficers($institute->head_id, $institute->head_id==2?$institute->head_of_wing_id:null)));
 
         return Inertia::render('Registrations/Create', compact('patientTypes', 'genders', 'heightUnits' , 'patients', 'filters', 'employees'));
     }
@@ -160,7 +160,8 @@ class RegistrationController extends Controller
         $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
         $genders = GenderResource::collection(Gender::active()->get());
         $heightUnits = ["Feet", "Inches"];
-        $employees = EmployeeResource::collection(Collect($this->employeeService->getOfficers(1)));
+        $institute = auth()->user()->institute;
+        $employees = EmployeeResource::collection(Collect($this->employeeService->getOfficers($institute->head_id, $institute->head_id==2?$institute->head_of_wing_id:null)));
         return Inertia::render('Registrations/Edit', compact('patientTypes', 'genders','heightUnits', 'patientVisit', 'employees'));
     }
 
