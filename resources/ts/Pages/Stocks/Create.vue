@@ -60,7 +60,6 @@ watch(
         title="Add Stock"
         :buttons="[{ label: 'Back', link: route('stocks.index') }]"
         :breadcrumbs="[
-            { label: 'System Settings', link: '#' },
             {
                 label: 'Stocks',
                 link: route('stocks.index'),

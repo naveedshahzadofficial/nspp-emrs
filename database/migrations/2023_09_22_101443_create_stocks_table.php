@@ -17,6 +17,7 @@ class CreateStocksTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('institute_id')->nullable()->constrained();
+            $table->foreignId('medicine_category_id')->constrained();
             $table->foreignId('medicine_id')->constrained();
             $table->unsignedBigInteger('qty');
             $table->decimal('unit_rate')->nullable()->default(0);

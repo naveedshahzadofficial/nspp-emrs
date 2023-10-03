@@ -24,7 +24,17 @@ class StockRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'medicine_category_id' => 'required',
+            'medicine_id' => 'required',
+            'qty' => 'required',
+            'unit_rate' => 'sometimes|nullable',
+            'amount' => 'sometimes|nullable',
+            'manufacturing_date' => 'sometimes|nullable',
+            'expiry_date' => 'required',
+            'pack_size' => 'required',
+            'manufacturer' => 'sometimes|nullable',
+            'supplier' => 'sometimes|nullable',
+            'status' => 'required',
         ];
     }
 }

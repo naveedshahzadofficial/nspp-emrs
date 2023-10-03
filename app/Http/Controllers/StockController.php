@@ -82,7 +82,9 @@ class StockController extends Controller
      */
     public function edit(Stock $stock)
     {
-        return Inertia::render('Stocks/Edit', compact('stock'));
+        $medicineCategories = MedicineCategoryResource::collection(MedicineCategory::active()->get());
+        $medicines = MedicineResource::collection(Medicine::active()->get());
+        return Inertia::render('Stocks/Edit', compact('medicineCategories', 'medicines', 'stock'));
     }
 
     /**

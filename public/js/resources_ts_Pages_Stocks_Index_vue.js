@@ -379,9 +379,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       permission: 'create stocks'
     }],
     breadcrumbs: [{
-      label: 'System Settings',
-      link: '#'
-    }, {
       label: 'Stocks',
       link: null
     }]

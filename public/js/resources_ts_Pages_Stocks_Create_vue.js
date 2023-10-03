@@ -280,9 +280,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       link: _ctx.route('stocks.index')
     }],
     breadcrumbs: [{
-      label: 'System Settings',
-      link: '#'
-    }, {
       label: 'Stocks',
       link: _ctx.route('stocks.index')
     }, {

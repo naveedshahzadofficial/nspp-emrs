@@ -39,7 +39,6 @@ watch(
             },
         ]"
         :breadcrumbs="[
-            { label: 'System Settings', link: '#' },
             { label: 'Stocks', link: null },
         ]"
     />
