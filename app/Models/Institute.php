@@ -11,7 +11,7 @@ class Institute extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['head_id', 'mapping_id' , 'name', 'short_name', 'order', 'status',];
+    protected $fillable = ['head_id', 'head_of_wing_id' , 'name', 'short_name', 'order', 'status',];
 
     public function scopeActive($query) {
         return $query->where('status', true);

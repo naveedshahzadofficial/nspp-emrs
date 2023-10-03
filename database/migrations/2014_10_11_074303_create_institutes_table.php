@@ -16,9 +16,9 @@ class CreateInstitutesTable extends Migration
         Schema::create('institutes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('head_id')->nullable()->constrained();
+            $table->foreignId('head_of_wing_id')->nullable()->constrained();
             $table->string('name');
             $table->string('short_name')->nullable();
-            $table->unsignedBigInteger('mapping_id')->nullable();
             $table->unsignedInteger('order')->nullable()->default(0);
             $table->boolean('status')->default(1);
             $table->softDeletes();

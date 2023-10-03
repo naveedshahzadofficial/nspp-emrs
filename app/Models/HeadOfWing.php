@@ -10,5 +10,9 @@ class HeadOfWing extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'name_abbreviation', 'head_id', 'status'];
+    protected $fillable = ['head_id', 'name', 'name_abbreviation', 'status'];
+
+    public function scopeActive($query) {
+        return $query->where('status', true);
+    }
 }

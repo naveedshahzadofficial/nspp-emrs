@@ -3,11 +3,12 @@
 import {useForm} from "@inertiajs/vue3";
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 defineProps({
-    heads: Array
+    heads: Array,
+    headOfWings: Array,
 })
 const form = useForm({
     head_id: '',
-    mapping_id: '',
+    head_of_wing_id: '',
     name: '',
     short_name: '',
     order: '',
@@ -48,9 +49,15 @@ const form = useForm({
                             <ServerErrorMessage :error="form.errors.head_id"/>
                         </div>
                         <div class="col-lg-6">
-                            <label class="form-label">HR System (Mapping Id)</label>
-                            <input v-model="form.mapping_id"  type="text" class="form-control form-control-sm" placeholder="HR System ID"/>
-                            <ServerErrorMessage :error="form.errors.mapping_id"/>
+                            <label class="form-label">Head of Wing</label>
+                            <v-select
+                                v-model="form.head_of_wing_id"
+                                :options="headOfWings"
+                                :reduce="(option) => option.id"
+                                label="name"
+                                class="v-select-custom"
+                                placeholder="Please Select" />
+                            <ServerErrorMessage :error="form.errors.head_of_wing_id"/>
                         </div>
                     </div>
                     <div class="row mb-10">

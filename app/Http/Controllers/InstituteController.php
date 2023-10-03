@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\InstituteRequest;
+use App\Http\Resources\HeadOfWingResource;
 use App\Http\Resources\HeadResource;
 use App\Http\Resources\InstituteResource;
 use App\Models\Head;
+use App\Models\HeadOfWing;
 use App\Models\Institute;
 use Inertia\Inertia;
 
@@ -46,7 +48,8 @@ class InstituteController extends Controller
     public function create()
     {
         $heads = HeadResource::collection(Head::active()->orderBy('sort_id')->get());
-        return Inertia::render('Institutes/Create', compact('heads'));
+        $headOfWings = HeadOfWingResource::collection(HeadOfWing::active()->get());
+        return Inertia::render('Institutes/Create', compact('heads', 'headOfWings'));
     }
 
     /**
@@ -83,7 +86,8 @@ class InstituteController extends Controller
     public function edit(Institute $institute)
     {
         $heads = HeadResource::collection(Head::active()->orderBy('sort_id')->get());
-        return Inertia::render('Institutes/Edit', compact('institute', 'heads'));
+        $headOfWings = HeadOfWingResource::collection(HeadOfWing::active()->get());
+        return Inertia::render('Institutes/Edit', compact('institute', 'heads', 'headOfWings'));
     }
 
     /**

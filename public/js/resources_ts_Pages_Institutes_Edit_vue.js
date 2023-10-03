@@ -52,6 +52,7 @@ __webpack_require__.r(__webpack_exports__);
   __name: 'Edit',
   props: {
     heads: Array,
+    headOfWings: Array,
     institute: {
       type: Object,
       required: true
@@ -64,7 +65,7 @@ __webpack_require__.r(__webpack_exports__);
     var props = __props;
     var form = (0,_inertiajs_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)({
       head_id: (_props$institute = props.institute) === null || _props$institute === void 0 ? void 0 : _props$institute.head_id,
-      mapping_id: (_props$institute2 = props.institute) === null || _props$institute2 === void 0 ? void 0 : _props$institute2.mapping_id,
+      head_of_wing_id: (_props$institute2 = props.institute) === null || _props$institute2 === void 0 ? void 0 : _props$institute2.head_of_wing_id,
       name: (_props$institute3 = props.institute) === null || _props$institute3 === void 0 ? void 0 : _props$institute3.name,
       short_name: (_props$institute4 = props.institute) === null || _props$institute4 === void 0 ? void 0 : _props$institute4.short_name,
       order: (_props$institute5 = props.institute) === null || _props$institute5 === void 0 ? void 0 : _props$institute5.order,
@@ -149,7 +150,7 @@ var _hoisted_8 = {
 };
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label"
-}, "HR System (Mapping Id)", -1 /* HOISTED */);
+}, "Head of Wing", -1 /* HOISTED */);
 var _hoisted_10 = {
   "class": "row mb-10"
 };
@@ -240,15 +241,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Please Select"
   }, null, 8 /* PROPS */, ["modelValue", "options", "reduce"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.head_id
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
+    modelValue: $setup.form.head_of_wing_id,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $setup.form.mapping_id = $event;
+      return $setup.form.head_of_wing_id = $event;
     }),
-    type: "text",
-    "class": "form-control form-control-sm",
-    placeholder: "HR System ID"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.mapping_id]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
-    error: $setup.form.errors.mapping_id
+    options: $props.headOfWings,
+    reduce: function reduce(option) {
+      return option.id;
+    },
+    label: "name",
+    "class": "v-select-custom",
+    placeholder: "Please Select"
+  }, null, 8 /* PROPS */, ["modelValue", "options", "reduce"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    error: $setup.form.errors.head_of_wing_id
   }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $setup.form.name = $event;
