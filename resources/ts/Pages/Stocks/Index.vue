@@ -107,7 +107,10 @@ watch(
                             <!--begin::Table head-->
                             <thead>
                                 <tr class="fw-semibold fs-6 text-gray-800">
+                                    <th>Category</th>
                                     <th>Medicine Name</th>
+                                    <th>Qty</th>
+                                    <th>Expiry Date</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center w-200px">Action</th>
                                 </tr>
@@ -119,7 +122,16 @@ watch(
                                 >
                                     <tr>
                                         <td>
-                                            {{ stock.medicine_id }}
+                                            {{ stock?.medicine_category?.category_name }}
+                                        </td>
+                                        <td>
+                                            {{ stock?.medicine?.medicine_name }}
+                                        </td>
+                                        <td>
+                                            {{ stock.qty }}
+                                        </td>
+                                        <td>
+                                            {{ stock.expiry_date }}
                                         </td>
                                         <td class="text-center">
                                             <span

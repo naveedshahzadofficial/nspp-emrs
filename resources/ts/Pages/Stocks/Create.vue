@@ -243,9 +243,42 @@ watch(
                                     :error="form.errors.supplier"
                                 />
                             </div>
+                            <div class="col-lg-4">
+                                <label class="required form-label"
+                                >Status</label
+                                >
+                                <div class="d-flex">
+                                    <div
+                                        v-for="status in [
+                                            { id: 1, name: 'Active' },
+                                            { id: 0, name: 'Inactive' },
+                                        ]"
+                                        :key="status.id"
+                                        class="form-check form-check-custom form-check-sm me-10"
+                                    >
+                                        <input
+                                            v-model="form.status"
+                                            :value="status.id"
+                                            class="form-check-input"
+                                            name="status"
+                                            type="radio"
+                                            :id="`status_${status.id}`"
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            :for="`status_${status.id}`"
+                                        >{{ status.name }}</label
+                                        >
+                                    </div>
+                                </div>
+                                <ServerErrorMessage
+                                    :error="form.errors.status"
+                                />
+                            </div>
                         </div>
                     </div>
                     <!--end::Card body-->
+
                     <div class="card-footer">
                         <button
                             type="submit"

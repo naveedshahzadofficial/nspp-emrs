@@ -16,7 +16,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
   __name: 'Show',
   props: {
-    medicineCategory: {
+    stock: {
       type: Object,
       required: true
     }
@@ -61,14 +61,14 @@ var _hoisted_4 = {
   "class": "card-body"
 };
 var _hoisted_5 = {
-  "class": "row"
+  "class": "row mb-10"
 };
 var _hoisted_6 = {
   "class": "col-lg-6"
 };
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label fw-semibold"
-}, "Category Name", -1 /* HOISTED */);
+}, "Category", -1 /* HOISTED */);
 var _hoisted_8 = {
   "class": "form-control form-control-solid"
 };
@@ -77,32 +77,93 @@ var _hoisted_9 = {
 };
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label fw-semibold"
-}, "Status", -1 /* HOISTED */);
+}, "Medicine Name", -1 /* HOISTED */);
 var _hoisted_11 = {
   "class": "form-control form-control-solid"
 };
+var _hoisted_12 = {
+  "class": "row mb-10"
+};
+var _hoisted_13 = {
+  "class": "col-lg-6"
+};
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label fw-semibold"
+}, "Manufacturing Date", -1 /* HOISTED */);
+var _hoisted_15 = {
+  "class": "form-control form-control-solid"
+};
+var _hoisted_16 = {
+  "class": "col-lg-6"
+};
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label fw-semibold"
+}, "Expiry Date", -1 /* HOISTED */);
+var _hoisted_18 = {
+  "class": "form-control form-control-solid"
+};
+var _hoisted_19 = {
+  "class": "row mb-10"
+};
+var _hoisted_20 = {
+  "class": "col-lg-6"
+};
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label fw-semibold"
+}, "Qty", -1 /* HOISTED */);
+var _hoisted_22 = {
+  "class": "form-control form-control-solid"
+};
+var _hoisted_23 = {
+  "class": "col-lg-6"
+};
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label fw-semibold"
+}, "Unit Rate", -1 /* HOISTED */);
+var _hoisted_25 = {
+  "class": "form-control form-control-solid"
+};
+var _hoisted_26 = {
+  "class": "row"
+};
+var _hoisted_27 = {
+  "class": "col-lg-6"
+};
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label fw-semibold"
+}, "Amount", -1 /* HOISTED */);
+var _hoisted_29 = {
+  "class": "form-control form-control-solid"
+};
+var _hoisted_30 = {
+  "class": "col-lg-6"
+};
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "form-label fw-semibold"
+}, "Status", -1 /* HOISTED */);
+var _hoisted_32 = {
+  "class": "form-control form-control-solid"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _$props$stock, _$props$stock$medicin, _$props$stock2, _$props$stock2$medici;
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
   var _component_Toolbar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Toolbar");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
-    title: "View Medicine Category"
+    title: "View Stock"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Toolbar, {
-    title: "View Medicine Category",
+    title: "View Stock",
     buttons: [{
       label: 'Back',
-      link: _ctx.route('medicine-categories.index')
+      link: _ctx.route('stocks.index')
     }],
     breadcrumbs: [{
-      label: 'System Settings',
-      link: '#'
-    }, {
-      label: 'Medicine Categories',
-      link: _ctx.route('medicine-categories.index')
+      label: 'Stocks',
+      link: _ctx.route('stocks.index')
     }, {
       label: 'View',
       link: null
     }]
-  }, null, 8 /* PROPS */, ["buttons", "breadcrumbs"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin:: Content Body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Container"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Card body"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.medicineCategory.category_name), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.medicineCategory.status ? "Active" : "Inactive"), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Container")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end:: Content Body ")], 64 /* STABLE_FRAGMENT */);
+  }, null, 8 /* PROPS */, ["buttons", "breadcrumbs"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin:: Content Body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Container"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Card body"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$stock = $props.stock) === null || _$props$stock === void 0 ? void 0 : (_$props$stock$medicin = _$props$stock.medicine_category) === null || _$props$stock$medicin === void 0 ? void 0 : _$props$stock$medicin.category_name), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$stock2 = $props.stock) === null || _$props$stock2 === void 0 ? void 0 : (_$props$stock2$medici = _$props$stock2.medicine) === null || _$props$stock2$medici === void 0 ? void 0 : _$props$stock2$medici.medicine_name), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.stock.manufacturing_date || '-'), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.stock.expiry_date), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.stock.qty), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.stock.unit_rate || '-'), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.stock.amount || '-'), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.stock.status ? "Active" : "Inactive"), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Container")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end:: Content Body ")], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

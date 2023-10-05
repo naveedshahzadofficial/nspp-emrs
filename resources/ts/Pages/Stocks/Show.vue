@@ -1,19 +1,18 @@
 <script lang="ts" setup>
 defineProps({
-    medicineCategory: { type: Object, required: true },
+    stock: { type: Object, required: true },
 });
 </script>
 
 <template>
-    <Head title="View Medicine Category" />
+    <Head title="View Stock" />
     <Toolbar
-        title="View Medicine Category"
-        :buttons="[{ label: 'Back', link: route('medicine-categories.index') }]"
+        title="View Stock"
+        :buttons="[{ label: 'Back', link: route('stocks.index') }]"
         :breadcrumbs="[
-            { label: 'System Settings', link: '#' },
             {
-                label: 'Medicine Categories',
-                link: route('medicine-categories.index'),
+                label: 'Stocks',
+                link: route('stocks.index'),
             },
             { label: 'View', link: null },
         ]"
@@ -25,19 +24,76 @@ defineProps({
             <div class="card card-custom">
                 <!--begin::Card body-->
                 <div class="card-body">
+                    <div class="row mb-10">
+                        <div class="col-lg-6">
+                            <label class="form-label fw-semibold"
+                            >Category</label
+                            >
+                            <span class="form-control form-control-solid">{{
+                                    stock?.medicine_category?.category_name
+                                }}</span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="form-label fw-semibold"
+                            >Medicine Name</label
+                            >
+                            <span class="form-control form-control-solid">{{
+                                    stock?.medicine?.medicine_name
+                                }}</span>
+                        </div>
+                    </div>
+                    <div class="row mb-10">
+                        <div class="col-lg-6">
+                            <label class="form-label fw-semibold"
+                            >Manufacturing Date</label
+                            >
+                            <span class="form-control form-control-solid">{{
+                                    stock.manufacturing_date || '-'
+                                }}</span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="form-label fw-semibold"
+                            >Expiry Date</label
+                            >
+                            <span class="form-control form-control-solid">{{
+                                    stock.expiry_date
+                                }}</span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-10">
+                        <div class="col-lg-6">
+                            <label class="form-label fw-semibold"
+                            >Qty</label
+                            >
+                            <span class="form-control form-control-solid">{{
+                                    stock.qty
+                                }}</span>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="form-label fw-semibold"
+                            >Unit Rate</label
+                            >
+                            <span class="form-control form-control-solid">{{
+                                    stock.unit_rate || '-'
+                                }}</span>
+                        </div>
+                    </div>
+
+
                     <div class="row">
                         <div class="col-lg-6">
                             <label class="form-label fw-semibold"
-                                >Category Name</label
+                                >Amount</label
                             >
                             <span class="form-control form-control-solid">{{
-                                medicineCategory.category_name
+                                    stock.amount || '-'
                             }}</span>
                         </div>
                         <div class="col-lg-6">
                             <label class="form-label fw-semibold">Status</label>
                             <span class="form-control form-control-solid">{{
-                                medicineCategory.status ? "Active" : "Inactive"
+                                stock.status ? "Active" : "Inactive"
                             }}</span>
                         </div>
                     </div>

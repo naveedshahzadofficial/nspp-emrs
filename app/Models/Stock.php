@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Stock extends Model
@@ -25,6 +26,16 @@ class Stock extends Model
         $this->attributes['manufacturing_date'] = !empty($value)?Carbon::parse($value)->format('Y-m-d'):null;
     }
 
+    public function medicine(): BelongsTo
+    {
+        return $this->belongsTo(Medicine::class);
+    }
+
+    public function medicineCategory(): BelongsTo
+    {
+        return $this->belongsTo(MedicineCategory::class);
+    }
+
     public static function boot()
     {
         parent::boot();
@@ -33,4 +44,5 @@ class Stock extends Model
             $model->institute_id = auth()->user()->institute_id??null;
         });
     }
+
 }

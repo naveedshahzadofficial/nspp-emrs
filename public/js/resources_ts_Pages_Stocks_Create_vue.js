@@ -253,18 +253,29 @@ var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "form-label"
 }, "Supplier", -1 /* HOISTED */);
 var _hoisted_29 = {
+  "class": "col-lg-4"
+};
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "required form-label"
+}, "Status", -1 /* HOISTED */);
+var _hoisted_31 = {
+  "class": "d-flex"
+};
+var _hoisted_32 = ["onUpdate:modelValue", "value", "id"];
+var _hoisted_33 = ["for"];
+var _hoisted_34 = {
   "class": "card-footer"
 };
-var _hoisted_30 = ["disabled", "data-kt-indicator"];
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_35 = ["disabled", "data-kt-indicator"];
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "indicator-label"
 }, " Submit ", -1 /* HOISTED */);
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "indicator-progress"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Please wait... "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "spinner-border spinner-border-sm align-middle ms-2"
 })], -1 /* HOISTED */);
-var _hoisted_33 = [_hoisted_31, _hoisted_32];
+var _hoisted_38 = [_hoisted_36, _hoisted_37];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
   var _component_Toolbar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Toolbar");
@@ -402,13 +413,38 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Supplier"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.supplier]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.supplier
-  }, null, 8 /* PROPS */, ["error"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [_hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)([{
+    id: 1,
+    name: 'Active'
+  }, {
+    id: 0,
+    name: 'Inactive'
+  }], function (status) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+      key: status.id,
+      "class": "form-check form-check-custom form-check-sm me-10"
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      "onUpdate:modelValue": function onUpdateModelValue($event) {
+        return $setup.form.status = $event;
+      },
+      value: status.id,
+      "class": "form-check-input",
+      name: "status",
+      type: "radio",
+      id: "status_".concat(status.id)
+    }, null, 8 /* PROPS */, _hoisted_32), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $setup.form.status]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+      "class": "form-check-label",
+      "for": "status_".concat(status.id)
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(status.name), 9 /* TEXT, PROPS */, _hoisted_33)]);
+  }), 64 /* STABLE_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+    error: $setup.form.errors.status
+  }, null, 8 /* PROPS */, ["error"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "submit",
     ref: "submitButton",
     "class": "btn btn-success me-2",
     disabled: $setup.form.processing,
     "data-kt-indicator": $setup.form.processing ? 'on' : 'off'
-  }, _hoisted_33, 8 /* PROPS */, _hoisted_30), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  }, _hoisted_38, 8 /* PROPS */, _hoisted_35), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('stocks.index'),
     "class": "btn btn-secondary"
   }, {

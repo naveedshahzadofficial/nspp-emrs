@@ -25,6 +25,9 @@ class StockResource extends JsonResource
             'manufacturing_date' => $this->manufacturing_date,
             'expiry_date' => $this->expiry_date,
             'status' => $this->status,
+            'medicine_category' => new MedicineCategoryResource($this->whenLoaded('medicineCategory')),
+            'medicine' => new MedicineResource($this->whenLoaded('medicine')),
+
         ];
     }
 }

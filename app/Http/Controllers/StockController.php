@@ -28,6 +28,7 @@ class StockController extends Controller
         $filters = request()->only(['search', 'limit']);
         $stocks = StockResource::collection(
             Stock::query()
+                ->with('medicineCategory','medicine')
                 ->when(request()->input('search'), function ($query, $search){
                     $query->where('qty', $search);
                 })
@@ -71,7 +72,8 @@ class StockController extends Controller
      */
     public function show(Stock $stock)
     {
-        return Inertia::render('Stocks/Show', compact('stock'));
+        $stock->load('medicineCategory', 'medicine');
+        return Inertia::render('Stocks/Show', ['stock' => new StockResource($stock)]);
     }
 
     /**
