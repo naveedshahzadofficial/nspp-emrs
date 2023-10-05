@@ -26,9 +26,11 @@ class MedicineResource extends JsonResource
             'is_over_counter' => $this->is_over_counter,
             'is_frequently_used' => $this->is_frequently_used,
             'status' => $this->status,
+            'total_stocks_qty' => $this->stocks_sum_qty??0,
             'medicine_category' => new MedicineCategoryResource($this->whenLoaded('medicineCategory')),
             'medicine_generic' => new MedicineGenericResource($this->whenLoaded('medicineGeneric')),
             'medicine_type' => new MedicineTypeResource($this->whenLoaded('medicineType')),
+            'stocks' => StockResource::collection($this->whenLoaded('stocks')),
 
         ];
     }

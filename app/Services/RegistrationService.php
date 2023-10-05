@@ -42,12 +42,16 @@ class RegistrationService
         $patient->update($data);
     }
 
-    public function updatePatientVisit($data, Patient $patient, PatientVisit  $patientVisit){
+    public function updatePatientVisitEmployee($data, Patient $patient, PatientVisit  $patientVisit){
         $data['patient_id'] = $patient->id;
         $patientVisit->update($data);
         if($patient->patient_type_id == 1){
             $this->addOrUpdatePatientEmployee($data['employee'], $patient, $patientVisit);
         }
+    }
+
+    public function updatePatientVisit($data, PatientVisit  $patientVisit){
+        $patientVisit->update($data);
     }
 
     public function updateOrCreatePatient($institute_id, $data){

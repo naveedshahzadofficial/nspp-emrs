@@ -177,7 +177,7 @@ class RegistrationController extends Controller
         $patientVisit->load('patient');
         DB::transaction(function() use ($request, $patientVisit) {
             $patient = $this->registrationService->updateOrCreatePatient(auth()->user()->institute_id, $request->validated());
-            $this->registrationService->updatePatientVisit($request->validated(), $patient, $patientVisit);
+            $this->registrationService->updatePatientVisitEmployee($request->validated(), $patient, $patientVisit);
         });
         session()->flash('success', 'Your Registration has been updated successfully.');
         return redirect()->route('registrations.index');
@@ -210,7 +210,7 @@ class RegistrationController extends Controller
         $diseaseTypes = DiseaseTypeResource::collection(DiseaseType::active()->get());
         $procedures = ProcedureResource::collection(Procedure::active()->get());
         $riskFactors = RiskFactorResource::collection(RiskFactor::active()->get());
-        $medicines = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')->active()->get());
+        $medicines = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')->withSum('stocks', 'qty')->active()->get());
         $routes = RouteResource::collection(Route::active()->get());
         $frequencies = FrequencyResource::collection(Frequency::active()->get());
         $hospitals = HospitalResource::collection(Hospital::active()->get());
@@ -244,7 +244,7 @@ class RegistrationController extends Controller
         $patientVisit->load('patient', 'patientMedicines', 'patientOtherMedicines');
         $data = array();
         $data['patientVisit'] = new PatientVisitResource($patientVisit);
-        $data['medicines'] = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')->active()->get());
+        $data['medicines'] = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')->withSum('stocks', 'qty')->active()->get());
         $data['routes'] = RouteResource::collection(Route::active()->get());
         $data['frequencies'] = FrequencyResource::collection(Frequency::active()->get());
 

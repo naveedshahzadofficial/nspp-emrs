@@ -325,6 +325,12 @@ const addMedicine = () => {
     )
         return;
 
+    const medicine = props.medicines?.find((medicine: any) => medicine.id == row.medicine_id) as any;
+    if (parseInt(medicine?.total_stocks_qty || '0') === 0 && row.acquire_from==='In-House') {
+        medicineForm.setError("acquire_from", `please Acquire From External, ${medicine.medicine_name} is out of stock.`);
+        return;
+    }
+
     preForm.patient_medicines.push(medicineForm.data());
     medicineOption.value = null;
     medicineForm.reset();
@@ -349,6 +355,12 @@ const addOtherMedicine = () => {
         row.acquire_from === null
     )
         return;
+
+    const medicine = props.medicines?.find((medicine: any) => medicine.id == row.medicine_id) as any;
+    if (parseInt(medicine?.total_stocks_qty || '0') === 0 && row.acquire_from==='In-House') {
+        otherMedicineForm.setError("acquire_from", `please Acquire From External, ${medicine.medicine_name} is out of stock.`);
+        return;
+    }
 
     preForm.patient_other_medicines.push(otherMedicineForm.data());
 
@@ -406,6 +418,7 @@ const addLab = () => {
 };
 const deleteLab = (lab: Object) =>
     (preForm.patient_labs = preForm.patient_labs.filter((obj) => obj !== lab));
+
 </script>
 
 <template>
@@ -1729,13 +1742,14 @@ const deleteLab = (lab: Object) =>
                                                                 .generic_name
                                                         }}
                                                         ]<span
-                                                            >--- (0)</span
+                                                            >--- ({{ option.total_stocks_qty || 0 }})</span
                                                         ></template
                                                     >
                                                 </template>
                                                 <template
                                                     #selected-option="{
                                                         medicine_name,
+                                                        total_stocks_qty,
                                                         medicine_generic,
                                                     }"
                                                 >
@@ -1750,7 +1764,7 @@ const deleteLab = (lab: Object) =>
                                                             medicine_generic.generic_name
                                                         }}
                                                         ]<span
-                                                            >--- (0)</span
+                                                            >--- ({{ total_stocks_qty || 0 }})</span
                                                         ></template
                                                     >
                                                 </template>
@@ -2134,13 +2148,14 @@ const deleteLab = (lab: Object) =>
                                                                 .generic_name
                                                         }}
                                                         ]<span
-                                                            >--- (0)</span
+                                                            >--- ({{ option.total_stocks_qty || 0 }})</span
                                                         ></template
                                                     >
                                                 </template>
                                                 <template
                                                     #selected-option="{
                                                         medicine_name,
+                                                        total_stocks_qty,
                                                         medicine_generic,
                                                     }"
                                                 >
@@ -2155,7 +2170,7 @@ const deleteLab = (lab: Object) =>
                                                             medicine_generic.generic_name
                                                         }}
                                                         ]<span
-                                                            >--- (0)</span
+                                                            >--- ({{ total_stocks_qty || 0 }})</span
                                                         ></template
                                                     >
                                                 </template>
