@@ -40,6 +40,7 @@ class PatientVisitResource extends JsonResource
             'patient_medicines' => PatientMedicineResource::collection($this->whenLoaded('patientMedicines')),
             'patient_other_medicines' => PatientOtherMedicineResource::collection($this->whenLoaded('patientOtherMedicines')),
             'patient_employee' => new PatientEmployeeResource($this->whenLoaded('patientEmployee')),
+             'patient_participant' => new PatientParticipantResource($this->whenLoaded('patientParticipant')),
         ];
     }
 }

@@ -8,6 +8,7 @@ use App\Models\PatientComplaint;
 use App\Models\PatientDiagnosis;
 use App\Models\PatientDisease;
 use App\Models\PatientEmployee;
+use App\Models\PatientParticipant;
 use App\Models\PatientHospital;
 use App\Models\PatientLab;
 use App\Models\PatientMedicine;
@@ -22,11 +23,10 @@ class RegistrationService
     public function addOrUpdatePatientEmployee($data, Patient $patient, PatientVisit  $patientVisit){
         PatientEmployee::updateOrCreate(['patient_id'=> $patient->id, 'patient_visit_id'=>$patientVisit->id],$data);
     }
-    public function updatePatientEmployee($data, Patient $patient, PatientVisit  $patientVisit){
-        $data['patient_id'] = $patient->id;
-        $data['patient_visit_id'] = $patientVisit->id;
-        PatientEmployee::create($data);
+    public function addOrUpdatePatientParticipant($data, Patient $patient, PatientVisit  $patientVisit){
+        PatientParticipant::updateOrCreate(['patient_id'=> $patient->id, 'patient_visit_id'=>$patientVisit->id],$data);
     }
+
     public function addPatient($data){
         return Patient::create($data);
     }
@@ -35,6 +35,8 @@ class RegistrationService
         $patientVisit = $patient->patientVisits()->create($data);
         if($patient->patient_type_id == 1){
             $this->addOrUpdatePatientEmployee($data['employee'], $patient, $patientVisit);
+        }else if($patient->patient_type_id == 2){
+            $this->addOrUpdatePatientParticipant($data['participant'], $patient, $patientVisit);
         }
     }
 
@@ -45,9 +47,13 @@ class RegistrationService
     public function updatePatientVisitEmployee($data, Patient $patient, PatientVisit  $patientVisit){
         $data['patient_id'] = $patient->id;
         $patientVisit->update($data);
+
         if($patient->patient_type_id == 1){
             $this->addOrUpdatePatientEmployee($data['employee'], $patient, $patientVisit);
+        }else if($patient->patient_type_id == 2){
+            $this->addOrUpdatePatientParticipant($data['participant'], $patient, $patientVisit);
         }
+
     }
 
     public function updatePatientVisit($data, PatientVisit  $patientVisit){

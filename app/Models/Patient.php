@@ -60,6 +60,10 @@ class Patient extends Model
     {
         return $this->hasOne(PatientEmployee::class)->latest();
     }
+    public function patientParticipant(): HasOne
+    {
+        return $this->hasOne(PatientParticipant::class)->latest();
+    }
 
     public function getCreatedAtAttribute($value): string
     {

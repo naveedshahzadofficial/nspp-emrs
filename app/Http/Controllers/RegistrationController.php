@@ -15,6 +15,7 @@ use App\Http\Resources\GenderResource;
 use App\Http\Resources\HospitalResource;
 use App\Http\Resources\LabResource;
 use App\Http\Resources\MedicineResource;
+use App\Http\Resources\ParticipantResource;
 use App\Http\Resources\PatientResource;
 use App\Http\Resources\PatientTypeResource;
 use App\Http\Resources\PatientVisitResource;
@@ -42,6 +43,7 @@ use App\Models\Test;
 use App\Models\TestCategory;
 use App\Models\TestType;
 use App\Services\EmployeeService;
+use App\Services\ParticipantService;
 use App\Services\RegistrationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -53,11 +55,13 @@ class RegistrationController extends Controller
 
     private $registrationService;
     private $employeeService;
-    public function __construct(RegistrationService $registrationService, EmployeeService $employeeService)
+    private $participantService;
+    public function __construct(RegistrationService $registrationService, EmployeeService $employeeService, ParticipantService $participantService)
     {
         $this->authorizeResource(PatientVisit::class, 'patient_visit');
         $this->registrationService = $registrationService;
         $this->employeeService = $employeeService;
+        $this->participantService = $participantService;
     }
     /**
      * Display a listing of the resource.
@@ -87,7 +91,7 @@ class RegistrationController extends Controller
      *
      * @return Response
      */
-    public function create(EmployeeService $employeeService): Response
+    public function create(): Response
     {
         $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
         $genders = GenderResource::collection(Gender::active()->get());
@@ -98,7 +102,7 @@ class RegistrationController extends Controller
         $filters = request()->only(['mobile_no', 'cnic_no', 'patient_name']);
         if(request()->input('mobile_no') || request()->input('cnic_no') || request()->input('patient_name')) {
             $patients = PatientResource::collection(Patient::query()
-                ->with('patientEmployee')
+                ->with('patientEmployee', 'patientParticipant')
                 ->when(request()->input('mobile_no'), function ($query, $search){
                     $query->where('patient_phone', $search);
                 })
@@ -113,8 +117,8 @@ class RegistrationController extends Controller
         /* End: Search */
         $institute = auth()->user()->institute;
         $employees = EmployeeResource::collection(Collect($this->employeeService->getOfficers($institute->head_id, $institute->head_id==2?$institute->head_of_wing_id:null)));
-
-        return Inertia::render('Registrations/Create', compact('patientTypes', 'genders', 'heightUnits' , 'patients', 'filters', 'employees'));
+        $participants = ParticipantResource::collection(Collect($this->participantService->getParticipants($institute)));
+        return Inertia::render('Registrations/Create', compact('patientTypes', 'genders', 'heightUnits' , 'patients', 'filters', 'employees', 'participants'));
     }
 
     /**
@@ -155,14 +159,15 @@ class RegistrationController extends Controller
      */
     public function edit(PatientVisit $patientVisit): Response
     {
-        $patientVisit->load('patient', 'patientEmployee');
+        $patientVisit->load('patient', 'patientEmployee', 'patientParticipant');
         $patientVisit = new PatientVisitResource($patientVisit);
         $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
         $genders = GenderResource::collection(Gender::active()->get());
         $heightUnits = ["Feet", "Inches"];
         $institute = auth()->user()->institute;
         $employees = EmployeeResource::collection(Collect($this->employeeService->getOfficers($institute->head_id, $institute->head_id==2?$institute->head_of_wing_id:null)));
-        return Inertia::render('Registrations/Edit', compact('patientTypes', 'genders','heightUnits', 'patientVisit', 'employees'));
+        $participants = ParticipantResource::collection(Collect($this->participantService->getParticipants($institute)));
+        return Inertia::render('Registrations/Edit', compact('patientTypes', 'genders','heightUnits', 'patientVisit', 'employees', 'participants'));
     }
 
     /**
@@ -210,7 +215,18 @@ class RegistrationController extends Controller
         $diseaseTypes = DiseaseTypeResource::collection(DiseaseType::active()->get());
         $procedures = ProcedureResource::collection(Procedure::active()->get());
         $riskFactors = RiskFactorResource::collection(RiskFactor::active()->get());
-        $medicines = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')->withSum('stocks', 'qty')->active()->get());
+        $medicines = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')
+        ->withCount(['stocks as total_stocks' => function($query) {
+            $query->select(DB::raw('SUM(qty)'))->where('institute_id', auth()->user()->institute_id);
+        }])
+        ->withCount(['patientMedicines as consume_medicine_stocks' => function($query) {
+            $query->select(DB::raw('SUM(acquire_qty)'))->where('institute_id', auth()->user()->institute_id);
+        }])
+        ->withCount(['patientOtherMedicines as consume_other_medicine_stocks' => function($query) {
+            $query->select(DB::raw('SUM(acquire_qty)'))->where('institute_id', auth()->user()->institute_id);
+        }])
+        ->active()
+        ->get());
         $routes = RouteResource::collection(Route::active()->get());
         $frequencies = FrequencyResource::collection(Frequency::active()->get());
         $hospitals = HospitalResource::collection(Hospital::active()->get());
@@ -244,7 +260,18 @@ class RegistrationController extends Controller
         $patientVisit->load('patient', 'patientMedicines', 'patientOtherMedicines');
         $data = array();
         $data['patientVisit'] = new PatientVisitResource($patientVisit);
-        $data['medicines'] = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')->withSum('stocks', 'qty')->active()->get());
+        $data['medicines'] = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')
+        ->withCount(['stocks as total_stocks' => function($query) {
+            $query->select(DB::raw('SUM(qty)'))->where('institute_id', auth()->user()->institute_id);
+        }])
+        ->withCount(['patientMedicines as consume_medicine_stocks' => function($query) {
+            $query->select(DB::raw('SUM(acquire_qty)'))->where('institute_id', auth()->user()->institute_id);
+        }])
+        ->withCount(['patientOtherMedicines as consume_other_medicine_stocks' => function($query) {
+            $query->select(DB::raw('SUM(acquire_qty)'))->where('institute_id', auth()->user()->institute_id);
+        }])
+        ->active()
+        ->get());
         $data['routes'] = RouteResource::collection(Route::active()->get());
         $data['frequencies'] = FrequencyResource::collection(Frequency::active()->get());
 

@@ -32,6 +32,10 @@ class PatientVisit extends Model
     {
         return $this->hasOne(PatientEmployee::class)->latest();
     }
+    public function patientParticipant(): HasOne
+    {
+        return $this->hasOne(PatientParticipant::class)->latest();
+    }
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

@@ -16,6 +16,7 @@ class CreatePatientOtherMedicinesTable extends Migration
         Schema::create('patient_other_medicines', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('institute_id')->nullable()->constrained();
             $table->foreignId('patient_id')->constrained();
             $table->foreignId('patient_visit_id')->constrained();
             $table->foreignId('medicine_id')->constrained();

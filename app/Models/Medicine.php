@@ -36,4 +36,14 @@ class Medicine extends Model
     {
         return $this->hasMany(Stock::class);
     }
+
+    public function patientMedicines(): HasMany
+    {
+        return $this->hasMany(PatientMedicine::class);
+    }
+
+    public function patientOtherMedicines(): HasMany
+    {
+        return $this->hasMany(PatientOtherMedicine::class);
+    }
 }

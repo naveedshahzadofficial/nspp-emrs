@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useForm } from "@inertiajs/vue3";
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
-import {watch} from "vue";
+import { watch } from "vue";
 
 const props = defineProps({
     patientTypes: { type: Object, required: true },
@@ -9,16 +9,19 @@ const props = defineProps({
     heightUnits: { type: Array, required: true },
     patientVisit: { type: Object, required: true },
     employees: Object,
+    participants: Object,
 });
 
 const form = useForm({
     _method: "put",
     employee: props.patientVisit?.patient_employee,
+    participant: props.patientVisit?.patient_participant,
     patient_type_id: props.patientVisit?.patient?.patient_type_id,
     patient_name: props.patientVisit?.patient?.patient_name,
     gender_id: props.patientVisit?.patient?.gender_id,
     patient_age: props.patientVisit?.patient?.patient_age,
-    relationship_with_employee:props.patientVisit?.patient?.relationship_with_employee,
+    relationship_with_employee:
+        props.patientVisit?.patient?.relationship_with_employee,
     designation: props.patientVisit?.patient?.designation,
     patient_phone: props.patientVisit?.patient?.patient_phone,
     patient_cnic: props.patientVisit?.patient?.patient_cnic,
@@ -34,19 +37,33 @@ const form = useForm({
     notes: props.patientVisit?.notes,
 });
 
-watch(
-    () => form.employee,
-    (employee: any) => {
-        const gender = props.genders?.find(gender => gender.gender_name === employee?.gender);
-        form.patient_name = employee?.officer_name;
-        form.gender_id = gender?.id;
-        form.patient_age  = employee?.age;
-        form.designation = employee?.designation;
-        form.patient_cnic = employee?.cnic;
-        form.patient_phone = employee?.offical_contact;
-        form.patient_email = employee?.offical_email;
-    });
+const onEmployeeSelected = (employee) => {
+    const gender = props.genders?.find(
+        (gender) => gender.gender_name === employee?.gender
+    );
+    form.patient_name = employee?.officer_name;
+    form.gender_id = gender?.id;
+    form.patient_age = employee?.age;
+    form.designation = employee?.designation;
+    form.patient_cnic = employee?.cnic;
+    form.patient_phone = employee?.offical_contact;
+    form.patient_email = employee?.offical_email;
+    form.participant = "";
+};
 
+const onParticipantSelected = (participant) => {
+    const gender = props.genders?.find(
+        (gender) => gender.gender_name === participant?.participant_gender
+    );
+    form.patient_name = participant?.participant_name;
+    form.gender_id = gender?.id;
+    form.patient_age = participant?.age;
+    form.designation = participant?.participant_designation;
+    form.patient_cnic = participant?.participant_cnic;
+    form.patient_phone = participant?.participant_mobile;
+    form.patient_email = participant?.participant_email;
+    form.employee = "";
+};
 </script>
 
 <template>
@@ -108,11 +125,19 @@ watch(
                             />
                         </div>
 
-                        <div class="mb-10 row" v-show="form.patient_type_id===1">
-
-                            <div class="col-lg-4">
+                        <div
+                            class="mb-10 row"
+                            v-if="
+                                form.patient_type_id === 1 ||
+                                form.patient_type_id === 2
+                            "
+                        >
+                            <div
+                                class="col-lg-4"
+                                v-if="form.patient_type_id === 1"
+                            >
                                 <label class="required form-label"
-                                >Employees</label
+                                    >Employees</label
                                 >
                                 <v-select
                                     label="officer_name"
@@ -121,12 +146,33 @@ watch(
                                     :reduce="(option) => option"
                                     class="v-select-custom"
                                     placeholder="Please Select"
+                                    @option:selected="onEmployeeSelected"
                                 />
                                 <ServerErrorMessage
                                     :error="form.errors.employee"
                                 />
                             </div>
 
+                            <div
+                                class="col-lg-4"
+                                v-if="form.patient_type_id === 2"
+                            >
+                                <label class="required form-label"
+                                    >Participants</label
+                                >
+                                <v-select
+                                    label="participant_name"
+                                    v-model="form.participant"
+                                    :options="participants"
+                                    :reduce="(option) => option"
+                                    class="v-select-custom"
+                                    placeholder="Please Select"
+                                    @option:selected="onParticipantSelected"
+                                />
+                                <ServerErrorMessage
+                                    :error="form.errors.participant"
+                                />
+                            </div>
                         </div>
 
                         <div class="mb-10 row">
@@ -251,9 +297,7 @@ watch(
                             </div>
 
                             <div class="col-lg-4">
-                                <label class="form-label"
-                                >Email</label
-                                >
+                                <label class="form-label">Email</label>
                                 <input
                                     v-model="form.patient_email"
                                     type="email"
@@ -264,7 +308,6 @@ watch(
                                     :error="form.errors.patient_email"
                                 />
                             </div>
-
                         </div>
 
                         <div class="separator my-10"></div>
@@ -436,4 +479,3 @@ watch(
     </div>
     <!-- end:: Content Body -->
 </template>
-

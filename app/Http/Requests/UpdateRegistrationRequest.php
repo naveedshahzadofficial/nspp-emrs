@@ -26,6 +26,7 @@ class UpdateRegistrationRequest extends FormRequest
         return [
             'patient_type_id' => 'required',
             'employee' => 'required_if:patient_type_id,1',
+            'participant' => 'required_if:patient_type_id,2',
             'patient_name' => 'required|string|max:255',
             'gender_id' => 'required',
             'patient_age' => 'required|max:25',
@@ -50,6 +51,7 @@ class UpdateRegistrationRequest extends FormRequest
     {
         return [
             'employee.required_if'=> 'Please choose an employee.',
+            'participant.required_if'=> 'Please choose an participant.',
             'gender_id.required'=> 'Please choose a gender.'
         ];
     }

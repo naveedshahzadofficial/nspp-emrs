@@ -1,9 +1,8 @@
-
 <script lang="ts" setup>
 import { router, useForm } from "@inertiajs/vue3";
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 import AlertMessage from "@/Components/alerts/AlertMessage.vue";
-import { computed, watch } from "vue";
+import { computed } from "vue";
 
 const props = defineProps({
     patientTypes: { type: Object, required: true },
@@ -11,6 +10,7 @@ const props = defineProps({
     heightUnits: { type: Array, required: true },
     patients: Object,
     employees: Object,
+    participants: Object,
     filters: Object,
 });
 
@@ -18,6 +18,7 @@ const filterPatients = computed(() => props.patients);
 
 const form = useForm({
     employee: "",
+    participant: "",
     patient_id: "",
     patient_type_id: "",
     patient_name: "",
@@ -57,11 +58,12 @@ const fillForm = (patient: any) => {
     form.patient_phone = patient?.patient_phone;
     form.patient_email = patient?.patient_email;
     form.employee = patient?.patient_employee;
-
+    form.participant = patient?.patient_participant;
 };
 
 const resetForm = () => {
     form.employee = "";
+    form.participant = "";
     form.patient_id = "";
     form.patient_type_id = "";
     form.patient_name = "";
@@ -83,18 +85,34 @@ const resetSearchForm = () => {
         replace: true,
     });
 };
-watch(
-    () => form.employee,
-    (employee: any) => {
-        const gender = props.genders?.find(gender => gender.gender_name === employee?.gender);
-        form.patient_name = employee?.officer_name;
-        form.gender_id = gender?.id;
-        form.patient_age  = employee?.age;
-        form.designation = employee?.designation;
-        form.patient_cnic = employee?.cnic;
-        form.patient_phone = employee?.offical_contact;
-        form.patient_email = employee?.offical_email;
-    });
+
+const onEmployeeSelected = (employee) => {
+    const gender = props.genders?.find(
+        (gender) => gender.gender_name === employee?.gender
+    );
+    form.patient_name = employee?.officer_name;
+    form.gender_id = gender?.id;
+    form.patient_age = employee?.age;
+    form.designation = employee?.designation;
+    form.patient_cnic = employee?.cnic;
+    form.patient_phone = employee?.offical_contact;
+    form.patient_email = employee?.offical_email;
+    form.participant = "";
+};
+
+const onParticipantSelected = (participant) => {
+    const gender = props.genders?.find(
+        (gender) => gender.gender_name === participant?.participant_gender
+    );
+    form.patient_name = participant?.participant_name;
+    form.gender_id = gender?.id;
+    form.patient_age = participant?.age;
+    form.designation = participant?.participant_designation;
+    form.patient_cnic = participant?.participant_cnic;
+    form.patient_phone = participant?.participant_mobile;
+    form.patient_email = participant?.participant_email;
+    form.employee = "";
+};
 </script>
 
 <template>
@@ -284,11 +302,19 @@ watch(
                             />
                         </div>
 
-                        <div class="mb-10 row" v-show="form.patient_type_id===1">
-
-                            <div class="col-lg-4">
+                        <div
+                            class="mb-10 row"
+                            v-if="
+                                form.patient_type_id === 1 ||
+                                form.patient_type_id === 2
+                            "
+                        >
+                            <div
+                                class="col-lg-4"
+                                v-if="form.patient_type_id === 1"
+                            >
                                 <label class="required form-label"
-                                >Employees</label
+                                    >Employees</label
                                 >
                                 <v-select
                                     label="officer_name"
@@ -297,12 +323,33 @@ watch(
                                     :reduce="(option) => option"
                                     class="v-select-custom"
                                     placeholder="Please Select"
+                                    @option:selected="onEmployeeSelected"
                                 />
                                 <ServerErrorMessage
                                     :error="form.errors.employee"
                                 />
                             </div>
 
+                            <div
+                                class="col-lg-4"
+                                v-if="form.patient_type_id === 2"
+                            >
+                                <label class="required form-label"
+                                    >Participants</label
+                                >
+                                <v-select
+                                    label="participant_name"
+                                    v-model="form.participant"
+                                    :options="participants"
+                                    :reduce="(option) => option"
+                                    class="v-select-custom"
+                                    placeholder="Please Select"
+                                    @option:selected="onParticipantSelected"
+                                />
+                                <ServerErrorMessage
+                                    :error="form.errors.participant"
+                                />
+                            </div>
                         </div>
 
                         <div class="mb-10 row">
@@ -428,9 +475,7 @@ watch(
                             </div>
 
                             <div class="col-lg-4">
-                                <label class="form-label"
-                                >Email</label
-                                >
+                                <label class="form-label">Email</label>
                                 <input
                                     v-model="form.patient_email"
                                     type="email"
@@ -611,4 +656,3 @@ watch(
     </div>
     <!-- end:: Content Body -->
 </template>
-

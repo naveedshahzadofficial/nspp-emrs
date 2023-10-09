@@ -34,6 +34,7 @@ class PatientResource extends JsonResource
                 return $this->patientVisits->count();
             }),
             'patient_employee' => new PatientEmployeeResource($this->whenLoaded('patientEmployee')),
+            'patient_participant' => new PatientParticipantResource($this->whenLoaded('patientParticipant')),
         ];
     }
 }
