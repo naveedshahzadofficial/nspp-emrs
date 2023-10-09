@@ -19,24 +19,20 @@
         "sourceMap": true,
         "skipLibCheck": true,
         "baseUrl": ".",
-        "types": [
-            "@types/node", "@types/ziggy-js"
-        ],
+        "types": ["@types/node", "@types/ziggy-js"],
         "paths": {
             "@/*": ["resources/ts/*"],
             "@Layouts": ["resources/ts/Layouts"],
             "@Components": ["resources/ts/Components"],
             "@Sass": ["resources/sass"]
         },
-        "lib": [
-            "esnext",
-            "dom",
-            "dom.iterable",
-            "scripthost"
-        ]
+        "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
     },
     "typeRoots": ["./node_modules/@types", "resources/ts/types"],
-    "include": ["resources/ts/**/*.ts", "resources/ts/**/*.d.ts", "resources/ts/**/*.vue"],
+    "include": [
+        "resources/ts/**/*.ts",
+        "resources/ts/**/*.d.ts",
+        "resources/ts/**/*.vue"
+    ],
     "exclude": ["node_modules", "public"]
-
 }

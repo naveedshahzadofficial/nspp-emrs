@@ -305,13 +305,13 @@ const onParticipantSelected = (participant) => {
                         <div
                             class="mb-10 row"
                             v-if="
-                                form.patient_type_id === 1 ||
-                                form.patient_type_id === 2
+                                parseInt(form.patient_type_id) === 1 ||
+                                parseInt(form.patient_type_id) === 2
                             "
                         >
                             <div
                                 class="col-lg-4"
-                                v-if="form.patient_type_id === 1"
+                                v-if="parseInt(form.patient_type_id) === 1"
                             >
                                 <label class="required form-label"
                                     >Employees</label
@@ -332,7 +332,7 @@ const onParticipantSelected = (participant) => {
 
                             <div
                                 class="col-lg-4"
-                                v-if="form.patient_type_id === 2"
+                                v-if="parseInt(form.patient_type_id) === 2"
                             >
                                 <label class="required form-label"
                                     >Participants</label

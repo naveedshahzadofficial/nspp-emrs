@@ -31,7 +31,7 @@ const medicineForm = useForm({
     qty: 1,
     acquire_qty: 0,
     taken_meal: null,
-    medicine_instructions: null,
+    medicine_instructions: "",
     acquire_from: null,
 });
 
@@ -40,7 +40,7 @@ const otherMedicineForm = useForm({
     medicine_id: null,
     qty: null,
     acquire_qty: 0,
-    medicine_instructions: null,
+    medicine_instructions: "",
     acquire_from: null,
 });
 
@@ -125,9 +125,17 @@ const addMedicine = () => {
     )
         return;
 
-    const medicine = props.medicines?.find((medicine: any) => medicine.id == row.medicine_id) as any;
-    if (parseInt(medicine?.total_stocks_qty || '0') === 0 && row.acquire_from==='In-House') {
-        medicineForm.setError("acquire_from", `please Acquire From External, ${medicine.medicine_name} is out of stock.`);
+    const medicine = props.medicines?.find(
+        (medicine: any) => medicine.id == row.medicine_id
+    ) as any;
+    if (
+        parseInt(medicine?.total_stocks_qty || "0") === 0 &&
+        row.acquire_from === "In-House"
+    ) {
+        medicineForm.setError(
+            "acquire_from",
+            `please Acquire From External, ${medicine.medicine_name} is out of stock.`
+        );
         return;
     }
 
@@ -156,9 +164,17 @@ const addOtherMedicine = () => {
     )
         return;
 
-    const medicine = props.medicines?.find((medicine: any) => medicine.id == row.medicine_id) as any;
-    if (parseInt(medicine?.total_stocks_qty || '0') === 0 && row.acquire_from==='In-House') {
-        otherMedicineForm.setError("acquire_from", `please Acquire From External, ${medicine.medicine_name} is out of stock.`);
+    const medicine = props.medicines?.find(
+        (medicine: any) => medicine.id == row.medicine_id
+    ) as any;
+    if (
+        parseInt(medicine?.total_stocks_qty || "0") === 0 &&
+        row.acquire_from === "In-House"
+    ) {
+        otherMedicineForm.setError(
+            "acquire_from",
+            `please Acquire From External, ${medicine.medicine_name} is out of stock.`
+        );
         return;
     }
 
@@ -171,18 +187,31 @@ const deleteOtherMedicine = (pmed: Object) =>
         (obj) => obj !== pmed
     ));
 
-const validateAcquireQty = (pmed: any, index: number, field="patient_medicines") => {
+const validateAcquireQty = (
+    pmed: any,
+    index: number,
+    field = "patient_medicines"
+) => {
     const acquireQty = parseInt(pmed?.acquire_qty);
-    const medicine = props.medicines?.find((medicine: any) => medicine.id == pmed.medicine_id) as any;
-    if (pmed.acquire_from==='In-House' && acquireQty===0) {
-        preForm.errors[`${field}.${index}.acquire_qty`] = `At least 1 quantity is required for acquisition.`;
-    }else if (pmed.acquire_from==='In-House' && acquireQty > parseInt(medicine?.total_stocks_qty || '0')) {
-        preForm.errors[`${field}.${index}.acquire_qty`] = medicine?.total_stocks_qty?`${medicine.medicine_name} has only ${medicine?.total_stocks_qty} in stock.`:`${medicine.medicine_name} is out of stock.`;
+    const medicine = props.medicines?.find(
+        (medicine: any) => medicine.id == pmed.medicine_id
+    ) as any;
+    if (pmed.acquire_from === "In-House" && acquireQty === 0) {
+        preForm.errors[
+            `${field}.${index}.acquire_qty`
+        ] = `At least 1 quantity is required for acquisition.`;
+    } else if (
+        pmed.acquire_from === "In-House" &&
+        acquireQty > parseInt(medicine?.total_stocks_qty || "0")
+    ) {
+        preForm.errors[`${field}.${index}.acquire_qty`] =
+            medicine?.total_stocks_qty
+                ? `${medicine.medicine_name} has only ${medicine?.total_stocks_qty} in stock.`
+                : `${medicine.medicine_name} is out of stock.`;
     } else {
-       delete preForm.errors[`${field}.${index}.acquire_qty`];
+        delete preForm.errors[`${field}.${index}.acquire_qty`];
     }
-}
-
+};
 </script>
 
 <template>
@@ -374,7 +403,12 @@ const validateAcquireQty = (pmed: any, index: number, field="patient_medicines")
                                                     option.medicine_generic
                                                         .generic_name
                                                 }}
-                                                ]<span>--- ({{ option.total_stocks_qty || 0 }})</span></template
+                                                ]<span
+                                                    >--- ({{
+                                                        option.total_stocks_qty ||
+                                                        0
+                                                    }})</span
+                                                ></template
                                             >
                                         </template>
                                         <template
@@ -394,7 +428,11 @@ const validateAcquireQty = (pmed: any, index: number, field="patient_medicines")
                                                 {{
                                                     medicine_generic.generic_name
                                                 }}
-                                                ]<span>--- ({{ total_stocks_qty || 0 }})</span></template
+                                                ]<span
+                                                    >--- ({{
+                                                        total_stocks_qty || 0
+                                                    }})</span
+                                                ></template
                                             >
                                         </template>
                                     </v-select>
@@ -676,7 +714,12 @@ const validateAcquireQty = (pmed: any, index: number, field="patient_medicines")
                                                             "
                                                             class="form-control form-control-sm text-center"
                                                             placeholder="Acquire Qty"
-                                                            @input="validateAcquireQty(pmed, index)"
+                                                            @input="
+                                                                validateAcquireQty(
+                                                                    pmed,
+                                                                    index
+                                                                )
+                                                            "
                                                         />
                                                         <span v-else>-</span>
                                                         <ServerErrorMessage
@@ -752,7 +795,12 @@ const validateAcquireQty = (pmed: any, index: number, field="patient_medicines")
                                                     option.medicine_generic
                                                         .generic_name
                                                 }}
-                                                ]<span>--- ({{ option.total_stocks_qty || 0 }})</span></template
+                                                ]<span
+                                                    >--- ({{
+                                                        option.total_stocks_qty ||
+                                                        0
+                                                    }})</span
+                                                ></template
                                             >
                                         </template>
                                         <template
@@ -772,7 +820,11 @@ const validateAcquireQty = (pmed: any, index: number, field="patient_medicines")
                                                 {{
                                                     medicine_generic.generic_name
                                                 }}
-                                                ]<span>--- ({{ total_stocks_qty || 0 }})</span></template
+                                                ]<span
+                                                    >--- ({{
+                                                        total_stocks_qty || 0
+                                                    }})</span
+                                                ></template
                                             >
                                         </template>
                                     </v-select>
@@ -915,7 +967,13 @@ const validateAcquireQty = (pmed: any, index: number, field="patient_medicines")
                                                             "
                                                             class="form-control form-control-sm text-center"
                                                             placeholder="Acquire Qty"
-                                                            @input="validateAcquireQty(pmed, index, 'patient_other_medicines')"
+                                                            @input="
+                                                                validateAcquireQty(
+                                                                    pmed,
+                                                                    index,
+                                                                    'patient_other_medicines'
+                                                                )
+                                                            "
                                                         />
                                                         <span v-else>-</span>
                                                         <ServerErrorMessage
