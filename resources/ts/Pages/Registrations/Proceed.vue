@@ -2280,6 +2280,7 @@ const deleteLab = (lab: Object) =>
                                         <div class="col-lg-6 text-end">
                                             <button
                                                 class="btn btn-success btn-sm"
+                                                @click.prevent="addOtherMedicine"
                                             >
                                                 Add
                                             </button>

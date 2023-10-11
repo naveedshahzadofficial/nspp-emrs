@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[9577],{9577:(e,r,a)=>{a.r(r),a.d(r,{default:()=>n});var t=a(821);const u={},n=(0,a(3744).Z)(u,[["render",function(e,r){var a=(0,t.up)("Head");return(0,t.wg)(),(0,t.j4)(a,{title:"Dashboard"})}]])}}]);

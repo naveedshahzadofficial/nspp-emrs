@@ -297,11 +297,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         return medicine.id == pmed.medicine_id;
       });
       if (pmed.acquire_from === "In-House" && acquireQty === 0) {
-        preForm.errors["".concat(field, ".").concat(index, ".acquire_qty")] = "At least 1 quantity is required for acquisition.";
+        preForm.errors["".concat(field, ".").concat(String(index), ".acquire_qty")] = "At least 1 quantity is required for acquisition.";
       } else if (pmed.acquire_from === "In-House" && acquireQty > parseInt((medicine === null || medicine === void 0 ? void 0 : medicine.total_stocks_qty) || "0")) {
-        preForm.errors["".concat(field, ".").concat(index, ".acquire_qty")] = medicine !== null && medicine !== void 0 && medicine.total_stocks_qty ? "".concat(medicine.medicine_name, " has only ").concat(medicine === null || medicine === void 0 ? void 0 : medicine.total_stocks_qty, " in stock.") : "".concat(medicine.medicine_name, " is out of stock.");
+        preForm.errors["".concat(field, ".").concat(String(index), ".acquire_qty")] = medicine !== null && medicine !== void 0 && medicine.total_stocks_qty ? "".concat(medicine.medicine_name, " has only ").concat(medicine === null || medicine === void 0 ? void 0 : medicine.total_stocks_qty, " in stock.") : "".concat(medicine.medicine_name, " is out of stock.");
       } else {
-        delete preForm.errors["".concat(field, ".").concat(index, ".acquire_qty")];
+        delete preForm.errors["".concat(field, ".").concat(String(index), ".acquire_qty")];
       }
     };
     var __returned__ = {
@@ -768,7 +768,7 @@ var _hoisted_112 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElemen
 }, null, -1 /* HOISTED */);
 var _hoisted_113 = [_hoisted_112];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _$props$patientVisit2, _$props$patientVisit3, _$props$patientVisit4, _$props$patientVisit5, _$props$patientVisit6, _$props$patientVisit7, _$props$patientVisit8, _$props$patientVisit9;
+  var _ctx$$page$props, _ctx$$page$props$flas, _ctx$$page$props2, _ctx$$page$props2$fla, _ctx$$page$props3, _ctx$$page$props3$fla, _$props$patientVisit2, _$props$patientVisit3, _$props$patientVisit4, _$props$patientVisit5, _$props$patientVisit6, _$props$patientVisit7, _$props$patientVisit8, _$props$patientVisit9;
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
   var _component_Toolbar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Toolbar");
   var _component_v_select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-select");
@@ -803,10 +803,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 0,
     title: "Error",
     message: $setup.preForm.errors.patient_medicines
-  }, null, 8 /* PROPS */, ["message"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.$page.props.flash.title ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["AlertMessage"], {
+  }, null, 8 /* PROPS */, ["message"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (_ctx$$page$props = _ctx.$page.props) !== null && _ctx$$page$props !== void 0 && (_ctx$$page$props$flas = _ctx$$page$props.flash) !== null && _ctx$$page$props$flas !== void 0 && _ctx$$page$props$flas.title ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["AlertMessage"], {
     key: 1,
-    title: _ctx.$page.props.flash.title,
-    message: _ctx.$page.props.flash.message
+    title: (_ctx$$page$props2 = _ctx.$page.props) === null || _ctx$$page$props2 === void 0 ? void 0 : (_ctx$$page$props2$fla = _ctx$$page$props2.flash) === null || _ctx$$page$props2$fla === void 0 ? void 0 : _ctx$$page$props2$fla.title,
+    message: (_ctx$$page$props3 = _ctx.$page.props) === null || _ctx$$page$props3 === void 0 ? void 0 : (_ctx$$page$props3$fla = _ctx$$page$props3.flash) === null || _ctx$$page$props3$fla === void 0 ? void 0 : _ctx$$page$props3$fla.message
   }, null, 8 /* PROPS */, ["title", "message"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Card body"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Header vitals"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Avatar"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [$setup.patient.patient_image ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
     key: 0,
     alt: "Pic",
