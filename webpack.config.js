@@ -1,6 +1,5 @@
 const path = require("path");
 const CleanupMiniCssExtractPlugin = require("cleanup-mini-css-extract-plugin");
-const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports = {
     module: {
@@ -43,6 +42,5 @@ module.exports = {
             children: true,
             warnings: false,
         }),
-        //new ForkTsCheckerWebpackPlugin(),
     ],
 };
