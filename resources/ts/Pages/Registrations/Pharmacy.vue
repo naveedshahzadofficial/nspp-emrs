@@ -189,7 +189,7 @@ const deleteOtherMedicine = (pmed: Object) =>
 
 const validateAcquireQty = (
     pmed: any,
-    index: number,
+    index: any,
     field = "patient_medicines"
 ) => {
     const acquireQty = parseInt(pmed?.acquire_qty);
@@ -198,18 +198,18 @@ const validateAcquireQty = (
     ) as any;
     if (pmed.acquire_from === "In-House" && acquireQty === 0) {
         preForm.errors[
-            `${field}.${index}.acquire_qty`
+            `${field}.${String(index)}.acquire_qty`
         ] = `At least 1 quantity is required for acquisition.`;
     } else if (
         pmed.acquire_from === "In-House" &&
         acquireQty > parseInt(medicine?.total_stocks_qty || "0")
     ) {
-        preForm.errors[`${field}.${index}.acquire_qty`] =
+        preForm.errors[`${field}.${String(index)}.acquire_qty`] =
             medicine?.total_stocks_qty
                 ? `${medicine.medicine_name} has only ${medicine?.total_stocks_qty} in stock.`
                 : `${medicine.medicine_name} is out of stock.`;
     } else {
-        delete preForm.errors[`${field}.${index}.acquire_qty`];
+        delete preForm.errors[`${field}.${String(index)}.acquire_qty`];
     }
 };
 </script>

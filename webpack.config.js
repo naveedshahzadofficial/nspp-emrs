@@ -43,6 +43,6 @@ module.exports = {
             children: true,
             warnings: false,
         }),
-        new ForkTsCheckerWebpackPlugin(),
+        //new ForkTsCheckerWebpackPlugin(),
     ],
 };
