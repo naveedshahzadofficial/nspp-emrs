@@ -2,9 +2,6 @@
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 import { useForm } from "@inertiajs/vue3";
 import { ref, watch, onMounted } from "vue";
-import { IDisease } from "@/interfaces/disease.interface";
-import { IDiagnosis } from "@/interfaces/diagnosis.interface";
-import { IDiseaseType } from "@/interfaces/diseaseType.interface";
 
 const props = defineProps({
     patient: { type: Object, required: true },
@@ -37,24 +34,24 @@ const optionsAcquireFrom = ref(["In-House", "External"]);
 
 const riskFactorForm = useForm({
     risk_factor_id: null,
-    risk_factor_notes: null,
+    risk_factor_notes: "",
 });
 
 const complaintForm = useForm({
     complaint_id: null,
-    complaint_notes: null,
+    complaint_notes: "",
 });
 
 const diseaseForm = useForm({
     disease_id: null,
-    disease_notes: null,
+    disease_notes: "",
 });
 
 const diagForm = useForm({
     disease_type_id: null,
     disease_id: null,
     procedure_id: null,
-    diagnosis_notes: null,
+    diagnosis_notes: "",
 });
 
 const medicineForm = useForm({
@@ -68,28 +65,28 @@ const medicineForm = useForm({
     duration_value: 1,
     qty: 1,
     taken_meal: null,
-    medicine_instructions: null,
+    medicine_instructions: "",
     acquire_from: null,
 });
 
 const otherMedicineForm = useForm({
     medicine_id: null,
     qty: null,
-    medicine_instructions: null,
+    medicine_instructions: "",
     acquire_from: null,
 });
 
 const hospitalForm = useForm({
     hospital_id: null,
     priority: 1,
-    remarks: null,
+    remarks: "",
 });
 
 const labForm = useForm({
     test_category_id: null,
     test_type_id: null,
     test_id: null,
-    test_instructions: null,
+    test_instructions: "",
     lab_id: null,
 });
 
@@ -325,9 +322,17 @@ const addMedicine = () => {
     )
         return;
 
-    const medicine = props.medicines?.find((medicine: any) => medicine.id == row.medicine_id) as any;
-    if (parseInt(medicine?.total_stocks_qty || '0') === 0 && row.acquire_from==='In-House') {
-        medicineForm.setError("acquire_from", `please Acquire From External, ${medicine.medicine_name} is out of stock.`);
+    const medicine = props.medicines?.find(
+        (medicine: any) => medicine.id == row.medicine_id
+    ) as any;
+    if (
+        parseInt(medicine?.total_stocks_qty || "0") === 0 &&
+        row.acquire_from === "In-House"
+    ) {
+        medicineForm.setError(
+            "acquire_from",
+            `please Acquire From External, ${medicine.medicine_name} is out of stock.`
+        );
         return;
     }
 
@@ -356,9 +361,17 @@ const addOtherMedicine = () => {
     )
         return;
 
-    const medicine = props.medicines?.find((medicine: any) => medicine.id == row.medicine_id) as any;
-    if (parseInt(medicine?.total_stocks_qty || '0') === 0 && row.acquire_from==='In-House') {
-        otherMedicineForm.setError("acquire_from", `please Acquire From External, ${medicine.medicine_name} is out of stock.`);
+    const medicine = props.medicines?.find(
+        (medicine: any) => medicine.id == row.medicine_id
+    ) as any;
+    if (
+        parseInt(medicine?.total_stocks_qty || "0") === 0 &&
+        row.acquire_from === "In-House"
+    ) {
+        otherMedicineForm.setError(
+            "acquire_from",
+            `please Acquire From External, ${medicine.medicine_name} is out of stock.`
+        );
         return;
     }
 
@@ -418,7 +431,6 @@ const addLab = () => {
 };
 const deleteLab = (lab: Object) =>
     (preForm.patient_labs = preForm.patient_labs.filter((obj) => obj !== lab));
-
 </script>
 
 <template>
@@ -1179,7 +1191,7 @@ const deleteLab = (lab: Object) =>
                                                                     class="btn btn-icon btn-sm btn-danger"
                                                                     @click.prevent="
                                                                         deleteComplaint(
-                                                                            risk_factor
+                                                                            complaint
                                                                         )
                                                                     "
                                                                 >
@@ -1742,7 +1754,10 @@ const deleteLab = (lab: Object) =>
                                                                 .generic_name
                                                         }}
                                                         ]<span
-                                                            >--- ({{ option.total_stocks_qty || 0 }})</span
+                                                            >--- ({{
+                                                                option.total_stocks_qty ||
+                                                                0
+                                                            }})</span
                                                         ></template
                                                     >
                                                 </template>
@@ -1764,7 +1779,10 @@ const deleteLab = (lab: Object) =>
                                                             medicine_generic.generic_name
                                                         }}
                                                         ]<span
-                                                            >--- ({{ total_stocks_qty || 0 }})</span
+                                                            >--- ({{
+                                                                total_stocks_qty ||
+                                                                0
+                                                            }})</span
                                                         ></template
                                                     >
                                                 </template>
@@ -2148,7 +2166,10 @@ const deleteLab = (lab: Object) =>
                                                                 .generic_name
                                                         }}
                                                         ]<span
-                                                            >--- ({{ option.total_stocks_qty || 0 }})</span
+                                                            >--- ({{
+                                                                option.total_stocks_qty ||
+                                                                0
+                                                            }})</span
                                                         ></template
                                                     >
                                                 </template>
@@ -2170,7 +2191,10 @@ const deleteLab = (lab: Object) =>
                                                             medicine_generic.generic_name
                                                         }}
                                                         ]<span
-                                                            >--- ({{ total_stocks_qty || 0 }})</span
+                                                            >--- ({{
+                                                                total_stocks_qty ||
+                                                                0
+                                                            }})</span
                                                         ></template
                                                     >
                                                 </template>
@@ -2256,9 +2280,6 @@ const deleteLab = (lab: Object) =>
                                         <div class="col-lg-6 text-end">
                                             <button
                                                 class="btn btn-success btn-sm"
-                                                @click.prevent="
-                                                    addOtherMedicine
-                                                "
                                             >
                                                 Add
                                             </button>

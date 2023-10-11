@@ -255,9 +255,9 @@ const validateAcquireQty = (
                     :message="preForm.errors.patient_medicines"
                 />
                 <AlertMessage
-                    v-if="$page.props.flash.title"
-                    :title="$page.props.flash.title"
-                    :message="$page.props.flash.message"
+                    v-if="$page.props?.flash?.title"
+                    :title="$page.props?.flash?.title"
+                    :message="$page.props?.flash?.message"
                 />
 
                 <div class="card">
