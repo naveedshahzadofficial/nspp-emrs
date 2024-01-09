@@ -43,3 +43,4 @@ https://adocasts.com/lessons/creating-layouts-and-defining-default-layouts
 
 
 composer install --no-dev
+yarn install
