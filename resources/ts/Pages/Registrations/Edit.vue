@@ -38,6 +38,11 @@ const form = useForm({
 });
 
 const onEmployeeSelected = (employee) => {
+
+    form.participant = "";
+
+    if(parseInt(form.patient_type_id) === 3)
+        return;
     const gender = props.genders?.find(
         (gender) => gender.gender_name === employee?.gender
     );
@@ -48,7 +53,6 @@ const onEmployeeSelected = (employee) => {
     form.patient_cnic = employee?.cnic;
     form.patient_phone = employee?.offical_contact;
     form.patient_email = employee?.offical_email;
-    form.participant = "";
 };
 
 const onParticipantSelected = (participant) => {
@@ -129,12 +133,13 @@ const onParticipantSelected = (participant) => {
                             class="mb-10 row"
                             v-if="
                                 parseInt(form.patient_type_id) === 1 ||
-                                parseInt(form.patient_type_id) === 2
+                                parseInt(form.patient_type_id) === 2 ||
+                                parseInt(form.patient_type_id) === 3
                             "
                         >
                             <div
                                 class="col-lg-4"
-                                v-if="parseInt(form.patient_type_id) === 1"
+                                v-if="parseInt(form.patient_type_id) === 1 || parseInt(form.patient_type_id) === 3"
                             >
                                 <label class="required form-label"
                                     >Employees</label

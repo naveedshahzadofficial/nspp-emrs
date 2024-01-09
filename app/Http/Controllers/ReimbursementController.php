@@ -27,8 +27,12 @@ class ReimbursementController extends Controller
         $reimbursements = ReimbursementResource::collection(
             Reimbursement::query()
                 ->with('patient')
-                ->when(request()->input('search'), function ($query, $search){
-                    $query->whereRelation('patient', 'patient_name', 'like', "%{$search}%")->orWhere('actual_amount', 'like', "%{$search}%")->orWhere('approved_amount', 'like', "%{$search}%");
+                ->when($filters['search']??null, function ($query, $search){
+                    $query->where(function ($query) use ($search){
+                        $query->whereRelation('patient', 'patient_name', 'like', "%{$search}%")
+                            ->orWhere('actual_amount', 'like', "%{$search}%")
+                            ->orWhere('approved_amount', 'like', "%{$search}%");
+                    });
                 })
                 ->when(!auth()->user()->isSuperAdmin(), function ($query){
                     $query->where('institute_id', auth()->user()->institute_id);
@@ -46,7 +50,10 @@ class ReimbursementController extends Controller
      */
     public function create()
     {
-        $patients = PatientResource::collection(Patient::active()->get());
+        $patients = PatientResource::collection(Patient::active()
+            ->when(!auth()->user()->isSuperAdmin(), function ($query){
+            $query->where('institute_id', auth()->user()->institute_id);
+        })->get());
         return Inertia::render('Reimbursements/Create', compact('patients'));
     }
 
@@ -58,7 +65,11 @@ class ReimbursementController extends Controller
      */
     public function store(ReimbursementRequest $request)
     {
-        Reimbursement::create($request->validated());
+        $data = $request->validated();
+        if ($request->hasFile('attachment_file')) {
+            $data['attachment_file'] = $request->file('attachment_file')->store('reimbursements', 'public');
+        }
+        Reimbursement::create($data);
         session()->flash('success', "Reimbursement has been created successfully.");
         return redirect()->route('reimbursements.index');
     }
@@ -72,6 +83,7 @@ class ReimbursementController extends Controller
     public function show(Reimbursement $reimbursement)
     {
         $reimbursement->load('patient');
+        $reimbursement = new ReimbursementResource($reimbursement);
         return Inertia::render('Reimbursements/Show', compact('reimbursement'));
     }
 
@@ -83,7 +95,11 @@ class ReimbursementController extends Controller
      */
     public function edit(Reimbursement $reimbursement)
     {
-        $patients = PatientResource::collection(Patient::active()->get());
+        $patients = PatientResource::collection(Patient::active()
+            ->when(!auth()->user()->isSuperAdmin(), function ($query){
+                $query->where('institute_id', auth()->user()->institute_id);
+            })->get());
+        $reimbursement = new ReimbursementResource($reimbursement);
         return Inertia::render('Reimbursements/Edit', compact('reimbursement', 'patients'));
     }
 
@@ -96,7 +112,13 @@ class ReimbursementController extends Controller
      */
     public function update(ReimbursementRequest $request, Reimbursement $reimbursement): \Illuminate\Http\RedirectResponse
     {
-        $reimbursement->update($request->validated());
+        $data = $request->validated();
+        if ($request->hasFile('attachment_file')) {
+            $data['attachment_file'] = $request->file('attachment_file')->store('reimbursements', 'public');
+        }else{
+            $data['attachment_file'] = $data['old_attachment_file']??null;
+        }
+        $reimbursement->update($data);
         session()->flash('success', "Reimbursement has been updated successfully.");
         return redirect()->route('reimbursements.index');
     }

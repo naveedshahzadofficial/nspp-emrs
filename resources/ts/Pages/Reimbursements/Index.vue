@@ -58,6 +58,7 @@
                             <th>Patient Name</th>
                             <th class="text-start">Actual Amount</th>
                             <th class="text-start">Approved Amount by MO</th>
+                            <th class="text-start">Attachment</th>
                             <th class="text-center w-200px">Action</th>
                         </tr>
                         </thead>
@@ -67,6 +68,9 @@
                                 <td>{{ reimbursement?.patient?.patient_name }}</td>
                                 <td>{{ reimbursement.actual_amount }}</td>
                                 <td>{{ reimbursement.approved_amount }}</td>
+                                <td><span v-if="reimbursement?.attachment_file">
+                                    <a :href="reimbursement?.attachment_file" target="_blank">View File</a>
+                                </span></td>
                                 <td class="text-center">
                                     <Link
                                         v-if="hasPermission('view reimbursements')"

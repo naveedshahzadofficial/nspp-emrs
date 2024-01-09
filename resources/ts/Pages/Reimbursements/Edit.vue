@@ -14,7 +14,7 @@
         <div id="kt_content_container" class="container-fluid">
             <div class="card card-custom">
                 <!--begin::Form-->
-                <form @submit.prevent="form.put(route('reimbursements.update', reimbursement?.id))">
+                <form @submit.prevent="form.post(route('reimbursements.update', reimbursement?.id))">
                     <!--begin::Card body-->
                     <div class="card-body">
                         <div class="row mb-10">
@@ -28,6 +28,16 @@
                                     class="v-select-custom"
                                     placeholder="Please Select" />
                                 <ServerErrorMessage :error="form.errors.patient_id"/>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="required form-label">Attachment  <span v-if="reimbursement?.attachment_file">
+                                    <a :href="reimbursement?.attachment_file" target="_blank">View File</a>
+                                </span></label>
+                                <input style="background-color: transparent !important;" type="file" @input="form.attachment_file = $event.target.files[0]" class="form-control form-control-sm" placeholder="Upload File" />
+                                <ServerErrorMessage :error="form.errors.attachment_file"/>
+                                <div v-if="form.progress" class="progress">
+                                    <div class="progress-bar" role="progressbar" :style="{width: form.progress.percentage+'%' }" :aria-valuenow="form.progress.percentage" aria-valuemin="0" aria-valuemax="100">{{ form.progress.percentage }}%</div>
+                                </div>
                             </div>
                         </div>
                         <div class="row mb-10">
@@ -89,7 +99,10 @@ const props = defineProps({
     reimbursement: { type: Object, required: true}
 });
 const form = useForm({
+    _method: 'PUT',
     patient_id: props.reimbursement?.patient_id,
+    old_attachment_file: props.reimbursement?.attachment_file,
+    attachment_file: '',
     actual_amount: props.reimbursement?.actual_amount,
     approved_amount: props.reimbursement?.approved_amount,
     comments: props.reimbursement?.comments,

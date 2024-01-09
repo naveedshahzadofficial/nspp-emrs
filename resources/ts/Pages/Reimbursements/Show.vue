@@ -20,6 +20,12 @@
                                 <label class="form-label fw-semibold">Patient</label>
                                 <span class="form-control form-control-solid">{{ reimbursement?.patient?.patient_name }}</span>
                             </div>
+                            <div class="col-lg-6">
+                                <label class="form-label fw-semibold">Attachment</label>
+                                <span class="form-control form-control-solid"><span v-if="reimbursement?.attachment_file">
+                                    <a :href="reimbursement?.attachment_file" target="_blank">View File</a>
+                                </span></span>
+                            </div>
                         </div>
                         <div class="row mb-10">
                             <div class="col-lg-6">

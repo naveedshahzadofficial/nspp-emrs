@@ -25,9 +25,19 @@ class ReimbursementRequest extends FormRequest
     {
         return [
             'patient_id' => 'required',
+            'old_attachment_file'=>'sometimes|nullable',
+            'attachment_file' => 'required_if:old_attachment_file,null|sometimes|nullable|mimes:png,jpg,jpeg,docs,doc,csv,xlx,xls,pdf|max:10240',
             'actual_amount' => 'required',
             'approved_amount' => 'required',
             'comments' => 'sometimes|nullable|max:500',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'patient_id.required' => 'The patient is required.',
+            'attachment_file.required_if' => 'The attachment is required.'
         ];
     }
 }

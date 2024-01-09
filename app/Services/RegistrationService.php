@@ -33,7 +33,7 @@ class RegistrationService
 
     public function addPatientVisit($data, Patient $patient){
         $patientVisit = $patient->patientVisits()->create($data);
-        if($patient->patient_type_id == 1){
+        if($patient->patient_type_id == 1 || $patient->patient_type_id == 3){
             $this->addOrUpdatePatientEmployee($data['employee'], $patient, $patientVisit);
         }else if($patient->patient_type_id == 2){
             $this->addOrUpdatePatientParticipant($data['participant'], $patient, $patientVisit);
@@ -48,7 +48,7 @@ class RegistrationService
         $data['patient_id'] = $patient->id;
         $patientVisit->update($data);
 
-        if($patient->patient_type_id == 1){
+        if($patient->patient_type_id == 1 || $patient->patient_type_id == 3){
             $this->addOrUpdatePatientEmployee($data['employee'], $patient, $patientVisit);
         }else if($patient->patient_type_id == 2){
             $this->addOrUpdatePatientParticipant($data['participant'], $patient, $patientVisit);

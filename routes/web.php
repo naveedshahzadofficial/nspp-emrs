@@ -21,6 +21,9 @@ use App\Http\Controllers\{
     MedicineTypeController,
     MedicineGenericController,
     MedicineController,
+    TestCategoryController,
+    TestTypeController,
+    TestController,
     StockController,
 };
 
@@ -75,6 +78,16 @@ Route::group(['middleware' => ['auth']],function() {
 
     Route::delete('/medicines/{medicine}/toggle-status', [MedicineController::class, 'toggleStatus'])->name('medicines.toggle-status');
     Route::resource('medicines', MedicineController::class);
+
+    Route::delete('/test-categories/{test_category}/toggle-status', [TestCategoryController::class, 'toggleStatus'])->name('test-categories.toggle-status');
+    Route::resource('test-categories', TestCategoryController::class);
+
+    Route::delete('/test-types/{test_type}/toggle-status', [TestTypeController::class, 'toggleStatus'])->name('test-types.toggle-status');
+    Route::resource('test-types', TestTypeController::class);
+
+    Route::delete('/tests/{test}/toggle-status', [TestController::class, 'toggleStatus'])->name('tests.toggle-status');
+    Route::resource('tests', TestController::class);
+
 
     Route::resource('stocks', StockController::class);
 

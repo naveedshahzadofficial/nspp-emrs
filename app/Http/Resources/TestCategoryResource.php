@@ -18,6 +18,7 @@ class TestCategoryResource extends JsonResource
             'id' => $this->id,
             'category_name' => $this->category_name,
             'short_name' => $this->short_name,
+            'status' => $this->status,
             ];
     }
 }

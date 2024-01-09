@@ -18,6 +18,8 @@ class TestTypeResource extends JsonResource
             'id' => $this->id,
             'type_name' => $this->type_name,
             'test_category_id' => $this->test_category_id,
+            'status' => $this->status,
+            'test_category' => new TestCategoryResource($this->whenLoaded('testCategory')),
         ];
     }
 }
