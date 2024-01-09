@@ -1,5 +1,6 @@
 const path = require("path");
 const CleanupMiniCssExtractPlugin = require("cleanup-mini-css-extract-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports = {
     module: {
@@ -33,14 +34,15 @@ module.exports = {
     stats: {
         children: true,
     },
-    /*output: {
+    output: {
         path: path.resolve("./nspp_emrs"),
         publicPath: "/nspp_emrs/",
-    },*/
+    },
     plugins: [
         new CleanupMiniCssExtractPlugin({
             children: true,
             warnings: false,
         }),
+        new ForkTsCheckerWebpackPlugin(),
     ],
 };
