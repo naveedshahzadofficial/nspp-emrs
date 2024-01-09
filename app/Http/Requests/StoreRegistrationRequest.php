@@ -26,7 +26,7 @@ class StoreRegistrationRequest extends FormRequest
         return [
             'patient_id' => 'nullable|sometimes',
             'patient_type_id' => 'required',
-            'employee' => 'required_if:patient_type_id,1',
+            'employee' => 'required_if:patient_type_id,1|required_if:patient_type_id,3',
             'participant' => 'required_if:patient_type_id,2',
             'patient_name' => 'required|string|max:255',
             'gender_id' => 'required',
