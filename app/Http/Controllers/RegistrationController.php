@@ -184,7 +184,7 @@ class RegistrationController extends Controller
     {
         $patientVisit->load('patient');
         DB::transaction(function() use ($request, $patientVisit) {
-            $patient = $this->registrationService->updateOrCreatePatient(auth()->user()->institute_id, $request->validated());
+            $patient = $this->registrationService->updatePatient($request->validated(), $patientVisit->patient_id);
             $this->registrationService->updatePatientVisitEmployee($request->validated(), $patient, $patientVisit);
         });
         session()->flash('success', 'Your Registration has been updated successfully.');

@@ -18,7 +18,7 @@
                 <!--begin::Card body-->
                 <div class="card-body">
                     <div class="row mb-10">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <label class="form-label required">Patient</label>
                             <v-select
                                 v-model="form.patient_id"
@@ -26,9 +26,24 @@
                                 :reduce="(option) => option.id"
                                 label="patient_name"
                                 class="v-select-custom"
-                                placeholder="Please Select" />
+                                placeholder="Please Select" >
+                                <template v-slot:option="option">
+                                    {{ option.patient_name }} --- {{ option?.patient_type?.type_name }}
+                                    <span v-if="[1,3].includes(parseInt(option.patient_type_id)) && option?.patient_employee"> --- ({{ option?.patient_employee?.officer_name }}, {{ option?.patient_employee?.designation}})</span>
+                                    <span v-if="2 === parseInt(option.patient_type_id) && option?.patient_participant"> --- ({{ option?.patient_participant?.participant_name }}, {{ option?.patient_participant?.participant_designation}})</span>
+                                </template>
+                                <template
+                                    #selected-option="option"
+                                >
+                                    {{ option.patient_name }} --- {{ option?.patient_type?.type_name }}
+                                    <span v-if="[1,3].includes(parseInt(option.patient_type_id)) && option?.patient_employee"> --- ({{ option?.patient_employee?.officer_name }}, {{ option?.patient_employee?.designation}})</span>
+                                    <span v-if="2 === parseInt(option.patient_type_id) && option?.patient_participant"> --- ({{ option?.patient_participant?.participant_name }}, {{ option?.patient_participant?.participant_designation}})</span>
+                                </template>
+                            </v-select>
                             <ServerErrorMessage :error="form.errors.patient_id"/>
                         </div>
+                    </div>
+                    <div class="row mb-10">
                         <div class="col-lg-6">
                             <label class="required form-label">Attachment</label>
                             <input style="background-color: transparent !important;" type="file" @input="form.attachment_file = $event.target.files[0]" class="form-control form-control-sm" placeholder="Upload File" />

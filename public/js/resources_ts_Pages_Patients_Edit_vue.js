@@ -192,7 +192,7 @@ var _hoisted_22 = {
   "class": "col-lg-6"
 };
 var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "required form-label"
+  "class": "form-label"
 }, "Relationship with Employee", -1 /* HOISTED */);
 var _hoisted_24 = {
   "class": "row mb-10"
@@ -216,7 +216,7 @@ var _hoisted_30 = {
   "class": "col-lg-6"
 };
 var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "required form-label"
+  "class": "form-label"
 }, "CNIC No.", -1 /* HOISTED */);
 var _hoisted_32 = {
   "class": "col-lg-6"

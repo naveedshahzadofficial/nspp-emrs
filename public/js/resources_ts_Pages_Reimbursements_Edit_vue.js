@@ -143,63 +143,78 @@ var _hoisted_5 = {
   "class": "row mb-10"
 };
 var _hoisted_6 = {
-  "class": "col-lg-6"
+  "class": "col-lg-12"
 };
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label required"
 }, "Patient", -1 /* HOISTED */);
 var _hoisted_8 = {
-  "class": "col-lg-6"
+  key: 0
 };
 var _hoisted_9 = {
-  "class": "required form-label"
+  key: 1
 };
 var _hoisted_10 = {
   key: 0
 };
-var _hoisted_11 = ["href"];
+var _hoisted_11 = {
+  key: 1
+};
 var _hoisted_12 = {
+  "class": "row mb-10"
+};
+var _hoisted_13 = {
+  "class": "col-lg-6"
+};
+var _hoisted_14 = {
+  "class": "required form-label"
+};
+var _hoisted_15 = {
+  key: 0
+};
+var _hoisted_16 = ["href"];
+var _hoisted_17 = {
   key: 0,
   "class": "progress"
 };
-var _hoisted_13 = ["aria-valuenow"];
-var _hoisted_14 = {
+var _hoisted_18 = ["aria-valuenow"];
+var _hoisted_19 = {
   "class": "row mb-10"
 };
-var _hoisted_15 = {
-  "class": "col-lg-6"
-};
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "required form-label"
-}, "Actual Amount", -1 /* HOISTED */);
-var _hoisted_17 = {
-  "class": "col-lg-6"
-};
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "required form-label"
-}, "Approved Amount by MO", -1 /* HOISTED */);
-var _hoisted_19 = {
-  "class": "row"
-};
 var _hoisted_20 = {
-  "class": "col-lg-12"
+  "class": "col-lg-6"
 };
 var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "required form-label"
+}, "Actual Amount", -1 /* HOISTED */);
+var _hoisted_22 = {
+  "class": "col-lg-6"
+};
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "required form-label"
+}, "Approved Amount by MO", -1 /* HOISTED */);
+var _hoisted_24 = {
+  "class": "row"
+};
+var _hoisted_25 = {
+  "class": "col-lg-12"
+};
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label"
 }, "Comments", -1 /* HOISTED */);
-var _hoisted_22 = {
+var _hoisted_27 = {
   "class": "card-footer"
 };
-var _hoisted_23 = ["disabled", "data-kt-indicator"];
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_28 = ["disabled", "data-kt-indicator"];
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "indicator-label"
 }, " Update ", -1 /* HOISTED */);
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "indicator-progress"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Please wait... "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "spinner-border spinner-border-sm align-middle ms-2"
 })], -1 /* HOISTED */);
-var _hoisted_26 = [_hoisted_24, _hoisted_25];
+var _hoisted_31 = [_hoisted_29, _hoisted_30];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _$props$reimbursement2, _$props$reimbursement3;
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
@@ -238,12 +253,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     label: "patient_name",
     "class": "v-select-custom",
     placeholder: "Please Select"
-  }, null, 8 /* PROPS */, ["modelValue", "options", "reduce"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
+  }, {
+    option: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (option) {
+      var _option$patient_type, _option$patient_emplo, _option$patient_emplo2, _option$patient_parti, _option$patient_parti2;
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option.patient_name) + " --- " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option === null || option === void 0 ? void 0 : (_option$patient_type = option.patient_type) === null || _option$patient_type === void 0 ? void 0 : _option$patient_type.type_name) + " ", 1 /* TEXT */), [1, 3].includes(parseInt(option.patient_type_id)) && option !== null && option !== void 0 && option.patient_employee ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_8, " --- (" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option === null || option === void 0 ? void 0 : (_option$patient_emplo = option.patient_employee) === null || _option$patient_emplo === void 0 ? void 0 : _option$patient_emplo.officer_name) + ", " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option === null || option === void 0 ? void 0 : (_option$patient_emplo2 = option.patient_employee) === null || _option$patient_emplo2 === void 0 ? void 0 : _option$patient_emplo2.designation) + ")", 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), 2 === parseInt(option.patient_type_id) && option !== null && option !== void 0 && option.patient_participant ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_9, " --- (" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option === null || option === void 0 ? void 0 : (_option$patient_parti = option.patient_participant) === null || _option$patient_parti === void 0 ? void 0 : _option$patient_parti.participant_name) + ", " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option === null || option === void 0 ? void 0 : (_option$patient_parti2 = option.patient_participant) === null || _option$patient_parti2 === void 0 ? void 0 : _option$patient_parti2.participant_designation) + ")", 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+    }),
+    "selected-option": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (option) {
+      var _option$patient_type2, _option$patient_emplo3, _option$patient_emplo4, _option$patient_parti3, _option$patient_parti4;
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option.patient_name) + " --- " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option === null || option === void 0 ? void 0 : (_option$patient_type2 = option.patient_type) === null || _option$patient_type2 === void 0 ? void 0 : _option$patient_type2.type_name) + " ", 1 /* TEXT */), [1, 3].includes(parseInt(option.patient_type_id)) && option !== null && option !== void 0 && option.patient_employee ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_10, " --- (" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option === null || option === void 0 ? void 0 : (_option$patient_emplo3 = option.patient_employee) === null || _option$patient_emplo3 === void 0 ? void 0 : _option$patient_emplo3.officer_name) + ", " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option === null || option === void 0 ? void 0 : (_option$patient_emplo4 = option.patient_employee) === null || _option$patient_emplo4 === void 0 ? void 0 : _option$patient_emplo4.designation) + ")", 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), 2 === parseInt(option.patient_type_id) && option !== null && option !== void 0 && option.patient_participant ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_11, " --- (" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option === null || option === void 0 ? void 0 : (_option$patient_parti3 = option.patient_participant) === null || _option$patient_parti3 === void 0 ? void 0 : _option$patient_parti3.participant_name) + ", " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(option === null || option === void 0 ? void 0 : (_option$patient_parti4 = option.patient_participant) === null || _option$patient_parti4 === void 0 ? void 0 : _option$patient_parti4.participant_designation) + ")", 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+    }),
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["modelValue", "options", "reduce"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.patient_id
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Attachment "), (_$props$reimbursement2 = $props.reimbursement) !== null && _$props$reimbursement2 !== void 0 && _$props$reimbursement2.attachment_file ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Attachment "), (_$props$reimbursement2 = $props.reimbursement) !== null && _$props$reimbursement2 !== void 0 && _$props$reimbursement2.attachment_file ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: (_$props$reimbursement3 = $props.reimbursement) === null || _$props$reimbursement3 === void 0 ? void 0 : _$props$reimbursement3.attachment_file,
     target: "_blank"
-  }, "View File", 8 /* PROPS */, _hoisted_11)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, "View File", 8 /* PROPS */, _hoisted_16)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     style: {
       "background-color": "transparent !important"
     },
@@ -255,7 +280,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Upload File"
   }, null, 32 /* HYDRATE_EVENTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.attachment_file
-  }, null, 8 /* PROPS */, ["error"]), $setup.form.progress ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, null, 8 /* PROPS */, ["error"]), $setup.form.progress ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "progress-bar",
     role: "progressbar",
     style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)({
@@ -264,7 +289,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-valuenow": $setup.form.progress.percentage,
     "aria-valuemin": "0",
     "aria-valuemax": "100"
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.progress.percentage) + "%", 13 /* TEXT, STYLE, PROPS */, _hoisted_13)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.progress.percentage) + "%", 13 /* TEXT, STYLE, PROPS */, _hoisted_18)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $setup.form.actual_amount = $event;
     }),
@@ -273,7 +298,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Actual Amount"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.actual_amount]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.actual_amount
-  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 8 /* PROPS */, ["error"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $setup.form.approved_amount = $event;
     }),
@@ -282,7 +307,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Approved Amount"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.approved_amount]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.approved_amount
-  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  }, null, 8 /* PROPS */, ["error"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $setup.form.comments = $event;
     }),
@@ -290,13 +315,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     rows: "4"
   }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.comments]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["ServerErrorMessage"], {
     error: $setup.form.errors.comments
-  }, null, 8 /* PROPS */, ["error"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 8 /* PROPS */, ["error"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "submit",
     ref: "submitButton",
     "class": "btn btn-success me-2",
     disabled: $setup.form.processing,
     "data-kt-indicator": $setup.form.processing ? 'on' : 'off'
-  }, _hoisted_26, 8 /* PROPS */, _hoisted_23), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  }, _hoisted_31, 8 /* PROPS */, _hoisted_28), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('reimbursements.index'),
     "class": "btn btn-secondary"
   }, {

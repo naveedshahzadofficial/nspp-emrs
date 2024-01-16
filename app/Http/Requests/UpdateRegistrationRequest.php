@@ -32,7 +32,7 @@ class UpdateRegistrationRequest extends FormRequest
             'patient_age' => 'required|max:25',
             'relationship_with_employee' => 'nullable|sometimes|string|max:100',
             'designation' => 'required|string|max:100',
-            'patient_cnic' => 'required',
+            'patient_cnic' => 'nullable|sometimes',
             'patient_phone' => 'required',
             'patient_email' => 'nullable|sometimes',
             'temperature' => 'nullable|sometimes',

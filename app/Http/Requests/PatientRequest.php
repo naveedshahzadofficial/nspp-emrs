@@ -29,9 +29,9 @@ class PatientRequest extends FormRequest
             'patient_name' => 'required|string|max:255',
             'gender_id' => 'required',
             'patient_age' => 'required|max:25',
-            'relationship_with_employee' => 'required|string|max:100',
+            'relationship_with_employee' => 'nullable|string|max:100',
             'designation' => 'required|string|max:100',
-            'patient_cnic' => ['required', 'max:20', Rule::unique('patients', 'patient_cnic')->ignore($this->patient)],
+            'patient_cnic' => ['nullable', 'max:20', Rule::unique('patients', 'patient_cnic')->ignore($this->patient)],
             'patient_phone' => 'required',
             'status' => 'required'
         ];

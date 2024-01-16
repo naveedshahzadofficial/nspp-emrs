@@ -282,7 +282,7 @@ var _hoisted_34 = {
   "class": "col-lg-4"
 };
 var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "required form-label"
+  "class": "form-label"
 }, "CNIC No.", -1 /* HOISTED */);
 var _hoisted_36 = {
   "class": "col-lg-4"

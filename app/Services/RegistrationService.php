@@ -40,8 +40,10 @@ class RegistrationService
         }
     }
 
-    public function updatePatient($data, Patient $patient){
+    public function updatePatient($data, $patient_id){
+        $patient = Patient::find($patient_id);
         $patient->update($data);
+        return $patient;
     }
 
     public function updatePatientVisitEmployee($data, Patient $patient, PatientVisit  $patientVisit){
@@ -61,8 +63,13 @@ class RegistrationService
     }
 
     public function updateOrCreatePatient($institute_id, $data){
-        return Patient::updateOrCreate(['institute_id'=> $institute_id ,'patient_cnic' => $data['patient_cnic']], $data);
+        if(!empty($data['patient_cnic']))
+         return Patient::updateOrCreate(['institute_id'=> $institute_id ,'patient_cnic' => $data['patient_cnic']], $data);
+        else
+         return Patient::create($data);
     }
+
+
 
 
 

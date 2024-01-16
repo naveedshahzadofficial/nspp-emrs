@@ -57,7 +57,7 @@
                             <ServerErrorMessage :error="form.errors.patient_age"/>
                         </div>
                         <div class="col-lg-6">
-                            <label class="required form-label">Relationship with Employee</label>
+                            <label class="form-label">Relationship with Employee</label>
                             <input v-model="form.relationship_with_employee"  type="text" class="form-control form-control-sm" placeholder="Relationship with Employee"/>
                             <ServerErrorMessage :error="form.errors.relationship_with_employee"/>
                         </div>
@@ -79,7 +79,7 @@
 
                      <div class="row">
                          <div class="col-lg-6">
-                             <label class="required form-label">CNIC No.</label>
+                             <label class="form-label">CNIC No.</label>
                              <input v-model="form.patient_cnic"  type="text" class="form-control form-control-sm" placeholder="Patient CNIC"/>
                              <ServerErrorMessage :error="form.errors.patient_cnic"/>
                          </div>

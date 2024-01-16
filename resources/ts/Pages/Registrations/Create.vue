@@ -466,7 +466,7 @@ const onParticipantSelected = (participant) => {
                             </div>
 
                             <div class="col-lg-4">
-                                <label class="required form-label"
+                                <label class="form-label"
                                     >CNIC No.</label
                                 >
                                 <input
