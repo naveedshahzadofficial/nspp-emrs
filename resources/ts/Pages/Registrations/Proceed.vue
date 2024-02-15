@@ -2725,7 +2725,7 @@ const deleteLab = (lab: Object) =>
                                                             >
                                                                 {{
                                                                     getLabName(
-                                                                        lab.test_category_id
+                                                                        lab.lab_id
                                                                     )
                                                                 }}
                                                             </td>
