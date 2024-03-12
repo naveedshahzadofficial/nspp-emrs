@@ -24,7 +24,9 @@ class ParticipantService
     public function getParticipants($institute)
     {
         $institute_id = $this->mapInstituteIds($institute);
-        $client = new Client();
+        $client = new Client([
+             'verify' => false,
+            ]);
         $request = new Request('POST', $this->api_base_url.'/get_institute_participant_list',
             [
                 'Content-Type' => 'application/json'
