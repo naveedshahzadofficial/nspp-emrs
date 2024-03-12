@@ -20,7 +20,9 @@ class EmployeeService
 
     public function getOfficers($head, $head_of_wing=null)
     {
-        $client = new Client();
+        $client = new Client([
+             'verify' => false,
+            ]);
         $request = new Request('POST', $this->api_base_url.'/get_officer_data',
             [
                 'Content-Type' => 'application/json',
