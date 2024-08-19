@@ -1,0 +1,96 @@
+default:
+  tags:
+    - nsppemr-live
+
+stages:
+  - build
+  - test
+  - deploy
+  - cleanup
+
+variables:
+  WEBDEV_PATH: /var/www/vhosts/webdev/nspp_emrs
+  DEPLOY_PATH: /var/www/vhosts/nsppemr-live
+
+cache:
+  paths:
+    - vendor/
+    - node_modules/
+
+.extends-script:
+  before-script:
+    - echo "gitlab for extends keywords."
+
+build:
+  stage: build
+  script:
+    - ls -la
+    - pwd
+    - echo "This is job name and pipeline id $CI_JOB_ID && $CI_PIPELINE_ID && $CI_COMMIT_SHA and runner id $CI_RUNNER_ID runner tags $CI_RUNNER_TAGS"
+    - rm composer.lock
+    - rm package-lock.json
+    - cat $STAGING_ENV > .env
+    - ls -la
+    - composer install --no-interaction --prefer-dist
+    #- sed -i "s|\$fa-font-path:\ '/fonts';|\$fa-font-path:\ '/nspp_emrs/fonts';|" resources/sass/_variables.scss
+    #- sed -i "s|\$media-path:\ '/media';|\$media-path:\ '/nspp_emrs/media';|" resources/sass/_variables.scss
+    #- sed -i "s/createWebHistory('\/')/createWebHistory('\/nspp_emrs\/')/g" resources/js/router/router.js
+    - export http_proxy="http://10.50.27.160:8080/"
+    - export https_proxy="http://10.50.27.160:8080/"
+    - nvm install 20 || echo "Version '20' not found, skipping installation"
+    - nvm use 20
+    - npm install --global yarn
+    - npm install
+    - npm run prod
+    #- sed -i "s|\$fa-font-path:\ '/nspp_emrs/fonts';|\$fa-font-path:\ '/fonts';|" resources/sass/_variables.scss
+    #- sed -i "s|\$media-path:\ '/nspp_emrs/media';|\$media-path:\ '/media';|" resources/sass/_variables.scss
+    #- sed -i "s/createWebHistory('\/nspp_emrs\/')/createWebHistory('\/')/g" resources/js/router/router.js
+    - tar -czf "$CI_COMMIT_SHA".tar.gz --exclude=*.git --exclude=node_modules *
+  artifacts:
+    expire_in: 2 hrs
+    paths:
+      - "$CI_COMMIT_SHA.tar.gz"
+
+test:
+  stage: test
+  needs: ["build"]
+  script:
+    - whoami #vendor/bin/phpunit
+    - pwd
+
+deploy:
+  only:
+    - main
+  stage: deploy
+  needs: ["build"]
+  variables:
+    RELEASE_PATH: $DEPLOY_PATH/releases/$CI_COMMIT_SHA
+  script:
+    - mkdir -p $RELEASE_PATH
+    - tar xzf $CI_COMMIT_SHA.tar.gz -C $RELEASE_PATH
+    - rm -rf $RELEASE_PATH/storage
+    - mkdir -p $DEPLOY_PATH/storage/{app,public,framework,logs}
+    - mkdir -p $DEPLOY_PATH/storage/framework/{cache,sessions,testing,views}
+    - mkdir -p $DEPLOY_PATH/storage/framework/cache/data
+    - sudo chown -R :progs $DEPLOY_PATH
+    - sudo chmod -R 0775 $RELEASE_PATH
+    - sudo chmod -R 0777 $DEPLOY_PATH/storage
+    - sudo chmod -R 0777 $RELEASE_PATH/bootstrap
+    - sudo chmod -R 0775 $RELEASE_PATH/public
+    - sudo cat $STAGING_ENV > "${DEPLOY_PATH}/.env"
+    - ln -s -f ${DEPLOY_PATH}/.env $RELEASE_PATH
+    - sudo chmod -R 0775 ${RELEASE_PATH}/.env
+    - ln -s -f $DEPLOY_PATH/storage $RELEASE_PATH
+    - ln -s -n -f $RELEASE_PATH $DEPLOY_PATH/current
+    #- sudo ln -s -n -f $RELEASE_PATH $WEBDEV_PATH
+    #- sudo cat $WEBDEV_HTACCESS > $WEBDEV_PATH/.htaccess
+    #- sudo chmod 644 $WEBDEV_PATH/.htaccess
+    - cd $RELEASE_PATH && php artisan migrate --force
+    - cd $RELEASE_PATH && php artisan storage:link
+    - cd $RELEASE_PATH && php artisan config:cache
+
+cleanup:
+  stage: cleanup
+  needs: ["deploy"]
+  script:
+    - cd $DEPLOY_PATH/releases && ls -t -1 | tail -n +4 | xargs rm -rf

@@ -17,7 +17,9 @@ class ReimbursementResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'patient_type_id' => $this->patient_type_id,
             'patient_id' => $this->patient_id,
+            'patient_type' => new PatientTypeResource($this->whenLoaded('patientType')),
             'patient' => new PatientResource($this->whenLoaded('patient')),
             'user' => new UserResource($this->whenLoaded('user')),
             'attachment_file' => !empty($this->attachment_file)?Storage::disk('public')->url($this->attachment_file):null,

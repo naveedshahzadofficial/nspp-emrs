@@ -11,7 +11,12 @@ class Reimbursement extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['patient_id', 'institute_id', 'user_id', 'actual_amount', 'approved_amount', 'comments', 'attachment_file'];
+    protected $fillable = ['patient_type_id' ,'patient_id', 'institute_id', 'user_id', 'actual_amount', 'approved_amount', 'comments', 'attachment_file'];
+
+    public function patientType(): BelongsTo
+    {
+        return $this->belongsTo(PatientType::class);
+    }
 
     public function patient(): BelongsTo
     {

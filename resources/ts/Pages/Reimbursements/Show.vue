@@ -17,6 +17,15 @@
                     <div class="card-body">
                         <div class="row mb-10">
                             <div class="col-lg-12">
+                                <label class="form-label fw-semibold">Patient Type</label>
+                                <span class="form-control form-control-solid">
+                                      {{ reimbursement?.patient_type?.type_name }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-10">
+                            <div class="col-lg-12">
                                 <label class="form-label fw-semibold">Patient</label>
                                 <span class="form-control form-control-solid">
                                       {{ reimbursement?.patient?.patient_name }} --- {{ reimbursement?.patient?.patient_type?.type_name }}
@@ -25,7 +34,7 @@
                                 </span>
                             </div>
                         </div>
-                            <div class="row mb-10">
+                         <div class="row mb-10">
                             <div class="col-lg-6">
                                 <label class="form-label fw-semibold">Attachment</label>
                                 <span class="form-control form-control-solid"><span v-if="reimbursement?.attachment_file">
@@ -33,6 +42,7 @@
                                 </span></span>
                             </div>
                         </div>
+
                         <div class="row mb-10">
                             <div class="col-lg-6">
                                 <label class="form-label fw-semibold">Actual Amount</label>

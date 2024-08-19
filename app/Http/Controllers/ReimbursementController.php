@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReimbursementRequest;
 use App\Http\Resources\PatientResource;
+use App\Http\Resources\PatientTypeResource;
 use App\Http\Resources\ReimbursementResource;
 use App\Models\Patient;
+use App\Models\PatientType;
 use App\Models\Reimbursement;
 use Inertia\Inertia;
 
@@ -26,7 +28,7 @@ class ReimbursementController extends Controller
         $filters = request()->only(['search', 'limit']);
         $reimbursements = ReimbursementResource::collection(
             Reimbursement::query()
-                ->with('patient')
+                ->with('patientType', 'patient')
                 ->when($filters['search']??null, function ($query, $search){
                     $query->where(function ($query) use ($search){
                         $query->whereRelation('patient', 'patient_name', 'like', "%{$search}%")
@@ -40,7 +42,7 @@ class ReimbursementController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->paginate(request()->input('limit', 30))->withQueryString()
         );
-        return Inertia::render('Reimbursements/Index', compact('reimbursements', 'filters'));
+            return Inertia::render('Reimbursements/Index', compact('reimbursements', 'filters'));
     }
 
     /**
@@ -50,12 +52,13 @@ class ReimbursementController extends Controller
      */
     public function create()
     {
+        $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
         $patients = PatientResource::collection(Patient::active()
             ->with('patientType', 'patientEmployee','patientParticipant')
             ->when(!auth()->user()->isSuperAdmin(), function ($query){
             $query->where('institute_id', auth()->user()->institute_id);
         })->get());
-        return Inertia::render('Reimbursements/Create', compact('patients'));
+        return Inertia::render('Reimbursements/Create', compact('patients', 'patientTypes'));
     }
 
     /**
@@ -83,7 +86,7 @@ class ReimbursementController extends Controller
      */
     public function show(Reimbursement $reimbursement)
     {
-        $reimbursement->load('patient', 'patient.patientType', 'patient.patientEmployee','patient.patientParticipant');
+        $reimbursement->load('patientType', 'patient', 'patient.patientType', 'patient.patientEmployee','patient.patientParticipant');
         $reimbursement = new ReimbursementResource($reimbursement);
         return Inertia::render('Reimbursements/Show', compact('reimbursement'));
     }
@@ -96,13 +99,14 @@ class ReimbursementController extends Controller
      */
     public function edit(Reimbursement $reimbursement)
     {
+        $patientTypes = PatientTypeResource::collection(PatientType::active()->get());
         $patients = PatientResource::collection(Patient::active()
             ->with('patientType', 'patientEmployee','patientParticipant')
             ->when(!auth()->user()->isSuperAdmin(), function ($query){
                 $query->where('institute_id', auth()->user()->institute_id);
             })->get());
         $reimbursement = new ReimbursementResource($reimbursement);
-        return Inertia::render('Reimbursements/Edit', compact('reimbursement', 'patients'));
+        return Inertia::render('Reimbursements/Edit', compact('reimbursement', 'patients', 'patientTypes'));
     }
 
     /**

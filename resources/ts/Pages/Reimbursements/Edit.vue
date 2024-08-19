@@ -17,12 +17,43 @@
                 <form @submit.prevent="form.post(route('reimbursements.update', reimbursement?.id))">
                     <!--begin::Card body-->
                     <div class="card-body">
+
+                        <div class="row mb-10">
+                            <label class="required form-label"
+                            >Type of Patient</label
+                            >
+                            <div class="d-flex">
+                                <div
+                                    v-for="patientType in patientTypes"
+                                    :key="patientType.id"
+                                    class="form-check form-check-custom form-check-sm me-10"
+                                >
+                                    <input
+                                        v-model="form.patient_type_id"
+                                        :value="patientType.id"
+                                        class="form-check-input"
+                                        name="patient_type_id"
+                                        type="radio"
+                                        :id="`patient_type_id_${patientType.id}`"
+                                    />
+                                    <label
+                                        class="form-check-label"
+                                        :for="`patient_type_id_${patientType.id}`"
+                                    >{{ patientType.type_name }}</label
+                                    >
+                                </div>
+                            </div>
+                            <ServerErrorMessage
+                                :error="form.errors.patient_type_id"
+                            />
+                        </div>
+
                         <div class="row mb-10">
                             <div class="col-lg-12">
                                 <label class="form-label required">Patient</label>
                                 <v-select
                                     v-model="form.patient_id"
-                                    :options="patients"
+                                    :options="filterPatients"
                                     :reduce="(option) => option.id"
                                     label="patient_name"
                                     class="v-select-custom"
@@ -109,12 +140,15 @@
 <script lang="ts" setup>
 import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
 import {useForm} from "@inertiajs/vue3";
+import {computed, watch} from "vue";
 const props = defineProps({
+    patientTypes: { type: Array, required: true},
     patients: { type: Array, required: true},
     reimbursement: { type: Object, required: true}
 });
 const form = useForm({
     _method: 'PUT',
+    patient_type_id: props.reimbursement?.patient_type_id,
     patient_id: props.reimbursement?.patient_id,
     old_attachment_file: props.reimbursement?.attachment_file,
     attachment_file: '',
@@ -122,4 +156,16 @@ const form = useForm({
     approved_amount: props.reimbursement?.approved_amount,
     comments: props.reimbursement?.comments,
 });
+
+const filterPatients = computed(() => {
+    if (!form.patient_type_id) {
+        return [];
+    }
+    return props.patients.filter(patient => patient.patient_type_id === form.patient_type_id);
+});
+
+watch(() => form.patient_type_id, () => {
+    form.patient_id = '';
+});
+
 </script>
