@@ -37,8 +37,8 @@ build:
     #- sed -i "s/createWebHistory('\/')/createWebHistory('\/nspp_emrs\/')/g" resources/js/router/router.js
     - export http_proxy="http://10.50.27.160:8080/"
     - export https_proxy="http://10.50.27.160:8080/"
-    - nvm install 16 || echo "Version '20' not found, skipping installation"
-    - nvm use 16
+    - nvm install 20 || echo "Version '20' not found, skipping installation"
+    - nvm use 20
     - npm install --global yarn
     - yarn install
     - yarn run prod
