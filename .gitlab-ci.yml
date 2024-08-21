@@ -28,7 +28,7 @@ build:
     - pwd
     - echo "This is job name and pipeline id $CI_JOB_ID && $CI_PIPELINE_ID && $CI_COMMIT_SHA and runner id $CI_RUNNER_ID runner tags $CI_RUNNER_TAGS"
     - rm composer.lock
-    - rm package-lock.json
+    - rm yarn.lock
     - cat $LIVE_ENV > .env
     - ls -la
     - composer install --no-interaction --prefer-dist
@@ -40,8 +40,8 @@ build:
     - nvm install 20 || echo "Version '20' not found, skipping installation"
     - nvm use 20
     - npm install --global yarn
-    - npm install
-    - npm run prod
+    - yarn install
+    - yarn run prod
     #- sed -i "s|\$fa-font-path:\ '/nspp_emrs/fonts';|\$fa-font-path:\ '/fonts';|" resources/sass/_variables.scss
     #- sed -i "s|\$media-path:\ '/nspp_emrs/media';|\$media-path:\ '/media';|" resources/sass/_variables.scss
     #- sed -i "s/createWebHistory('\/nspp_emrs\/')/createWebHistory('\/')/g" resources/js/router/router.js
