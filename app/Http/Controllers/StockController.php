@@ -9,6 +9,7 @@ use App\Http\Resources\StockResource;
 use App\Models\Medicine;
 use App\Models\MedicineCategory;
 use App\Models\Stock;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class StockController extends Controller
@@ -29,6 +30,17 @@ class StockController extends Controller
         $stocks = StockResource::collection(
             Stock::query()
                 ->with('medicineCategory','medicine')
+                ->with('medicine' , function($query) {
+                    $query->withCount(['stocks as total_stocks' => function($query) {
+                        $query->select(DB::raw('SUM(qty)'))->where('institute_id', auth()->user()->institute_id);
+                    }])
+                        ->withCount(['patientMedicines as consume_medicine_stocks' => function($query) {
+                            $query->select(DB::raw('SUM(acquire_qty)'))->where('institute_id', auth()->user()->institute_id);
+                        }])
+                        ->withCount(['patientOtherMedicines as consume_other_medicine_stocks' => function($query) {
+                            $query->select(DB::raw('SUM(acquire_qty)'))->where('institute_id', auth()->user()->institute_id);
+                    }]);
+                })
                 ->when(request()->input('search'), function ($query, $search){
                     $query->where('qty', $search);
                 })

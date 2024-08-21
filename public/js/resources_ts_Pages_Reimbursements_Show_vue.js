@@ -68,7 +68,7 @@ var _hoisted_6 = {
 };
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label fw-semibold"
-}, "Patient Type", -1 /* HOISTED */);
+}, "Employee", -1 /* HOISTED */);
 var _hoisted_8 = {
   "class": "form-control form-control-solid"
 };
@@ -76,20 +76,18 @@ var _hoisted_9 = {
   "class": "row mb-10"
 };
 var _hoisted_10 = {
-  "class": "col-lg-12"
+  "class": "col-lg-6"
 };
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label fw-semibold"
-}, "Patient", -1 /* HOISTED */);
+}, "Attachment", -1 /* HOISTED */);
 var _hoisted_12 = {
   "class": "form-control form-control-solid"
 };
 var _hoisted_13 = {
   key: 0
 };
-var _hoisted_14 = {
-  key: 1
-};
+var _hoisted_14 = ["href"];
 var _hoisted_15 = {
   "class": "row mb-10"
 };
@@ -98,49 +96,33 @@ var _hoisted_16 = {
 };
 var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label fw-semibold"
-}, "Attachment", -1 /* HOISTED */);
+}, "Actual Amount", -1 /* HOISTED */);
 var _hoisted_18 = {
   "class": "form-control form-control-solid"
 };
 var _hoisted_19 = {
-  key: 0
-};
-var _hoisted_20 = ["href"];
-var _hoisted_21 = {
-  "class": "row mb-10"
-};
-var _hoisted_22 = {
   "class": "col-lg-6"
 };
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "form-label fw-semibold"
-}, "Actual Amount", -1 /* HOISTED */);
-var _hoisted_24 = {
-  "class": "form-control form-control-solid"
-};
-var _hoisted_25 = {
-  "class": "col-lg-6"
-};
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label fw-semibold"
 }, "Approved Amount by MO", -1 /* HOISTED */);
-var _hoisted_27 = {
+var _hoisted_21 = {
   "class": "form-control form-control-solid"
 };
-var _hoisted_28 = {
+var _hoisted_22 = {
   "class": "row"
 };
-var _hoisted_29 = {
+var _hoisted_23 = {
   "class": "col-lg-12"
 };
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "form-label fw-semibold"
 }, "Comments", -1 /* HOISTED */);
-var _hoisted_31 = {
+var _hoisted_25 = {
   "class": "form-control form-control-solid"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _$props$reimbursement, _$props$reimbursement2, _$props$reimbursement3, _$props$reimbursement4, _$props$reimbursement5, _$props$reimbursement6, _$props$reimbursement7, _$props$reimbursement8, _$props$reimbursement9, _$props$reimbursement10, _$props$reimbursement11, _$props$reimbursement12, _$props$reimbursement13, _$props$reimbursement14, _$props$reimbursement15, _$props$reimbursement16, _$props$reimbursement17, _$props$reimbursement18, _$props$reimbursement19, _$props$reimbursement20, _$props$reimbursement21, _$props$reimbursement22, _$props$reimbursement23, _$props$reimbursement24, _$props$reimbursement25, _$props$reimbursement26, _$props$reimbursement27, _$props$reimbursement28, _$props$reimbursement29;
+  var _$props$reimbursement, _$props$reimbursement2, _$props$reimbursement3, _$props$reimbursement4, _$props$reimbursement5, _$props$reimbursement6;
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
   var _component_Toolbar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Toolbar");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
@@ -158,10 +140,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       label: 'View',
       link: null
     }]
-  }, null, 8 /* PROPS */, ["buttons", "breadcrumbs"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin:: Content Body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Container"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Card body"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$reimbursement = $props.reimbursement) === null || _$props$reimbursement === void 0 ? void 0 : (_$props$reimbursement2 = _$props$reimbursement.patient_type) === null || _$props$reimbursement2 === void 0 ? void 0 : _$props$reimbursement2.type_name), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$reimbursement3 = $props.reimbursement) === null || _$props$reimbursement3 === void 0 ? void 0 : (_$props$reimbursement4 = _$props$reimbursement3.patient) === null || _$props$reimbursement4 === void 0 ? void 0 : _$props$reimbursement4.patient_name) + " --- " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$reimbursement5 = $props.reimbursement) === null || _$props$reimbursement5 === void 0 ? void 0 : (_$props$reimbursement6 = _$props$reimbursement5.patient) === null || _$props$reimbursement6 === void 0 ? void 0 : (_$props$reimbursement7 = _$props$reimbursement6.patient_type) === null || _$props$reimbursement7 === void 0 ? void 0 : _$props$reimbursement7.type_name) + " ", 1 /* TEXT */), [1, 3].includes(parseInt((_$props$reimbursement8 = $props.reimbursement) === null || _$props$reimbursement8 === void 0 ? void 0 : (_$props$reimbursement9 = _$props$reimbursement8.patient) === null || _$props$reimbursement9 === void 0 ? void 0 : _$props$reimbursement9.patient_type_id)) && (_$props$reimbursement10 = $props.reimbursement) !== null && _$props$reimbursement10 !== void 0 && (_$props$reimbursement11 = _$props$reimbursement10.patient) !== null && _$props$reimbursement11 !== void 0 && _$props$reimbursement11.patient_employee ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_13, " --- (" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$reimbursement12 = $props.reimbursement) === null || _$props$reimbursement12 === void 0 ? void 0 : (_$props$reimbursement13 = _$props$reimbursement12.patient) === null || _$props$reimbursement13 === void 0 ? void 0 : (_$props$reimbursement14 = _$props$reimbursement13.patient_employee) === null || _$props$reimbursement14 === void 0 ? void 0 : _$props$reimbursement14.officer_name) + ", " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$reimbursement15 = $props.reimbursement) === null || _$props$reimbursement15 === void 0 ? void 0 : (_$props$reimbursement16 = _$props$reimbursement15.patient) === null || _$props$reimbursement16 === void 0 ? void 0 : (_$props$reimbursement17 = _$props$reimbursement16.patient_employee) === null || _$props$reimbursement17 === void 0 ? void 0 : _$props$reimbursement17.designation) + ")", 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), 2 === parseInt((_$props$reimbursement18 = $props.reimbursement) === null || _$props$reimbursement18 === void 0 ? void 0 : (_$props$reimbursement19 = _$props$reimbursement18.patient) === null || _$props$reimbursement19 === void 0 ? void 0 : _$props$reimbursement19.patient_type_id) && (_$props$reimbursement20 = $props.reimbursement) !== null && _$props$reimbursement20 !== void 0 && (_$props$reimbursement21 = _$props$reimbursement20.patient) !== null && _$props$reimbursement21 !== void 0 && _$props$reimbursement21.patient_participant ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_14, " --- (" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$reimbursement22 = $props.reimbursement) === null || _$props$reimbursement22 === void 0 ? void 0 : (_$props$reimbursement23 = _$props$reimbursement22.patient) === null || _$props$reimbursement23 === void 0 ? void 0 : (_$props$reimbursement24 = _$props$reimbursement23.patient_participant) === null || _$props$reimbursement24 === void 0 ? void 0 : _$props$reimbursement24.participant_name) + ", " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$reimbursement25 = $props.reimbursement) === null || _$props$reimbursement25 === void 0 ? void 0 : (_$props$reimbursement26 = _$props$reimbursement25.patient) === null || _$props$reimbursement26 === void 0 ? void 0 : (_$props$reimbursement27 = _$props$reimbursement26.patient_participant) === null || _$props$reimbursement27 === void 0 ? void 0 : _$props$reimbursement27.participant_designation) + ")", 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_18, [(_$props$reimbursement28 = $props.reimbursement) !== null && _$props$reimbursement28 !== void 0 && _$props$reimbursement28.attachment_file ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    href: (_$props$reimbursement29 = $props.reimbursement) === null || _$props$reimbursement29 === void 0 ? void 0 : _$props$reimbursement29.attachment_file,
+  }, null, 8 /* PROPS */, ["buttons", "breadcrumbs"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" begin:: Content Body "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Container"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Card body"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$reimbursement = $props.reimbursement) === null || _$props$reimbursement === void 0 ? void 0 : (_$props$reimbursement2 = _$props$reimbursement.employee) === null || _$props$reimbursement2 === void 0 ? void 0 : _$props$reimbursement2.officer_name) + " (" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$props$reimbursement3 = $props.reimbursement) === null || _$props$reimbursement3 === void 0 ? void 0 : (_$props$reimbursement4 = _$props$reimbursement3.employee) === null || _$props$reimbursement4 === void 0 ? void 0 : _$props$reimbursement4.designation) + ") ", 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_12, [(_$props$reimbursement5 = $props.reimbursement) !== null && _$props$reimbursement5 !== void 0 && _$props$reimbursement5.attachment_file ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    href: (_$props$reimbursement6 = $props.reimbursement) === null || _$props$reimbursement6 === void 0 ? void 0 : _$props$reimbursement6.attachment_file,
     target: "_blank"
-  }, "View File", 8 /* PROPS */, _hoisted_20)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.reimbursement.actual_amount), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.reimbursement.approved_amount), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [_hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.reimbursement.comments), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Container")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end:: Content Body ")], 64 /* STABLE_FRAGMENT */);
+  }, "View File", 8 /* PROPS */, _hoisted_14)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.reimbursement.actual_amount), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.reimbursement.approved_amount), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.reimbursement.comments), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Card body")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Container")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end:: Content Body ")], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

@@ -15,23 +15,12 @@
             <div class="card card-custom">
                     <!--begin::Card body-->
                     <div class="card-body">
-                        <div class="row mb-10">
-                            <div class="col-lg-12">
-                                <label class="form-label fw-semibold">Patient Type</label>
-                                <span class="form-control form-control-solid">
-                                      {{ reimbursement?.patient_type?.type_name }}
-                                </span>
-                            </div>
-                        </div>
 
                         <div class="row mb-10">
                             <div class="col-lg-12">
-                                <label class="form-label fw-semibold">Patient</label>
+                                <label class="form-label fw-semibold">Employee</label>
                                 <span class="form-control form-control-solid">
-                                      {{ reimbursement?.patient?.patient_name }} --- {{ reimbursement?.patient?.patient_type?.type_name }}
-                                        <span v-if="[1,3].includes(parseInt(reimbursement?.patient?.patient_type_id)) && reimbursement?.patient?.patient_employee"> --- ({{ reimbursement?.patient?.patient_employee?.officer_name }}, {{ reimbursement?.patient?.patient_employee?.designation}})</span>
-                                        <span v-if="2 === parseInt(reimbursement?.patient?.patient_type_id) && reimbursement?.patient?.patient_participant"> --- ({{ reimbursement?.patient?.patient_participant?.participant_name }}, {{ reimbursement?.patient?.patient_participant?.participant_designation}})</span>
-                                </span>
+                                      {{ reimbursement?.employee?.officer_name }}&nbsp;({{ reimbursement?.employee?.designation}}) </span>
                             </div>
                         </div>
                          <div class="row mb-10">

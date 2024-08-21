@@ -55,8 +55,7 @@
                         <!--begin::Table head-->
                         <thead>
                         <tr class="fw-semibold fs-6 text-gray-800">
-                            <th>Patient Type</th>
-                            <th>Patient Name</th>
+                            <th>Employee Name</th>
                             <th class="text-start">Actual Amount</th>
                             <th class="text-start">Approved Amount by MO</th>
                             <th class="text-start">Attachment</th>
@@ -66,8 +65,7 @@
                         <tbody>
                         <template v-for="reimbursement in reimbursements.data" :key="reimbursement.id">
                             <tr>
-                                <td>{{ reimbursement?.patient_type?.type_name }}</td>
-                                <td>{{ reimbursement?.patient?.patient_name }}</td>
+                                <td>{{ reimbursement?.employee?.officer_name }}</td>
                                 <td>{{ reimbursement.actual_amount }}</td>
                                 <td>{{ reimbursement.approved_amount }}</td>
                                 <td><span v-if="reimbursement?.attachment_file">

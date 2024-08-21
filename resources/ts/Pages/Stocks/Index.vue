@@ -110,6 +110,9 @@ watch(
                                     <th>Category</th>
                                     <th>Medicine Name</th>
                                     <th>Qty</th>
+                                    <th>Total Stock</th>
+                                    <th>Stock In</th>
+                                    <th>Stock Out</th>
                                     <th>Expiry Date</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center w-200px">Action</th>
@@ -130,6 +133,19 @@ watch(
                                         <td>
                                             {{ stock.qty }}
                                         </td>
+
+                                        <td>
+                                            {{ stock?.medicine?.total_stocks || 0 }}
+                                        </td>
+
+                                        <td>
+                                            {{ stock?.medicine?.total_stocks_qty || 0 }}
+                                        </td>
+
+                                        <td>
+                                            {{ parseInt(stock?.medicine?.consume_medicine_stocks || '0') +  parseInt(stock?.medicine?.consume_other_medicine_stocks || '0' )}}
+                                        </td>
+
                                         <td>
                                             {{ stock.expiry_date }}
                                         </td>

@@ -24,8 +24,7 @@ class ReimbursementRequest extends FormRequest
     public function rules()
     {
         return [
-            'patient_type_id' => 'required',
-            'patient_id' => 'required',
+            'employee' => 'required',
             'old_attachment_file'=>'sometimes|nullable',
             'attachment_file' => 'required_if:old_attachment_file,null|sometimes|nullable|mimes:png,jpg,jpeg,docs,doc,csv,xlx,xls,pdf|max:10240',
             'actual_amount' => 'required',

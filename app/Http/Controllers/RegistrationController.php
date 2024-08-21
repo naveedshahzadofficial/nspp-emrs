@@ -220,7 +220,9 @@ class RegistrationController extends Controller
         $riskFactors = RiskFactorResource::collection(RiskFactor::active()->get());
         $medicines = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')
         ->withCount(['stocks as total_stocks' => function($query) {
-            $query->select(DB::raw('SUM(qty)'))->where('institute_id', auth()->user()->institute_id);
+            $query->select(DB::raw('SUM(qty)'))
+                ->where('institute_id', auth()->user()->institute_id)
+                ->whereDate('expiry_date', '>=' , today()->format('Y-m-d'));
         }])
         ->withCount(['patientMedicines as consume_medicine_stocks' => function($query) {
             $query->select(DB::raw('SUM(acquire_qty)'))->where('institute_id', auth()->user()->institute_id);
@@ -265,7 +267,8 @@ class RegistrationController extends Controller
         $data['patientVisit'] = new PatientVisitResource($patientVisit);
         $data['medicines'] = MedicineResource::collection(Medicine::with('medicineType', 'medicineGeneric')
         ->withCount(['stocks as total_stocks' => function($query) {
-            $query->select(DB::raw('SUM(qty)'))->where('institute_id', auth()->user()->institute_id);
+            $query->select(DB::raw('SUM(qty)'))->where('institute_id', auth()->user()->institute_id)
+                ->whereDate('expiry_date', '>=' , today()->format('Y-m-d'));
         }])
         ->withCount(['patientMedicines as consume_medicine_stocks' => function($query) {
             $query->select(DB::raw('SUM(acquire_qty)'))->where('institute_id', auth()->user()->institute_id);

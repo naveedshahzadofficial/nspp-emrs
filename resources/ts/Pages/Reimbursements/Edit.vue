@@ -1,3 +1,24 @@
+<script lang="ts" setup>
+import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
+import {useForm} from "@inertiajs/vue3";
+import {computed, watch} from "vue";
+const props = defineProps({
+    employees: { type: Array, required: true},
+    reimbursement: { type: Object, required: true}
+});
+const form = useForm({
+    _method: 'PUT',
+    employee: props.reimbursement?.employee,
+    old_attachment_file: props.reimbursement?.attachment_file,
+    attachment_file: '',
+    actual_amount: props.reimbursement?.actual_amount,
+    approved_amount: props.reimbursement?.approved_amount,
+    comments: props.reimbursement?.comments,
+});
+
+
+</script>
+
 <template>
     <Head title="Update Reimbursement"/>
     <Toolbar
@@ -19,62 +40,22 @@
                     <div class="card-body">
 
                         <div class="row mb-10">
-                            <label class="required form-label"
-                            >Type of Patient</label
-                            >
-                            <div class="d-flex">
-                                <div
-                                    v-for="patientType in patientTypes"
-                                    :key="patientType.id"
-                                    class="form-check form-check-custom form-check-sm me-10"
+                            <div class="col-lg-6">
+                                <label class="required form-label"
+                                >Employees</label
                                 >
-                                    <input
-                                        v-model="form.patient_type_id"
-                                        :value="patientType.id"
-                                        class="form-check-input"
-                                        name="patient_type_id"
-                                        type="radio"
-                                        :id="`patient_type_id_${patientType.id}`"
-                                    />
-                                    <label
-                                        class="form-check-label"
-                                        :for="`patient_type_id_${patientType.id}`"
-                                    >{{ patientType.type_name }}</label
-                                    >
-                                </div>
-                            </div>
-                            <ServerErrorMessage
-                                :error="form.errors.patient_type_id"
-                            />
-                        </div>
-
-                        <div class="row mb-10">
-                            <div class="col-lg-12">
-                                <label class="form-label required">Patient</label>
                                 <v-select
-                                    v-model="form.patient_id"
-                                    :options="filterPatients"
-                                    :reduce="(option) => option.id"
-                                    label="patient_name"
+                                    label="officer_name"
+                                    v-model="form.employee"
+                                    :options="employees"
+                                    :reduce="(option) => option"
                                     class="v-select-custom"
-                                    placeholder="Please Select" >
-                                    <template v-slot:option="option">
-                                        {{ option.patient_name }} --- {{ option?.patient_type?.type_name }}
-                                        <span v-if="[1,3].includes(parseInt(option.patient_type_id)) && option?.patient_employee"> --- ({{ option?.patient_employee?.officer_name }}, {{ option?.patient_employee?.designation}})</span>
-                                        <span v-if="2 === parseInt(option.patient_type_id) && option?.patient_participant"> --- ({{ option?.patient_participant?.participant_name }}, {{ option?.patient_participant?.participant_designation}})</span>
-                                    </template>
-                                    <template
-                                        #selected-option="option"
-                                    >
-                                        {{ option.patient_name }} --- {{ option?.patient_type?.type_name }}
-                                        <span v-if="[1,3].includes(parseInt(option.patient_type_id)) && option?.patient_employee"> --- ({{ option?.patient_employee?.officer_name }}, {{ option?.patient_employee?.designation}})</span>
-                                        <span v-if="2 === parseInt(option.patient_type_id) && option?.patient_participant"> --- ({{ option?.patient_participant?.participant_name }}, {{ option?.patient_participant?.participant_designation}})</span>
-                                    </template>
-                                </v-select>
-                                <ServerErrorMessage :error="form.errors.patient_id"/>
+                                    placeholder="Please Select"
+                                />
+                                <ServerErrorMessage
+                                    :error="form.errors.employee"
+                                />
                             </div>
-                        </div>
-                        <div class="row mb-10">
                             <div class="col-lg-6">
                                 <label class="required form-label">Attachment  <span v-if="reimbursement?.attachment_file">
                                     <a :href="reimbursement?.attachment_file" target="_blank">View File</a>
@@ -137,35 +118,3 @@
 
 </template>
 
-<script lang="ts" setup>
-import ServerErrorMessage from "@/Components/alerts/ServerErrorMessage.vue";
-import {useForm} from "@inertiajs/vue3";
-import {computed, watch} from "vue";
-const props = defineProps({
-    patientTypes: { type: Array, required: true},
-    patients: { type: Array, required: true},
-    reimbursement: { type: Object, required: true}
-});
-const form = useForm({
-    _method: 'PUT',
-    patient_type_id: props.reimbursement?.patient_type_id,
-    patient_id: props.reimbursement?.patient_id,
-    old_attachment_file: props.reimbursement?.attachment_file,
-    attachment_file: '',
-    actual_amount: props.reimbursement?.actual_amount,
-    approved_amount: props.reimbursement?.approved_amount,
-    comments: props.reimbursement?.comments,
-});
-
-const filterPatients = computed(() => {
-    if (!form.patient_type_id) {
-        return [];
-    }
-    return props.patients.filter(patient => patient.patient_type_id === form.patient_type_id);
-});
-
-watch(() => form.patient_type_id, () => {
-    form.patient_id = '';
-});
-
-</script>
