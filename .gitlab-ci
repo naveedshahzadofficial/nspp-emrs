@@ -19,7 +19,7 @@ cache:
 
 .extends-script:
   before-script:
-    - echo "gitlab for extends keywords..."
+    - echo "gitlab for extends keywords"
 
 build:
   stage: build
