@@ -484,6 +484,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/vue3 */ "./node_modules/@inertiajs/vue3/dist/index.esm.js");
 /* harmony import */ var sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.js */ "./node_modules/sweetalert2/dist/sweetalert2.min.js");
 /* harmony import */ var sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_min_js__WEBPACK_IMPORTED_MODULE_1__);
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'ziggy-js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+
 
 
 function useCommons() {
@@ -495,7 +497,7 @@ function useCommons() {
       }
       return acc;
     }, {});
-    _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router.get(route(routeName), _filter, {
+    _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router.get(Object(function webpackMissingModule() { var e = new Error("Cannot find module 'ziggy-js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(routeName), _filter, {
       preserveScroll: true,
       preserveState: true,
       replace: true
@@ -514,7 +516,7 @@ function useCommons() {
       }
     }).then(function (result) {
       if (result.isConfirmed) {
-        _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router["delete"](route(routeName, _id), {
+        _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router["delete"](Object(function webpackMissingModule() { var e = new Error("Cannot find module 'ziggy-js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(routeName, _id), {
           preserveScroll: true
         });
       }
@@ -533,7 +535,7 @@ function useCommons() {
       }
     }).then(function (result) {
       if (result.isConfirmed) {
-        _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router["delete"](route(routeName, object === null || object === void 0 ? void 0 : object.id), {
+        _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router["delete"](Object(function webpackMissingModule() { var e = new Error("Cannot find module 'ziggy-js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(routeName, object === null || object === void 0 ? void 0 : object.id), {
           preserveScroll: true
         });
       }
@@ -552,7 +554,7 @@ function useCommons() {
       }
     }).then(function (result) {
       if (result.isConfirmed) {
-        _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router["delete"](route(routeName, [_idFrom, _idTo]), {
+        _inertiajs_vue3__WEBPACK_IMPORTED_MODULE_0__.router["delete"](Object(function webpackMissingModule() { var e = new Error("Cannot find module 'ziggy-js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(routeName, [_idFrom, _idTo]), {
           preserveScroll: true
         });
       }

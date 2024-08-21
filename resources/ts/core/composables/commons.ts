@@ -1,5 +1,6 @@
 import {router} from "@inertiajs/vue3";
 import Swal from "sweetalert2/dist/sweetalert2.min.js";
+import route from 'ziggy-js';
 
 export function useCommons(){
     const filterData = (routeName: string, _filter: any) => {
