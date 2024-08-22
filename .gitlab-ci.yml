@@ -10,7 +10,7 @@ stages:
 
 variables:
   WEBDEV_PATH: /var/www/vhosts/webdev/nspp_emrs
-  DEPLOY_PATH: /var/www/vhosts/nsppemr-live2
+  DEPLOY_PATH: /var/www/vhosts/nsppemr-live
 
 cache:
   paths:
