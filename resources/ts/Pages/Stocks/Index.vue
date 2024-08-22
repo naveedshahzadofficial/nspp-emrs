@@ -146,7 +146,7 @@ watch(
                                             {{ parseInt(stock?.medicine?.consume_medicine_stocks || '0') +  parseInt(stock?.medicine?.consume_other_medicine_stocks || '0' )}}
                                         </td>
 
-                                        <td>
+                                        <td :class="{ 'badge badge-danger': new Date(stock.expiry_date) < new Date(), 'badge badge-warning': new Date(stock.expiry_date) - new Date() <= 2 * 24 * 60 * 60 * 1000 }">
                                             {{ stock.expiry_date }}
                                         </td>
                                         <td class="text-center">
