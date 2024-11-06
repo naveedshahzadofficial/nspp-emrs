@@ -32,6 +32,11 @@ Route::get('/', [DashboardController::class, 'index']);
 Route::group(['middleware' => ['auth']],function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    Route::get('/get-purchased-items-by-category', [DashboardController::class, 'getPurchasedItemsByCategory'])->name('get-purchased-items-by-category');
+    Route::get('/get-consumed-items-by-category', [DashboardController::class, 'getConsumedItemsByCategory'])->name('get-consumed-items-by-category');
+    Route::get('/get-patient-visits', [DashboardController::class, 'getPatientVisits'])->name('get-patient-visits');
+    Route::get('/get-employee-reimbursements', [DashboardController::class, 'getReimbursements'])->name('get-employee-reimbursements');
+
     Route::delete('/institutes/{institute}/toggle-status', [InstituteController::class, 'toggleStatus'])->name('institutes.toggle-status');
     Route::resource('institutes', InstituteController::class);
 
