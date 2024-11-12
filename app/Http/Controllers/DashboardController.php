@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Stock;
 use App\Models\MedicineCategory;
+use App\Models\Patient;
+use App\Models\Medicine;
+use App\Models\PatientMedicine;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -19,6 +22,12 @@ class DashboardController extends Controller
 
     public function index(Request $request){
         // Get Stats
+
+        $stats['total_patients'] = Patient::select(DB::raw('count(*) as total_patients'))->first()->total_patients;
+        $stats['total_medicines'] = Medicine::select(DB::raw('count(*) as total_medicines'))->first()->total_medicines;
+        $stats['total_medicines_dispensed'] = PatientMedicine::select(DB::raw('count(DISTINCT(medicine_id)) as total_medicines_dispensed'))->first()->total_medicines_dispensed;
+        $stats['total_reimbursements'] = Reimbursement::select(DB::raw("SUM(approved_amount) as total_reimbursement"))->first()->total_reimbursement;
+
         $stats['total_items_instock'] = Stock::select(DB::raw('sum(qty) as total_items_instock'))->whereRaw("expiry_date > DATE_FORMAT(NOW(),'%Y-%m%-%d')")->first()->total_items_instock;
         $stats['total_stock_value'] = Stock::select(DB::raw('sum(qty*unit_rate) as total_stock_value'))->whereRaw("expiry_date > DATE_FORMAT(NOW(),'%Y-%m%-%d') AND unit_rate is not null")->first()->total_stock_value;
         // return $stats['stock_value_by_category'] = Stock::join('medicine_categories', 'medicine_categories.id','=','stocks.medicine_category_id')->select(DB::raw('medicine_categories.category_name as name,sum(stocks.qty*stocks.unit_rate) as data'))->whereRaw("expiry_date > DATE_FORMAT(NOW(),'%Y-%m%-%d') AND unit_rate is not null")->groupBy('stocks.medicine_category_id')->get();
