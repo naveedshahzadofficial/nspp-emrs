@@ -7,6 +7,7 @@ use App\Models\Reimbursement;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Stock;
+use App\Models\MedicineCategory;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -21,7 +22,13 @@ class DashboardController extends Controller
         $stats['total_items_instock'] = Stock::select(DB::raw('sum(qty) as total_items_instock'))->whereRaw("expiry_date > DATE_FORMAT(NOW(),'%Y-%m%-%d')")->first()->total_items_instock;
         $stats['total_stock_value'] = Stock::select(DB::raw('sum(qty*unit_rate) as total_stock_value'))->whereRaw("expiry_date > DATE_FORMAT(NOW(),'%Y-%m%-%d') AND unit_rate is not null")->first()->total_stock_value;
         // return $stats['stock_value_by_category'] = Stock::join('medicine_categories', 'medicine_categories.id','=','stocks.medicine_category_id')->select(DB::raw('medicine_categories.category_name as name,sum(stocks.qty*stocks.unit_rate) as data'))->whereRaw("expiry_date > DATE_FORMAT(NOW(),'%Y-%m%-%d') AND unit_rate is not null")->groupBy('stocks.medicine_category_id')->get();
-        $get_medicine_by_category = Stock::join('medicine_categories', 'medicine_categories.id','=','stocks.medicine_category_id')->select(DB::raw('medicine_categories.category_name as name,sum(stocks.qty*stocks.unit_rate) as data'))->whereRaw("expiry_date > DATE_FORMAT(NOW(),'%Y-%m%-%d') AND unit_rate is not null AND stocks.deleted_at is null")->groupBy('stocks.medicine_category_id')->get()->toArray();
+        // $get_medicine_by_category = Stock::join('medicine_categories', 'medicine_categories.id','=','stocks.medicine_category_id')->select(DB::raw('medicine_categories.category_name as name,sum(stocks.qty*stocks.unit_rate) as data'))->whereRaw("expiry_date > DATE_FORMAT(NOW(),'%Y-%m%-%d') AND unit_rate is not null AND stocks.deleted_at is null")->groupBy('stocks.medicine_category_id')->get()->toArray();
+        $get_medicine_by_category = MedicineCategory::leftJoin('stocks', function($join){
+            $join->on('medicine_categories.id', '=', 'stocks.medicine_category_id')
+            ->whereRaw("expiry_date > DATE_FORMAT(NOW(),'%Y-%m%-%d') AND unit_rate is not null AND stocks.deleted_at is null");
+        })->select(DB::raw('medicine_categories.category_name as name,sum(stocks.qty*stocks.unit_rate) as data'))
+        ->groupBy('medicine_categories.id')->get()->toArray();
+
         $series_name = array_map(function ($value) {
             return $value['name'];
         }, $get_medicine_by_category);
@@ -49,12 +56,15 @@ class DashboardController extends Controller
         } else {
             $date = date('Y-m');
         }
-        $get_pur_items_by_cat = Stock::join('medicine_categories', 'medicine_categories.id', '=', 'stocks.medicine_category_id')->select(DB::raw('medicine_categories.category_name as name,sum(stocks.qty) as data'))->whereRaw("DATE_FORMAT(stocks.created_at,'%Y-%m') >= '$date' AND DATE_FORMAT(stocks.created_at,'%Y-%m') <= '$date' AND stocks.deleted_at is null")->groupBy('stocks.medicine_category_id')->get()->toArray();
+        $get_pur_items_by_cat = MedicineCategory::leftJoin('stocks', function($join) use ($date){
+            $join->on('medicine_categories.id', '=', 'stocks.medicine_category_id')
+            ->whereRaw("DATE_FORMAT(stocks.created_at,'%Y-%m') >= '$date' AND DATE_FORMAT(stocks.created_at,'%Y-%m') <= '$date' AND stocks.deleted_at is null");
+        })->select(DB::raw('medicine_categories.category_name as name,IFNULL(SUM(stocks.qty), 0) as data'))->groupBy('medicine_categories.id')->get()->toArray();
         $pur_items_names = array_map(function ($value) {
             return $value['name'];
         }, $get_pur_items_by_cat);
         $pur_items_data = array_map(function ($value) {
-            return (int)$value['data'];
+            return (int) $value['data'];
         }, $get_pur_items_by_cat);
 
         $purchased_items_by_category['names'] = $pur_items_names;
@@ -69,13 +79,16 @@ class DashboardController extends Controller
         } else {
             $date = date('Y-m');
         }
-        $get_con_items_by_cat = Stock::join('medicine_categories', 'medicine_categories.id', '=', 'stocks.medicine_category_id')
-                                        ->leftJoin('patient_medicines', 'patient_medicines.medicine_id', '=', 'stocks.medicine_id')
-                                        ->select(DB::raw('medicine_categories.category_name as name,COALESCE(SUM(patient_medicines.acquire_qty), 0) as data'))
-                                        ->whereRaw("DATE_FORMAT(stocks.created_at,'%Y-%m') >= '$date' AND DATE_FORMAT(stocks.created_at,'%Y-%m') <= '$date' AND stocks.deleted_at is null")
-                                        ->groupBy('stocks.medicine_category_id')
-                                        ->get()
-                                        ->toArray();
+
+        $get_con_items_by_cat = MedicineCategory::leftJoin('stocks', function ($join) use ($date) {
+            $join->on('medicine_categories.id', '=', 'stocks.medicine_category_id')
+            ->whereRaw("DATE_FORMAT(stocks.created_at,'%Y-%m') >= '$date' AND DATE_FORMAT(stocks.created_at,'%Y-%m') <= '$date' AND stocks.deleted_at is null");
+        })
+            ->leftJoin('patient_medicines', 'patient_medicines.medicine_id', '=', 'stocks.medicine_id')
+            ->select(DB::raw('medicine_categories.category_name as name,COALESCE(SUM(patient_medicines.acquire_qty), 0) as data'))
+            ->groupBy('medicine_categories.id')
+            ->get()
+            ->toArray();
         $con_items_names = array_map(function ($value) {
             return $value['name'];
         }, $get_con_items_by_cat);
