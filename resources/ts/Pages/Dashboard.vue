@@ -105,18 +105,20 @@ async function getData(container,date) {
                         <!--begin::Body-->
                         <div class="card-body">
                             <span class="svg-icon svg-icon-white svg-icon-3x ml-n1">
-                                <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
+                                <!--begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg-->
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24" />
-                                        <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-                                        <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
+                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                        <rect fill="#000000" opacity="0.3" x="13" y="4" width="3" height="16" rx="1.5"></rect>
+                                        <rect fill="#000000" x="8" y="9" width="3" height="11" rx="1.5"></rect>
+                                        <rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5"></rect>
+                                        <rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5"></rect>
                                     </g>
                                 </svg>
                                 <!--end::Svg Icon-->
                             </span>
-                            <div class="text-inverse-primary font-weight-bolder font-size-h5 mb-2 mt-5">9,823 </div>
-                            <div class="font-weight-bold text-inverse-primary font-size-sm">Members Online</div>
+                            <div class="text-inverse-success font-weight-bolder font-size-h5 mb-2 mt-5">Patient Register</div>
+                            <div class="font-weight-bold text-inverse-success font-size-sm">{{ new Intl.NumberFormat().format($page.props.data.stats.total_patients) }}</div>
                         </div>
                         <!--end::Body-->
                     </a>
@@ -140,8 +142,8 @@ async function getData(container,date) {
                                 </svg>
                                 <!--end::Svg Icon-->
                             </span>
-                            <div class="text-inverse-success font-weight-bolder font-size-h5 mb-2 mt-5">Members Online</div>
-                            <div class="font-weight-bold text-inverse-success font-size-sm">9,823</div>
+                            <div class="text-inverse-success font-weight-bolder font-size-h5 mb-2 mt-5">Total Medicines</div>
+                            <div class="font-weight-bold text-inverse-success font-size-sm">{{ new Intl.NumberFormat().format($page.props.data.stats.total_medicines) }}</div>
                         </div>
                         <!--end::Body-->
                     </a>
@@ -163,8 +165,8 @@ async function getData(container,date) {
                                 </svg>
                                 <!--end::Svg Icon-->
                             </span>
-                            <div class="text-inverse-info font-weight-bolder font-size-h5 mb-2 mt-5">Members Online</div>
-                            <div class="font-weight-bold text-inverse-info font-size-sm">9,823</div>
+                            <div class="text-inverse-info font-weight-bolder font-size-h5 mb-2 mt-5">Medicine Dispensed</div>
+                            <div class="font-weight-bold text-inverse-info font-size-sm">{{ new Intl.NumberFormat().format($page.props.data.stats.total_medicines_dispensed) }}</div>
                         </div>
                         <!--end::Body-->
                     </a>
@@ -172,24 +174,24 @@ async function getData(container,date) {
                 </div>
                 <div class="col-xl-3">
                     <!--begin::Stats Widget 15-->
-                    <a href="#" class="card card-custom bg-danger bg-hover-state-success card-stretch gutter-b">
+                    <a href="#" class="card card-custom bg-danger bg-hover-state-danger card-stretch gutter-b">
                         <!--begin::Body-->
                         <div class="card-body">
                             <span class="svg-icon svg-icon-white svg-icon-3x ml-n1">
                                 <!--begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg-->
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24" />
-                                        <rect fill="#000000" opacity="0.3" x="13" y="4" width="3" height="16" rx="1.5" />
-                                        <rect fill="#000000" x="8" y="9" width="3" height="11" rx="1.5" />
-                                        <rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5" />
-                                        <rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5" />
+                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                        <rect fill="#000000" opacity="0.3" x="13" y="4" width="3" height="16" rx="1.5"></rect>
+                                        <rect fill="#000000" x="8" y="9" width="3" height="11" rx="1.5"></rect>
+                                        <rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5"></rect>
+                                        <rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5"></rect>
                                     </g>
                                 </svg>
                                 <!--end::Svg Icon-->
                             </span>
-                            <div class="text-inverse-success font-weight-bolder font-size-h5 mb-2 mt-5"><strong>9,823</strong></div>
-                            <div class="font-weight-bold text-inverse-success font-size-sm">Members Online</div>
+                            <div class="text-inverse-success font-weight-bolder font-size-h5 mb-2 mt-5">Total Reimbursement</div>
+                            <div class="font-weight-bold text-inverse-success font-size-sm">{{ 'Rs. ' + new Intl.NumberFormat().format($page.props.data.stats.total_reimbursements) +'/-'}}</div>
                         </div>
                         <!--end::Body-->
                     </a>
@@ -257,7 +259,7 @@ async function getData(container,date) {
              <br/>
              <div class="row">
                 <div class="col-xl-12 light-grey-background">
-                    <HighChart chartId="chart-container-4" :chartTitle="chartThreeTitle" chartHeight="400px" chartType="line" :is-show-drop-down="true" @updateData="handleUpdate" :series="patientVisits.patient_visits.data" :xAxisxategories="patientVisits.patient_visits.names" :yAxis="patientVisits.patient_visits.names"/>
+                    <HighChart chartId="chart-container-4" :chartTitle="chartThreeTitle" chartHeight="400px" chartType="column" :is-show-drop-down="true" @updateData="handleUpdate" :series="patientVisits.patient_visits.data" :xAxisxategories="patientVisits.patient_visits.names" :yAxis="patientVisits.patient_visits.names"/>
                  </div>
              </div>
     </div>

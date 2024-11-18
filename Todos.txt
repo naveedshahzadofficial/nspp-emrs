@@ -1,0 +1,23 @@
+Todos:
+
+1. Dashboard
+    Purchase
+    1. Count medicine Purchase based on created_at.
+        1.1 For medicine purchase count we have some Null entries of created_at in medicine tables.
+
+    Stock
+    1. Total medicine in stock from stocks table.
+        1.1 Medicine shouldn't be expired.
+        1.2 Group medicine based on id, as we have multiple entries of same medicine based on batch/expiry.
+
+    2. Total item in Stock monetary term, from stocks table.
+        2.1 Medicine shouldn't be expired.
+
+    3. Stock values by Category
+        3.1 Medicine shouldn't be expired.
+
+    Consumed
+    1.
+
+
+
